@@ -1,0 +1,27 @@
+{
+  "name": "mdbadges-cli",
+  "version": "1.0.1",
+  "description": "A command line tool to find Shields.io badges.",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "markdown",
+    "badges",
+    "generator",
+    "CLI",
+    "technology",
+    "status",
+    "utilities",
+    "shields.io",
+    "shieldsio"
+  ],
+  "author": "Inter",
+  "license": "MIT",
+  "bin": {
+    "mdb": "./index.js"
+  },
+  "dependencies": {
+    "commander": "^11.1.0"
+  }
+}

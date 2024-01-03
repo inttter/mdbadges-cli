@@ -82,5 +82,21 @@ program
       }
     });
 
+    program
+    .command('search <category>')
+    .description('Searches for badges available in a specific category.')
+    .action((category) => {
+        const formattedCategory = formatCategoryName(category);
+        const categoryData = badges[category.toLowerCase()];
+        if (categoryData) {
+            console.log(`Badges available in the "${formattedCategory}" category:`);
+            Object.keys(categoryData).forEach((badge) => {
+                console.log(`- ${badge}`);
+            });
+            console.log(`\nTo get the code for a badge, type 'mdb ${category} <badgeName>'.`);
+        } else {
+            console.log(`Category "${formattedCategory}" not found.`);
+        }
+    });
 
 program.parse(process.argv);

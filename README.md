@@ -101,10 +101,10 @@ Restaurant/Delivery | restaurant-and-delivery
 Search Engine | search-engine
 Social Media | social-media
 Sound | sound
-Static Site | static_site
-Video Streaming | video_streaming
-Virtual Reality | virtual_reality
-Web Technology | web_technology
+Static Site | static-site
+Video Streaming | video-streaming
+Virtual Reality | virtual-reality
+Web Technology | web-technology
 Work/Jobs | work-and-jobs
 
 ###### ©️ Licensed under the [MIT License](LICENSE)

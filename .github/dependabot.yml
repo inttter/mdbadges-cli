@@ -3,4 +3,4 @@ updates:
   - package-ecosystem: "npm"
     directory: "/"
     schedule:
-      interval: "interval" # checks daily for dependancy updates
+      interval: "daily" # checks daily for dependancy updates

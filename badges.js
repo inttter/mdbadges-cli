@@ -419,7 +419,7 @@ const badges = {
         'tunein': '[![TuneIn](https://img.shields.io/badge/TuneIn-14D8CC?logo=TuneIn&logoColor=white)](#) ',
         'youtube-music': '[![YouTube Music](https://img.shields.io/badge/YouTube_Music-FF0000?logo=youtube-music&logoColor=white)](#) '
     },
-    'static_site': {
+    'static-site': {
         'docusaurus': '[![Docusaurus](https://img.shields.io/badge/Docusaurus-3ECC5F?logo=docusaurus&logoColor=fff)](#) ',
         'eleventy': '[![Eleventy](https://img.shields.io/badge/Eleventy-black?logo=eleventy)](#) ',
         'gatsby': '[![Gatsby](https://img.shields.io/badge/Gatsby-%23663399.svg?logo=gatsby&logoColor=white)](#) ',
@@ -431,7 +431,7 @@ const badges = {
         'nuxt': '[![Nuxt.js](https://img.shields.io/badge/Nuxt.js-00DC82?logo=nuxtdotjs&logoColor=fff)](#) ',
         'pelican': '[![Pelican](https://img.shields.io/badge/Pelican-14A0C4?logo=pelican&logoColor=fff)](#) '
     },
-    'video_streaming': {
+    'video-streaming': {
         'amazon-prime': '[![Amazon Prime](https://img.shields.io/badge/Amazon%20Prime-0F79AF?logo=amazonprime&logoColor=white)](#) ',
         'apple-tv': '[![Apple TV](https://img.shields.io/badge/Apple%20TV-000000?logo=Apple%20TV&logoColor=white)](#) ',
         'crunchyroll': '[![Crunchyroll](https://img.shields.io/badge/Crunchyroll-F47521?logo=crunchyroll&logoColor=white)](#) ',
@@ -439,14 +439,14 @@ const badges = {
         'netflix': '[![Netflix](https://img.shields.io/badge/Netflix-E50914?logo=netflix&logoColor=white)](#) ',
         'roku': '[![Roku](https://img.shields.io/badge/Roku-6f1ab1?logo=roku&logoColor=white)](#) '
     },
-    'virtual_reality': {
+    'virtual-reality': {
         'arkit': '[![ARKit](https://img.shields.io/badge/ARKit-%23000000.svg?logo=apple&logoColor=white)](#) ',
         'google-cardboard': '[![Google Cardboard](https://img.shields.io/badge/Google%20Cardboard-%23FF713B.svg?logo=google-cardboard&logoColor=white)](#) ',
         'oculus': '[![Oculus](https://img.shields.io/badge/Oculus-%231A1A1A.svg?logo=oculus&logoColor=white)](#) ',
         'playstation-vr': '[![PlayStation VR](https://img.shields.io/badge/PlayStation%20VR-%23007ACC.svg?logo=playstation&logoColor=white)](#) ',
         'steamvr': '[![SteamVR](https://img.shields.io/badge/SteamVR-%23232F3E.svg?logo=steam&logoColor=white)](#) '
     },
-    'web_technology': {
+    'web-technology': {
         'angular': '[![Angular](https://img.shields.io/badge/Angular-%23DD0031.svg?logo=angular&logoColor=white)](#) ',
         'bootstrap': '[![Bootstrap](https://img.shields.io/badge/Bootstrap-%238511FA.svg?logo=bootstrap&logoColor=white)](#) ',
         'css': '[![CSS](https://img.shields.io/badge/CSS-%231572B6.svg?logo=css3&logoColor=white)](#) ',

@@ -10,7 +10,7 @@ function formatCategoryName(category) {
 }
 
 program
-    .version('1.1.0')
+    .version('1.2.0')
     .description('A command line tool to find Shield.io badges.');
 
 program
@@ -47,6 +47,7 @@ program
 
     program
     .command('version')
+    .alias('v')
     .description('Displays the current version.')
     .action(() => {
         console.log(`${packageInfo.version}`);
@@ -54,6 +55,7 @@ program
 
     program
     .command('badges')
+    .alias('list')
     .description('Displays a link to view all the badges.')
     .action(() => {
         console.log(`You can view the badge list at any of the following two links:`);
@@ -65,7 +67,8 @@ program
 
     program
     .command('update')
-    .description('Checks for updates and updates the CLI.')
+    .alias('upd')
+    .description('Checks for updates to the CLI.')
     .action(async () => {
       console.log('Checking for updates...');
       try {
@@ -84,6 +87,8 @@ program
 
     program
     .command('search <category>')
+    .alias('s')
+    .alias('find')
     .description('Searches for badges available in a specific category.')
     .action((category) => {
         const formattedCategory = formatCategoryName(category);

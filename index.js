@@ -51,5 +51,16 @@ program
         console.log(`${packageInfo.version}`);
     });
 
+    program
+    .command('badges')
+    .description('Displays a link to view all the badges.')
+    .action(() => {
+        console.log(`You can view the badge list at any of the following two links:`);
+        console.log(``);
+        console.log(`https://github.com/inttter/md-badges`);
+        console.log(`https://docs.inttter.com/content/badges`);
+        console.log(``);
+    });
+
 
 program.parse(process.argv);

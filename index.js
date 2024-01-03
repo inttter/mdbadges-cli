@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 const { program } = require('commander');
+const axios = require('axios');
 const badges = require('./badges');
 const packageInfo = require('./package.json');
 
@@ -60,6 +61,25 @@ program
         console.log(`https://github.com/inttter/md-badges`);
         console.log(`https://docs.inttter.com/content/badges`);
         console.log(``);
+    });
+
+    program
+    .command('update')
+    .description('Checks for updates and updates the CLI.')
+    .action(async () => {
+      console.log('Checking for updates...');
+      try {
+        const response = await axios.get('https://registry.npmjs.org/mdbadges-cli');
+        const latest = response.data['dist-tags'].latest;
+        if (latest > packageInfo.version) {
+          console.log(`A new version (${latest}) is available.`);
+          console.log('Please update by running: npm install -g mdbadges-cli@latest');
+        } else {
+          console.log('You are already using the latest version.');
+        }
+      } catch (error) {
+        console.error('Failed to check for updates. Please try again later.');
+      }
     });
 
 

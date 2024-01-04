@@ -10,10 +10,10 @@ function formatCategoryName(category) {
 }
 
 program
-    .version('1.2.0')
+    .version('1.3.0')
     .description('A command line tool to find Shield.io badges.');
 
-program
+    program
     .arguments('<category> <badgeName>')
     .action((category, badgeName) => {
         const formattedCategory = formatCategoryName(category);
@@ -28,15 +28,16 @@ program
                 console.log(``);
                 console.log(`If your name has a space, try entering a dash.`);
                 console.log(`eg. applemusic -> apple-music`);
+                console.log(``);
             }
         } else {
             console.log(`Category "${formattedCategory}" not found.`);
         }
     });
 
-program
+    program
     .command('fund')
-    .description('Shows. funding information for the project.')
+    .description('Shows funding information for the project.')
     .action(() => {
         console.log('');
         console.log('If you would like, you can donate to me here:');
@@ -44,16 +45,16 @@ program
         console.log('GitHub Sponsors: https://github.com/sponsors/inttter');
         console.log('');
     });
-
-    program
+  
+  program
     .command('version')
     .alias('v')
     .description('Displays the current version.')
     .action(() => {
         console.log(`${packageInfo.version}`);
     });
-
-    program
+  
+  program
     .command('badges')
     .alias('list')
     .description('Displays a link to view all the badges.')
@@ -64,8 +65,8 @@ program
         console.log(`https://docs.inttter.com/content/badges`);
         console.log(``);
     });
-
-    program
+  
+  program
     .command('update')
     .alias('upd')
     .description('Checks for updates to the CLI.')
@@ -84,8 +85,8 @@ program
         console.error('Failed to check for updates. Please try again later.');
       }
     });
-
-    program
+  
+  program
     .command('search <category>')
     .alias('s')
     .alias('find')
@@ -104,4 +105,17 @@ program
         }
     });
 
-program.parse(process.argv);
+  program
+  .command('help')
+  .description('Displays available commands and what they do.')
+  .action(() => {
+    console.log('Available commands:');
+    program.commands.forEach(cmd => {
+      console.log(`${cmd._name}: ${cmd._description}`);
+      console.log(``);
+      console.log(`Type "mdb" along with the command to run.`);
+      console.log(``);
+    });
+  });
+  
+  program.parse(process.argv);

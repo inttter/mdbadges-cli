@@ -10,6 +10,9 @@ function formatCategoryName(category) {
     return category.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
 }
 
+const frames = ['/', '-', '\\', '|']; // Different frames for animation
+let index = 0;
+
 program
     .version('2.0.0')
     .description('A command line tool to find Shield.io badges.');
@@ -80,12 +83,16 @@ program
         console.log(``);
     });
   
-  program
+    program
     .command('update')
     .alias('upd')
     .description('Checks for updates to the CLI.')
     .action(async () => {
-      console.log(chalk.blueBright('Checking for updates...'));
+        // Start the loading animation
+        const loadingInterval = setInterval(() => {
+            process.stdout.write('\r' + chalk.blueBright('Checking for updates... ') + frames[index]);
+            index = (index + 1) % frames.length;
+        }, 100); // Change the interval for speed
       try {
         const response = await axios.get('https://registry.npmjs.org/mdbadges-cli');
         const latest = response.data['dist-tags'].latest;
@@ -93,11 +100,15 @@ program
           console.log(`A new version (${latest}) is available.`);
           console.log('Please update by running: npm install -g mdbadges-cli@latest');
         } else {
+          console.log('')
           console.log('You are already using the latest version.');
         }
       } catch (error) {
         console.error('Failed to check for updates. Please try again later.');
+      } finally {
+        clearInterval(loadingInterval);
       }
+      
     });
   
   program

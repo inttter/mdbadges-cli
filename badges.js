@@ -290,7 +290,7 @@ const badges = {
         'windows-95': '[![Windows 95](https://img.shields.io/badge/Windows%2095-008080?logo=windows95&logoColor=fff)](#) ',
         'windows-xp': '[![Windows XP](https://img.shields.io/badge/Windows%20XP-039?logo=windowsxp&logoColor=fff)](#) '
     },
-    'package_manager': {
+    'package-manager': {
         'chocolatey': '[![Chocolatey](https://img.shields.io/badge/Chocolatey-80B5E3?logo=chocolatey&logoColor=fff)](#) ',
         'composer': '[![Composer](https://img.shields.io/badge/Composer-885630?logo=composer&logoColor=fff)](#) ',
         'helm': '[![Helm](https://img.shields.io/badge/Helm-0F1689?logo=helm&logoColor=fff)](#) ',

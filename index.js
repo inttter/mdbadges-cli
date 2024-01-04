@@ -10,7 +10,7 @@ function formatCategoryName(category) {
 }
 
 program
-    .version('1.3.0')
+    .version('1.3.1')
     .description('A command line tool to find Shield.io badges.');
 
     program
@@ -114,8 +114,6 @@ program
     console.log('Available commands:');
     program.commands.forEach(cmd => {
       console.log(`${cmd._name}: ${cmd._description}`);
-      console.log(``);
-      console.log(`Type "mdb" along with the command to run.`);
       console.log(``);
     });
   });

@@ -31,17 +31,25 @@ npm install mdbadges-cli@latest
 ```
 mdb <category> <badgeName>
 
-e.g: mdb browser firefox
+e.g. | mdb browser firefox
 ```
 
 If a badge is found in that category, it will output the required Markdown.
+
+✨ **2.0.0+** | To find HTML, add ```--html``` after ```mdb```:
+
+```
+mdb --html <category> <badgeName>
+
+e.g. | mdb --html work-and-jobs upwork
+```
 
 ## To search for badges in a specific category:
 
 ```
 mdb search <category>
 
-e.g: mdb search browser
+e.g. | mdb search browser
 ```
 
 This command will display the badges available in that category, and you can then type the command above with a valid category and badge name to display the Markdown.
@@ -51,7 +59,7 @@ You can also do the shorter version of this command:
 ```
 mdb s <category>
 
-e.g: mdb s package-managers
+e.g. | mdb s package-managers
 ```
 
 ## To view the full list of badges from the command line, do:

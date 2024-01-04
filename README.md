@@ -4,9 +4,17 @@
 
 # mdbadges-cli
 
+[![NPM Downloads](https://img.shields.io/npm/dw/mdbadges-cli?logo=npm&color=%23000)](https://www.npmjs.com/package/mdbadges-cli) [![Release Version](https://img.shields.io/github/v/release/inttter/mdbadges-cli?logo=GitHub)](https://github.com/inttter/mdbadges-cli/releases) [![NPM License](https://img.shields.io/npm/l/mdbadges-cli)](LICENSE) [![CodeFactor](https://www.codefactor.io/repository/github/inttter/mdbadges-cli/badge)](https://www.codefactor.io/repository/github/inttter/mdbadges-cli)
+
+
+
+
 A command line tool to find Shields.io badges.
 
 </div>
+
+> [!IMPORTANT]
+> This package uses badges from my other project, **md-badges**. If you'd like to add a new badge, please visit [**this repository**](https://github.com/inttter/md-badges).
 
 # Installation
 
@@ -18,7 +26,7 @@ npm install mdbadges-cli@latest
 
 # Usage: 
 
-### To find a badge:
+## To find a badge:
 
 ```
 mdb <category> <badgeName>
@@ -28,7 +36,7 @@ e.g: mdb browser firefox
 
 If a badge is found in that category, it will output the required Markdown.
 
-### To search for badges in a specific category:
+## To search for badges in a specific category:
 
 ```
 mdb search <category>
@@ -38,7 +46,15 @@ e.g: mdb search browser
 
 This command will display the badges available in that category, and you can then type the command above with a valid category and badge name to display the Markdown.
 
-### To view the full list of badges from the command line, do:
+You can also do the shorter version of this command:
+
+```
+mdb s <category>
+
+e.g: mdb s package-managers
+```
+
+## To view the full list of badges from the command line, do:
 
 ```
 mdb badges
@@ -47,9 +63,10 @@ mdb badges
 Alternatively, you can visit the following two links without doing the command:
 
 https://github.com/inttter/md-badges
+
 https://docs.inttter.com/content/badges
 
-### To check for updates:
+## To check for updates:
 
 ```
 mdb update
@@ -57,6 +74,20 @@ mdb update
 
 This command uses Axios to determine if your package version is out-of-date.
 
+You can also do the shortened version of this command:
+
+```
+mdb upd
+```
+
+## To view the list of available commands from the command line:
+
+```
+mdb help
+```
+
+> [!NOTE]
+> You can also use ```-h``` after typing ```mdb``` to view the shortened commands.
 
 # List of available categories:
 
@@ -68,6 +99,10 @@ mdb <category> <badgeName>
 or:
 ```
 mdb search <category>
+
+and:
+
+mdb s <category>
 ```
 
 
@@ -94,7 +129,7 @@ Game Engine | game-engine
 IDE/Code Editor | ide-code-editor
 Office | office
 Operating System | operating-system
-Package Manager | package_manager
+Package Manager | package-manager
 Payment | payment
 Programming Language | programming-language
 Restaurant/Delivery | restaurant-and-delivery
@@ -108,3 +143,4 @@ Web Technology | web-technology
 Work/Jobs | work-and-jobs
 
 ###### ©️ Licensed under the [MIT License](LICENSE)
+###### ©️ Shields.io is licensed under the [CC0-1.0 License.](https://github.com/badges/shields/blob/master/LICENSE)

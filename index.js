@@ -42,7 +42,9 @@ program
         console.log('');
         console.log('If you would like, you can donate to me here:');
         console.log('');
+        console.log('Buy Me A Coffee: https://www.buymeacoffee.com/intter');
         console.log('GitHub Sponsors: https://github.com/sponsors/inttter');
+        console.log('Ko-fi: https://ko-fi.com/intter');
         console.log('');
     });
   

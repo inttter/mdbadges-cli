@@ -10,11 +10,11 @@ function formatCategoryName(category) {
     return category.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
 }
 
-const frames = ['/', '-', '\\', '|']; // Different frames for animation
+const frames = ['/', '-', '\\', '|'];
 let index = 0;
 
 program
-    .version('2.0.0')
+    .version('2.1.0')
     .description('A command line tool to find Shield.io badges.');
 
     program
@@ -88,11 +88,11 @@ program
     .alias('upd')
     .description('Checks for updates to the CLI.')
     .action(async () => {
-        // Start the loading animation
+        // starts the animation
         const loadingInterval = setInterval(() => {
             process.stdout.write('\r' + chalk.blueBright('Checking for updates... ') + frames[index]);
             index = (index + 1) % frames.length;
-        }, 100); // Change the interval for speed
+        }, 100); // changes the interval for speed
       try {
         const response = await axios.get('https://registry.npmjs.org/mdbadges-cli');
         const latest = response.data['dist-tags'].latest;
@@ -139,6 +139,17 @@ program
     program.commands.forEach(cmd => {
       console.log(`${cmd._name}: ${cmd._description}`);
       console.log(``);
+    });
+  });
+
+  program
+  .command('categories')
+  .alias('cat')
+  .description('Displays available categories.')
+  .action(() => {
+    console.log('Available categories:');
+    Object.keys(badges).forEach(category => {
+      console.log(`- ${formatCategoryName(category)}`);
     });
   });
   

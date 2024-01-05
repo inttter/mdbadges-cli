@@ -21,6 +21,7 @@ program
     program
     .arguments('<category> <badgeName>')
     .option('--html', 'Generate HTML badge code')
+    .option('--style <badgeStyle>', 'Select badge style (flat, flat-square, plastic, social, for-the-badge)')
     .action((category, badgeName, options) => {
       const formattedCategory = formatCategoryName(category);
       const categoryData = badges[category.toLowerCase()];
@@ -28,15 +29,28 @@ program
         const badge = categoryData[badgeName.toLowerCase()];
         if (badge) {
           if (options.html) {
-            // extracts badge link
+            // Extract badge link and name
             const badgeLink = badge.match(/\(([^)]+)\)/)[1];
-            // extracts badge namen
             const badgeAlt = badge.match(/\[([^)]+)\]/)[1];
-            // formats the HTML
+            // Format the HTML
             const htmlBadge = `<img src="${badgeLink}" />`;
             console.log(htmlBadge);
           } else {
-            console.log(chalk.hex('#00FF00')(`Badge found for "${formattedCategory}" category:`, badge));
+            let badgeStyle = 'flat'; // Default style if not specified
+            if (options.style) {
+              // Check if the provided style matches one of the accepted styles
+              const styles = ['flat', 'flat-square', 'plastic', 'social', 'for-the-badge'];
+              if (styles.includes(options.style)) {
+                badgeStyle = options.style;
+              } else {
+                console.log('Invalid badge style. Using default (flat).');
+              }
+            }
+            const styleOption = options.style ? `&style=${options.style}` : ''; // Add style option if provided
+            const badgeLink = badge.match(/\(([^)]+)\)/)[1];
+            const badgeAlt = badge.match(/\[([^)]+)\]/)[1];
+            const badgeMarkdown = `[${badgeAlt}](${badgeLink}${styleOption})](#)`;
+            console.log(chalk.hex('#00FF00')(`Badge found for "${formattedCategory}" category with style "${badgeStyle}":`, badgeMarkdown));
           }
         } else {
           console.log(``);
@@ -50,7 +64,6 @@ program
         console.log(`Category "${formattedCategory}" not found.`);
       }
     });
-
     program
     .command('fund')
     .description('Shows funding information for the project.')

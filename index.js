@@ -3,6 +3,7 @@
 const { program } = require('commander');
 const axios = require('axios');
 const chalk = require('chalk');
+const prompts = require('prompts');
 const badges = require('./badges');
 const packageInfo = require('./package.json');
 
@@ -151,6 +152,52 @@ program
     Object.keys(badges).forEach(category => {
       console.log(`- ${formatCategoryName(category)}`);
     });
+  });
+
+  program
+  .command('create')
+  .description('Create a custom badge')
+  .action(async () => {
+    const prompt = require('prompts');
+
+    const response = await prompt([
+      {
+        type: 'text',
+        name: 'alt',
+        message: 'Enter your alt text for the badge:',
+        initial: 'e.g. Alt Text',
+      },
+      {
+        type: 'text',
+        name: 'name',
+        message: 'Enter Name for the badge:',
+        initial: 'e.g. Discord',
+      },
+      {
+        type: 'text',
+        name: 'color',
+        message: 'Enter Color or hex value for the badge:',
+        initial: 'e.g. #000',
+      },
+      {
+        type: 'text',
+        name: 'logo',
+        message: 'Enter Logo for the badge:',
+        initial: 'e.g. github',
+      },
+      {
+        type: 'text',
+        name: 'style',
+        message: 'Enter Style for the badge (e.g., flat, plastic, ...):',
+        initial: 'flat',
+      },
+    ]);
+
+    const badgeLink = `https://img.shields.io/badge/${encodeURIComponent(response.name)}-${encodeURIComponent(response.color)}?logo=${encodeURIComponent(response.logo)}&style=${encodeURIComponent(response.style)}`;
+    const badgeMarkdown = `[![${response.alt}](${badgeLink})](#)`;
+
+    console.log(chalk.blueBright('Custom badge created:'));
+    console.log(chalk.cyan(badgeMarkdown));
   });
   
   program.parse(process.argv);

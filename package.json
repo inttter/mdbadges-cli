@@ -1,7 +1,7 @@
 {
   "name": "mdbadges-cli",
-  "version": "2.1.0",
-  "description": "A command line tool to find Shields.io badges.",
+  "version": "2.2.0",
+  "description": "A package to find Shields.io badges.",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

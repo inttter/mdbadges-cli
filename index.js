@@ -15,13 +15,13 @@ const frames = ['/', '-', '\\', '|'];
 let index = 0;
 
 program
-    .version('2.2.0')
+    .version('2.2.1')
     .description('A package to find Shields.io badges.');
 
     program
     .arguments('<category> <badgeName>')
     .option('--html', 'Generate HTML badge code') // tag that toggles html code
-    .option('--style <badgeStyle>', 'Select badge style (flat, flat-square, plastic, social, for-the-badge)') // tag that toggles style
+    .option('-s, --style <badgeStyle>', 'Toggles badge style (flat, flat-square, plastic, social, for-the-badge)') // tags that toggle badge style  
     .action((category, badgeName, options) => {
       const formattedCategory = formatCategoryName(category);
       const categoryData = badges[category.toLowerCase()];
@@ -64,6 +64,7 @@ program
         console.log(`Category "${formattedCategory}" not found.`);
       }
     });
+    
     program
     .command('fund')
     .description('Shows funding information for the package.')
@@ -249,5 +250,5 @@ program
     console.log();
     console.log(chalk.hex('#10F66C')('HTML:'), chalk.hex('#9850E6')(htmlBadge)); // outputs HTML badge
   });
-  
+
   program.parse(process.argv);

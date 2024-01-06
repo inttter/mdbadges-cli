@@ -20,8 +20,8 @@ program
 
     program
     .arguments('<category> <badgeName>')
-    .option('--html', 'Generate HTML badge code')
-    .option('--style <badgeStyle>', 'Select badge style (flat, flat-square, plastic, social, for-the-badge)')
+    .option('--html', 'Generate HTML badge code') // tag that toggles html code
+    .option('--style <badgeStyle>', 'Select badge style (flat, flat-square, plastic, social, for-the-badge)') // tag that toggles style
     .action((category, badgeName, options) => {
       const formattedCategory = formatCategoryName(category);
       const categoryData = badges[category.toLowerCase()];
@@ -29,16 +29,16 @@ program
         const badge = categoryData[badgeName.toLowerCase()];
         if (badge) {
           if (options.html) {
-            // Extract badge link and name
+            // extracts the badge link and its name
             const badgeLink = badge.match(/\(([^)]+)\)/)[1];
             const badgeAlt = badge.match(/\[([^)]+)\]/)[1];
-            // Format the HTML
+            // formats the HTML code
             const htmlBadge = `<img src="${badgeLink}" />`;
             console.log(htmlBadge);
           } else {
-            let badgeStyle = 'flat'; // Default style if not specified
+            let badgeStyle = 'flat'; // flat is the default style if one is not specified
             if (options.style) {
-              // Check if the provided style matches one of the accepted styles
+              // checks if the provided style matches one of the accepted styles
               const styles = ['flat', 'flat-square', 'plastic', 'social', 'for-the-badge'];
               if (styles.includes(options.style)) {
                 badgeStyle = options.style;
@@ -46,7 +46,7 @@ program
                 console.log(chalk.hex('#FF0000')('Invalid badge style. Using default (flat).'));
               }
             }
-            const styleOption = options.style ? `&style=${options.style}` : ''; // Add style option if provided
+            const styleOption = options.style ? `&style=${options.style}` : ''; // adds style option if one is provided
             const badgeLink = badge.match(/\(([^)]+)\)/)[1];
             const badgeAlt = badge.match(/\[([^)]+)\]/)[1];
             const badgeMarkdown = `[${badgeAlt}](${badgeLink}${styleOption})](#)`;
@@ -82,7 +82,7 @@ program
     .alias('v')
     .description('Displays the current version.')
     .action(() => {
-        console.log(`${packageInfo.version}`);
+        console.log(`${packageInfo.version}`); // fetches package info version from package.json
     });
   
   program
@@ -151,7 +151,7 @@ program
   .action(() => {
     console.log('Available commands:');
     program.commands.forEach(cmd => {
-      console.log(`${cmd._name}: ${cmd._description}`);
+      console.log(`${cmd._name}: ${cmd._description}`); // log that displays available commands
       console.log();
     });
   });
@@ -163,7 +163,7 @@ program
   .action(() => {
     console.log('Available categories:');
     Object.keys(badges).forEach(category => {
-      console.log(`• ${formatCategoryName(category)}`);
+      console.log(`• ${formatCategoryName(category)}`); // displays each category in bullet points (formatted)
     });
   });
 
@@ -178,7 +178,7 @@ program
         type: 'text',
         name: 'alt',
         message: 'Enter your alt text for the badge:',
-        initial: 'e.g. Alt Text',
+        initial: 'e.g. Alt Text', // example. ![Alt Text]
       },
       {
         type: 'text',
@@ -210,7 +210,7 @@ program
     const badgeMarkdown = `[![${response.alt}](${badgeLink})](#)`;
 
     console.log(chalk.blueBright('Custom badge created:'));
-    console.log(chalk.cyan(badgeMarkdown));
+    console.log(chalk.cyan(badgeMarkdown)); // displays the code with users' inputs
   });
 
   program

@@ -222,7 +222,9 @@ program
     console.log()
     console.log(chalk.hex('#6D5ED9')(`Latest Version: ${packageInfo.version}`));
     console.log(chalk.hex('#6D5ED9')(`License: https://mit-license.org/`));
-    console.log(chalk.hex('#6D5ED9')(`Based off of md-badges, my other project. View here: https://github.com/inttter/md-badges`))
+    console.log(chalk.hex('#6D5ED9')(`Based off of md-badges, my other project. View here: https://github.com/inttter/md-badges`));
+    console.log()
+    console.log(chalk.hex('#6D5ED9')(`Type 'mdb help' to view the available list of commands.`));
   });
   
   program.parse(process.argv);

@@ -15,7 +15,7 @@ const frames = ['/', '-', '\\', '|'];
 let index = 0;
 
 program
-    .version('2.1.1')
+    .version('2.2.0')
     .description('A package to find Shields.io badges.');
 
     program
@@ -225,6 +225,29 @@ program
     console.log(chalk.hex('#6D5ED9')(`Based off of md-badges, my other project. View here: https://github.com/inttter/md-badges`));
     console.log()
     console.log(chalk.hex('#6D5ED9')(`Type 'mdb help' to view the available list of commands.`));
+  });
+
+  program
+  .command('random')
+  .alias('r')
+  .description('Displays a random badge in Markdown and HTML formats.')
+  .action(() => {
+    const categories = Object.keys(badges);
+    const randomCategory = categories[Math.floor(Math.random() * categories.length)]; // chooses a random badge
+    const badgesInCategory = Object.keys(badges[randomCategory]);
+    const randomBadgeName = badgesInCategory[Math.floor(Math.random() * badgesInCategory.length)];
+    const badge = badges[randomCategory][randomBadgeName];
+
+    const badgeLink = badge.match(/\(([^)]+)\)/)[1];
+    const badgeAlt = badge.match(/\[([^)]+)\]/)[1];
+    
+    const markdownBadge = `[${badgeAlt}](${badgeLink})`;
+    const htmlBadge = `<img src="${badgeLink}" />`;
+
+    // this outputs BOTH versions, Markdown and HTML.
+    console.log(chalk.hex('#10F66C')('Markdown:'), chalk.hex('#9850E6')(markdownBadge)); // outputs markdown badge
+    console.log();
+    console.log(chalk.hex('#10F66C')('HTML:'), chalk.hex('#9850E6')(htmlBadge)); // outputs HTML badge
   });
   
   program.parse(process.argv);

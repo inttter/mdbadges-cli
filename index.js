@@ -15,7 +15,7 @@ const frames = ['/', '-', '\\', '|'];
 let index = 0;
 
 program
-    .version('2.1.0')
+    .version('2.1.1')
     .description('A command line tool to find Shield.io badges.');
 
     program
@@ -43,22 +43,22 @@ program
               if (styles.includes(options.style)) {
                 badgeStyle = options.style;
               } else {
-                console.log('Invalid badge style. Using default (flat).');
+                console.log(chalk.hex('#FF0000')('Invalid badge style. Using default (flat).'));
               }
             }
             const styleOption = options.style ? `&style=${options.style}` : ''; // Add style option if provided
             const badgeLink = badge.match(/\(([^)]+)\)/)[1];
             const badgeAlt = badge.match(/\[([^)]+)\]/)[1];
             const badgeMarkdown = `[${badgeAlt}](${badgeLink}${styleOption})](#)`;
-            console.log(chalk.hex('#00FF00')(`Badge found for "${formattedCategory}" category with style "${badgeStyle}":`, badgeMarkdown));
+            console.log(chalk.hex('#10F66C')(`Badge found for "${formattedCategory}" category with style "${badgeStyle}":`, badgeMarkdown));
           }
         } else {
-          console.log(``);
-          console.log(chalk.hex('FF0000')(`Badge not found for "${formattedCategory}" category with the specified name.`));
-          console.log(``);
-          console.log(`If your name has a space, try entering a dash.`);
-          console.log(`eg. applemusic -> apple-music`);
-          console.log(``);
+          console.log();
+          console.log(chalk.hex('#FF0000')(`Badge not found for "${formattedCategory}" category with the specified name.`));
+          console.log();
+          console.log(chalk.hex('#289FF9')(`If your name has a space, try entering a dash.`));
+          console.log(chalk.hex('#289FF9')(`eg. applemusic -> apple-music`));
+          console.log();
         }
       } else {
         console.log(`Category "${formattedCategory}" not found.`);
@@ -68,13 +68,13 @@ program
     .command('fund')
     .description('Shows funding information for the project.')
     .action(() => {
-        console.log('');
+        console.log();
         console.log('If you would like, you can donate to me here:');
-        console.log('');
-        console.log('Buy Me A Coffee: https://www.buymeacoffee.com/intter');
-        console.log('GitHub Sponsors: https://github.com/sponsors/inttter');
-        console.log('Ko-fi: https://ko-fi.com/intter');
-        console.log('');
+        console.log();
+        console.log(chalk.hex('#FFBF00')('Buy Me A Coffee: https://www.buymeacoffee.com/intter'));
+        console.log(chalk.hex('#FFBF00')('GitHub Sponsors: https://github.com/sponsors/inttter'));
+        console.log(chalk.hex('#FFBF00')('Ko-fi: https://ko-fi.com/intter'));
+        console.log();
     });
   
   program
@@ -90,11 +90,11 @@ program
     .alias('list')
     .description('Displays a link to view all the badges.')
     .action(() => {
-        console.log(`You can view the badge list at any of the following two links:`);
-        console.log(``);
-        console.log(`https://github.com/inttter/md-badges`);
-        console.log(`https://docs.inttter.com/content/badges`);
-        console.log(``);
+        console.log(chalk.hex('#60AF70')(`You can view the badge list at any of the following two links:`));
+        console.log();
+        console.log(chalk.hex('#10F66C')(`https://github.com/inttter/md-badges`));
+        console.log(chalk.hex('#10F66C')(`https://docs.inttter.com/content/badges`));
+        console.log();
     });
   
     program
@@ -114,8 +114,8 @@ program
           console.log(`A new version (${latest}) is available.`);
           console.log('Please update by running: npm install -g mdbadges-cli@latest');
         } else {
-          console.log('')
-          console.log('You are already using the latest version.');
+          console.log()
+          console.log(chalk.hex('#10F66C')('You are already using the latest version.'));
         }
       } catch (error) {
         console.error('Failed to check for updates. Please try again later.');
@@ -152,7 +152,7 @@ program
     console.log('Available commands:');
     program.commands.forEach(cmd => {
       console.log(`${cmd._name}: ${cmd._description}`);
-      console.log(``);
+      console.log();
     });
   });
 
@@ -169,7 +169,7 @@ program
 
   program
   .command('create')
-  .description('Create a custom badge')
+  .description('Gives prompts to create your own badge (markdown only).')
   .action(async () => {
     const prompt = require('prompts');
 
@@ -211,6 +211,18 @@ program
 
     console.log(chalk.blueBright('Custom badge created:'));
     console.log(chalk.cyan(badgeMarkdown));
+  });
+
+  program
+  .command('info')
+  .description('Displays general information about the package.')
+  .action(() => {
+    console.log()
+    console.log(chalk.hex('#DEADED')(`mdbadges-cli - A command line tool to find Shields.io badges.`));
+    console.log()
+    console.log(chalk.hex('#6D5ED9')(`Latest Version: ${packageInfo.version}`));
+    console.log(chalk.hex('#6D5ED9')(`License: https://mit-license.org/`));
+    console.log(chalk.hex('#6D5ED9')(`Based off of md-badges, my other project. View here: https://github.com/inttter/md-badges`))
   });
   
   program.parse(process.argv);

@@ -21,10 +21,6 @@ To install the latest version via NPM, do:
 npm install mdbadges-cli@latest
 ```
 
-# Demo
-
-<video controls="" height="auto" width="100%"><source src="https://cdn.discordapp.com/attachments/892836872118763543/1193250564537061486/mdb-category-name_example.mp4?ex=65ac0830&is=65999330&hm=06a318b5854b2dfd68cef2142f73bf20f90aee4d9471cb2b7401e521f0366e24&">Your browser does not support the video tag.</video>
-
 # Usage: 
 
 ## To find a badge:

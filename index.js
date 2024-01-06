@@ -16,7 +16,7 @@ let index = 0;
 
 program
     .version('2.1.1')
-    .description('A command line tool to find Shield.io badges.');
+    .description('A package to find Shields.io badges.');
 
     program
     .arguments('<category> <badgeName>')
@@ -66,7 +66,7 @@ program
     });
     program
     .command('fund')
-    .description('Shows funding information for the project.')
+    .description('Shows funding information for the package.')
     .action(() => {
         console.log();
         console.log('If you would like, you can donate to me here:');
@@ -100,7 +100,7 @@ program
     program
     .command('update')
     .alias('upd')
-    .description('Checks for updates to the CLI.')
+    .description('Checks for updates to the package.')
     .action(async () => {
         // starts the animation
         const loadingInterval = setInterval(() => {
@@ -111,7 +111,7 @@ program
         const response = await axios.get('https://registry.npmjs.org/mdbadges-cli');
         const latest = response.data['dist-tags'].latest;
         if (latest > packageInfo.version) {
-          console.log(`A new version (${latest}) is available.`);
+          console.log(`A new version, (${latest}) is available.`);
           console.log('Please update by running: npm install -g mdbadges-cli@latest');
         } else {
           console.log()
@@ -163,7 +163,7 @@ program
   .action(() => {
     console.log('Available categories:');
     Object.keys(badges).forEach(category => {
-      console.log(`- ${formatCategoryName(category)}`);
+      console.log(`• ${formatCategoryName(category)}`);
     });
   });
 
@@ -218,7 +218,7 @@ program
   .description('Displays general information about the package.')
   .action(() => {
     console.log()
-    console.log(chalk.hex('#DEADED')(`mdbadges-cli - A command line tool to find Shields.io badges.`));
+    console.log(chalk.hex('#DEADED')(`mdbadges-cli - A package to find Shields.io badges.`));
     console.log()
     console.log(chalk.hex('#6D5ED9')(`Latest Version: ${packageInfo.version}`));
     console.log(chalk.hex('#6D5ED9')(`License: https://mit-license.org/`));

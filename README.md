@@ -6,7 +6,7 @@
 
 [![NPM Downloads](https://img.shields.io/npm/dw/mdbadges-cli?logo=npm&color=%23000)](https://www.npmjs.com/package/mdbadges-cli) [![Release Version](https://img.shields.io/github/v/release/inttter/mdbadges-cli?logo=GitHub)](https://github.com/inttter/mdbadges-cli/releases) [![NPM License](https://img.shields.io/npm/l/mdbadges-cli)](LICENSE) [![CodeFactor](https://www.codefactor.io/repository/github/inttter/mdbadges-cli/badge)](https://www.codefactor.io/repository/github/inttter/mdbadges-cli)
 
-A command line tool to find Shields.io badges.
+A package to find Shields.io badges.
 
 </div>
 
@@ -21,9 +21,27 @@ To install the latest version via NPM, do:
 npm install mdbadges-cli@latest
 ```
 
+View changelogs between versions [**here**](https://github.com/inttter/mdbadges-cli/releases).
+
+# Features
+
+
+| |                          |
+|---------|---------------|
+🤏 | Small in size ─ **~200KB gzipped!**
+📦 | **Low** amount of dependencies
+👥 | **Wide range** of badges to search from
+🎨 | **5** different Shields.io styles to select from
+✏️ | Select between **Markdown** and **HTML**
+🔎 | Search for badges in over **30+** categories
+🕵️ | Search for **all** available categories
+😎 | Create your **own** custom badges
+🎲 | Generate a **random** badge
+🩳 | Shortened aliases for many commands
+
 # Usage: 
 
-## To find a badge:
+### To find a badge:
 
 ```
 mdb <category> <badgeName>
@@ -60,7 +78,7 @@ e.g. | mdb programming-language javascript --style for-the-badge
 
 ---
 
-## To search for badges in a specific category:
+### To search for badges in a specific category:
 
 ```
 mdb search <category>
@@ -68,7 +86,15 @@ mdb search <category>
 e.g. | mdb search browser
 ```
 
-**Result:** 
+or
+```
+mdb find
+
+e.g. | mdb find package-managers
+```
+
+
+**Result:** <!-- both commands (search and find) do the same thing and will have the same output. the screenshot simply displays the command when being ran as mdb search !-->
 
 ![Search Command](assets/search.png)
 
@@ -87,7 +113,7 @@ e.g. | mdb s package-managers
 
 ---
 
-## To view the full list of badges from the command line, do:
+### To view the full list of badges from the command line, do:
 
 ```
 mdb badges
@@ -101,7 +127,7 @@ https://docs.inttter.com/content/badges
 
 ---
 
-## To check for updates:
+### To check for updates:
 
 ```
 mdb update
@@ -117,7 +143,7 @@ mdb upd
 
 ---
 
-## To view the list of available commands from the command line:
+### To view the list of available commands from the command line:
 
 ```
 mdb help
@@ -128,7 +154,7 @@ mdb help
 
 ---
 
-## To view the (current) list of categories in the command line:
+### To view the (current) list of categories in the command line:
 
 ```
 mdb categories
@@ -145,7 +171,7 @@ This command displays the list of current badge categories in the command line.
 
 ---
 
-## To create your own badge with custom parameters:
+### To create your own badge with custom parameters:
 
 ```
 mdb create
@@ -173,7 +199,7 @@ Here's an example of how you could create a GitHub badge with the ```for-the-bad
 
 ---
 
-## To generate a random badge:
+### To generate a random badge:
 
 ```
 mdb random
@@ -187,15 +213,14 @@ This command will output a random badge, in both its Markdown and HTML format.
 
 ---
 
-## To view information about this package:
-
+### To view information about this package:
 ```
 mdb info
 ```
 
 ---
 
-# List of available categories:
+## List of available categories:
 
 Below you'll find categories that are currently available, with the name and syntax needed in these commands for the `<category>` section:
 

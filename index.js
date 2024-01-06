@@ -179,7 +179,7 @@ program
       {
         type: 'text',
         name: 'alt',
-        message: 'Enter your alt text for the badge:',
+        message: 'Enter the Alt Text for the badge (e.g. ![Alt Text]):',
         validate: value => {
           if (!value.trim()) {
             return 'Alt text is required.';
@@ -190,10 +190,10 @@ program
       {
         type: 'text',
         name: 'name',
-        message: 'Enter Name for the badge:',
+        message: 'Enter the text you\'d like to display on the badge:',
         validate: value => {
           if (!value.trim()) {
-            return 'Name is required.';
+            return 'Text is required.';
           }
           return true;
         }
@@ -201,7 +201,7 @@ program
       {
         type: 'text',
         name: 'color',
-        message: 'Enter Color or hex value for the badge:',
+        message: 'Enter the color or hexadecimal value for the badge:',
         validate: value => {
           if (!value.trim()) {
             return 'Color is required. Please enter a (valid) color. For example: #fff, #000000, red';
@@ -212,7 +212,7 @@ program
       {
         type: 'text',
         name: 'logo',
-        message: 'Enter Logo for the badge:',
+        message: 'Enter the logo for the badge:',
         validate: value => {
           if (!value.trim()) {
             return 'Logo is required.';
@@ -223,7 +223,7 @@ program
       {
         type: 'text',
         name: 'style',
-        message: 'Enter Style for the badge (e.g., flat, plastic, ...):',
+        message: 'Enter the style of the badge:',
         validate: value => {
           const lowerCaseValue = value.toLowerCase();
           const allowedStyles = ['flat', 'flat-square', 'plastic', 'social', 'for-the-badge'];
@@ -280,7 +280,3 @@ program
   });
 
   program.parse(process.argv);
-
-// for 2.2.2/2.3.0
-
-// - add functionality in create command to replace (#) with an actual link

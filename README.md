@@ -21,6 +21,10 @@ To install the latest version via NPM, do:
 npm install mdbadges-cli@latest
 ```
 
+# Demo
+
+<video controls="" height="auto" width="100%"><source src="https://cdn.discordapp.com/attachments/892836872118763543/1193250564537061486/mdb-category-name_example.mp4?ex=65ac0830&is=65999330&hm=06a318b5854b2dfd68cef2142f73bf20f90aee4d9471cb2b7401e521f0366e24&">Your browser does not support the video tag.</video>
+
 # Usage: 
 
 ## To find a badge:
@@ -170,6 +174,28 @@ Here's an example of how you could create a GitHub badge with the ```for-the-bad
 > You need to replace **(#)** with the URL that you'd like the badge to lead to when clicked on.
 >
 > In the example above, it leads to the GitHub website.
+
+---
+
+## To generate a random badge:
+
+```
+mdb random
+```
+and
+```
+mdb r
+```
+
+This command will output a random badge, in both its Markdown and HTML format.
+
+---
+
+## To view information about this package:
+
+```
+mdb info
+```
 
 ---
 

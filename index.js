@@ -148,6 +148,7 @@ program
 
   program
   .command('help')
+  .alias('h')
   .description('Displays available commands and what they do.')
   .action(() => {
     console.log('Available commands:');

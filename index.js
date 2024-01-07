@@ -15,7 +15,7 @@ const frames = ['/', '-', '\\', '|'];
 let index = 0;
 
 program
-    .version('2.2.1')
+    .version('2.3.0')
     .description('A package to find Shields.io badges.');
 
     program
@@ -233,10 +233,18 @@ program
           return true;
         }
       },
+      {
+        type: 'text',
+        name: 'link',
+        message: '(Optional): Enter the URL you want the badge to direct to:',
+        initial: '',
+      },
     ]);
 
     const badgeLink = `https://img.shields.io/badge/${encodeURIComponent(response.name)}-${encodeURIComponent(response.color)}?logo=${encodeURIComponent(response.logo)}&style=${encodeURIComponent(response.style)}`;
-    const badgeMarkdown = `[![${response.alt}](${badgeLink})](#)`;
+    const badgeMarkdown = response.link
+    ? `[![${response.alt}](${badgeLink.replace('(#)', `(${response.link})`)})](${response.link})`
+    : `[![${response.alt}](${badgeLink})](#)`;
 
     console.log(chalk.blueBright('Custom badge created:'));
     console.log(chalk.cyan(badgeMarkdown)); // displays the code with users' inputs

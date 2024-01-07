@@ -255,13 +255,32 @@ program
   .description('Displays general information about the package.')
   .action(() => {
     console.log()
-    console.log(chalk.hex('#DEADED')(`mdbadges-cli - A package to find Shields.io badges.`));    
+    console.log(chalk.hex('#DEADED')('                 _  _                 _                                 _  _ '));
+    console.log(chalk.hex('#DEADED')('                | || |               | |                               | |(_) '));
+    console.log(chalk.hex('#DEADED')('  _ __ ___    __| || |__    __ _   __| |  __ _   ___  ___  ______  ___ | | _ '));
+    console.log(chalk.hex('#DEADED')(' | \'_ ` _ \\  / _` || \'_ \\  / _` | / _` | / _` | / _ \\/ __||______|/ __|| || |'));
+    console.log(chalk.hex('#DEADED')(' | | | | | || (_| || |_) || (_| || (_| || (_| ||  __/\\__ \\       | (__ | || |'));
+    console.log(chalk.hex('#DEADED')(' |_| |_| |_| \\__,_||_.__/  \\__,_| \\__,_| \\__, | \\___||___/        \\___||_||_|'));
+    console.log(chalk.hex('#DEADED')('                                          __/ |                              '));
+    console.log(chalk.hex('#DEADED')('                                         |___/                               '));
+    console.log()
+    console.log(chalk.hex('#DEADED')('                      A package to find Shields.io badges.                      '));    
+    console.log(chalk.hex('#DEADED')('                            https://cli.inttter.com                            '))
     console.log()
     console.log(chalk.hex('#6D5ED9')(`Latest Version: ${packageInfo.version}`));
-    console.log(chalk.hex('#6D5ED9')(`License: https://mit-license.org/`));
-    console.log(chalk.hex('#6D5ED9')(`Based off of md-badges, my other project. View here: https://github.com/inttter/md-badges`));
+    
+    const userPackageVersion = packageInfo.version;
+    console.log(chalk.hex('#6D5ED9')(`You are currently using version: ${userPackageVersion}`));
+    
+    console.log(chalk.hex('#6D5ED9')(`If you need to, update by running 'mdb update' or 'mdb upd'`));
     console.log()
-    console.log(chalk.hex('#6D5ED9')(`Type 'mdb help' to view the available list of commands.`));
+    console.log(chalk.hex('#6D5ED9')(`License: https://mit-license.org/`));
+    console.log()
+    console.log(chalk.hex('#6D5ED9')(`Type 'mdb help' or 'mdb -h' to view the available list of commands`));
+    console.log(chalk.hex('#6D5ED9')(`Type 'mdb fund' if you'd like to donate`));
+    console.log()
+    console.log(chalk.hex('#6D5ED9')(`Report any issues on GitHub: https://github.com/inttter/mdbadges-cli/issues`));
+    console.log(chalk.hex('#6D5ED9')(`Want to add a badge? Visit this repository and contribute: https://github.com/inttter/md-badges`));
   });
 
   program

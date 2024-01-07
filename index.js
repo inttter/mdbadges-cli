@@ -15,7 +15,7 @@ const frames = ['/', '-', '\\', '|'];
 let index = 0;
 
 program
-    .version('2.3.0')
+    .version('2.2.2')
     .description('A package to find Shields.io badges.');
 
     program
@@ -251,11 +251,11 @@ program
   });
 
   program
-  .command('info')
+  .command('about')
   .description('Displays general information about the package.')
   .action(() => {
     console.log()
-    console.log(chalk.hex('#DEADED')(`mdbadges-cli - A package to find Shields.io badges.`));
+    console.log(chalk.hex('#DEADED')(`mdbadges-cli - A package to find Shields.io badges.`));    
     console.log()
     console.log(chalk.hex('#6D5ED9')(`Latest Version: ${packageInfo.version}`));
     console.log(chalk.hex('#6D5ED9')(`License: https://mit-license.org/`));

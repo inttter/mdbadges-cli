@@ -15,7 +15,7 @@ const frames = ['/', '-', '\\', '|'];
 let index = 0;
 
 program
-    .version('2.2.2')
+    .version('2.2.3')
     .description('A package to find Shields.io badges.');
 
     program
@@ -239,13 +239,29 @@ program
         message: '(Optional): Enter the URL you want the badge to direct to:',
         initial: '',
       },
+      {
+        type: 'text',
+        name: 'logoColor',
+        message: 'Enter the logo color for the badge (default is white):',
+        initial: 'white',
+        validate: value => {
+          if (!value.trim()) {
+            return 'Logo color is required.';
+          }
+          return true;
+        }
+      },
     ]);
-
-    const badgeLink = `https://img.shields.io/badge/${encodeURIComponent(response.name)}-${encodeURIComponent(response.color)}?logo=${encodeURIComponent(response.logo)}&style=${encodeURIComponent(response.style)}`;
+  
+    let badgeLink = `https://img.shields.io/badge/${encodeURIComponent(response.name)}-${encodeURIComponent(response.color)}?logo=${encodeURIComponent(response.logo)}&style=${encodeURIComponent(response.style)}`;
+    if (response.logoColor) {
+      badgeLink += `&logoColor=${encodeURIComponent(response.logoColor)}`;
+    }
+  
     const badgeMarkdown = response.link
-    ? `[![${response.alt}](${badgeLink.replace('(#)', `(${response.link})`)})](${response.link})`
-    : `[![${response.alt}](${badgeLink})](#)`;
-
+      ? `[![${response.alt}](${badgeLink})](${response.link})`
+      : `[![${response.alt}](${badgeLink})](#)`;
+  
     console.log(chalk.blueBright('Custom badge created:'));
     console.log(chalk.cyan(badgeMarkdown)); // displays the code with users' inputs
   });

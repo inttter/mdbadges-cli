@@ -4,9 +4,14 @@
 
 # mdbadges-cli
 
-[![NPM Downloads](https://img.shields.io/npm/dw/mdbadges-cli?logo=npm&color=%23000)](https://www.npmjs.com/package/mdbadges-cli) [![Release Version](https://img.shields.io/github/v/release/inttter/mdbadges-cli?logo=GitHub)](https://github.com/inttter/mdbadges-cli/releases) [![NPM License](https://img.shields.io/npm/l/mdbadges-cli)](LICENSE) [![CodeFactor](https://www.codefactor.io/repository/github/inttter/mdbadges-cli/badge)](https://www.codefactor.io/repository/github/inttter/mdbadges-cli)
+[![NPM Version](https://img.shields.io/npm/v/youtubei.js?color=%2335C757&logo=npm&logoColor=white)](https://www.npmjs.com/package/mdbadges-cli)
+[![Downloads](https://img.shields.io/npm/dt/mdbadges-cli?color=%2335C757&logo=npm&logoColor=white)](https://www.npmjs.com/package/mdbadges-cli)
+[![Release Version](https://img.shields.io/github/v/release/inttter/mdbadges-cli?logo=GitHub&color=%2335C757)](https://github.com/inttter/mdbadges-cli/releases) 
+[![NPM License](https://img.shields.io/npm/l/mdbadges-cli?color=%2335C757)](LICENSE)
 
 A package to find Shields.io badges.
+
+[![Donate](https://img.shields.io/badge/donate-30363D?style=for-the-badge&logo=GitHub-Sponsors&logoColor=#white)](https://github.com/sponors/inttter)
 
 </div>
 
@@ -113,6 +118,18 @@ e.g. | mdb s package-managers
 
 ---
 
+### To search for badges based on a certain keyword/query:
+
+```
+mdb lookup <keyword>
+
+e.g. | mdb lookup git
+```
+
+This command will look for certain badges using the specified keyword and output the available badges.
+
+---
+
 ### To view the full list of badges from the command line, do:
 
 ```
@@ -215,8 +232,18 @@ This command will output a random badge, in both its Markdown and HTML format.
 
 ### To view information about this package:
 ```
-mdb info
+mdb about
 ```
+
+---
+
+### To copy a badge to the clipboard:
+
+```
+mdb copy <category> <badgeName>
+```
+
+This command uses **Clipboardy** to copy the specified badge to the clipboard (which you can verify with <kbd>⊞ + V</kbd> on Windows).
 
 ---
 

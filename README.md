@@ -4,7 +4,7 @@
 
 # mdbadges-cli
 
-[![NPM Version](https://img.shields.io/npm/v/youtubei.js?color=%2335C757&logo=npm&logoColor=white)](https://www.npmjs.com/package/mdbadges-cli)
+[![NPM Version](https://img.shields.io/npm/v/mdbadges-cli?color=%2335C757&logo=npm&logoColor=white)](https://www.npmjs.com/package/mdbadges-cli)
 [![Downloads](https://img.shields.io/npm/dt/mdbadges-cli?color=%2335C757&logo=npm&logoColor=white)](https://www.npmjs.com/package/mdbadges-cli)
 [![Release Version](https://img.shields.io/github/v/release/inttter/mdbadges-cli?logo=GitHub&color=%2335C757)](https://github.com/inttter/mdbadges-cli/releases) 
 [![NPM License](https://img.shields.io/npm/l/mdbadges-cli?color=%2335C757)](LICENSE)

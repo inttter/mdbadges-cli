@@ -4,6 +4,7 @@ const { program } = require('commander');
 const axios = require('axios');
 const chalk = require('chalk');
 const prompts = require('prompts');
+const clipboardy = require('clipboardy');
 const badges = require('./badges');
 const packageInfo = require('./package.json');
 
@@ -11,11 +12,19 @@ function formatCategoryName(category) {
     return category.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
 }
 
+function formatBadgeName(badgeName) {
+  const formattedBadgeName = badgeName.split('-')
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' ');
+
+  return formattedBadgeName;
+}
+
 const frames = ['/', '-', '\\', '|'];
 let index = 0;
 
 program
-    .version('2.2.3')
+    .version('2.3.0')
     .description('A package to find Shields.io badges.');
 
     program
@@ -320,6 +329,24 @@ program
     console.log(chalk.hex('#10F66C')('Markdown:'), chalk.hex('#9850E6')(markdownBadge)); // outputs markdown badge
     console.log();
     console.log(chalk.hex('#10F66C')('HTML:'), chalk.hex('#9850E6')(htmlBadge)); // outputs HTML badge
+  });
+
+  program
+  .command('copy <category> <badgeName>')
+  .alias('c')
+  .description('Copy a badge markdown to clipboard')
+  .action((category, badgeName) => {
+    const selectedBadge = badges[category.toLowerCase()][badgeName.toLowerCase()];
+    if (selectedBadge) {
+      clipboardy.writeSync(selectedBadge);
+      console.log(chalk.hex('#10F66C')(`'${formatBadgeName(badgeName)}' from category '${formatCategoryName(category)}' has been copied to the clipboard.`));
+      console.log()
+      console.log(chalk.blueBright(`Do '⊞ + V' or '⌘ + V' to verify that it has been copied.`));
+    } else {
+      console.log(chalk.hex('#FF0000')(`Badge '${formatBadgeName(badgeName)}' not found from your specified category.`));
+      console.log(chalk.blueBright(`Try running 'mdb search <category>' to see the list of badges in the specified category.`));
+      console.log(chalk.blueBright(`You can also try 'mdb categories' to view the full list of categories.`));
+    }
   });
 
   program.parse(process.argv);

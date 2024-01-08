@@ -24,30 +24,30 @@ const frames = ['/', '-', '\\', '|'];
 let index = 0;
 
 program
-    .version('2.3.0')
-    .description('A package to find Shields.io badges.');
+  .arguments('<category> <badgeNames...>')
+  .option('--html', 'Generate HTML badge code') // tag that toggles html code
+  .option('-s, --style <badgeStyle>', 'Toggles badge style (flat, flat-square, plastic, social, for-the-badge)') // tags that toggle badge style  
+  .action((category, badgeNames, options) => {
+    const formattedCategory = formatCategoryName(category);
+    const categoryData = badges[category.toLowerCase()];
 
-    program
-    .arguments('<category> <badgeName>')
-    .option('--html', 'Generate HTML badge code') // tag that toggles html code
-    .option('-s, --style <badgeStyle>', 'Toggles badge style (flat, flat-square, plastic, social, for-the-badge)') // tags that toggle badge style  
-    .action((category, badgeName, options) => {
-      const formattedCategory = formatCategoryName(category);
-      const categoryData = badges[category.toLowerCase()];
-      if (categoryData) {
-        const badge = categoryData[badgeName.toLowerCase()];
+    if (categoryData) {
+      badgeNames.forEach(badgeName => {
+        const formattedBadgeName = badgeName.toLowerCase();
+        const badge = categoryData[formattedBadgeName];
+
         if (badge) {
           if (options.html) {
-            // extracts the badge link and its name
+            // Extracts the badge link and its name
             const badgeLink = badge.match(/\(([^)]+)\)/)[1];
             const badgeAlt = badge.match(/\[([^)]+)\]/)[1];
-            // formats the HTML code
+            // Formats the HTML code
             const htmlBadge = `<img src="${badgeLink}" />`;
             console.log(htmlBadge);
           } else {
             let badgeStyle = 'flat'; // flat is the default style if one is not specified
             if (options.style) {
-              // checks if the provided style matches one of the accepted styles
+              // Checks if the provided style matches one of the accepted styles
               const styles = ['flat', 'flat-square', 'plastic', 'social', 'for-the-badge'];
               if (styles.includes(options.style)) {
                 badgeStyle = options.style;
@@ -55,7 +55,7 @@ program
                 console.log(chalk.hex('#FF0000')('Invalid badge style. Using default (flat).'));
               }
             }
-            const styleOption = options.style ? `&style=${options.style}` : ''; // adds style option if one is provided
+            const styleOption = options.style ? `&style=${options.style}` : ''; // Adds style option if one is provided
             const badgeLink = badge.match(/\(([^)]+)\)/)[1];
             const badgeAlt = badge.match(/\[([^)]+)\]/)[1];
             const badgeMarkdown = `[${badgeAlt}](${badgeLink}${styleOption})](#)`;
@@ -63,16 +63,17 @@ program
           }
         } else {
           console.log();
-          console.log(chalk.hex('#FF0000')(`Badge not found for "${formattedCategory}" category with the specified name.`));
+          console.log(chalk.hex('#FF0000')(`Badge not found for "${formattedCategory}" category with the specified name: ${badgeName}`));
           console.log();
           console.log(chalk.hex('#289FF9')(`If your name has a space, try entering a dash.`));
           console.log(chalk.hex('#289FF9')(`eg. applemusic -> apple-music`));
           console.log();
         }
-      } else {
-        console.log(`Category "${formattedCategory}" not found.`);
-      }
-    });
+      });
+    } else {
+      console.log(`Category "${formattedCategory}" not found.`);
+    }
+  });
     
     program
     .command('fund')

@@ -350,4 +350,27 @@ program
     }
   });
 
+  program
+  .command('lookup <query>')
+  .alias('l')
+  .description('Looks up badges based on a keyword.')
+  .action((query) => {
+    let found = false;
+    Object.keys(badges).forEach(category => {
+      const categoryData = badges[category];
+      Object.keys(categoryData).forEach(badgeName => {
+        if (badgeName.toLowerCase().includes(query.toLowerCase())) {
+          const formattedCategory = formatCategoryName(category);
+          const formattedBadge = formatBadgeName(badgeName);
+          console.log(`• ${chalk.cyan(formattedBadge)} in ${chalk.hex('#FFBF00')(formattedCategory)}`);
+          found = true;
+        }
+      });
+    });
+
+    if (!found) {
+      console.log(chalk.hex('#FF0000')(`No badges found with that phrase.`));
+    }
+  });
+
   program.parse(process.argv);

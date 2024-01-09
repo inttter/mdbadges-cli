@@ -162,18 +162,6 @@ program
     });
 
   program
-  .command('help')
-  .alias('h')
-  .description('Displays available commands and what they do.')
-  .action(() => {
-    console.log('Available commands:');
-    program.commands.forEach(cmd => {
-      console.log(`${cmd._name}: ${cmd._description}`); // log that displays available commands
-      console.log();
-    });
-  });
-
-  program
   .command('categories')
   .alias('cat')
   .description('Displays a list of all available categories.')

@@ -41,15 +41,19 @@ npm install -g mdbadges-cli@latest
 > [!NOTE]
 > You can drop the **-g** tag if you'd like to only install it in your workspace.
 
-<div style="text-align:center">
-    <img src="assets/demos/Installation.gif" alt="Installing" width="450">
-</div>
-
+<div align="center">
+    <img src="assets/demos/Installation.gif" alt="Installing" width="550">
+    
 ###### Terminal: https://tabby.sh
+</div>
 
 <br>
 
 **View changelogs between versions [here](https://github.com/inttter/mdbadges-cli/releases).**
+
+# Demo
+
+https://github.com/inttter/mdbadges-cli/assets/73017070/8127217f-aa85-447a-82b8-aa80873f5fcc
 
 # Commands
 

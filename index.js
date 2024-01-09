@@ -24,9 +24,14 @@ const frames = ['/', '-', '\\', '|'];
 let index = 0;
 
 program
+.version('3.0.0')
+.description('A package to find Shields.io badges.');
+
+program
   .arguments('<category> <badgeNames...>')
-  .option('--html', 'Generate HTML badge code') // tag that toggles html code
-  .option('-s, --style <badgeStyle>', 'Toggles badge style (flat, flat-square, plastic, social, for-the-badge)') // tags that toggle badge style  
+  .description('Displays Markdown for specified badge in a category.')
+  .option('--html', 'Generates the HTML version of the badge code') // tag that toggles html code
+  .option('-s, --style <badgeStyle>', 'Toggles badge style') // tags that toggle badge style  
   .action((category, badgeNames, options) => {
     const formattedCategory = formatCategoryName(category);
     const categoryData = badges[category.toLowerCase()];
@@ -77,7 +82,7 @@ program
     
     program
     .command('fund')
-    .description('Shows funding information for the package.')
+    .description('Displays funding/donation links for the package.')
     .action(() => {
         console.log();
         console.log('If you would like, you can donate to me here:');
@@ -91,7 +96,7 @@ program
   program
     .command('version')
     .alias('v')
-    .description('Displays the current version.')
+    .description('Displays the current version you are on.')
     .action(() => {
         console.log(`${packageInfo.version}`); // fetches package info version from package.json
     });
@@ -140,7 +145,7 @@ program
     .command('search <category>')
     .alias('s')
     .alias('find')
-    .description('Searches for badges available in a specific category.')
+    .description('Displays badges available in a category.')
     .action((category) => {
         const formattedCategory = formatCategoryName(category);
         const categoryData = badges[category.toLowerCase()];
@@ -171,7 +176,7 @@ program
   program
   .command('categories')
   .alias('cat')
-  .description('Displays available categories.')
+  .description('Displays a list of all available categories.')
   .action(() => {
     console.log('Available categories:');
     Object.keys(badges).forEach(category => {
@@ -181,7 +186,7 @@ program
 
   program
   .command('create')
-  .description('Gives prompts to create your own badge (markdown only).')
+  .description('Displays prompts to create your own badge.')
   .action(async () => {
     const prompt = require('prompts');
 
@@ -312,7 +317,7 @@ program
   program
   .command('random')
   .alias('r')
-  .description('Displays a random badge in Markdown and HTML formats.')
+  .description('Displays a random badge.')
   .action(() => {
     const categories = Object.keys(badges);
     const randomCategory = categories[Math.floor(Math.random() * categories.length)]; // chooses a random badge
@@ -335,7 +340,7 @@ program
   program
   .command('copy <category> <badgeName>')
   .alias('c')
-  .description('Copy a badge markdown to clipboard')
+  .description('Copies a badges\' code to the clipboard.')
   .action((category, badgeName) => {
     const selectedBadge = badges[category.toLowerCase()][badgeName.toLowerCase()];
     if (selectedBadge) {
@@ -353,7 +358,7 @@ program
   program
   .command('lookup <query>')
   .alias('l')
-  .description('Looks up badges based on a keyword.')
+  .description('Displays badges containing a certain keyword/phrase.')
   .action((query) => {
     let found = false;
     Object.keys(badges).forEach(category => {

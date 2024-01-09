@@ -366,4 +366,17 @@ program
     }
   });
 
+  program
+  .command('contribute')
+  .alias('contrib')
+  .description('Displays information on how to contribute.')
+  .action(() => {
+    console.log();
+    console.log(chalk.yellow('Contributing to mdbadges-cli:'));
+    console.log();
+    console.log(chalk.hex('#FFBF00')('View the contributing guidelines here:'));
+    console.log(chalk.hex('#FFBF00')('https://github.com/inttter/mdbadges-cli/blob/main/CONTRIBUTING.md'));
+    console.log();
+  });
+
   program.parse(process.argv);

@@ -1,36 +1,22 @@
 <div align="center">
 
-<img src="assets/logo.png" width="150">
+<img src="assets/logo.png" width="125"> 
 
 # mdbadges-cli
 
-[![NPM Version](https://img.shields.io/npm/v/mdbadges-cli?color=%2335C757&logo=npm&logoColor=white)](https://www.npmjs.com/package/mdbadges-cli)
-[![Downloads](https://img.shields.io/npm/dt/mdbadges-cli?color=%2335C757&logo=npm&logoColor=white)](https://www.npmjs.com/package/mdbadges-cli)
-[![Release Version](https://img.shields.io/github/v/release/inttter/mdbadges-cli?logo=GitHub&color=%2335C757)](https://github.com/inttter/mdbadges-cli/releases) 
-[![NPM License](https://img.shields.io/npm/l/mdbadges-cli?color=%2335C757)](LICENSE)
+[![GitHub Version](https://img.shields.io/github/release/inttter/mdbadges-cli?style=for-the-badge&logo=github&color=3c2e9f&logoColor=eb6f92&labelColor=191724)](https://github.com/inttter/mdbadges-cli/releases/ "The latest releases, with changelogs.")
+[![NPM Downloads](https://img.shields.io/npm/dw/mdbadges-cli?style=for-the-badge&logo=npm&color=2560ce&logoColor=eb6f92&labelColor=191724)](hhttps://www.npmjs.com/package/mdbadges-cli/ "The amount of downloads using NPM, per week.")
+[![License](https://custom-icon-badges.herokuapp.com/github/license/zer0bin-dev/zer0bin?style=for-the-badge&logo=law&color=3c2e9f&logoColor=eb6f92&labelColor=191724)](https://github.com/inttter/mdbadges-cli/blob/main/LICENSE/ "The legal stuff related to this package.")
 
-A package to find Shields.io badges.
-
-[![Donate](https://img.shields.io/badge/donate-30363D?style=for-the-badge&logo=GitHub-Sponsors&logoColor=#white)](https://github.com/sponors/inttter)
+<img src="assets/Intro.png" alt="Intro" width="550">
 
 </div>
 
-> [!IMPORTANT]
-> This package uses badges from my other project, **md-badges**. If you'd like to add a new badge, please visit [**this repository**](https://github.com/inttter/md-badges).
+# What is this?
 
-# Installation
-
-To install the latest version via NPM, do:
-
-```
-npm install mdbadges-cli@latest
-```
-
-View changelogs between versions [**here**](https://github.com/inttter/mdbadges-cli/releases).
+This is an **NPM** package to easily find Shields.io badges — now with many additional features to improve functionality and usage, directly from the command line.
 
 # Features
-
-
 | |                          |
 |---------|---------------|
 🤏 | Small in size ─ **~200KB gzipped!**
@@ -44,225 +30,71 @@ View changelogs between versions [**here**](https://github.com/inttter/mdbadges-
 🎲 | Generate a **random** badge
 🩳 | Shortened aliases for many commands
 
-# Usage: 
+# Installation
 
-### To find a badge:
+To install the latest version via NPM globally, do:
 
-```
-mdb <category> <badgeName>
-
-e.g. | mdb browser firefox
-```
-
-Result: [![Firefox](https://img.shields.io/badge/Firefox-FF7139?logo=Firefox&logoColor=white)](#)
-
-If a badge is found in that category, it will output the required Markdown.
-
----
-
-✨ **2.0.0+** | To find HTML, add ```--html``` after ```mdb```:
-
-```
-mdb --html <category> <badgeName>
-
-e.g. | mdb --html work-and-jobs upwork
-```
-
-**Result:** <img src="https://img.shields.io/badge/Upwork-6FDA44?logo=upwork&logoColor=fff" />
-
----
-
-✨ **2.1.0+** | To customise the style of the badge , add ```--style``` after your original command:
-
-```
-mdb <category> <badgeName> --style <style>
-
-e.g. | mdb programming-language javascript --style for-the-badge
-```
-**Result:** [![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=000&style=for-the-badge)](#)
-
----
-
-### To search for badges in a specific category:
-
-```
-mdb search <category>
-
-e.g. | mdb search browser
-```
-
-or
-```
-mdb find
-
-e.g. | mdb find package-managers
-```
-
-
-**Result:** <!-- both commands (search and find) do the same thing and will have the same output. the screenshot simply displays the command when being ran as mdb search !-->
-
-![Search Command](assets/search.png)
-
-This command will display the badges available in that category, and you can then type the command above with a valid category and badge name to display the Markdown.
-
-You can also do the shorter version of this command:
-
-```
-mdb s <category>
-
-e.g. | mdb s package-managers
-```
-**Result:** 
-
-![Shortened Version of Command](assets/search-shortened.png)
-
----
-
-### To search for badges based on a certain keyword/query:
-
-```
-mdb lookup <keyword>
-
-e.g. | mdb lookup git
-```
-
-This command will look for certain badges using the specified keyword and output the available badges.
-
----
-
-### To view the full list of badges from the command line, do:
-
-```
-mdb badges
-```
-
-Alternatively, you can visit the following two links without doing the command:
-
-https://github.com/inttter/md-badges
-
-https://docs.inttter.com/content/badges
-
----
-
-### To check for updates:
-
-```
-mdb update
-```
-
-This command uses Axios to determine if your package version is out-of-date.
-
-You can also do the shortened version of this command:
-
-```
-mdb upd
-```
-
----
-
-### To view the list of available commands from the command line:
-
-```
-mdb help
+```bash
+npm install -g mdbadges-cli@latest
 ```
 
 > [!NOTE]
-> You can also use ```-h``` after typing ```mdb``` to view the shortened commands.
+> You can drop the **-g** tag if you'd like to only install it in your workspace.
 
----
+<div style="text-align:center">
+    <img src="assets/demos/Installation.gif" alt="Installing" width="450">
+</div>
 
-### To view the (current) list of categories in the command line:
+###### Terminal: https://tabby.sh
 
-```
-mdb categories
-```
-or
-```
-mdb cat
-```
+<br>
 
-This command displays the list of current badge categories in the command line.
+**View changelogs between versions [here](https://github.com/inttter/mdbadges-cli/releases).**
 
-> [!NOTE]
-> When typing a category name that has a space, make sure to include a ```-``` in the place of the space.
+# Commands
 
----
+When using commands, use the prefix ```mdb```, and then add the comamnd name after it.
 
-### To create your own badge with custom parameters:
 
-```
-mdb create
-```
+|   Command      |    Description    |     Aliases      | Additional Information |
+|----------|-----------|---------------------------|--------|
+```mdb <category> <badgeName>``` | Displays Markdown for specified badge in a category | N/A | Prefixes available: ```--style```, ```--html```, ```-s```
+```mdb search <category>``` | Displays badges available in a [category](#list-of-available-categories) | ```s```, ```find```  | Instructions for how to get the code are in the comand.
+```mdb lookup <query>``` | Displays badges containing a certain keyword/phrase | ```l``` | Displays name and category of bagde.
+```mdb categories``` | Displays a list of all available categories | ```cat``` | N/A
+```mdb create``` | Displays prompts to create your own badge | N/A | All fields require an answer
+```mdb random``` | Displays a random badge. | ```r``` | Displays both Markdown and HTML formats.
+```mdb copy <category> <badgeName>``` | Copies a badges' code to the clipboard | ```c``` | You can do <kbd>⊞ + V</kbd> on Windows to verify it's been copied.
+```mdb badges``` | Displays links containing the full list of badges | ```list``` | N/A
 
-This command will let you create the...
-* Alt Text
-* Name
-* Color
-* Logo
-* Style
+# Miscallenaous Commands
 
-...of the badge.
+These commands are not **very** important, but can serve useful in some cases.
 
-Here's an example of how you could create a GitHub badge with the ```for-the-badge``` style.
-
-![Creating a Badge](assets/create.png)
-
-**Result:** [![GitHub](https://img.shields.io/badge/GitHub-%23000000?logo=github&style=for-the-badge)](https://github.com)
-
-> [!IMPORTANT]
-> You need to replace **(#)** with the URL that you'd like the badge to lead to when clicked on.
->
-> In the example above, it leads to the GitHub website.
-
----
-
-### To generate a random badge:
-
-```
-mdb random
-```
-and
-```
-mdb r
-```
-
-This command will output a random badge, in both its Markdown and HTML format.
-
----
-
-### To view information about this package:
-```
-mdb about
-```
-
----
-
-### To copy a badge to the clipboard:
-
-```
-mdb copy <category> <badgeName>
-```
-
-This command uses **Clipboardy** to copy the specified badge to the clipboard (which you can verify with <kbd>⊞ + V</kbd> on Windows).
-
----
+|   Command      |    Description    |     Aliases      | Additional Information |
+|----------|-----------|---------------------------|--------|
+```mdb help```| Displays available commands and what they do | ```h``` | ⚠️ Will be removed in a future release in favor of built-in help command using ```npm``` ⚠️
+```mdb version``` | Displays the current version you are on | ```v``` | Do not use this command to update. This is for checking your version, use ```mdb update``` (see below) to update
+```mdb update``` | Checks for updates to the package | ```upd``` | If a new version is available, it will prompt you to enter an ```npm``` update command
+```mdb fund``` | Displays funding/donation links for the package | N/A | You don't have to donate, but I'd appreciate it!
+```mdb about``` | Displays general information about the package | N/A | Also shows links to the website, GitHub issues, contributing, and more
+```mdb contribute``` | Displays information on how to contribute | ```contrib``` | Links to the contributing guidelines
 
 ## List of available categories:
 
-Below you'll find categories that are currently available, with the name and syntax needed in these commands for the `<category>` section:
+Below you'll find categories that are currently available, with the name and syntax needed in these commands for the ```<category>``` section:
 
 ```
 mdb <category> <badgeName>
-```
-or:
-```
+
 mdb search <category>
 
-and:
-
 mdb s <category>
-```
 
+mdb find <category>
+```
+> [!TIP]
+> Want to add your own **badge** or **category**? Contribute to [**this**](https://github.com/inttter/md-badges) repository!
 
 | Name | Syntax |
 |---------|---------------|

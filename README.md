@@ -61,6 +61,10 @@ npm install -g mdbadges-cli@latest
 
 https://github.com/inttter/mdbadges-cli/assets/73017070/8127217f-aa85-447a-82b8-aa80873f5fcc
 
+# Documentation
+
+Documentation for **mdbadges-cli** can be found [**here**](https://inttter.gitbook.io/mdbadges-cli/).
+
 # Commands
 
 When using commands, use the prefix ```mdb```, and then add the comamnd name after it.

@@ -24,7 +24,7 @@ const frames = ['/', '-', '\\', '|'];
 let index = 0;
 
 program
-.version('3.0.0')
+.version('3.0.1')
 .description('A package to find Shields.io badges.');
 
 program
@@ -57,26 +57,33 @@ program
               if (styles.includes(options.style)) {
                 badgeStyle = options.style;
               } else {
-                console.log(chalk.hex('#FF0000')('Invalid badge style. Using default (flat).'));
+                console.log(chalk.hex('#FF0000')('Invalid style. Using default (flat)...'));
               }
             }
             const styleOption = options.style ? `&style=${options.style}` : ''; // Adds style option if one is provided
             const badgeLink = badge.match(/\(([^)]+)\)/)[1];
             const badgeAlt = badge.match(/\[([^)]+)\]/)[1];
             const badgeMarkdown = `[${badgeAlt}](${badgeLink}${styleOption})](#)`;
-            console.log(chalk.hex('#10F66C')(`Badge found for "${formattedCategory}" category with style "${badgeStyle}":`, badgeMarkdown));
+            console.log()
+            console.log(chalk.hex('#10F66C')(`Badge found:`));
+            console.log(chalk.hex('#FFBF00')(badgeMarkdown));
+            console.log()
           }
         } else {
-          console.log();
-          console.log(chalk.hex('#FF0000')(`Badge not found for "${formattedCategory}" category with the specified name: ${badgeName}`));
-          console.log();
+          console.log()
+          console.log(chalk.hex('#FF0000')(`Badge not found.`));
+          console.log()
           console.log(chalk.hex('#289FF9')(`If your name has a space, try entering a dash.`));
           console.log(chalk.hex('#289FF9')(`eg. applemusic -> apple-music`));
-          console.log();
+          console.log()
         }
       });
     } else {
-      console.log(`Category "${formattedCategory}" not found.`);
+      console.log()
+      console.log(chalk.hex('#FF0000')(`That category could not be found.`));
+      console.log()
+      console.log(chalk.hex('#289FF9')(`Run 'mdb categories' for a list of categories.`));
+      console.log()
     }
   });
     
@@ -84,13 +91,13 @@ program
     .command('fund')
     .description('Displays funding/donation links for the package.')
     .action(() => {
-        console.log();
-        console.log('If you would like, you can donate to me here:');
-        console.log();
+        console.log()
+        console.log(chalk.hex('#A36EEF')('If you would like, you can donate to me here:'));
+        console.log()
         console.log(chalk.hex('#FFBF00')('Buy Me A Coffee: https://www.buymeacoffee.com/intter'));
         console.log(chalk.hex('#FFBF00')('GitHub Sponsors: https://github.com/sponsors/inttter'));
         console.log(chalk.hex('#FFBF00')('Ko-fi: https://ko-fi.com/intter'));
-        console.log();
+        console.log()
     });
   
   program
@@ -98,7 +105,9 @@ program
     .alias('v')
     .description('Displays the current version you are on.')
     .action(() => {
+        console.log()
         console.log(`${packageInfo.version}`); // fetches package info version from package.json
+        console.log()
     });
   
   program
@@ -106,7 +115,8 @@ program
     .alias('list')
     .description('Displays a link to view all the badges.')
     .action(() => {
-        console.log(chalk.hex('#60AF70')(`You can view the badge list at any of the following two links:`));
+        console.log()
+        console.log(chalk.hex('#A36EEF')(`You can view the badge list at any of the following two links:`));
         console.log();
         console.log(chalk.hex('#10F66C')(`https://github.com/inttter/md-badges`));
         console.log(chalk.hex('#10F66C')(`https://docs.inttter.com/content/badges`));
@@ -127,14 +137,19 @@ program
         const response = await axios.get('https://registry.npmjs.org/mdbadges-cli');
         const latest = response.data['dist-tags'].latest;
         if (latest > packageInfo.version) {
+          console.log()
           console.log(`A new version, (${latest}) is available.`);
-          console.log('Please update by running: npm install -g mdbadges-cli@latest');
+          console.log('Please update by running: npm install mdbadges-cli@latest');
+          console.log()
         } else {
           console.log()
-          console.log(chalk.hex('#10F66C')('You are already using the latest version.'));
+          console.log(chalk.hex('#10F66C')('You are already on the latest version.'));
+          console.log()
         }
       } catch (error) {
-        console.error('Failed to check for updates. Please try again later.');
+        console.log()
+        console.error(chalk.hex('#FF0000')('An error occurred while checking for updates.'));
+        console.log()
       } finally {
         clearInterval(loadingInterval);
       }
@@ -150,14 +165,18 @@ program
         const formattedCategory = formatCategoryName(category);
         const categoryData = badges[category.toLowerCase()];
         if (categoryData) {
-            console.log(`Badges available in the "${formattedCategory}" category:`);
+            console.log()
+            console.log(chalk.hex('#A36EEF')(`Badges available:`));
+            console.log()
             Object.keys(categoryData).forEach((badge) => {
                 console.log(`- ${badge}`);
             });
-            console.log(`\nTo get the code for a badge, type 'mdb ${category} <badgeName>'.`);
-            console.log(`If you want the HTML version of a badge, type 'mdb --html ${category} <badgeName>'.`);
+            console.log(chalk.hex('#289FF9')(`\nTo get the code for a badge, type 'mdb ${category} <badgeName>'.`));
+            console.log(chalk.hex('#289FF9')(`If you want the HTML version of a badge, type 'mdb --html ${category} <badgeName>'.`));
+            console.log()
         } else {
-            console.log(`Category "${formattedCategory}" not found.`);
+            console.log(chalk.hex('#FF0000')(`That category could not be found.`));
+            console.log()
         }
     });
 
@@ -166,7 +185,7 @@ program
   .alias('cat')
   .description('Displays a list of all available categories.')
   .action(() => {
-    console.log('Available categories:');
+    console.log(chalk.hex('#A36EEF')('Available categories:'));
     Object.keys(badges).forEach(category => {
       console.log(`• ${formatCategoryName(category)}`); // displays each category in bullet points (formatted)
     });
@@ -185,7 +204,7 @@ program
         message: 'Enter the Alt Text for the badge (e.g. ![Alt Text]):',
         validate: value => {
           if (!value.trim()) {
-            return 'Alt text is required.';
+            return 'This field is required.';
           }
           return true;
         }
@@ -196,7 +215,7 @@ program
         message: 'Enter the text you\'d like to display on the badge:',
         validate: value => {
           if (!value.trim()) {
-            return 'Text is required.';
+            return 'This field is required.';
           }
           return true;
         }
@@ -207,7 +226,7 @@ program
         message: 'Enter the color or hexadecimal value for the badge:',
         validate: value => {
           if (!value.trim()) {
-            return 'Color is required. Please enter a (valid) color. For example: #fff, #000000, red';
+            return 'This field is required.';
           }
           return true;
         }
@@ -218,7 +237,7 @@ program
         message: 'Enter the logo for the badge:',
         validate: value => {
           if (!value.trim()) {
-            return 'Logo is required.';
+            return 'This field is required.';
           }
           return true;
         }
@@ -232,6 +251,9 @@ program
           const allowedStyles = ['flat', 'flat-square', 'plastic', 'social', 'for-the-badge'];
           if (!allowedStyles.includes(lowerCaseValue)) {
             return `Invalid style. Please enter one of the following: ${allowedStyles.join(', ')}`;
+          }
+          else if (!value.trim()) {
+            return('This field is required.')
           }
           return true;
         }
@@ -249,7 +271,7 @@ program
         initial: 'white',
         validate: value => {
           if (!value.trim()) {
-            return 'Logo color is required.';
+            return 'This field is required.';
           }
           return true;
         }
@@ -264,9 +286,11 @@ program
     const badgeMarkdown = response.link
       ? `[![${response.alt}](${badgeLink})](${response.link})`
       : `[![${response.alt}](${badgeLink})](#)`;
-  
-    console.log(chalk.blueBright('Custom badge created:'));
+
+    console.log()
+    console.log(chalk.hex('#A36EEF')('Custom badge created:'));
     console.log(chalk.cyan(badgeMarkdown)); // displays the code with users' inputs
+    console.log()
   });
 
   program
@@ -295,11 +319,11 @@ program
     console.log()
     console.log(chalk.hex('#6D5ED9')(`License: https://mit-license.org/`));
     console.log()
-    console.log(chalk.hex('#6D5ED9')(`Type 'mdb help' or 'mdb -h' to view the available list of commands`));
+    console.log(chalk.hex('#6D5ED9')(`Type 'mdb -h' to view the available list of commands`));
     console.log(chalk.hex('#6D5ED9')(`Type 'mdb fund' if you'd like to donate`));
     console.log()
     console.log(chalk.hex('#6D5ED9')(`Report any issues on GitHub: https://github.com/inttter/mdbadges-cli/issues`));
-    console.log(chalk.hex('#6D5ED9')(`Want to add a badge? Visit this repository and contribute: https://github.com/inttter/md-badges`));
+    console.log(chalk.hex('#6D5ED9')(`To add a badge, visit this repository: https://github.com/inttter/md-badges`));
   });
 
   program
@@ -320,6 +344,7 @@ program
     const htmlBadge = `<img src="${badgeLink}" />`;
 
     // this outputs BOTH versions, Markdown and HTML.
+    console.log()
     console.log(chalk.hex('#10F66C')('Markdown:'), chalk.hex('#9850E6')(markdownBadge)); // outputs markdown badge
     console.log();
     console.log(chalk.hex('#10F66C')('HTML:'), chalk.hex('#9850E6')(htmlBadge)); // outputs HTML badge
@@ -328,18 +353,25 @@ program
   program
   .command('copy <category> <badgeName>')
   .alias('c')
-  .description('Copies a badges\' code to the clipboard.')
+  .description('Copies a badge\'s code to the clipboard.')
   .action((category, badgeName) => {
-    const selectedBadge = badges[category.toLowerCase()][badgeName.toLowerCase()];
-    if (selectedBadge) {
+    const formattedCategory = category.toLowerCase();
+    const formattedBadgeName = badgeName.toLowerCase();
+
+    if (badges[formattedCategory] && badges[formattedCategory][formattedBadgeName]) {
+      const selectedBadge = badges[formattedCategory][formattedBadgeName];
       clipboardy.writeSync(selectedBadge);
-      console.log(chalk.hex('#10F66C')(`'${formatBadgeName(badgeName)}' from category '${formatCategoryName(category)}' has been copied to the clipboard.`));
-      console.log()
-      console.log(chalk.blueBright(`Do '⊞ + V' or '⌘ + V' to verify that it has been copied.`));
+      console.log();
+      console.log(chalk.hex('#10F66C')(`Copied to the clipboard successfully.`));
+      console.log(chalk.blueBright(`Press 'Ctrl + V' to paste the copied code.`));
+      console.log();
     } else {
-      console.log(chalk.hex('#FF0000')(`Badge '${formatBadgeName(badgeName)}' not found from your specified category.`));
-      console.log(chalk.blueBright(`Try running 'mdb search <category>' to see the list of badges in the specified category.`));
-      console.log(chalk.blueBright(`You can also try 'mdb categories' to view the full list of categories.`));
+      console.log();
+      console.log(chalk.hex('#FF0000')(`Badge not found.`));
+      console.log();
+      console.log(chalk.hex('#289FF9')(`Run 'mdb search ${category}' to see the list of badges in the specified category.`));
+      console.log(chalk.hex('#289FF9')(`You can also try 'mdb categories' to view the full list of categories.`));
+      console.log()
     }
   });
 
@@ -362,7 +394,9 @@ program
     });
 
     if (!found) {
+      console.log()
       console.log(chalk.hex('#FF0000')(`No badges found with that phrase.`));
+      console.log()
     }
   });
 
@@ -372,7 +406,7 @@ program
   .description('Displays information on how to contribute.')
   .action(() => {
     console.log();
-    console.log(chalk.yellow('Contributing to mdbadges-cli:'));
+    console.log(chalk.hex('#A36EEF')('Contributing to mdbadges-cli:'));
     console.log();
     console.log(chalk.hex('#FFBF00')('View the contributing guidelines here:'));
     console.log(chalk.hex('#FFBF00')('https://github.com/inttter/mdbadges-cli/blob/main/CONTRIBUTING.md'));

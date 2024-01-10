@@ -10,6 +10,12 @@
 
 <img src="assets/Intro.png" alt="Intro" width="550">
 
+<br>
+
+[![Open an Issue](https://custom-icon-badges.demolab.com/badge/-Open%20Issue-gold?style=for-the-badge&logoColor=black&logo=issue-opened)](https://github.com/inttter/mdbadges-cli/issues/ "Click here to open an issue") 
+[![Pull Requests](https://custom-icon-badges.demolab.com/badge/-Pull%20Requests-gold?style=for-the-badge&logo=git-pull-request&logoColor=black)](https://github.com/inttter/mdbadges-cli/issues/ "Click here to submit a pull request")
+[![Install Package](https://custom-icon-badges.demolab.com/badge/-Install%20Package-gold?style=for-the-badge&logo=package&logoColor=black)](https://www.npmjs.com/package/mdbadges-cli/ "Click here to view the NPM page.")
+
 </div>
 
 # What is this?
@@ -77,14 +83,17 @@ These commands are not **very** important, but can serve useful in some cases.
 
 |   Command      |    Description    |     Aliases      | Additional Information |
 |----------|-----------|---------------------------|--------|
-```mdb help```| Displays available commands and what they do | ```h``` | ⚠️ Will be removed in a future release in favor of built-in help command using ```npm``` ⚠️
 ```mdb version``` | Displays the current version you are on | ```v``` | Do not use this command to update. This is for checking your version, use ```mdb update``` (see below) to update
 ```mdb update``` | Checks for updates to the package | ```upd``` | If a new version is available, it will prompt you to enter an ```npm``` update command
 ```mdb fund``` | Displays funding/donation links for the package | N/A | You don't have to donate, but I'd appreciate it!
 ```mdb about``` | Displays general information about the package | N/A | Also shows links to the website, GitHub issues, contributing, and more
 ```mdb contribute``` | Displays information on how to contribute | ```contrib``` | Links to the contributing guidelines
 
-## List of available categories:
+# Viewing commands from the terminal
+
+Need to find what these commands do while your in the terminal? Run ```mdb -h``` to view all commands, aliases, and additional options.
+
+# List of available categories
 
 Below you'll find categories that are currently available, with the name and syntax needed in these commands for the ```<category>``` section:
 

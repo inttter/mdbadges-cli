@@ -24,15 +24,15 @@ const frames = ['/', '-', '\\', '|'];
 let index = 0;
 
 program
-.version('3.0.1')
+.version('3.0.2')
 .description('A package to find Shields.io badges.');
 
 program
-  .arguments('<category> <badgeNames...>')
+  .arguments('<category> [badgeNames...]')
   .description('Displays Markdown for specified badge in a category.')
   .option('--html', 'Generates the HTML version of the badge code') // tag that toggles html code
   .option('-s, --style <badgeStyle>', 'Toggles badge style') // tags that toggle badge style  
-  .action((category, badgeNames, options) => {
+  .action((category, badgeNames = [], options) => {
     const formattedCategory = formatCategoryName(category);
     const categoryData = badges[category.toLowerCase()];
 
@@ -46,8 +46,9 @@ program
             // Extracts the badge link and its name
             const badgeLink = badge.match(/\(([^)]+)\)/)[1];
             const badgeAlt = badge.match(/\[([^)]+)\]/)[1];
-            // Formats the HTML code
-            const htmlBadge = `<img src="${badgeLink}" />`;
+            // Formats the HTML code with style option
+            const styleOption = options.style ? `&style=${options.style}` : '';
+            const htmlBadge = `<img src="${badgeLink}${styleOption}" />`;
             console.log(htmlBadge);
           } else {
             let badgeStyle = 'flat'; // flat is the default style if one is not specified
@@ -64,26 +65,26 @@ program
             const badgeLink = badge.match(/\(([^)]+)\)/)[1];
             const badgeAlt = badge.match(/\[([^)]+)\]/)[1];
             const badgeMarkdown = `[${badgeAlt}](${badgeLink}${styleOption})](#)`;
-            console.log()
+            console.log();
             console.log(chalk.hex('#10F66C')(`Badge found:`));
             console.log(chalk.hex('#FFBF00')(badgeMarkdown));
-            console.log()
+            console.log();
           }
         } else {
-          console.log()
+          console.log();
           console.log(chalk.hex('#FF0000')(`Badge not found.`));
-          console.log()
+          console.log();
           console.log(chalk.hex('#289FF9')(`If your name has a space, try entering a dash.`));
           console.log(chalk.hex('#289FF9')(`eg. applemusic -> apple-music`));
-          console.log()
+          console.log();
         }
       });
     } else {
-      console.log()
+      console.log();
       console.log(chalk.hex('#FF0000')(`That category could not be found.`));
-      console.log()
+      console.log();
       console.log(chalk.hex('#289FF9')(`Run 'mdb categories' for a list of categories.`));
-      console.log()
+      console.log();
     }
   });
     

@@ -39,7 +39,8 @@ program
     if (categoryData) {
       badgeNames.forEach(badgeName => {
         const formattedBadgeName = badgeName.toLowerCase();
-        const badge = categoryData[formattedBadgeName];
+        const foundBadge = Object.keys(categoryData).find(key => key.toLowerCase() === formattedBadgeName);
+        const badge = categoryData[foundBadge];
 
         if (badge) {
           if (options.html) {
@@ -75,10 +76,10 @@ program
           }
         } else {
           console.log();
-          console.log(chalk.hex('#FF0000')(`Badge not found.`));
+          console.log(chalk.hex('#FF0000')(`Badge "${formatBadgeName(badgeName)}" not found.`));
           console.log();
           console.log(chalk.hex('#289FF9')(`If your name has a space, try entering a dash.`));
-          console.log(chalk.hex('#289FF9')(`eg. applemusic -> apple-music`));
+          console.log(chalk.hex('#289FF9')(`e.g., applemusic -> apple-music`));
           console.log();
         }
       });

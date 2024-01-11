@@ -49,7 +49,10 @@ program
             // Formats the HTML code with style option
             const styleOption = options.style ? `&style=${options.style}` : '';
             const htmlBadge = `<img src="${badgeLink}${styleOption}" />`;
-            console.log(htmlBadge);
+            console.log();
+            console.log(chalk.hex('#10F66C')(`Badge found:`));
+            console.log(chalk.hex('#FFBF00')(htmlBadge));
+            console.log();
           } else {
             let badgeStyle = 'flat'; // flat is the default style if one is not specified
             if (options.style) {

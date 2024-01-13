@@ -25,7 +25,7 @@ This is an **NPM** package to easily find Shields.io badges — now with many ad
 # Features
 | |                          |
 |---------|---------------|
-🤏 | Small in size ─ **~200KB gzipped!**
+🤏 | Small in size ─ **~2MB gzipped!**
 📦 | **Low** amount of dependencies
 👥 | **Wide range** of badges to search from
 🎨 | **5** different Shields.io styles to select from

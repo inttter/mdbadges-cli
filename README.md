@@ -6,7 +6,7 @@
 
 [![GitHub Version](https://img.shields.io/github/release/inttter/mdbadges-cli?style=for-the-badge&logo=github&color=3c2e9f&logoColor=eb6f92&labelColor=191724)](https://github.com/inttter/mdbadges-cli/releases/ "The latest releases, with changelogs.")
 [![NPM Downloads](https://img.shields.io/npm/dw/mdbadges-cli?style=for-the-badge&logo=npm&color=2560ce&logoColor=eb6f92&labelColor=191724)](https://www.npmjs.com/package/mdbadges-cli/ "The amount of downloads using NPM, per week.")
-[![License](https://custom-icon-badges.herokuapp.com/github/license/zer0bin-dev/zer0bin?style=for-the-badge&logo=law&color=3c2e9f&logoColor=eb6f92&labelColor=191724)](https://github.com/inttter/mdbadges-cli/blob/main/LICENSE/ "The legal stuff related to this package.")
+[![License](https://custom-icon-badges.herokuapp.com/github/license/inttter/mdbadges-cli?style=for-the-badge&logo=law&color=3c2e9f&logoColor=eb6f92&labelColor=191724)](https://github.com/inttter/mdbadges-cli/blob/main/LICENSE/ "The legal stuff related to this package.")
 
 <img src="assets/Intro.png" alt="Intro" width="550">
 

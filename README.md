@@ -51,17 +51,20 @@ To make a command line tool to access a bunch of different badges, so that you *
 To install the latest version via NPM globally, do:
 
 ```bash
-npm install -g mdbadges-cli@latest
+npm install mdbadges-cli@latest
 ```
-
-> [!NOTE]
-> You can drop the **-g** tag if you'd like to only install it in your workspace.
 
 <div align="center">
     <img src="assets/demos/Installation.gif" alt="Installing" width="550">
     
 ###### Terminal: https://tabby.sh
 </div>
+
+or if you're using Yarn:
+
+```bash
+yarn add mdbadges-cli@latest
+```
 
 <br>
 

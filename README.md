@@ -77,7 +77,7 @@ Documentation for **mdbadges-cli** can be found [**here**](https://inttter.gitbo
 
 # Commands
 
-When using commands, use the prefix ```mdb```, and then add the comamnd name after it.
+When using commands, use the prefix ```mdb```, and then add the command name after it.
 
 
 |   Command      |    Description    |     Aliases      | Additional Information |

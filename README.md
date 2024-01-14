@@ -18,9 +18,15 @@
 
 </div>
 
-# What is this?
+# The Problem
 
-This is an **NPM** package to easily find Shields.io badges — now with many additional features to improve functionality and usage, directly from the command line.
+Badges have become useful parts of documentation, whether it's to display information, promote, or anything else.
+
+However, there isn't a way to access them from the command line. Some people don't feel like going onto Google, and typing **"youtube shieldsio badge"**, then copying ➜ pasting, because of how time consuming it is.
+
+# The Solution?
+
+To make a command line tool to access a bunch of different badges, so that you ***don't*** have to leave your terminal, saving yourself some time in the process.
 
 # Features
 | |                          |

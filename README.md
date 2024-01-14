@@ -29,18 +29,22 @@ However, there isn't a way to access them from the command line. Some people don
 To make a command line tool to access a bunch of different badges, so that you ***don't*** have to leave your terminal, saving yourself some time in the process.
 
 # Features
-| |                          |
-|---------|---------------|
-🤏 | Small in size ─ **~2MB gzipped!**
-📦 | **Low** amount of dependencies
-👥 | **Wide range** of badges to search from
-🎨 | **5** different Shields.io styles to select from
-✏️ | Select between **Markdown** and **HTML**
-🔎 | Search for badges in over **30+** categories
-🕵️ | Search for **all** available categories
-😎 | Create your **own** custom badges
-🎲 | Generate a **random** badge
-🩳 | Shortened aliases for many commands
+
+<div align="center">
+
+| --- | Feature                                      |
+| ---- | -------------------------------------------- |
+| 🤏   | Small in size ─ **~2MB gzipped!**            |
+| 📦   | A **Low** dependency count                     |
+| 👥   | **Wide range** of badges to explore          |
+| 🎨   | **5** distinct Shields.io styles to choose  |
+| ✏️   | Options to use **Markdown** or **HTML**       |
+| 🔎   | Search badges across **30+** categories      |
+| 😎   | Easily create your **custom** badges         |
+| 🎲   | Generate a badge **at random**               |
+| 🩳   | Convenient aliases for many commands         |
+
+</div>
 
 # Installation
 

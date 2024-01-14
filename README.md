@@ -94,7 +94,7 @@ When using commands, use the prefix ```mdb```, and then add the command name aft
 ```mdb copy <category> <badgeName>``` | Copies a badges' code to the clipboard | ```c``` | You can do <kbd>⊞ + V</kbd> on Windows to verify it's been copied.
 ```mdb badges``` | Displays links containing the full list of badges | ```list``` | N/A
 
-# Miscallenaous Commands
+# Miscellenaous Commands
 
 These commands are not **very** important, but can serve useful in some cases.
 

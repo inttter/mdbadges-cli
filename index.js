@@ -369,62 +369,25 @@ program
     console.log();
   });
 
-program
+  program
   .command("about")
   .description("Displays general information about the package.")
   .action(() => {
-    console.log();
-    console.log(
-      gradient.vice(
-        "                 _  _                 _                                 _  _ ",
-      ),
-    );
-    console.log(
-      gradient.vice(
-        "                | || |               | |                               | |(_) ",
-      ),
-    );
-    console.log(
-      gradient.vice(
-        "  _ __ ___    __| || |__    __ _   __| |  __ _   ___  ___  ______  ___ | | _ ",
-      ),
-    );
-    console.log(
-      gradient.vice(
-        " | '_ ` _ \\  / _` || '_ \\  / _` | / _` | / _` | / _ \\/ __||______|/ __|| || |",
-      ),
-    );
-    console.log(
-      gradient.vice(
-        " | | | | | || (_| || |_) || (_| || (_| || (_| ||  __/\\__ \\       | (__ | || |",
-      ),
-    );
-    console.log(
-      gradient.vice(
-        " |_| |_| |_| \\__,_||_.__/  \\__,_| \\__,_| \\__, | \\___||___/        \\___||_||_|",
-      ),
-    );
-    console.log(
-      gradient.vice(
-        "                                          __/ |                              ",
-      ),
-    );
-    console.log(
-      gradient.vice(
-        "                                         |___/                               ",
-      ),
-    );
-    console.log();
-    console.log(
-      gradient.vice(
-        "                      A package to find Shields.io badges.                      ",
-      ),
-    );
-    console.log(
-      gradient.vice(
-        "                            https://cli.inttter.com                            ",
-      ),
-    );
+    // prettier-ignore
+    console.log(`
+      ${gradient.vice("                 _  _                 _                                 _  _ ")}
+      ${gradient.vice("                | || |               | |                               | |(_) ")}
+      ${gradient.vice("  _ __ ___    __| || |__    __ _   __| |  __ _   ___  ___  ______  ___ | | _ ")}
+      ${gradient.vice(" | '_ \` _ \\  / _\` || '_ \\  / _\` | / _\` | / _\` | / _ \\/ __||______|/ __|| || |")}
+      ${gradient.vice(" | | | | | || (_| || |_) || (_| || (_| || (_| ||  __/\\__ \\       | (__ | || |")}
+      ${gradient.vice(" |_| |_| |_| \\__,_||_.__/  \\__,_| \\__,_| \\__, | \\___||___/        \\___||_||_|")}
+      ${gradient.vice("                                          __/ |                              ")}
+      ${gradient.vice("                                         |___/                               ")}
+      
+      ${gradient.vice("                      A package to find Shields.io badges.                      ")}
+      ${gradient.vice("                            https://cli.inttter.com                            ")}
+    `);
+  });
     console.log();
     console.log(gradient.retro(`Latest Version: ${packageInfo.version}`));
 
@@ -456,7 +419,6 @@ program
         `To add a badge, visit this repository: https://github.com/inttter/md-badges`,
       ),
     );
-  });
 
 program
   .command("random")

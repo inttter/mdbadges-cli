@@ -55,7 +55,7 @@ program
             const htmlBadge = `<img src="${badgeLink}${styleOption}" />`;
             console.log();
             console.log(gradient.cristal(`Badge found:`));
-            console.log(chalk.hex("#FFBF00")(htmlBadge));
+            console.log(chalk.hex("#FFBF00").bold(htmlBadge));
             console.log();
           } else {
             let badgeStyle = "flat"; // flat is the default style if one is not specified
@@ -84,7 +84,7 @@ program
             const badgeMarkdown = `[${badgeAlt}](${badgeLink}${styleOption})](#)`;
             console.log();
             console.log(gradient.cristal(`Badge found:`));
-            console.log(chalk.hex("#FFBF00")(badgeMarkdown));
+            console.log(chalk.hex("#FFBF00").bold(badgeMarkdown));
             console.log();
           }
         } else {
@@ -158,9 +158,9 @@ program
       ),
     );
     console.log();
-    console.log(chalk.hex("#10F66C")(`https://github.com/inttter/md-badges`));
+    console.log(chalk.hex("#10F66C").bold(`https://github.com/inttter/md-badges`));
     console.log(
-      chalk.hex("#10F66C")(`https://docs.inttter.com/content/badges`),
+      chalk.hex("#10F66C").bold(`https://docs.inttter.com/content/badges`),
     );
     console.log();
   });
@@ -189,7 +189,7 @@ program
       } else {
         console.log();
         console.log(
-          chalk.hex("#10F66C")("You are already on the latest version."),
+          chalk.hex("#10F66C").bold("You are already on the latest version."),
         );
         console.log();
       }
@@ -445,7 +445,7 @@ program
       clipboardy.writeSync(selectedBadge);
       console.log();
       console.log(
-        chalk.hex("#10F66C")(`Copied to the clipboard successfully.`),
+        chalk.hex("#10F66C").bold(`Copied to the clipboard successfully.`),
       );
       console.log(
         chalk.blueBright(`Press 'Ctrl + V' to paste the copied code.`),

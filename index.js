@@ -150,9 +150,10 @@ program
           console.log()
         }
       } catch (error) {
-        console.log()
-        console.error(chalk.hex('#FF0000')('An error occurred while checking for updates.'));
-        console.log()
+        console.log();
+        console.error(chalk.hex('#FF0000')('An error occurred while checking for updates:'));
+        console.error(chalk.hex('#FF0000')(error.message));
+        console.log();
       } finally {
         spinner.stop();
       }

@@ -22,10 +22,6 @@ function formatBadgeName(badgeName) {
   return formattedBadgeName;
 }
 
-// TODO - remove these 2 lines as they aren't used anymore, we use ora 5.4.1 (https://github.com/sindresorhus/ora/releases/tag/v5.4.1)
-const frames = ['/', '-', '\\', '|'];
-let index = 0;
-
 program
 .version('3.1.1')
 .description('A package to find Shields.io badges.');

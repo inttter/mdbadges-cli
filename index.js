@@ -26,7 +26,7 @@ function formatBadgeName(badgeName) {
   return formattedBadgeName;
 }
 
-program.version("3.1.1").description("A package to find Shields.io badges.");
+program.version("3.1.2").description("A package to find Shields.io badges.");
 
 program
   .arguments("<category> [badgeNames...]")
@@ -370,55 +370,38 @@ program
   });
 
   program
-  .command("about")
-  .description("Displays general information about the package.")
+  .command('about')
+  .description('Displays general information about the package.')
   .action(() => {
     // prettier-ignore
-    console.log(`
-      ${gradient.vice("                 _  _                 _                                 _  _ ")}
-      ${gradient.vice("                | || |               | |                               | |(_) ")}
-      ${gradient.vice("  _ __ ___    __| || |__    __ _   __| |  __ _   ___  ___  ______  ___ | | _ ")}
-      ${gradient.vice(" | '_ \` _ \\  / _\` || '_ \\  / _\` | / _\` | / _\` | / _ \\/ __||______|/ __|| || |")}
-      ${gradient.vice(" | | | | | || (_| || |_) || (_| || (_| || (_| ||  __/\\__ \\       | (__ | || |")}
-      ${gradient.vice(" |_| |_| |_| \\__,_||_.__/  \\__,_| \\__,_| \\__, | \\___||___/        \\___||_||_|")}
-      ${gradient.vice("                                          __/ |                              ")}
-      ${gradient.vice("                                         |___/                               ")}
-      
-      ${gradient.vice("                      A package to find Shields.io badges.                      ")}
-      ${gradient.vice("                            https://cli.inttter.com                            ")}
-    `);
-  });
-    console.log();
+    console.log()
+    console.log(gradient.vice('                 _  _                 _                                 _  _ '));
+    console.log(gradient.vice('                | || |               | |                               | |(_) '));
+    console.log(gradient.vice('  _ __ ___    __| || |__    __ _   __| |  __ _   ___  ___  ______  ___ | | _ '));
+    console.log(gradient.vice(' | \'_ ` _ \\  / _` || \'_ \\  / _` | / _` | / _` | / _ \\/ __||______|/ __|| || |'));
+    console.log(gradient.vice(' | | | | | || (_| || |_) || (_| || (_| || (_| ||  __/\\__ \\       | (__ | || |'));
+    console.log(gradient.vice(' |_| |_| |_| \\__,_||_.__/  \\__,_| \\__,_| \\__, | \\___||___/        \\___||_||_|'));
+    console.log(gradient.vice('                                          __/ |                              '));
+    console.log(gradient.vice('                                         |___/                               '));
+    console.log()
+    console.log(gradient.vice('                      A package to find Shields.io badges.                      '));    
+    console.log(gradient.vice('                            https://cli.inttter.com                            '))
+    console.log()
     console.log(gradient.retro(`Latest Version: ${packageInfo.version}`));
-
+    
     const userPackageVersion = packageInfo.version;
-    console.log(
-      gradient.summer(`You are currently using version: ${userPackageVersion}`),
-    );
-    console.log();
-    console.log(
-      gradient.atlas(
-        `If you need to, update by running 'mdb update' or 'mdb upd'`,
-      ),
-    );
-    console.log();
+    console.log(gradient.summer(`You are currently using version: ${userPackageVersion}`));
+    console.log()
+    console.log(gradient.atlas(`If you need to, update by running 'mdb update' or 'mdb upd'`));
+    console.log()
     console.log(gradient.atlas(`License: https://mit-license.org/`));
-    console.log();
-    console.log(
-      gradient.atlas(`Type 'mdb -h' to view the available list of commands`),
-    );
+    console.log()
+    console.log(gradient.atlas(`Type 'mdb -h' to view the available list of commands`));
     console.log(gradient.atlas(`Type 'mdb fund' if you'd like to donate`));
-    console.log();
-    console.log(
-      gradient.atlas(
-        `Report any issues on GitHub: https://github.com/inttter/mdbadges-cli/issues`,
-      ),
-    );
-    console.log(
-      gradient.atlas(
-        `To add a badge, visit this repository: https://github.com/inttter/md-badges`,
-      ),
-    );
+    console.log()
+    console.log(gradient.atlas(`Report any issues on GitHub: https://github.com/inttter/mdbadges-cli/issues`));
+    console.log(gradient.atlas(`To add a badge, visit this repository: https://github.com/inttter/md-badges`));
+  });
 
 program
   .command("random")

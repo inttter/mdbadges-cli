@@ -27,7 +27,7 @@ const frames = ['/', '-', '\\', '|'];
 let index = 0;
 
 program
-.version('3.1.0')
+.version('3.1.1')
 .description('A package to find Shields.io badges.');
 
 program
@@ -136,7 +136,10 @@ program
     .alias('upd')
     .description('Checks for updates to the package.')
     .action(async () => {
-      const spinner = ora(`Checking for ${chalk.hex('#6D5ED9')('updates...')}`).start();
+      const spinner = ora({
+        text: 'Checking for updates...',
+        color: 'yellow'
+    }).start();
       try {
         const response = await axios.get('https://registry.npmjs.org/mdbadges-cli');
         const latest = response.data['dist-tags'].latest;

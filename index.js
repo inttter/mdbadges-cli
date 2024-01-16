@@ -7,6 +7,7 @@ const prompts = require("prompts");
 const clipboardy = require("clipboardy");
 const ora = require("ora");
 const gradient = require("gradient-string");
+const fs = require("fs");
 const badges = require("./badges");
 const packageInfo = require("./package.json");
 
@@ -512,6 +513,75 @@ program
       ),
     );
     console.log();
+  });
+
+  program
+  .command("add <category> <badgeName> [filePath]")
+  .description("Allows you to add a badge to a Markdown file.")
+  .action((category, badgeName, filePath = "README.md") => {
+    const formattedCategory = formatCategoryName(category);
+    const categoryData = badges[category.toLowerCase()];
+
+    if (!categoryData) {
+      console.log(chalk.hex("#FF0000")(`Category "${formattedCategory}" not found.`));
+      return;
+    }
+
+    const formattedBadgeName = badgeName.toLowerCase();
+    const foundBadge = Object.keys(categoryData).find(
+      (key) => key.toLowerCase() === formattedBadgeName,
+    );
+
+    if (!foundBadge) {
+      console.log(chalk.hex("#FF0000")(`Badge "${formattedBadgeName}" not found.`));
+      console.log(
+        chalk.hex("#289FF9")(
+          `Try running ${gradient.vice(`"mdb search ${category}"`)} for a full list of badges in this category.`,
+        )
+      );
+      return;
+    }
+
+    const badge = categoryData[foundBadge];
+
+    // Check if badge is defined and the regex match is successful
+    const badgeLinkMatch = badge.match(/\(([^)]+)\)/);
+    if (!badgeLinkMatch || !badgeLinkMatch[1]) {
+      console.log(chalk.hex("#FF0000")("Badge link not found in the expected format."));
+      return;
+    }
+
+    // Extracts the badge link and its name
+    const badgeLink = badgeLinkMatch[1];
+    const badgeAlt = badge.match(/\[([^)]+)\]/)[1];
+
+    const badgeMarkdown = `[${badgeAlt}](${badgeLink})](#)`;
+
+    // Check if the specified file has the ".md" extension
+    if (!filePath.toLowerCase().endsWith(".md")) {
+      console.log(chalk.hex("#FF0000")(`Invalid file. Please provide a Markdown file with a ".md" extension.`));
+    return;
+  }
+
+    // Read the existing content of the file
+    const fs = require("fs");
+    let fileContent = "";
+    try {
+      fileContent = fs.readFileSync(filePath, "utf8");
+    } catch (error) {
+      console.error(chalk.hex("#FF0000")(`Error reading the file: ${error.message}`));
+      return;
+    }
+
+    // Append the badge to the file
+    try {
+      fs.appendFileSync(filePath, `\n${badgeMarkdown}\n`, "utf8");
+      console.log()
+      console.log(gradient.cristal("Badge added to the file successfully."));
+      console.log()
+    } catch (error) {
+      console.error(chalk.hex("#FF0000")(`Error writing to the file: ${error.message}`));
+    }
   });
 
 program.parse(process.argv);

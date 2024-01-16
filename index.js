@@ -27,7 +27,7 @@ function formatBadgeName(badgeName) {
   return formattedBadgeName;
 }
 
-program.version("3.1.2").description("A package to find Shields.io badges.");
+program.version("3.2.0").description("A package to find Shields.io badges.");
 
 program
   .arguments("<category> [badgeNames...]")
@@ -39,6 +39,8 @@ program
     const categoryData = badges[category.toLowerCase()];
 
     if (categoryData) {
+      console.log();
+      console.log(gradient.cristal(`Badge found:`)); // Move this line outside the forEach loop
       badgeNames.forEach((badgeName) => {
         const formattedBadgeName = badgeName.toLowerCase();
         const foundBadge = Object.keys(categoryData).find(
@@ -54,10 +56,7 @@ program
             // Formats the HTML code with style option
             const styleOption = options.style ? `&style=${options.style}` : "";
             const htmlBadge = `<img src="${badgeLink}${styleOption}" />`;
-            console.log();
-            console.log(gradient.cristal(`Badge found:`));
             console.log(chalk.hex("#FFBF00").bold(htmlBadge));
-            console.log();
           } else {
             let badgeStyle = "flat"; // flat is the default style if one is not specified
             if (options.style) {
@@ -83,32 +82,25 @@ program
             const badgeLink = badge.match(/\(([^)]+)\)/)[1];
             const badgeAlt = badge.match(/\[([^)]+)\]/)[1];
             const badgeMarkdown = `[${badgeAlt}](${badgeLink}${styleOption})](#)`;
-            console.log();
-            console.log(gradient.cristal(`Badge found:`));
             console.log(chalk.hex("#FFBF00").bold(badgeMarkdown));
-            console.log();
           }
         } else {
-          console.log();
           console.log(
             chalk.hex("#FF0000")(
               `Badge "${gradient.cristal(formatBadgeName(badgeName))}" not found.`,
             ),
           );
-          console.log();
           console.log(
             chalk.hex("#289FF9")(
               `If your name has a space, try entering a dash.`,
             ),
           );
           console.log(chalk.hex("#289FF9")(`e.g., applemusic -> apple-music`));
-          console.log();
         }
       });
+      console.log(); // Add an empty line after the loop for better formatting
     } else {
-      console.log();
       console.log(chalk.hex("#FF0000")(`That category could not be found.`));
-      console.log();
       console.log(
         chalk.hex("#289FF9")(
           `Run ${gradient.vice("mdb categories")} for a list of categories.`,

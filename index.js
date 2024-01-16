@@ -253,6 +253,7 @@ program
 
 program
   .command("create")
+  .alias("generate")
   .description("Displays prompts to create your own badge.")
   .action(async () => {
     const prompt = require("prompts");

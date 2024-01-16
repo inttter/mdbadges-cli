@@ -30,25 +30,27 @@ To make a command line tool to access a bunch of different badges, so that you *
 
 # Features
 
-<div align="center">
+* 🤏 Small in size to install ─ **about ~2MB gzipped** 
 
-| --- | Feature                                      |
-| ---- | -------------------------------------------- |
-| 🤏   | Small in size ─ **~2MB gzipped!**            |
-| 📦   | A **Low** dependency count                     |
-| 👥   | **Wide range** of badges to explore          |
-| 🎨   | **5** distinct Shields.io styles to choose  |
-| ✏️   | Options to use **Markdown** or **HTML**       |
-| 🔎   | Search badges across **30+** categories      |
-| 😎   | Easily create your **custom** badges         |
-| 🎲   | Generate a badge **at random**               |
-| 🩳   | Convenient aliases for many commands         |
+* 📦 A **low** dependency count
 
-</div>
+* 👥 A **wide range** of over 400+ badges to explore from
+
+* 🎨 **5** supported Shields.io styles to choose from
+
+* ✏️ Choose to use **Markdown** or **HTML** in supported commands 
+
+* 🔎 Over **30+** categories to search from ─ more variety!
+
+* 😎 Easily create your **custom** badges with just simple prompts
+
+* 🎲 Generate a badge **at random** ─ supports **Markdown** and **HTML**
+
+* 🩳 Convenient **aliases** for most commands
 
 # Installation
 
-To install the latest version via NPM globally, do:
+To install the latest version with <strong>```npm```</strong>, run the command:
 
 ```bash
 npm install mdbadges-cli@latest
@@ -68,7 +70,7 @@ yarn add mdbadges-cli@latest
 
 <br>
 
-**View changelogs between versions [here](https://github.com/inttter/mdbadges-cli/releases).**
+**➜ If you'd like, you can view changelogs between versions [here](https://github.com/inttter/mdbadges-cli/releases).**
 
 # Demo
 
@@ -85,22 +87,21 @@ When using commands, use the prefix ```mdb```, and then add the command name aft
 
 |   Command      |    Description    |     Aliases      | Additional Information |
 |----------|-----------|---------------------------|--------|
-```mdb <category> <badgeName>``` | Displays Markdown for specified badge in a category | N/A | Prefixes available: ```--style```, ```--html```, ```-s```
-```mdb search <category>``` | Displays badges available in a [category](#list-of-available-categories) | ```s```, ```find```  | Instructions for how to get the code are in the comand.
-```mdb lookup <query>``` | Displays badges containing a certain keyword/phrase | ```l``` | Displays name and category of bagde.
+```mdb <category> <badgeName>``` | Displays Markdown for specified badge in a category | N/A | Prefixes available include: ```--style```, ```--html```, and ```-s```. **Finding more than one badge is supported.**
+```mdb search <category>``` | Displays badges available in a [**category**](#list-of-available-categories) | ```s```, ```find```  | Instructions for how to get the code are in the comand
+```mdb lookup <query>``` | Displays badges containing a certain keyword/phrase | ```l``` | Also displays what category the badge is in
 ```mdb categories``` | Displays a list of all available categories | ```cat``` | N/A
-```mdb create``` | Displays prompts to create your own badge | N/A | All fields require an answer
-```mdb random``` | Displays a random badge. | ```r``` | Displays both Markdown and HTML formats.
-```mdb copy <category> <badgeName>``` | Copies a badges' code to the clipboard | ```c``` | You can do <kbd>⊞ + V</kbd> on Windows to verify it's been copied.
-```mdb badges``` | Displays links containing the full list of badges | ```list``` | N/A
+```mdb create``` | Displays prompts to create your own badge | ```generate``` | **All fields** require an answer
+```mdb random``` | Displays a random badge. | ```r``` | Supports both Markdown and HTML formats
+```mdb copy <category> <badgeName>``` | Copies a badges' code to the clipboard | ```c``` | On Windows 11, you can do <kbd>⊞ + V</kbd> to verify it's been copied
+```mdb badges``` | Displays links containing the full list of badges | ```list``` | Both links link to the same list, on different websites
+```mdb add <category> <badgeName> <fileName>``` | Allows you to add a badge to a Markdown file | N/A | **Only ```.md``` files are supported.** Will work in subdirectories, so long as the file path is correct
 
 # Miscellenaous Commands
 
-These commands are not **very** important, but can serve useful in some cases.
-
 |   Command      |    Description    |     Aliases      | Additional Information |
 |----------|-----------|---------------------------|--------|
-```mdb version``` | Displays the current version you are on | ```v``` | Do not use this command to update. This is for checking your version, use ```mdb update``` (see below) to update
+```mdb version``` | Displays the current version you are on | ```v``` | **Don't try to use this command to update.** This is for checking your version, use ```mdb update``` (see below) to update
 ```mdb update``` | Checks for updates to the package | ```upd``` | If a new version is available, it will prompt you to enter an ```npm``` update command
 ```mdb fund``` | Displays funding/donation links for the package | N/A | You don't have to donate, but I'd appreciate it!
 ```mdb about``` | Displays general information about the package | N/A | Also shows links to the website, GitHub issues, contributing, and more
@@ -124,7 +125,7 @@ mdb s <category>
 mdb find <category>
 ```
 > [!TIP]
-> Want to add your own **badge** or **category**? Contribute to [**this**](https://github.com/inttter/md-badges) repository!
+> Want to add your own **badge** or **category**? You can contribute to this repository you're seeing right now, or [**md-badges**](https://github.com/inttter/md-badges)!
 
 | Name | Syntax |
 |---------|---------------|

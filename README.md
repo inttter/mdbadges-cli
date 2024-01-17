@@ -97,7 +97,7 @@ When using commands, use the prefix ```mdb```, and then add the command name aft
 ```mdb badges``` | Displays links containing the full list of badges | ```list``` | Both links link to the same list, on different websites
 ```mdb add <category> <badgeName> <fileName>``` | Allows you to add a badge to a Markdown file | N/A | **Only ```.md``` files are supported.** Will work in subdirectories, so long as the file path is correct
 
-# Miscellenaous Commands
+# Miscallenaous Commands
 
 |   Command      |    Description    |     Aliases      | Additional Information |
 |----------|-----------|---------------------------|--------|

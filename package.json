@@ -1,6 +1,6 @@
 {
   "name": "mdbadges-cli",
-  "version": "3.2.0",
+  "version": "3.2.1",
   "description": "A package to find Shields.io badges.",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -36,6 +36,7 @@
     "clipboardy": "^2.3.0",
     "commander": "^11.1.0",
     "gradient-string": "^2.0.2",
+    "inquirer": "^8.2.4",
     "mdbadges-cli": "^3.1.0",
     "ora": "^5.4.1",
     "prompts": "^2.4.2"

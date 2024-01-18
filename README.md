@@ -105,7 +105,6 @@ When using commands, use the prefix ```mdb```, and then add the command name aft
 ```mdb update``` | Checks for updates to the package | ```upd``` | If a new version is available, it will prompt you to enter an ```npm``` update command
 ```mdb fund``` | Displays funding/donation links for the package | N/A | You don't have to donate, but I'd appreciate it!
 ```mdb about``` | Displays general information about the package | N/A | Also shows links to the website, GitHub issues, contributing, and more
-```mdb contribute``` | Displays information on how to contribute | ```contrib``` | Links to the contributing guidelines
 
 # Viewing commands from the terminal
 
@@ -165,3 +164,5 @@ Work/Jobs | work-and-jobs
 
 ###### ©️ Licensed under the [MIT License](LICENSE).
 ###### ©️ Shields.io is licensed under the [CC0-1.0 License](https://github.com/badges/shields/blob/master/LICENSE).
+
+[![Bluesky](https://img.shields.io/badge/Bluesky-0285FF?logo=bluesky&logoColor=fff)](#)

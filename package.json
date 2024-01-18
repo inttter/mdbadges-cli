@@ -50,6 +50,6 @@
     "url": "https://github.com/inttter/mdbadges-cli.git"
   },
   "devDependencies": {
-    "prettier": "3.2.2"
+    "prettier": "3.2.4"
   }
 }

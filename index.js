@@ -10,6 +10,7 @@ const gradient = require("gradient-string");
 const fs = require("fs");
 const badges = require("./badges");
 const packageInfo = require("./package.json");
+const { searchCommand } = require("./commands/search");
 
 function formatCategoryName(category) {
   return category
@@ -27,7 +28,7 @@ function formatBadgeName(badgeName) {
   return formattedBadgeName;
 }
 
-program.version("3.2.0").description("A package to find Shields.io badges.");
+program.version("3.3.0").description("A package to find Shields.io badges.");
 
 program
   .arguments("<category> [badgeNames...]")
@@ -198,36 +199,13 @@ program
     }
   });
 
-program
-  .command("search <category>")
+  program
+  .command("search")
   .alias("s")
   .alias("find")
   .description("Displays badges available in a category.")
-  .action((category) => {
-    const formattedCategory = formatCategoryName(category);
-    const categoryData = badges[category.toLowerCase()];
-    if (categoryData) {
-      console.log();
-      console.log(gradient.cristal(`Badges available:`));
-      console.log();
-      Object.keys(categoryData).forEach((badge) => {
-        console.log(gradient.cristal(`- ${badge}`));
-      });
-      console.log(
-        chalk.hex("#289FF9")(
-          `\nTo get the code for a badge, type 'mdb ${category} <badgeName>'.`,
-        ),
-      );
-      console.log(
-        chalk.hex("#289FF9")(
-          `If you want the HTML version of a badge, type 'mdb --html ${category} <badgeName>'.`,
-        ),
-      );
-      console.log();
-    } else {
-      console.log(chalk.hex("#FF0000")(`That category could not be found.`));
-      console.log();
-    }
+  .action(() => {
+    searchCommand(badges);
   });
 
 program

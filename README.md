@@ -18,17 +18,17 @@
 
 </div>
 
-# The Problem
+# 👎 The Problem
 
 Badges have become useful parts of documentation, whether it's to display information, promote, or anything else.
 
 However, there isn't a way to access them from the command line. Some people don't feel like going onto Google, and typing **"youtube shieldsio badge"**, then copying ➜ pasting, because of how time consuming it is.
 
-# The Solution?
+# ✅ The Solution?
 
 To make a command line tool to access a bunch of different badges, so that you ***don't*** have to leave your terminal, saving yourself some time in the process.
 
-# Features
+# ✨ Features
 
 * 🤏 Small in size to install ─ **about ~2MB gzipped** 
 
@@ -48,19 +48,13 @@ To make a command line tool to access a bunch of different badges, so that you *
 
 * 🩳 Convenient **aliases** for most commands
 
-# Installation
+# 📦 Installation
 
-To install the latest version with <strong>```npm```</strong>, run the command:
+To install the latest version from NPM, run the command:
 
 ```bash
 npm install mdbadges-cli@latest
 ```
-
-<div align="center">
-    <img src="assets/demos/Installation.gif" alt="Installing" width="550">
-    
-###### Terminal: https://tabby.sh
-</div>
 
 or if you're using Yarn:
 
@@ -72,15 +66,15 @@ yarn add mdbadges-cli@latest
 
 **➜ If you'd like, you can view changelogs between versions [here](https://github.com/inttter/mdbadges-cli/releases).**
 
-# Demo
+# 📸 Demo
 
 https://github.com/inttter/mdbadges-cli/assets/73017070/8127217f-aa85-447a-82b8-aa80873f5fcc
 
-# Documentation
+# 📝 Documentation
 
 Documentation for **mdbadges-cli** can be found [**here**](https://inttter.gitbook.io/mdbadges-cli/).
 
-# Commands
+# ⚙️ Commands
 
 When using commands, use the prefix ```mdb```, and then add the command name after it.
 
@@ -106,11 +100,11 @@ When using commands, use the prefix ```mdb```, and then add the command name aft
 ```mdb fund``` | Displays funding/donation links for the package | N/A | You don't have to donate, but I'd appreciate it!
 ```mdb about``` | Displays general information about the package | N/A | Also shows links to the website, GitHub issues, contributing, and more
 
-# Viewing commands from the terminal
+# 🔍 Viewing Commands
 
 Need to find what these commands do while your in the terminal? Run ```mdb -h``` to view all commands, aliases, and additional options.
 
-# List of available categories
+# 📃 List of available categories
 
 Below you'll find categories that are currently available, with the name and syntax needed in these commands for the ```<category>``` section:
 
@@ -164,5 +158,3 @@ Work/Jobs | work-and-jobs
 
 ###### ©️ Licensed under the [MIT License](LICENSE).
 ###### ©️ Shields.io is licensed under the [CC0-1.0 License](https://github.com/badges/shields/blob/master/LICENSE).
-
-[![Bluesky](https://img.shields.io/badge/Bluesky-0285FF?logo=bluesky&logoColor=fff)](#)

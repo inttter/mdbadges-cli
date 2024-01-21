@@ -82,7 +82,7 @@ When using commands, use the prefix ```mdb```, and then add the command name aft
 |   Command      |    Description    |     Aliases      | Additional Information |
 |----------|-----------|---------------------------|--------|
 ```mdb <category> <badgeName>``` | Displays Markdown for specified badge in a category | N/A | Prefixes available include: ```--style```, ```--html```, and ```-s```. **Finding more than one badge is supported.**
-```mdb search <category>``` | Displays badges available in a [**category**](#list-of-available-categories) | ```s```, ```find```  | Instructions for how to get the code are in the comand
+```mdb search``` | Displays badges available in a [**category**](#list-of-available-categories) | ```s```, ```find```  | Typing something like "Social Media" will bring up the  ```social-media``` category.
 ```mdb lookup <query>``` | Displays badges containing a certain keyword/phrase | ```l``` | Also displays what category the badge is in
 ```mdb categories``` | Displays a list of all available categories | ```cat``` | N/A
 ```mdb create``` | Displays prompts to create your own badge | ```generate``` | **All fields** require an answer
@@ -140,7 +140,7 @@ Framework | framework
 Game Engine | game-engine
 Gaming Storefronts | gaming-storefront
 Game Engine | game-engine
-IDE/Code Editor | ide-code-editor
+IDE/Code Editor | code-editor
 Office | office
 Operating System | operating-system
 Package Manager | package-manager

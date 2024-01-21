@@ -28,7 +28,7 @@ function formatBadgeName(badgeName) { // formats badge names for outputs
   return formattedBadgeName;
 }
 
-program.version("3.3.0").description("A package to find Shields.io badges.");
+program.version("4.0.0").description("A package to find Shields.io badges.");
 
 program
   .arguments("<category> [badgeNames...]") // [badgeNames...] allows for more than one badge

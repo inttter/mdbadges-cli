@@ -122,7 +122,7 @@ mdb find <category>
 
 | Name | Syntax |
 |---------|---------------|
-App Stores | app-store
+App Store | app-store
 Artificial Intelligence | artificial-intelligence
 Blog | blog
 Browser | browser

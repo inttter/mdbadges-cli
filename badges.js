@@ -271,7 +271,7 @@ const badges = {
         'microsoft-teams': '[![Microsoft Teams](https://img.shields.io/badge/Microsoft%20Teams-6264A7?logo=microsoftteams&logoColor=fff&)] ',
         'microsoft-word': '[![Microsoft Word](https://img.shields.io/badge/Microsoft_Word-2B579A?logo=microsoft-word&logoColor=white)](#) '
     },
-    'operating-system': {
+    'os': {
         'android': '[![Android](https://img.shields.io/badge/Android-3DDC84?logo=android&logoColor=white)](#) ',
         'almalinux': '[![AlmaLinux](https://img.shields.io/badge/AlmaLinux-000?logo=almalinux&logoColor=fff)](#) ',
         'alpine-linux': '[![Alpine Linux](https://img.shields.io/badge/Alpine%20Linux-0D597F?logo=alpinelinux&logoColor=fff)](#) ',

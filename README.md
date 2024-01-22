@@ -123,13 +123,14 @@ mdb find <category>
 | Name | Syntax |
 |---------|---------------|
 App Store | app-store
-Artificial Intelligence | artificial-intelligence
+Artificial Intelligence | ai
 Blog | blog
 Browser | browser
+Code Coverage | code-coverage
+Code Editor | code-editor
 Cloud Storage | cloud-storage
 Cloud System | cloud-system
-Code Coverage | code-coverage
-Collaboration Tools | collaboration-tools
+Collaboration | collaboration
 Cryptocurrency | cryptocurrency
 Database | database
 Design | design
@@ -138,14 +139,13 @@ Education | education
 Funding | funding
 Framework | framework
 Game Engine | game-engine
-Gaming Storefronts | gaming-storefront
+Gaming Storefronts | game-stores
 Game Engine | game-engine
-IDE/Code Editor | code-editor
 Office | office
 Operating System | operating-system
 Package Manager | package-manager
 Payment | payment
-Programming Language | programming-language
+Programming Language | programming
 Restaurant/Delivery | restaurant-and-delivery
 Search Engine | search-engine
 Social Media | social-media
@@ -153,7 +153,6 @@ Sound | sound
 Static Site | static-site
 Video Streaming | video-streaming
 Virtual Reality | virtual-reality
-Web Technology | web-technology
 Work/Jobs | work-and-jobs
 
 ###### ©️ Licensed under the [MIT License](LICENSE).

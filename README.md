@@ -50,15 +50,11 @@ To make a command line tool to access a bunch of different badges, so that you *
 
 # 📦 Installation
 
-To install the latest version from NPM, run the command:
+To install the latest version from **npm** or **Yarn**, run the command:
 
 ```bash
 npm install mdbadges-cli@latest
-```
-
-or if you're using Yarn:
-
-```bash
+# or
 yarn add mdbadges-cli@latest
 ```
 

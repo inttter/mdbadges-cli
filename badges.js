@@ -86,7 +86,25 @@ const badges = {
         'sonarcloud': '[![SonarCloud](https://img.shields.io/badge/SonarCloud-F3702A?logo=sonarcloud&logoColor=fff)](#) ',
         'snyk': '[![Snyk](https://img.shields.io/badge/Snyk-4C4A73?logo=snyk&logoColor=fff)](#) '
     },
-    'collaboration-tools': {
+    'code-editor': {
+        'codepen': '[![CodePen](https://img.shields.io/badge/CodePen-white?&logo=codepen&logoColor=black)](#) ',
+        'eclipse': '[![Eclipse](https://img.shields.io/badge/Eclipse-FE7A16.svg?logo=Eclipse&logoColor=white)](#) ',
+        'emacs': '[![Emacs](https://img.shields.io/badge/Emacs-%237F5AB6.svg?&logo=gnu-emacs&logoColor=white)](#) ',
+        'intellij-idea': '[![IntelliJ IDEA](https://img.shields.io/badge/IntelliJIDEA-000000.svg?logo=intellij-idea&logoColor=white)](#) ',
+        'netbeans-ide': '[![NetBeans IDE](https://img.shields.io/badge/NetBeans%20IDE-1B6AC6.svg?logo=apache-netbeans-ide&logoColor=white)](#) ',
+        'neovim': '[![Neovim](https://img.shields.io/badge/Neovim-57A143?logo=neovim&logoColor=fff)](#) ',
+        'notepad-pp': '[![Notepad++](https://img.shields.io/badge/Notepad++-90E59A.svg?&logo=notepad%2b%2b&logoColor=black)](#) ',
+        'obsidian': '[![Obsidian](https://img.shields.io/badge/Obsidian-%23483699.svg?&logo=obsidian&logoColor=white)](#) ',
+        'pycharm': '[![PyCharm](https://img.shields.io/badge/PyCharm-143?logo=pycharm&logoColor=black&color=black&labelColor=green)](#) ',
+        'python-idle': '[![Python IDLE](https://img.shields.io/badge/Python%20IDLE-3776AB?logo=python&logoColor=fff)](#) ',
+        'replit': '[![Replit](https://img.shields.io/badge/Replit-F26207?logo=replit&logoColor=fff)](#) ',
+        'sublime-text': '[![Sublime Text](https://img.shields.io/badge/Sublime%20Text-%23575757.svg?logo=sublime-text&logoColor=important)](#) ',
+        'vim': '[![Vim](https://img.shields.io/badge/Vim-%2311AB00.svg?logo=vim&logoColor=white)](#) ',
+        'visual-studio': '[![Visual Studio](https://img.shields.io/badge/Visual%20Studio-5C2D91.svg?&logo=visual-studio&logoColor=white)](#) ',
+        'visual-studio-code': '[![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?logo=visual-studio-code&logoColor=white)](#) ',
+        'xcode': '[![Xcode](https://img.shields.io/badge/Xcode-007ACC?logo=Xcode&logoColor=white)](#) '
+    },
+    'collaboration': {
         'asana': '[![Asana](https://img.shields.io/badge/Asana-F06A6A?logo=asana&logoColor=fff)](#) ',
         'jira': '[![Jira](https://img.shields.io/badge/Jira-0052CC?logo=jira&logoColor=fff)](#) ',
         'microsoft-teams': '[![Microsoft Teams](https://img.shields.io/badge/Microsoft%20Teams-6264A7?logo=microsoftteams&logoColor=fff)](#) ',
@@ -224,7 +242,7 @@ const badges = {
         'unreal-engine': '[![Unreal Engine](https://img.shields.io/badge/Unreal%20Engine-%23313131.svg?logo=unrealengine&logoColor=white)](#) ',
         'unity': '[![Unity](https://img.shields.io/badge/Unity-%23000000.svg?logo=unity&logoColor=white)](#) '
     },
-    'gaming-storefront': {
+    'game-stores': {
         'battle-net': '[![Battle.net](https://img.shields.io/badge/Battle.net-%2300AEFF.svg?logo=battle.net&logoColor=white)](#) ',
         'ea': '[![EA](https://img.shields.io/badge/EA-%23000000.svg?logo=ea&logoColor=white)](#) ',
         'epic-games': '[![Epic Games](https://img.shields.io/badge/Epic%20Games-%23313131.svg?logo=epicgames&logoColor=white)](#) ',
@@ -239,24 +257,6 @@ const badges = {
         'steam': '[![Steam](https://img.shields.io/badge/Steam-%23000000.svg?logo=steam&logoColor=white)](#) ',
         'uplay': '[![Uplay](https://img.shields.io/badge/Uplay-black?logo=ubisoft)](#) ',
         'xbox-store': '[![Xbox](https://img.shields.io/badge/Xbox%20Store-%23107C10.svg?logo=xbox&logoColor=white)](#) '
-    },
-    'code-editor': {
-        'codepen': '[![CodePen](https://img.shields.io/badge/CodePen-white?&logo=codepen&logoColor=black)](#) ',
-        'eclipse': '[![Eclipse](https://img.shields.io/badge/Eclipse-FE7A16.svg?logo=Eclipse&logoColor=white)](#) ',
-        'emacs': '[![Emacs](https://img.shields.io/badge/Emacs-%237F5AB6.svg?&logo=gnu-emacs&logoColor=white)](#) ',
-        'intellij-idea': '[![IntelliJ IDEA](https://img.shields.io/badge/IntelliJIDEA-000000.svg?logo=intellij-idea&logoColor=white)](#) ',
-        'netbeans-ide': '[![NetBeans IDE](https://img.shields.io/badge/NetBeans%20IDE-1B6AC6.svg?logo=apache-netbeans-ide&logoColor=white)](#) ',
-        'neovim': '[![Neovim](https://img.shields.io/badge/Neovim-57A143?logo=neovim&logoColor=fff)](#) ',
-        'notepad-pp': '[![Notepad++](https://img.shields.io/badge/Notepad++-90E59A.svg?&logo=notepad%2b%2b&logoColor=black)](#) ',
-        'obsidian': '[![Obsidian](https://img.shields.io/badge/Obsidian-%23483699.svg?&logo=obsidian&logoColor=white)](#) ',
-        'pycharm': '[![PyCharm](https://img.shields.io/badge/PyCharm-143?logo=pycharm&logoColor=black&color=black&labelColor=green)](#) ',
-        'python-idle': '[![Python IDLE](https://img.shields.io/badge/Python%20IDLE-3776AB?logo=python&logoColor=fff)](#) ',
-        'replit': '[![Replit](https://img.shields.io/badge/Replit-F26207?logo=replit&logoColor=fff)](#) ',
-        'sublime-text': '[![Sublime Text](https://img.shields.io/badge/Sublime%20Text-%23575757.svg?logo=sublime-text&logoColor=important)](#) ',
-        'vim': '[![Vim](https://img.shields.io/badge/Vim-%2311AB00.svg?logo=vim&logoColor=white)](#) ',
-        'visual-studio': '[![Visual Studio](https://img.shields.io/badge/Visual%20Studio-5C2D91.svg?&logo=visual-studio&logoColor=white)](#) ',
-        'visual-studio-code': '[![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?logo=visual-studio-code&logoColor=white)](#) ',
-        'xcode': '[![Xcode](https://img.shields.io/badge/Xcode-007ACC?logo=Xcode&logoColor=white)](#) '
     },
     'office': {
         'microsoft': '[![Microsoft](https://img.shields.io/badge/Microsoft-0078D4?logo=microsoft&logoColor=white)](#) ',
@@ -320,7 +320,7 @@ const badges = {
         'visa': '[![Visa](https://img.shields.io/badge/Visa-1A1F71?logo=visa&logoColor=fff)](#) ',
         'woocommerce': '[![WooCommerce](https://img.shields.io/badge/WooCommerce-96588A?logo=woocommerce&logoColor=fff)](#) '
     },
-    'programming-language': {
+    'programming': {
         'cpp': '[![C++](https://img.shields.io/badge/C++-%2300599C.svg?logo=c%2B%2B&logoColor=white)](#) ',
         'c-sharp': '[![C#](https://img.shields.io/badge/C%23-%23239120.svg?logo=csharp&logoColor=white)](#) ',
         'css': '[![CSS](https://img.shields.io/badge/CSS-1572B6?logo=css3&logoColor=fff)](#) ',

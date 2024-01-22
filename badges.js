@@ -3,7 +3,7 @@ const badges = {
         'app-store': '[![App Store](https://img.shields.io/badge/App_Store-0D96F6?logo=app-store&logoColor=white)](#) ',
         'play-store': '[![Google Play Store](https://img.shields.io/badge/Google_Play-414141?logo=google-play&logoColor=white)](#)'
     },
-    'artificial-intelligence': {
+    'ai': {
         'amazon-alexa': '[![Amazon Alexa](https://img.shields.io/badge/Amazon%20Alexa-00CAFF?logo=amazonalexa&logoColor=fff)](#) ',
         'chatgpt': '[![ChatGPT](https://img.shields.io/badge/ChatGPT-74aa9c?logo=openai&logoColor=white)](#) ',
         'dependabot': '[![Dependabot](https://img.shields.io/badge/Dependabot-025E8C?logo=dependabot&logoColor=fff)](#) ',

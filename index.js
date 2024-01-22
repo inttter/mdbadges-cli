@@ -28,7 +28,7 @@ function formatBadgeName(badgeName) { // formats badge names for outputs
   return formattedBadgeName;
 }
 
-program.version("4.0.0").description("A package to find Shields.io badges.");
+program.version("4.1.0").description("A package to find Shields.io badges.");
 
 program
   .arguments("<category> [badgeNames...]") // [badgeNames...] allows for more than one badge
@@ -162,6 +162,7 @@ program
 program
   .command("update")
   .alias("upd")
+  .alias("u")
   .description("Checks for updates to the package.")
   .action(async () => {
     const spinner = ora({

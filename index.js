@@ -28,7 +28,7 @@ function formatBadgeName(badgeName) { // formats badge names for outputs
   return formattedBadgeName;
 }
 
-program.version("4.1.0").description("Find badges without ever leaving the terminal.");
+program.version("4.1.1").description("Find badges without ever leaving the terminal.");
 
 program
   .arguments("<category> [badgeNames...]") // [badgeNames...] allows for more than one badge
@@ -378,7 +378,7 @@ program
         console.log(gradient.atlas(`Type 'mdb fund' if you'd like to donate`));
         console.log();
         console.log(gradient.atlas(`Report any issues on GitHub: https://github.com/inttter/mdbadges-cli/issues`));
-        console.log(gradient.atlas(`To add a badge, view the contributing guidelines: https://github.com/inttter/mdbadges-cli/blob/main/CONTRIBUTING.md`));
+        console.log(gradient.atlas(`To add a badge, view the contributing guidelines: http://tinyurl.com/mdbcontributing`));
       } catch (error) {
         console.error(`Error fetching latest version: ${error.message}`);
       }

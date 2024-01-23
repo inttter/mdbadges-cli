@@ -28,7 +28,7 @@ function formatBadgeName(badgeName) { // formats badge names for outputs
   return formattedBadgeName;
 }
 
-program.version("4.1.0").description("A package to find Shields.io badges.");
+program.version("4.1.0").description("Find badges without ever leaving the terminal.");
 
 program
   .arguments("<category> [badgeNames...]") // [badgeNames...] allows for more than one badge
@@ -361,7 +361,7 @@ program
         console.log(gradient.vice('                                          __/ |                              '));
         console.log(gradient.vice('                                         |___/                               '));
         console.log();
-        console.log(gradient.vice('                      A package to find Shields.io badges.                      '));    
+        console.log(gradient.vice('                 Find badges without ever leaving the terminal.                     '));    
         console.log(gradient.vice('                            https://cli.inttter.com                            '));
         console.log();
         console.log(gradient.retro(`Latest Version: ${latestVersion}`));

@@ -344,7 +344,7 @@ program
 
   program
   .command('about')
-  .command('abt')
+  .alias('abt')
   .description('Displays general information about the package.')
   .action(async () => {
     async function displayAboutInfo() {
@@ -368,7 +368,7 @@ program
         console.log(gradient.retro(`Latest Version: ${latestVersion}`));
 
         const userPackageVersion = packageInfo.version;
-        console.log(gradient.summer(`You are on: ${userPackageVersion}`));
+        console.log(gradient.cristal(`Your Version: ${userPackageVersion}`));
         console.log();
         console.log(gradient.atlas(`If you need to, update by running 'mdb update' or 'mdb upd'`));
         console.log();

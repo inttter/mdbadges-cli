@@ -344,6 +344,7 @@ program
 
   program
   .command('about')
+  .command('abt')
   .description('Displays general information about the package.')
   .action(async () => {
     async function displayAboutInfo() {

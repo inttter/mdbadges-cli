@@ -3,7 +3,9 @@ updates:
   - package-ecosystem: "npm"
     directory: "/"
     schedule:
-      interval: "weekly" # Checks weekly for updates
+      interval: "weekly"
+      day: "saturday"
+      time: "09:30"
     commit-message:
       # Prefixes all commit messages with "package: "
       prefix: "package:"

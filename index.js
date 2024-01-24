@@ -39,14 +39,72 @@ program
   .description("Displays Markdown for specified badge in a category.")
   .option("--html", "Generates the HTML version of the badge code") // tag that toggles html code
   .option("-s, --style <badgeStyle>", "Toggles badge style") // tags that toggle badge style
-  .action((category, badgeNames = [], options) => {
+  .option("--link", "Toggle l")
+  .action(async (category, badgeNames = [], options) => {
     const formattedCategory = formatCategoryName(category);
     const categoryData = badges[category.toLowerCase()];
 
     if (categoryData) {
       console.log();
+
+      const links = [];
+
+      if (options.html && options.link) {
+        console.log(chalk.hex("#FF0000")("HTML is not supported for the link option."));
+        console.log();
+        console.log(chalk.hex("#289FF9")("Instead, you can use <a> tags around your <img> tag."));
+        console.log();
+        console.log(chalk.hex("#289FF9")("Here's an example:"));
+        console.log();
+        console.log(gradient.vice('<a href="https://discord.com/">'));
+        console.log(gradient.vice('  <img src="https://img.shields.io/badge/Discord-%235865F2.svg?&logo=discord&logoColor=white&style=for-the-badge" />'));
+        console.log(gradient.vice('</a>'));
+        console.log()
+        return;
+      }
+
+      for (let index = 0; index < badgeNames.length; index++) {
+        const badgeName = badgeNames[index];
+        const formattedBadgeName = badgeName.toLowerCase();
+        const foundBadge = Object.keys(categoryData).find(
+          (key) => key.toLowerCase() === formattedBadgeName,
+        );
+        const badge = categoryData[foundBadge];
+
+        if (badge) {
+          // Prompt for the link only if --link is specified
+          let link = "";
+          if (options.link) {
+            const linkResponse = await prompts({
+              type: "text",
+              name: "link",
+              message: badgeNames.length === 1 ? gradient.vice("Enter your link here:") : index === 0 ? gradient.vice("Enter your first link here, then click Enter and type the rest below:") : "",
+              validate: (value) => {
+                return value.trim() === '' ? "Please enter a link." : true;
+              },
+            });
+            link = linkResponse.link;
+            links.push(link);
+          }
+        } else {
+          console.log(
+            chalk.hex("#FF0000")(
+              `Badge "${gradient.cristal(formatBadgeName(badgeName))}" not found.`,
+            ),
+          );
+          console.log(
+            chalk.hex("#289FF9")(
+              `If your name has a space, try entering a dash.`,
+            ),
+          );
+          console.log(chalk.hex("#289FF9")(`e.g., applemusic -> apple-music`));
+        }
+      }
+
       console.log(gradient.cristal(`Badge found:`));
-      badgeNames.forEach((badgeName) => {
+
+      for (let index = 0; index < badgeNames.length; index++) {
+        const badgeName = badgeNames[index];
         const formattedBadgeName = badgeName.toLowerCase();
         const foundBadge = Object.keys(categoryData).find(
           (key) => key.toLowerCase() === formattedBadgeName,
@@ -65,7 +123,7 @@ program
           } else {
             let badgeStyle = "flat"; // flat is the default style if one is not specified
             if (options.style) {
-              // provided style must matche one of these styles
+              // provided style must match one of these styles
               const styles = [
                 "flat",
                 "flat-square",
@@ -86,23 +144,16 @@ program
             const styleOption = options.style ? `&style=${options.style}` : ""; // Adds style option if one is provided
             const badgeLink = badge.match(/\(([^)]+)\)/)[1];
             const badgeAlt = badge.match(/\[([^)]+)\]/)[1];
-            const badgeMarkdown = `[${badgeAlt}](${badgeLink}${styleOption})](#)`;
+
+            const badgeMarkdown = links[index]
+              ? `[${badgeAlt}](${badgeLink}${styleOption})](${links[index]})`
+              : `[${badgeAlt}](${badgeLink}${styleOption})](#)`;
+
             console.log(chalk.hex("#FFBF00").bold(badgeMarkdown));
           }
-        } else {
-          console.log(
-            chalk.hex("#FF0000")(
-              `Badge "${gradient.cristal(formatBadgeName(badgeName))}" not found.`,
-            ),
-          );
-          console.log(
-            chalk.hex("#289FF9")(
-              `If your name has a space, try entering a dash.`,
-            ),
-          );
-          console.log(chalk.hex("#289FF9")(`e.g., applemusic -> apple-music`));
         }
-      });
+      }
+
       console.log();
     } else {
       console.log(chalk.hex("#FF0000")(`That category could not be found.`));

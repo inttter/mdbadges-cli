@@ -62,10 +62,6 @@ yarn add mdbadges-cli@latest
 
 **➜ If you'd like, you can view changelogs between versions [here](https://github.com/inttter/mdbadges-cli/releases).**
 
-# 📸 Demo
-
-https://github.com/inttter/mdbadges-cli/assets/73017070/8127217f-aa85-447a-82b8-aa80873f5fcc
-
 # 📝 Documentation
 
 Documentation for **mdbadges-cli** can be found [**here**](https://inttter.gitbook.io/mdbadges-cli/).

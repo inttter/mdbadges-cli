@@ -77,7 +77,7 @@ When using commands, use the prefix ```mdb```, and then add the command name aft
 
 |   Command      |    Description    |     Aliases      | Additional Information |
 |----------|-----------|---------------------------|--------|
-```mdb <category> <badgeName>``` | Displays Markdown for specified badge in a category | N/A | Prefixes available include: ```--style```, ```--html```, and ```-s```. **Finding more than one badge is supported.**
+```mdb <category> <badgeName>``` | Displays Markdown for specified badge in a category | N/A | Prefixes available include: ```--style```, ```-s```, ```--html```, and ```--link```. **Finding more than one badge is supported.** Note that **--link** only supports Markdown.
 ```mdb search``` | Displays badges available in a [**category**](#list-of-available-categories) | ```s```, ```find```  | Typing something like "Social Media" will bring up the  ```social-media``` category.
 ```mdb lookup <query>``` | Displays badges containing a certain keyword/phrase | ```l``` | Also displays what category the badge is in
 ```mdb categories``` | Displays a list of all available categories | ```cat``` | N/A
@@ -92,9 +92,9 @@ When using commands, use the prefix ```mdb```, and then add the command name aft
 |   Command      |    Description    |     Aliases      | Additional Information |
 |----------|-----------|---------------------------|--------|
 ```mdb version``` | Displays the current version you are on | ```v``` | **Don't try to use this command to update.** This is for checking your version, use ```mdb update``` (see below) to update
-```mdb update``` | Checks for updates to the package | ```upd``` | If a new version is available, it will prompt you to enter an ```npm``` update command
+```mdb update``` | Checks for updates to the package | ```upd```, ```u``` | If a new version is available, it will prompt you to enter an ```npm``` update command
 ```mdb fund``` | Displays funding/donation links for the package | N/A | You don't have to donate, but I'd appreciate it!
-```mdb about``` | Displays general information about the package | N/A | Also shows links to the website, GitHub issues, contributing, and more
+```mdb about``` | Displays general information about the package | ```abt``` | Also shows links to the website, GitHub issues, contributing, and more
 
 # 🔍 Viewing Commands
 
@@ -102,17 +102,18 @@ Need to find what these commands do while your in the terminal? Run ```mdb -h```
 
 # 📃 List of available categories
 
-Below you'll find categories that are currently available, with the name and syntax needed in these commands for the ```<category>``` section:
+Below you'll find categories that are currently available, with the name and syntax needed in these commands:
 
-```
+```html
 mdb <category> <badgeName>
 
-mdb search <category>
+mdb search / mdb s / mdb find
 
-mdb s <category>
+mdb copy <category> <badgeName>
 
-mdb find <category>
+mdb add <category> <badgeName> <fileName>
 ```
+
 > [!TIP]
 > Want to add your own **badge** or **category**? You can contribute to this repository you're seeing right now, or [**md-badges**](https://github.com/inttter/md-badges)!
 
@@ -135,7 +136,7 @@ Education | education
 Funding | funding
 Framework | framework
 Game Engine | game-engine
-Gaming Storefronts | game-stores
+Gaming Storefront | game-stores
 Game Engine | game-engine
 Office | office
 Operating System | operating-system
@@ -149,7 +150,7 @@ Sound | sound
 Static Site | static-site
 Video Streaming | video-streaming
 Virtual Reality | virtual-reality
-Work/Jobs | work-and-jobs
+Work/Job | work-and-jobs
 
 ###### ©️ Licensed under the [MIT License](LICENSE).
 ###### ©️ Shields.io is licensed under the [CC0-1.0 License](https://github.com/badges/shields/blob/master/LICENSE).

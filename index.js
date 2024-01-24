@@ -32,7 +32,7 @@ function formatBadgeName(badgeName) { // formats badge names for outputs
   return formattedBadgeName;
 }
 
-program.version("4.1.1").description("Find badges without ever leaving the terminal.");
+program.version("4.1.2").description("Find badges without ever leaving the terminal.");
 
 program
   .arguments("<category> [badgeNames...]") // [badgeNames...] allows for more than one badge
@@ -305,11 +305,13 @@ program
         type: "text",
         name: "color",
         message: gradient.fruit(
-          "Enter the color or hexadecimal value for the badge:",
+          "Enter a hexadecimal value for the badge:",
         ),
         validate: (value) => {
-          if (!value.trim()) {
-            return "This field is required.";
+          // validation for hex colors (kind of a weird way but it works i guess)
+          const hexColorRegex = /^#?(?:[0-9a-fA-F]{3}){1,2}$/;
+          if (!hexColorRegex.test(value.trim())) {
+            return "Please enter a valid hexadecimal color. (eg. #000000, #FDE13B)";
           }
           return true;
         },
@@ -339,7 +341,7 @@ program
             "for-the-badge",
           ];
           if (!allowedStyles.includes(lowerCaseValue)) {
-            return `Invalid style. Please enter one of the following: ${allowedStyles.join(", ")}`;
+            return `Invalid style. See supported style syntax here: http://tinyurl.com/mdbstyles`;
           } else if (!value.trim()) {
             return "This field is required.";
           }

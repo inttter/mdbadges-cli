@@ -37,9 +37,9 @@ program.version("4.1.2").description("Find badges without ever leaving the termi
 program
   .arguments("<category> [badgeNames...]") // [badgeNames...] allows for more than one badge
   .description("Displays Markdown for specified badge in a category.")
-  .option("--html", "Generates the HTML version of the badge code") // tag that toggles html code
+  .option("--html", "Toggles the HTML version of the badge") // tag that toggles html code
   .option("-s, --style <badgeStyle>", "Toggles badge style") // tags that toggle badge style
-  .option("--link", "Toggle l")
+  .option("--link", "Toggles links in the badge") // tag that toggles links in the badge
   .action(async (category, badgeNames = [], options) => {
     const formattedCategory = formatCategoryName(category);
     const categoryData = badges[category.toLowerCase()];
@@ -78,9 +78,19 @@ program
             const linkResponse = await prompts({
               type: "text",
               name: "link",
+              // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+              // Little explanation of below:
+              //
+              // "Enter your link here:" 
+              // This will only show if there is one badge in the command (eg. mdb social-media twitter --link)
+              //
+              // "Enter your first link here, then click Enter and type the rest below:" 
+              // This will only show if there is more than one badge in the command (eg. mdb social-media twitter discord youtube --link)
+              //
+              // -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
               message: badgeNames.length === 1 ? gradient.vice("Enter your link here:") : index === 0 ? gradient.vice("Enter your first link here, then click Enter and type the rest below:") : "",
               validate: (value) => {
-                return value.trim() === '' ? "Please enter a link." : true;
+                return value.trim() === '' ? "Please enter a link." : true; // shows if no link is entered
               },
             });
             link = linkResponse.link;

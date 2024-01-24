@@ -1,6 +1,6 @@
 {
   "name": "mdbadges-cli",
-  "version": "4.1.1",
+  "version": "4.1.2",
   "description": "Find badges without ever leaving the terminal.",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

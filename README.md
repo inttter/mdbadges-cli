@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="assets/logo.png" width="125"> 
+<img src="assets/logo.png" width="125">
 
 # mdbadges-cli
 
@@ -57,6 +57,8 @@ npm install mdbadges-cli@latest
 # or
 yarn add mdbadges-cli@latest
 ```
+
+[![Release to NPM](https://github.com/inttter/mdbadges-cli/actions/workflows/publish.yml/badge.svg?event=release)](https://github.com/inttter/mdbadges-cli/actions/workflows/publish.yml)
 
 <br>
 

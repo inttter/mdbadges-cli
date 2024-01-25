@@ -96,7 +96,7 @@ When using commands, use the prefix ```mdb```, and then add the command name aft
 
 Need to find what these commands do while your in the terminal? Run ```mdb -h``` to view all commands, aliases, and additional options.
 
-# 📃 List of available categories
+# 📃 Available categories
 
 Below you'll find categories that are currently available, with the name and syntax needed in these commands:
 
@@ -111,7 +111,9 @@ mdb add <category> <badgeName> <fileName>
 ```
 
 > [!TIP]
-> Want to add your own **badge** or **category**? You can contribute to this repository you're seeing right now, or [**md-badges**](https://github.com/inttter/md-badges)!
+> If you want to add your own badges/categories, you can check out this project's contributing guidelines [**here**](http://tinyurl.com/mdbcontributing).
+>
+> Alternatively, you can contribute to md-badges [**here**](http://tinyurl.com/md-badges), and badges will be added in future releases.
 
 | Name | Syntax |
 |---------|---------------|

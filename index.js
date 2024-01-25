@@ -30,9 +30,9 @@ function formatBadgeName(badgeName) { // formats badge names for outputs
     .join(" ");
 
   return formattedBadgeName;
-}
+};
 
-program.version("4.1.2").description("Find badges without ever leaving the terminal.");
+program.version("4.1.3").description("Find badges without ever leaving the terminal.");
 
 program
   .arguments("<category> [badgeNames...]") // [badgeNames...] allows for more than one badge
@@ -197,11 +197,12 @@ program
 
 program
   .command("version")
+  .alias("ver")
   .alias("v")
   .description("Displays the current version you are on.")
   .action(() => {
     console.log();
-    console.log(`${packageInfo.version}`); // fetches package info version from package.json
+    console.log(gradient.cristal(`${packageInfo.version}`)); // fetches package info version from package.json
     console.log();
   });
 

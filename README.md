@@ -30,7 +30,7 @@ To make a command line tool to access a bunch of different badges, so that you *
 
 # ✨ Features
 
-* 🤏 Small in size to install ─ **about ~2MB gzipped** 
+* 🤏 Small in size to install ─ **about ~200KB gzipped** 
 
 * 📦 A **low** dependency count
 

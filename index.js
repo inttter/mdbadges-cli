@@ -166,13 +166,9 @@ program
 
       console.log();
     } else {
+      console.log()
       console.log(chalk.hex("#FF0000")(`That category could not be found.`));
-      console.log(
-        chalk.hex("#289FF9")(
-          `Run ${gradient.vice("mdb categories")} for a list of categories.`,
-        ),
-      );
-      console.log();
+      console.log()
     }
   });
 
@@ -326,7 +322,7 @@ program
       continueSearch = searchAgain; // if "y", it loops the command
     }
   });
-  
+
   program
   .command("create")
   .alias("generate")
@@ -530,11 +526,6 @@ program
       console.log(
         chalk.hex("#289FF9")(
           `Try running ${gradient.vice(`mdb search ${category}`)} for a full list of badges in this category.`,
-        ),
-      );
-      console.log(
-        chalk.hex("#289FF9")(
-          `You can also try running ${gradient.vice(`mdb categories`)} to view the full list of categories.`,
         ),
       );
       console.log();

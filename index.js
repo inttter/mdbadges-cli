@@ -560,29 +560,43 @@ program
     }
   });
 
-program
+  program
   .command("lookup <query>")
   .alias("l")
   .description("Displays badges containing a certain keyword/phrase.")
-  .action((query) => {
-    let found = false;
+  .action(async (query) => {
+    let badgeChoices = [];
     Object.keys(badges).forEach((category) => {
       const categoryData = badges[category];
       Object.keys(categoryData).forEach((badgeName) => {
         if (badgeName.toLowerCase().includes(query.toLowerCase())) {
           const formattedCategory = formatCategoryName(category);
           const formattedBadge = formatBadgeName(badgeName);
-          console.log(
-            `• ${gradient.retro(formattedBadge)} in ${gradient.vice(formattedCategory)}`,
-          );
-          found = true;
+          badgeChoices.push({
+            name: `• ${gradient.retro(formattedBadge)} in ${gradient.vice(formattedCategory)}`,
+            value: categoryData[badgeName], // Store the badge code as the value
+          });
         }
       });
     });
 
-    if (!found) {
+    if (!badgeChoices.length) {
       console.log();
       console.log(chalk.hex("#FF0000")(`No badges found with that phrase.`));
+      console.log();
+    } else {
+      const { selectedBadge } = await inquirer.prompt([
+        {
+          type: 'list',
+          name: 'selectedBadge',
+          message: gradient.fruit('Select a badge:'),
+          choices: badgeChoices,
+        },
+      ]);
+
+      console.log();
+      console.log(gradient.cristal('Badge found:'));
+      console.log(gradient.vice(selectedBadge));
       console.log();
     }
   });

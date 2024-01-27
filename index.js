@@ -32,14 +32,14 @@ function formatBadgeName(badgeName) { // formats badge names for outputs
   return formattedBadgeName;
 };
 
-program.version("4.1.3").description("Find badges without ever leaving the terminal.");
+program.version("4.2.0").description("Find badges without ever leaving the terminal.");
 
 program
   .arguments("<category> [badgeNames...]") // [badgeNames...] allows for more than one badge
   .description("Displays Markdown for specified badge in a category.")
-  .option("--html", "Toggles the HTML version of the badge") // tag that toggles html code
-  .option("-s, --style <badgeStyle>", "Toggles badge style") // tags that toggle badge style
-  .option("--link", "Toggles links in the badge") // tag that toggles links in the badge
+  .option("--html", "Toggles HTML version of a badge") // tag that toggles html code
+  .option("-s, --style <badgeStyle>", "Toggles style of a badge") // tags that toggle badge style
+  .option("--link", "Toggles links in a badge") // tag that toggles links in the badge
   .action(async (category, badgeNames = [], options) => {
     const formattedCategory = formatCategoryName(category);
     const categoryData = badges[category.toLowerCase()];
@@ -272,49 +272,61 @@ program
   .alias('find')
   .description('Displays badges available in a category.')
   .action(async () => {
-    const answer = await inquirer.prompt([
-      {
-        type: 'input',
-        name: 'category',
-        message: gradient.cristal('Enter the category name:'),
-        validate: (input) => {
-          if (input.trim() === '') {
-            return 'Please enter a category name.';
-          }
-          return true;
+    let continueSearch = true;
+
+    while (continueSearch) {
+      const categories = Object.keys(badges);
+
+      const answers = await inquirer.prompt([
+        {
+          type: 'list',
+          name: 'category',
+          message: gradient.fruit('Select a category:'),
+          choices: categories.map(formatCategoryName),
         },
-      },
-    ]);
+      ]);
 
-    const formattedCategory = SearchCategory(answer.category);
-    const categoryData = badges[formattedCategory];
+      const formattedCategory = SearchCategory(answers.category);
+      const categoryData = badges[formattedCategory];
 
-    if (categoryData) {
-      console.log();
-      console.log(gradient.cristal(`Badges available:`));
-      console.log();
-      Object.keys(categoryData).forEach((badge) => {
-        console.log(gradient.cristal(`• ${badge}`));
-      });
-      console.log(
-        chalk.hex('#289FF9')(
-          `\nTo get the code ${gradient.cristal('Markdown')} version of a badge, type 'mdb ${formattedCategory} <badgeName>'.`,
-        ),
-      );
-      console.log(
-        chalk.hex('#289FF9')(
-          `If you want the ${gradient.cristal('HTML')} version of a badge, type 'mdb --html ${formattedCategory} <badgeName>'.`,
-        ),
-      );
-      console.log();
-    } else {
-      console.log(
-        chalk.hex('#FF0000')(`Category "${answer.category}" could not be found.`),
-      );
-      console.log();
+      if (categoryData) {
+        console.log();
+        console.log(gradient.cristal(`Badges available in ${(answers.category)}:`));
+        console.log();
+        Object.keys(categoryData).forEach((badge) => {
+          console.log(gradient.cristal(`• ${badge}`));
+        });
+        console.log(
+          chalk.hex('#289FF9')(
+            `\nTo get the ${gradient.cristal('Markdown')} version of a badge, type 'mdb ${formattedCategory} <badgeName>'.`,
+          ),
+        );
+        console.log(
+          chalk.hex('#289FF9')(
+            `To get the ${gradient.cristal('HTML')} version of a badge, type 'mdb --html ${formattedCategory} <badgeName>'.`,
+          ),
+        );
+        console.log();
+      } else {
+        console.log(
+          chalk.hex('#FF0000')(`Category "${answers.category}" could not be found.`),
+        );
+        console.log();
+      }
+
+      const { searchAgain } = await inquirer.prompt([
+        {
+          type: 'confirm',
+          name: 'searchAgain',
+          message: gradient.fruit('Do you want to search another category?'),
+          default: true, // if nothing is selected, true (aka y/yes) is automatically selected
+        },
+      ]);
+
+      continueSearch = searchAgain; // if "y", it loops the command
     }
   });
-
+  
 program
   .command("categories")
   .alias("cat")

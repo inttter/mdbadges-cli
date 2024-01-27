@@ -326,20 +326,6 @@ program
       continueSearch = searchAgain; // if "y", it loops the command
     }
   });
-  
-program
-  .command("categories")
-  .alias("cat")
-  .description("Displays a list of all available categories.")
-  .action(() => {
-    console.log();
-    console.log(gradient.cristal("Available categories:"));
-    console.log();
-    Object.keys(badges).forEach((category) => {
-      console.log(gradient.vice(`• ${formatCategoryName(category)}`)); // displays each category in bullet points (formatted)
-    });
-    console.log();
-  });
 
 program
   .command("create")

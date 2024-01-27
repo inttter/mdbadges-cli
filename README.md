@@ -14,7 +14,7 @@
 
 [![Open an Issue](https://custom-icon-badges.demolab.com/badge/-Open%20Issue-gold?style=for-the-badge&logoColor=black&logo=issue-opened)](https://github.com/inttter/mdbadges-cli/issues/ "Click here to open an issue") 
 [![Pull Requests](https://custom-icon-badges.demolab.com/badge/-Pull%20Requests-gold?style=for-the-badge&logo=git-pull-request&logoColor=black)](https://github.com/inttter/mdbadges-cli/pulls/ "Click here to submit a pull request")
-[![Install Package](https://custom-icon-badges.demolab.com/badge/-Install%20Package-gold?style=for-the-badge&logo=package&logoColor=black)](https://www.npmjs.com/package/mdbadges-cli/ "Click here to view the NPM page.")
+[![Install Package](https://custom-icon-badges.demolab.com/badge/-Install%20Package-gold?style=for-the-badge&logo=package&logoColor=black)](https://www.npmjs.com/package/mdbadges-cli/ "Click here to view the NPM page")
 
 </div>
 
@@ -30,9 +30,7 @@ To make a command line tool to access a bunch of different badges, so that you *
 
 # ✨ Features
 
-* 🤏 Small in size to install ─ **about ~200KB gzipped** 
-
-* 📦 A **low** dependency count
+* 🤏 Small in size to install ─ **about ~200KB gzipped**
 
 * 👥 A **wide range** of over 400+ badges to explore from
 
@@ -60,8 +58,6 @@ yarn add mdbadges-cli@latest
 
 [![Release to NPM](https://github.com/inttter/mdbadges-cli/actions/workflows/publish.yml/badge.svg?event=release)](https://github.com/inttter/mdbadges-cli/actions/workflows/publish.yml)
 
-<br>
-
 **➜ If you'd like, you can view changelogs between versions [here](https://github.com/inttter/mdbadges-cli/releases).**
 
 # 📝 Documentation
@@ -76,9 +72,8 @@ When using commands, use the prefix ```mdb```, and then add the command name aft
 |   Command      |    Description    |     Aliases      | Additional Information |
 |----------|-----------|---------------------------|--------|
 ```mdb <category> <badgeName>``` | Displays Markdown for specified badge in a category | N/A | Prefixes available include: ```--style```, ```-s```, ```--html```, and ```--link```. **Finding more than one badge is supported.** Note that **--link** only supports Markdown.
-```mdb search``` | Displays badges available in a [**category**](#list-of-available-categories) | ```s```, ```find```  | Typing something like "Social Media" will bring up the  ```social-media``` category.
+```mdb search``` | Displays badges available in a [**category**](#list-of-available-categories) | ```s```, ```find```  | Use arrow keys to scroll up/down.
 ```mdb lookup <query>``` | Displays badges containing a certain keyword/phrase | ```l``` | Also displays what category the badge is in
-```mdb categories``` | Displays a list of all available categories | ```cat``` | N/A
 ```mdb create``` | Displays prompts to create your own badge | ```generate``` | **All fields** require an answer
 ```mdb random``` | Displays a random badge. | ```r``` | Supports both Markdown and HTML formats
 ```mdb copy <category> <badgeName>``` | Copies a badges' code to the clipboard | ```c``` | On Windows 11, you can do <kbd>⊞ + V</kbd> to verify it's been copied
@@ -104,8 +99,6 @@ Below you'll find categories that are currently available, with the name and syn
 
 ```html
 mdb <category> <badgeName>
-
-mdb search / mdb s / mdb find
 
 mdb copy <category> <badgeName>
 

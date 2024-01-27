@@ -267,6 +267,67 @@ program
   });
 
   program
+  .command('search')
+  .alias('s')
+  .alias('find')
+  .description('Displays badges available in a category.')
+  .action(async () => {
+    let continueSearch = true;
+
+    while (continueSearch) {
+      const categories = Object.keys(badges);
+
+      const answers = await inquirer.prompt([
+        {
+          type: 'list',
+          name: 'category',
+          message: gradient.fruit('Select a category:'),
+          choices: categories.map(formatCategoryName),
+        },
+      ]);
+
+      const formattedCategory = SearchCategory(answers.category);
+      const categoryData = badges[formattedCategory];
+
+      if (categoryData) {
+        console.log();
+        console.log(gradient.cristal(`Badges available in ${(answers.category)}:`));
+        console.log();
+        Object.keys(categoryData).forEach((badge) => {
+          console.log(gradient.cristal(`• ${badge}`));
+        });
+        console.log(
+          chalk.hex('#289FF9')(
+            `\nTo get the ${gradient.cristal('Markdown')} version of a badge, type 'mdb ${formattedCategory} <badgeName>'.`,
+          ),
+        );
+        console.log(
+          chalk.hex('#289FF9')(
+            `To get the ${gradient.cristal('HTML')} version of a badge, type 'mdb --html ${formattedCategory} <badgeName>'.`,
+          ),
+        );
+        console.log();
+      } else {
+        console.log(
+          chalk.hex('#FF0000')(`Category "${answers.category}" could not be found.`),
+        );
+        console.log();
+      }
+
+      const { searchAgain } = await inquirer.prompt([
+        {
+          type: 'confirm',
+          name: 'searchAgain',
+          message: gradient.fruit('Do you want to search another category?'),
+          default: true, // if nothing is selected, true (aka y/yes) is automatically selected
+        },
+      ]);
+
+      continueSearch = searchAgain; // if "y", it loops the command
+    }
+  });
+  
+  program
   .command("create")
   .alias("generate")
   .description("Displays prompts to create your own badge.")

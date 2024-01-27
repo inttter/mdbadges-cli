@@ -267,74 +267,11 @@ program
   });
 
   program
-  .command('search')
-  .alias('s')
-  .alias('find')
-  .description('Displays badges available in a category.')
-  .action(async () => {
-    let continueSearch = true;
-
-    while (continueSearch) {
-      const categories = Object.keys(badges);
-
-      const answers = await inquirer.prompt([
-        {
-          type: 'list',
-          name: 'category',
-          message: gradient.fruit('Select a category:'),
-          choices: categories.map(formatCategoryName),
-        },
-      ]);
-
-      const formattedCategory = SearchCategory(answers.category);
-      const categoryData = badges[formattedCategory];
-
-      if (categoryData) {
-        console.log();
-        console.log(gradient.cristal(`Badges available in ${(answers.category)}:`));
-        console.log();
-        Object.keys(categoryData).forEach((badge) => {
-          console.log(gradient.cristal(`• ${badge}`));
-        });
-        console.log(
-          chalk.hex('#289FF9')(
-            `\nTo get the ${gradient.cristal('Markdown')} version of a badge, type 'mdb ${formattedCategory} <badgeName>'.`,
-          ),
-        );
-        console.log(
-          chalk.hex('#289FF9')(
-            `To get the ${gradient.cristal('HTML')} version of a badge, type 'mdb --html ${formattedCategory} <badgeName>'.`,
-          ),
-        );
-        console.log();
-      } else {
-        console.log(
-          chalk.hex('#FF0000')(`Category "${answers.category}" could not be found.`),
-        );
-        console.log();
-      }
-
-      const { searchAgain } = await inquirer.prompt([
-        {
-          type: 'confirm',
-          name: 'searchAgain',
-          message: gradient.fruit('Do you want to search another category?'),
-          default: true, // if nothing is selected, true (aka y/yes) is automatically selected
-        },
-      ]);
-
-      continueSearch = searchAgain; // if "y", it loops the command
-    }
-  });
-
-program
   .command("create")
   .alias("generate")
   .description("Displays prompts to create your own badge.")
   .action(async () => {
-    const prompt = require("prompts");
-
-    const response = await prompt([
+    const response = await inquirer.prompt([
       {
         type: "text",
         name: "alt",
@@ -368,10 +305,9 @@ program
           "Enter a hexadecimal value for the badge:",
         ),
         validate: (value) => {
-          // validation for hex colors (kind of a weird way but it works i guess)
           const hexColorRegex = /^#?(?:[0-9a-fA-F]{3}){1,2}$/;
           if (!hexColorRegex.test(value.trim())) {
-            return "Please enter a valid hexadecimal color. (eg. #000000, #FDE13B)";
+            return "Please enter a valid hexadecimal color. (e.g., #000000, #FDE13B)";
           }
           return true;
         },
@@ -388,25 +324,23 @@ program
         },
       },
       {
-        type: "text",
+        type: "list",
         name: "style",
-        message: gradient.fruit("Enter the style of the badge:"),
-        validate: (value) => {
-          const lowerCaseValue = value.toLowerCase();
-          const allowedStyles = [
-            "flat",
-            "flat-square",
-            "plastic",
-            "social",
-            "for-the-badge",
-          ];
-          if (!allowedStyles.includes(lowerCaseValue)) {
-            return `Invalid style. See supported style syntax here: http://tinyurl.com/mdbstyles`;
-          } else if (!value.trim()) {
-            return "This field is required.";
-          }
-          return true;
-        },
+        message: gradient.fruit("Choose the style of the badge:"),
+        choices: [
+          "flat",
+          "flat-square",
+          "plastic",
+          "social",
+          "for-the-badge",
+        ],
+      },
+      {
+        type: "text",
+        name: "logoColor",
+        message:
+          gradient.fruit("Enter the logo color for the badge:"),
+        initial: "",
       },
       {
         type: "text",
@@ -415,20 +349,6 @@ program
           gradient.vice(`Optional - `) +
           gradient.fruit(`Enter the URL you want the badge to direct to:`),
         initial: "",
-      },
-      {
-        type: "text",
-        name: "logoColor",
-        message:
-          gradient.fruit("Enter the logo color for the badge ") +
-          gradient.vice("(default is white):"),
-        initial: "white",
-        validate: (value) => {
-          if (!value.trim()) {
-            return "This field is required.";
-          }
-          return true;
-        },
       },
     ]);
 

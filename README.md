@@ -4,70 +4,52 @@
 
 # mdbadges-cli
 
-[![GitHub Version](https://img.shields.io/github/release/inttter/mdbadges-cli?style=for-the-badge&logo=github&color=3c2e9f&logoColor=eb6f92&labelColor=191724)](https://github.com/inttter/mdbadges-cli/releases/ "The latest releases, with changelogs.")
-[![NPM Downloads](https://img.shields.io/npm/dw/mdbadges-cli?style=for-the-badge&logo=npm&color=2560ce&logoColor=eb6f92&labelColor=191724)](https://www.npmjs.com/package/mdbadges-cli/ "The amount of downloads using NPM, per week.")
-[![License](https://custom-icon-badges.herokuapp.com/github/license/inttter/mdbadges-cli?style=for-the-badge&logo=law&color=3c2e9f&logoColor=eb6f92&labelColor=191724)](https://github.com/inttter/mdbadges-cli/blob/main/LICENSE/ "The legal stuff related to this package.")
+[![NPM Release](https://img.shields.io/npm/v/mdbadges-cli.svg?style=flat&colorA=18181B&colorB=07B0D1&logo=npm&logoColor=eb6f92)](https://www.npmjs.com/package/mdbadges-cli/ "The latest NPM version.")
+[![NPM Downloads](https://img.shields.io/npm/dw/mdbadges-cli.svg?style=flat&colorA=18181B&colorB=07B0D1&logo=npm&logoColor=eb6f92)](https://github.com/inttter/mdbadges-cli/releases/ "The amount of downloads via NPM per week.")
+[![License](https://custom-icon-badges.herokuapp.com/github/license/inttter/mdbadges-cli?logo=law&color=07B0D1&logoColor=eb6f92&labelColor=191724)](https://github.com/inttter/mdbadges-cli/blob/main/LICENSE/ "The project license.")
 
-<img src="assets/Intro.png" alt="Intro" width="550">
-
-<br>
-
-[![Open an Issue](https://custom-icon-badges.demolab.com/badge/-Open%20Issue-gold?style=for-the-badge&logoColor=black&logo=issue-opened)](https://github.com/inttter/mdbadges-cli/issues/ "Click here to open an issue") 
-[![Pull Requests](https://custom-icon-badges.demolab.com/badge/-Pull%20Requests-gold?style=for-the-badge&logo=git-pull-request&logoColor=black)](https://github.com/inttter/mdbadges-cli/pulls/ "Click here to submit a pull request")
-[![Install Package](https://custom-icon-badges.demolab.com/badge/-Install%20Package-gold?style=for-the-badge&logo=package&logoColor=black)](https://www.npmjs.com/package/mdbadges-cli/ "Click here to view the NPM page")
+```mdbadges-cli``` is a command line tool that allows you to find Shields.io badges without needing to leave your terminal and scour the internet just to find a specific one.
 
 </div>
 
-# 👎 The Problem
+There's a number of features available, allowing for maxium productivity, including:
 
-Badges have become useful parts of documentation, whether it's to display information, promote, or anything else.
+* A wide range of over 400+ badges
+* 30+ categories to search between
+* Markdown and HTML support for most commands
+* Aliases for many commands
+* Custom badges just by using simple prompts
+* Random badge generation
+* [**and more...**](https://inttter.gitbook.io/mdbadges-cli/) 💎
 
-However, there isn't a way to access them from the command line. Some people don't feel like going onto Google, and typing **"youtube shieldsio badge"**, then copying ➜ pasting, because of how time consuming it is.
+# Getting Started
 
-# ✅ The Solution?
-
-To make a command line tool to access a bunch of different badges, so that you ***don't*** have to leave your terminal, saving yourself some time in the process.
-
-# ✨ Features
-
-* 🤏 Small in size to install ─ **about ~200KB gzipped**
-
-* 👥 A **wide range** of over 400+ badges to explore from
-
-* 🎨 **5** supported Shields.io styles to choose from
-
-* ✏️ Choose to use **Markdown** or **HTML** in supported commands 
-
-* 🔎 Over **30+** categories to search from ─ more variety!
-
-* 😎 Easily create your **custom** badges with just simple prompts
-
-* 🎲 Generate a badge **at random** ─ supports **Markdown** and **HTML**
-
-* 🩳 Convenient **aliases** for most commands
-
-# 📦 Installation
-
-To install the latest version from **npm** or **Yarn**, run the command:
+Install the package as you would with any other, using:
 
 ```bash
 npm install mdbadges-cli@latest
 # or
 yarn add mdbadges-cli@latest
+# use -g to install globally
 ```
 
-[![Release to NPM](https://github.com/inttter/mdbadges-cli/actions/workflows/publish.yml/badge.svg?event=release)](https://github.com/inttter/mdbadges-cli/actions/workflows/publish.yml)
+<!-- NPM Publish Workflow !-->
+[![Release to NPM](https://github.com/inttter/mdbadges-cli/actions/workflows/publish.yml/badge.svg?event=release)](https://github.com/inttter/mdbadges-cli/actions/workflows/publish.yml) 
 
-**➜ If you'd like, you can view changelogs between versions [here](https://github.com/inttter/mdbadges-cli/releases).**
+To start using a command, add the ```mdb``` prefix, followed by the [**command name/syntax**](#commands). For example:
 
-# 📝 Documentation
+```bash
+mdb social-media discord
 
-Documentation for **mdbadges-cli** can be found [**here**](https://inttter.gitbook.io/mdbadges-cli/).
+# Badge found:
+# [![Discord](https://img.shields.io/badge/Discord-%235865F2.svg?&logo=discord&logoColor=white)](#)
+```
 
-# ⚙️ Commands
+Need to find what something does while your in the terminal? Run ```mdb -h``` to view all commands, aliases, and additional options.
 
-When using commands, use the prefix ```mdb```, and then add the command name after it.
+# Commands
 
+###### For more in-depth information, read the documentation [**here**](https://inttter.gitbook.io/mdbadges-cli/).
 
 |   Command      |    Description    |     Aliases      | Additional Information |
 |----------|-----------|---------------------------|--------|
@@ -82,6 +64,8 @@ When using commands, use the prefix ```mdb```, and then add the command name aft
 
 # Miscallenaous Commands
 
+###### Commands which don't serve ***too*** important of a purpose.
+
 |   Command      |    Description    |     Aliases      | Additional Information |
 |----------|-----------|---------------------------|--------|
 ```mdb version``` | Displays the current version you are on | ```v``` | **Don't try to use this command to update.** This is for checking your version, use ```mdb update``` (see below) to update
@@ -89,26 +73,9 @@ When using commands, use the prefix ```mdb```, and then add the command name aft
 ```mdb fund``` | Displays funding/donation links for the package | N/A | You don't have to donate, but I'd appreciate it!
 ```mdb about``` | Displays general information about the package | ```abt``` | Also shows links to the website, GitHub issues, contributing, and more
 
-# 🔍 Viewing Commands
+# Available categories
 
-Need to find what these commands do while your in the terminal? Run ```mdb -h``` to view all commands, aliases, and additional options.
-
-# 📃 Available categories
-
-Below you'll find categories that are currently available, with the name and syntax needed in these commands:
-
-```html
-mdb <category> <badgeName>
-
-mdb copy <category> <badgeName>
-
-mdb add <category> <badgeName> <fileName>
-```
-
-> [!TIP]
-> If you want to add your own badges/categories, you can check out this project's contributing guidelines [**here**](http://tinyurl.com/mdbcontributing).
->
-> Alternatively, you can contribute to md-badges [**here**](http://tinyurl.com/md-badges), and badges will be added in future releases.
+Below you'll find categories that are currently available, with the name and syntax needed in commands which need a ```<category>``` specified.
 
 | Name | Syntax |
 |---------|---------------|
@@ -145,5 +112,21 @@ Video Streaming | video-streaming
 Virtual Reality | virtual-reality
 Work/Job | work-and-jobs
 
-###### ©️ Licensed under the [MIT License](LICENSE).
-###### ©️ Shields.io is licensed under the [CC0-1.0 License](https://github.com/badges/shields/blob/master/LICENSE).
+# Contributing
+
+There are multiple ways to contribute and improve this package. 
+
+* [**New Features**](https://github.com/inttter/mdbadges-cli/blob/main/CONTRIBUTING.md#features "Features" ) - Features/Improvements which improve user experience.
+* [**Adding Badges**](https://github.com/inttter/mdbadges-cli/blob/main/CONTRIBUTING.md#adding-badges "Adding Badges") - New badges to be added to the already large list of badges.
+* [**Questions**](https://github.com/inttter/mdbadges-cli/blob/main/CONTRIBUTING.md#adding-badges "Questions") - Questions about the package, which can spiral into new features/improvements/suggestions.
+* [**Bugs/Inconsistencies**](https://github.com/inttter/mdbadges-cli/blob/main/CONTRIBUTING.md#bugsinconsistencies "Bugs/Inconsistencies") - Issues within the package or something that doesn't look right.
+
+##### [Read the full contributing guidelines here.](https://github.com/inttter/mdbadges-cli/blob/main/CONTRIBUTING.md)
+
+---
+<div align="center">
+
+###### Like this project? [**Drop me a dollar or two**](https://github.com/sponsors/inttter "Donate if you like what I do!").
+
+###### ©  MIT License | [Shields.io License](https://github.com/badges/shields?tab=readme-ov-file#license "⚠️ FYI: This is NOT the mdbadges-cli license.")
+</div>

@@ -4,6 +4,7 @@
 
 # mdbadges-cli
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/e6befbaa7485483dbe2e787632616bd2)](https://app.codacy.com/gh/inttter/mdbadges-cli?utm_source=github.com&utm_medium=referral&utm_content=inttter/mdbadges-cli&utm_campaign=Badge_Grade)
 [![Release](https://img.shields.io/npm/v/mdbadges-cli.svg?style=flat&colorA=18181B&colorB=07B0D1&logo=npm&logoColor=eb6f92)](https://github.com/inttter/mdbadges-cli/releases/ "The latest NPM version.")
 [![NPM Downloads](https://img.shields.io/npm/dw/mdbadges-cli.svg?style=flat&colorA=18181B&colorB=07B0D1&logo=npm&logoColor=eb6f92)](https://www.npmjs.com/package/mdbadges-cli/ "The amount of downloads via NPM per week.")
 [![License](https://custom-icon-badges.herokuapp.com/github/license/inttter/mdbadges-cli?logo=law&color=07B0D1&logoColor=eb6f92&labelColor=191724)](https://github.com/inttter/mdbadges-cli/blob/main/LICENSE/ "The project license.")

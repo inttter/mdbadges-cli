@@ -32,7 +32,7 @@ function formatBadgeName(badgeName) { // formats badge names for outputs
   return formattedBadgeName;
 };
 
-program.version("4.2.0").description("Find badges without ever leaving the terminal.");
+program.version("4.2.1").description("Find badges without ever leaving the terminal.");
 
 program
   .arguments("<category> [badgeNames...]") // [badgeNames...] allows for more than one badge
@@ -471,30 +471,85 @@ program
     await displayAboutInfo();
   });
 
-program
-  .command("random")
-  .alias("r")
-  .description("Displays a random badge.")
-  .action(() => {
-    const categories = Object.keys(badges);
-    const randomCategory =
-      categories[Math.floor(Math.random() * categories.length)]; // chooses a random badge
-    const badgesInCategory = Object.keys(badges[randomCategory]);
-    const randomBadgeName =
-      badgesInCategory[Math.floor(Math.random() * badgesInCategory.length)];
-    const badge = badges[randomCategory][randomBadgeName];
+  program
+  .command('random')
+  .alias('r')
+  .description('Displays a random badge.')
+  .option('-c, --category', 'Brings up a prompt with the categories')
+  .action(async (options) => {
+    // the logic below is for --category/-c
+    if (options.category) {
+      const categoryPrompt = await inquirer.prompt([
+        {
+          type: 'list',
+          name: 'selectedCategory',
+          message: gradient.fruit('Choose a category:'),
+          choices: Object.keys(badges),
+          // turns out formatCategoryName seems to break it here
+        },
+      ]);
 
-    const badgeLink = badge.match(/\(([^)]+)\)/)[1];
-    const badgeAlt = badge.match(/\[([^)]+)\]/)[1];
+      const selectedCategory = categoryPrompt.selectedCategory.toLowerCase();
 
-    const markdownBadge = `[${badgeAlt}](${badgeLink})`;
-    const htmlBadge = `<img src="${badgeLink}" />`;
+      if (!badges[selectedCategory]) {
+        console.log(`No badges found in the selected category: ${selectedCategory}`);
+        return;
+      }
 
-    // this outputs BOTH versions, Markdown and HTML.
-    console.log();
-    console.log(gradient.cristal("Markdown:"), gradient.vice(markdownBadge)); // outputs Markdown badge
-    console.log();
-    console.log(gradient.cristal("HTML:"), gradient.vice(htmlBadge)); // outputs HTML badge
+      const stylePrompt = await inquirer.prompt([
+        {
+          type: 'list',
+          name: 'selectedStyle',
+          message: gradient.fruit('Choose a style:'),
+          choices: ['flat', 'flat-square', 'plastic', 'social', 'for-the-badge'],
+        },
+      ]);
+
+      const selectedStyle = stylePrompt.selectedStyle;
+
+      const badgesInCategory = Object.keys(badges[selectedCategory]);
+      const randomBadgeName =
+        badgesInCategory[Math.floor(Math.random() * badgesInCategory.length)];
+      const badge = badges[selectedCategory][randomBadgeName];
+
+      const badgeLink = badge.match(/\(([^)]+)\)/)[1];
+      const badgeAlt = badge.match(/\[([^)]+)\]/)[1];
+
+      let styleParam = '';
+      if (selectedStyle) {
+        styleParam = `&style=${selectedStyle}`;
+      }
+
+      const markdownBadge = `[${badgeAlt}](${badgeLink}${styleParam})`;
+      const htmlBadge = `<img src="${badgeLink}${styleParam}" />`;
+
+      // this outputs BOTH versions, Markdown and HTML
+      console.log();
+      console.log(gradient.cristal('Markdown:'), gradient.vice(markdownBadge));
+      console.log();
+      console.log(gradient.cristal('HTML:'), gradient.vice(htmlBadge));
+      // -----------------------------------------------------------------------
+      // the logic below is for the command without --category/-c (aka just mdb random)
+    } else {
+      const categories = Object.keys(badges);
+      const randomCategory = categories[Math.floor(Math.random() * categories.length)];
+      const badgesInCategory = Object.keys(badges[randomCategory]);
+      const randomBadgeName =
+        badgesInCategory[Math.floor(Math.random() * badgesInCategory.length)];
+      const badge = badges[randomCategory][randomBadgeName];
+
+      const badgeLink = badge.match(/\(([^)]+)\)/)[1];
+      const badgeAlt = badge.match(/\[([^)]+)\]/)[1];
+
+      const markdownBadge = `[${badgeAlt}](${badgeLink})`;
+      const htmlBadge = `<img src="${badgeLink}" />`;
+
+      // Output both versions, Markdown and HTML.
+      console.log();
+      console.log(gradient.cristal('Markdown:'), gradient.vice(markdownBadge));
+      console.log();
+      console.log(gradient.cristal('HTML:'), gradient.vice(htmlBadge));
+    }
   });
 
 program

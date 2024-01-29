@@ -4,15 +4,15 @@
 
 # mdbadges-cli
 
-[![NPM Release](https://img.shields.io/npm/v/mdbadges-cli.svg?style=flat&colorA=18181B&colorB=07B0D1&logo=npm&logoColor=eb6f92)](https://www.npmjs.com/package/mdbadges-cli/ "The latest NPM version.")
-[![NPM Downloads](https://img.shields.io/npm/dw/mdbadges-cli.svg?style=flat&colorA=18181B&colorB=07B0D1&logo=npm&logoColor=eb6f92)](https://github.com/inttter/mdbadges-cli/releases/ "The amount of downloads via NPM per week.")
+[![Release](https://img.shields.io/npm/v/mdbadges-cli.svg?style=flat&colorA=18181B&colorB=07B0D1&logo=npm&logoColor=eb6f92)](https://github.com/inttter/mdbadges-cli/releases/ "The latest NPM version.")
+[![NPM Downloads](https://img.shields.io/npm/dw/mdbadges-cli.svg?style=flat&colorA=18181B&colorB=07B0D1&logo=npm&logoColor=eb6f92)](https://www.npmjs.com/package/mdbadges-cli/ "The amount of downloads via NPM per week.")
 [![License](https://custom-icon-badges.herokuapp.com/github/license/inttter/mdbadges-cli?logo=law&color=07B0D1&logoColor=eb6f92&labelColor=191724)](https://github.com/inttter/mdbadges-cli/blob/main/LICENSE/ "The project license.")
 
 ```mdbadges-cli``` is a command line tool that allows you to find Shields.io badges without needing to leave your terminal and scour the internet just to find a specific one.
 
 </div>
 
-There's a number of features available, allowing for maxium productivity, including:
+There's a number of features available, allowing for maximum productivity, including:
 
 * A wide range of over 400+ badges
 * 30+ categories to search between
@@ -57,7 +57,7 @@ Need to find what something does while your in the terminal? Run ```mdb -h``` to
 ```mdb search``` | Displays badges available in a [**category**](#list-of-available-categories) | ```s```, ```find```  | Use arrow keys to scroll up/down.
 ```mdb lookup <query>``` | Displays badges containing a certain keyword/phrase | ```l``` | Also displays what category the badge is in
 ```mdb create``` | Displays prompts to create your own badge | ```generate``` | **All fields** require an answer
-```mdb random``` | Displays a random badge. | ```r``` | Supports both Markdown and HTML formats
+```mdb random``` | Displays a random badge. | ```r``` | Supports both Markdown and HTML formats. Supports specific categories using ```--category``` or ```-c```
 ```mdb copy <category> <badgeName>``` | Copies a badges' code to the clipboard | ```c``` | On Windows 11, you can do <kbd>⊞ + V</kbd> to verify it's been copied
 ```mdb badges``` | Displays links containing the full list of badges | ```list``` | Both links link to the same list, on different websites
 ```mdb add <category> <badgeName> <fileName>``` | Allows you to add a badge to a Markdown file | N/A | **Only ```.md``` files are supported.** Will work in subdirectories, so long as the file path is correct
@@ -126,7 +126,6 @@ There are multiple ways to contribute and improve this package.
 ---
 <div align="center">
 
-###### Like this project? [**Drop me a dollar or two**](https://github.com/sponsors/inttter "Donate if you like what I do!").
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/intter)
 
-###### ©  MIT License | [Shields.io License](https://github.com/badges/shields?tab=readme-ov-file#license "⚠️ FYI: This is NOT the mdbadges-cli license.")
-</div>
+###### ©  http://license.inttter.com

@@ -10,7 +10,7 @@ const gradient = require("gradient-string");
 const fs = require("fs");
 const inquirer = require("inquirer");
 const badges = require("./badges");
-const packageInfo = require("./package.json");
+const packageInfo = require("../package.json");
 
 function formatCategoryName(category) {
   return category
@@ -32,7 +32,7 @@ function formatBadgeName(badgeName) { // formats badge names for outputs
   return formattedBadgeName;
 };
 
-program.version("4.2.1").description("Find badges without ever leaving the terminal.");
+program.version("4.2.2").description("Find badges without ever leaving the terminal.");
 
 program
   .arguments("<category> [badgeNames...]") // [badgeNames...] allows for more than one badge

@@ -9,6 +9,7 @@ const ora = require("ora");
 const gradient = require("gradient-string");
 const fs = require("fs");
 const inquirer = require("inquirer");
+const open = require("open");
 const badges = require("./badges");
 const packageInfo = require("../package.json");
 
@@ -32,7 +33,7 @@ function formatBadgeName(badgeName) { // formats badge names for outputs
   return formattedBadgeName;
 };
 
-program.version("4.2.2").description("Find badges without ever leaving the terminal.");
+program.version("4.3.0").description("Find badges without ever leaving the terminal.");
 
 program
   .arguments("<category> [badgeNames...]") // [badgeNames...] allows for more than one badge
@@ -202,23 +203,34 @@ program
     console.log();
   });
 
-program
+  program
   .command("badges")
   .alias("list")
   .description("Displays a link to view all the badges.")
-  .action(() => {
+  .action(async () => {
     console.log();
-    console.log(
-      gradient.cristal(
-        `You can view the badge list at any of the following two links:`,
-      ),
-    );
-    console.log();
-    console.log(chalk.hex("#10F66C").bold(`https://github.com/inttter/md-badges`));
-    console.log(
-      chalk.hex("#10F66C").bold(`https://docs.inttter.com/content/badges`),
-    );
-    console.log();
+    const spinner = ora({
+      text: chalk.hex("#289FF9")("Opening in browser..."),
+      color: "yellow",
+    }).start();
+
+    try {
+      await open("https://github.com/inttter/md-badges?tab=readme-ov-file#-table-of-contents");
+
+      // stops when the page is loaded in browser
+      spinner.succeed(chalk.hex("#10F66C")("Opened in browser!"));
+    } catch (error) {
+      spinner.fail("Failed to open in browser.");
+
+      console.error(chalk.red(`Error: ${error.message}`));
+    } finally {
+      setTimeout(() => {
+        console.log();
+        console.log(gradient.cristal('Hasn\'t opened yet? Try one of these two links:'));
+        console.log(chalk.hex("#10F66C").bold(`https://github.com/inttter/md-badges`));
+        console.log(chalk.hex("#10F66C").bold(`https://docs.inttter.com/content/badges`));
+      }, 5000); // 5 seconds
+    }
   });
 
 program

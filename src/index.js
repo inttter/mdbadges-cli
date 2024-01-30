@@ -33,6 +33,23 @@ function formatBadgeName(badgeName) { // formats badge names for outputs
   return formattedBadgeName;
 };
 
+const escapeHtml = (unsafe) => {
+  return unsafe.replace(/[&<"']/g, (match) => {
+    switch (match) {
+      case "&":
+        return "&amp;";
+      case "<":
+        return "&lt;";
+      case '"':
+        return "&quot;";
+      case "'":
+        return "&#039;";
+      default:
+        return match;
+    }
+  });
+};
+
 program.version("4.3.0").description("Find badges without ever leaving the terminal.");
 
 program
@@ -188,7 +205,9 @@ program
     console.log(
       gradient.fruit("GitHub Sponsors: https://github.com/sponsors/inttter"),
     );
-    console.log(gradient.fruit("Ko-fi: https://ko-fi.com/intter"));
+    console.log(
+      gradient.fruit("Ko-fi: https://ko-fi.com/intter")
+    );
     console.log();
   });
 
@@ -340,101 +359,124 @@ program
   .alias("generate")
   .description("Displays prompts to create your own badge.")
   .action(async () => {
-    const response = await inquirer.prompt([
-      {
-        type: "text",
-        name: "alt",
-        message: gradient.fruit(
-          "Enter the Alt Text for the badge (e.g. ![Alt Text]):",
-        ),
-        validate: (value) => {
-          if (!value.trim()) {
-            return "This field is required.";
-          }
-          return true;
+    try {
+      const response = await inquirer.prompt([
+        {
+          type: "text",
+          name: "alt",
+          message: gradient.fruit(
+            "Enter the Alt Text for the badge (e.g. ![Alt Text]):",
+          ),
+          validate: (value) => {
+            if (!value.trim()) {
+              return "This field is required.";
+            }
+            return true;
+          },
         },
-      },
-      {
-        type: "text",
-        name: "name",
-        message: gradient.fruit(
-          "Enter the text you'd like to display on the badge:",
-        ),
-        validate: (value) => {
-          if (!value.trim()) {
-            return "This field is required.";
-          }
-          return true;
+        {
+          type: "text",
+          name: "name",
+          message: gradient.fruit(
+            "Enter the text you'd like to display on the badge:",
+          ),
+          validate: (value) => {
+            if (!value.trim()) {
+              return "This field is required.";
+            }
+            return true;
+          },
         },
-      },
-      {
-        type: "text",
-        name: "color",
-        message: gradient.fruit(
-          "Enter a hexadecimal value for the badge:",
-        ),
-        validate: (value) => {
-          const hexColorRegex = /^#?(?:[0-9a-fA-F]{3}){1,2}$/;
-          if (!hexColorRegex.test(value.trim())) {
-            return "Please enter a valid hexadecimal color. (e.g., #000000, #FDE13B)";
-          }
-          return true;
+        {
+          type: "text",
+          name: "color",
+          message: gradient.fruit(
+            "Enter a hexadecimal value for the badge:",
+          ),
+          validate: (value) => {
+            const hexColorRegex = /^#?(?:[0-9a-fA-F]{3}){1,2}$/;
+            if (!hexColorRegex.test(value.trim())) {
+              return "Please enter a valid hexadecimal color. (e.g., #000000, #FDE13B)";
+            }
+            return true;
+          },
         },
-      },
-      {
-        type: "text",
-        name: "logo",
-        message: gradient.fruit("Enter the logo for the badge:"),
-        validate: (value) => {
-          if (!value.trim()) {
-            return "This field is required.";
-          }
-          return true;
+        {
+          type: "text",
+          name: "logo",
+          message: gradient.fruit(
+            "Enter the logo for the badge:"
+          ),
+          validate: (value) => {
+            if (!value.trim()) {
+              return "This field is required.";
+            }
+            return true;
+          },
         },
-      },
-      {
-        type: "list",
-        name: "style",
-        message: gradient.fruit("Choose the style of the badge:"),
-        choices: [
-          "flat",
-          "flat-square",
-          "plastic",
-          "social",
-          "for-the-badge",
-        ],
-      },
-      {
-        type: "text",
-        name: "logoColor",
-        message:
-          gradient.fruit("Enter the logo color for the badge:"),
-        initial: "",
-      },
-      {
-        type: "text",
-        name: "link",
-        message:
-          gradient.vice(`Optional - `) +
-          gradient.fruit(`Enter the URL you want the badge to direct to:`),
-        initial: "",
-      },
-    ]);
+        {
+          type: "list",
+          name: "style",
+          message: gradient.fruit(
+            "Choose the style of the badge:"
+          ),
+          choices: [
+            "flat",
+            "flat-square",
+            "plastic",
+            "social",
+            "for-the-badge",
+          ],
+        },
+        {
+          type: "text",
+          name: "logoColor",
+          message:
+            gradient.fruit(
+              "Enter the logo color for the badge:"
+            ),
+          initial: "",
+        },
+        {
+          type: "text",
+          name: "link",
+          message:
+            gradient.vice(
+              `Optional - `
+            ) +
+            gradient.fruit(
+              `Enter the URL you want the badge to direct to:`
+            ),
+          initial: "",
+        },
+      ]);
 
-    let badgeLink = `https://img.shields.io/badge/${encodeURIComponent(response.name)}-${encodeURIComponent(response.color)}?logo=${encodeURIComponent(response.logo)}&style=${encodeURIComponent(response.style)}`;
-    if (response.logoColor) {
-      badgeLink += `&logoColor=${encodeURIComponent(response.logoColor)}`;
+      const { alt, name, color, logo, style, logoColor, link } = response;
+
+      let badgeLink = `https://img.shields.io/badge/${encodeURIComponent(name)}-${encodeURIComponent(color)}?logo=${encodeURIComponent(logo)}&style=${encodeURIComponent(style)}`;
+
+      if (logoColor) {
+        badgeLink += `&logoColor=${encodeURIComponent(logoColor)}`;
+      }
+
+      const badgeMarkdown = link
+        ? `[![${alt}](${badgeLink})](${link})`
+        : `[![${alt}](${badgeLink})](#)`;
+
+      const badgeHtml = `<a href="${escapeHtml(link)}"><img alt="${escapeHtml(alt)}" src="${badgeLink}" /></a>`;
+
+      console.log();
+      console.log(gradient.cristal("Custom badge created:"));
+      console.log();
+      console.log(gradient.cristal("Markdown:"));
+      console.log(chalk.hex("#FFBF00").bold(badgeMarkdown)); // displays the code with users' inputs
+      console.log();
+      console.log(gradient.cristal("HTML:"));
+      console.log(chalk.hex("#FFBF00").bold(badgeHtml));
+      console.log();
+    } catch (error) {
+      console.error(`Error creating custom badge: ${error.message}`);
     }
-
-    const badgeMarkdown = response.link
-      ? `[![${response.alt}](${badgeLink})](${response.link})`
-      : `[![${response.alt}](${badgeLink})](#)`;
-
-    console.log();
-    console.log(gradient.cristal("Custom badge created:"));
-    console.log();
-    console.log(gradient.retro(badgeMarkdown)); // displays the code with users' inputs
-    console.log();
   });
 
   program

@@ -206,7 +206,7 @@ program
   program
   .command("badges")
   .alias("list")
-  .description("Displays a link to view all the badges.")
+  .description("Opens a link to the badge list in your browser.")
   .action(async () => {
     console.log();
     const spinner = ora({
@@ -218,11 +218,11 @@ program
       await open("https://github.com/inttter/md-badges?tab=readme-ov-file#-table-of-contents");
 
       // stops when the page is loaded in browser
-      spinner.succeed(chalk.hex("#10F66C")("Opened in browser!"));
+      spinner.succeed(chalk.hex("#10F66C")("Opened in your browser!"));
     } catch (error) {
-      spinner.fail("Failed to open in browser.");
+      spinner.fail("An error occurred opening the link in your browser.");
 
-      console.error(chalk.red(`Error: ${error.message}`));
+      console.error(chalk.red(`${error.message}`));
     } finally {
       setTimeout(() => {
         console.log();
@@ -708,5 +708,33 @@ program
       console.error(chalk.hex("#FF0000")(`Error writing to the file: ${error.message}`));
     }
   });
+
+  program
+  .command('documentation')
+  .alias('docs')
+  .description('Opens a link to the documentation in your browser.')
+  .action(async () => {
+    console.log();
+    const spinner = ora({
+      text: chalk.hex("#289FF9")("Opening the documentation in your browser..."),
+      color: "yellow",
+  }).start();
+
+  try {
+    await open("https://inttter.gitbook.io/mdbadges-cli");
+
+    spinner.succeed(chalk.hex("#10F66C")("Opened in your browser!"));
+  } catch (error) {
+    spinner.fail("An error occurred opening the link in your browser.");
+
+    console.error(chalk.red(`${error.message}`));
+  } finally {
+    setTimeout(() => {
+      console.log();
+      console.log(gradient.cristal('Hasn\'t opened in your browser? Try clicking on the link below:'));
+      console.log(chalk.hex("#10F66C").bold(`https://inttter.gitbook.io/mdbadges-cli`));
+    }, 5000) // 5 seconds
+  }
+});
 
 program.parse(process.argv);

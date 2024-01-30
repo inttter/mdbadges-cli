@@ -59,7 +59,7 @@ Need to find what something does while your in the terminal? Run ```mdb -h``` to
 ```mdb create``` | Displays prompts to create your own badge | ```generate``` | **All fields** require an answer
 ```mdb random``` | Displays a random badge. | ```r``` | Supports both Markdown and HTML formats. Supports specific categories using ```--category``` or ```-c```
 ```mdb copy <category> <badgeName>``` | Copies a badges' code to the clipboard | ```c``` | On Windows 11, you can do <kbd>⊞ + V</kbd> to verify it's been copied
-```mdb badges``` | Displays links containing the full list of badges | ```list``` | Both links link to the same list, on different websites
+```mdb badges``` | Opens a link to the badge list in your browser. | ```list``` | Both links will be displayed after a few seconds, in case it does not open in your *(default)* browser.
 ```mdb add <category> <badgeName> <fileName>``` | Allows you to add a badge to a Markdown file | N/A | **Only ```.md``` files are supported.** Will work in subdirectories, so long as the file path is correct
 
 # Miscallenaous Commands
@@ -72,6 +72,7 @@ Need to find what something does while your in the terminal? Run ```mdb -h``` to
 ```mdb update``` | Checks for updates to the package | ```upd```, ```u``` | If a new version is available, it will prompt you to enter an ```npm``` update command
 ```mdb fund``` | Displays funding/donation links for the package | N/A | You don't have to donate, but I'd appreciate it!
 ```mdb about``` | Displays general information about the package | ```abt``` | Also shows links to the website, GitHub issues, contributing, and more
+```mdb documentation``` | Opens a link to the documentation in your browser. | ```docs``` | Again, the link will be displayed after a few seconds, in case it does not open in your *(default)* browser.
 
 # Available categories
 

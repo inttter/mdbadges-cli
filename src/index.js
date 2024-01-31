@@ -12,48 +12,15 @@ const inquirer = require("inquirer");
 const open = require("open");
 const boxen = require("boxen");
 const badges = require("./badges");
+const utils = require("./utils");
 const packageInfo = require("../package.json");
 
-function formatCategoryName(category) {
-  return category
-    .split("-")
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(" ");
-}
-
-function SearchCategory(category) {
-  return category.toLowerCase().replace(/\s+/g, '-');
-}
-
-function formatBadgeName(badgeName) { // formats badge names for outputs
-  const formattedBadgeName = badgeName
-    .split("-")
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(" ");
-
-  return formattedBadgeName;
-};
-
-const escapeHtml = (unsafe) => {
-  if (typeof unsafe === 'undefined') {
-    return '';
-  }
-
-  return unsafe.replace(/[&<"']/g, (match) => {
-    switch (match) {
-      case "&":
-        return "&amp;";
-      case "<":
-        return "&lt;";
-      case '"':
-        return "&quot;";
-      case "'":
-        return "&#039;";
-      default:
-        return match;
-    }
-  });
-};
+const {
+  formatCategoryName,
+  searchCategory,
+  formatBadgeName,
+  escapeHtml,
+} = utils;
 
 program.version("4.3.1").description("Find badges without ever leaving the terminal.");
 
@@ -64,13 +31,14 @@ program
   .option("-s, --style <badgeStyle>", "Toggles style of a badge") // tags that toggle badge style
   .option("--link", "Toggles links in a badge") // tag that toggles links in the badge
   .action(async (category, badgeNames = [], options) => {
-    const formattedCategory = formatCategoryName(category);
-    const categoryData = badges[SearchCategory(category)];
+    const formattedCategory = utils.formatCategoryName(category);
+    const categoryData = badges[utils.searchCategory(category)];
 
     if (categoryData) {
       console.log();
 
       const links = [];
+      let badgesFound = false;
 
       for (let index = 0; index < badgeNames.length; index++) {
         const badgeName = badgeNames[index];
@@ -81,6 +49,7 @@ program
         const badge = categoryData[foundBadge];
 
         if (badge) {
+          badgesFound = true;
           // Prompt for the link only if --link is specified
           let link = "";
           if (options.link) {
@@ -98,7 +67,7 @@ program
         } else {
           console.log(
             chalk.hex("#FF0000")(
-              `Badge "${gradient.cristal(formatBadgeName(badgeName))}" not found.`,
+              `Badge "${(formatBadgeName(badgeName))}" not found.`,
             ),
           );
           console.log(
@@ -110,7 +79,9 @@ program
         }
       }
 
-      console.log(gradient.cristal(`Badge found:`));
+      if (badgesFound) {
+        console.log(gradient.cristal(`Badge found:`));
+      }
 
       for (let index = 0; index < badgeNames.length; index++) {
         const badgeName = badgeNames[index];
@@ -310,7 +281,7 @@ program
         },
       ]);
 
-      const formattedCategory = SearchCategory(answers.category);
+      const formattedCategory = searchCategory(answers.category);
       const categoryData = badges[formattedCategory];
 
       if (categoryData) {

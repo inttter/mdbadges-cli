@@ -35,6 +35,10 @@ function formatBadgeName(badgeName) { // formats badge names for outputs
 };
 
 const escapeHtml = (unsafe) => {
+  if (typeof unsafe === 'undefined') {
+    return '';
+  }
+
   return unsafe.replace(/[&<"']/g, (match) => {
     switch (match) {
       case "&":
@@ -61,26 +65,12 @@ program
   .option("--link", "Toggles links in a badge") // tag that toggles links in the badge
   .action(async (category, badgeNames = [], options) => {
     const formattedCategory = formatCategoryName(category);
-    const categoryData = badges[category.toLowerCase()];
+    const categoryData = badges[SearchCategory(category)];
 
     if (categoryData) {
       console.log();
 
       const links = [];
-
-      if (options.html && options.link) {
-        console.log(chalk.hex("#FF0000")("HTML is not supported for the link option."));
-        console.log();
-        console.log(chalk.hex("#289FF9")("Instead, you can use <a> tags around your <img> tag."));
-        console.log();
-        console.log(chalk.hex("#289FF9")("Here's an example:"));
-        console.log();
-        console.log(gradient.vice('<a href="https://discord.com/">'));
-        console.log(gradient.vice('  <img src="https://img.shields.io/badge/Discord-%235865F2.svg?&logo=discord&logoColor=white&style=for-the-badge" />'));
-        console.log(gradient.vice('</a>'));
-        console.log()
-        return;
-      }
 
       for (let index = 0; index < badgeNames.length; index++) {
         const badgeName = badgeNames[index];
@@ -97,16 +87,6 @@ program
             const linkResponse = await prompts({
               type: "text",
               name: "link",
-              // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-              // Little explanation of below:
-              //
-              // "Enter your link here:" 
-              // This will only show if there is one badge in the command (eg. mdb social-media twitter --link)
-              //
-              // "Enter your first link here, then click Enter and type the rest below:" 
-              // This will only show if there is more than one badge in the command (eg. mdb social-media twitter discord youtube --link)
-              //
-              // -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
               message: badgeNames.length === 1 ? gradient.vice("Enter your link here:") : index === 0 ? gradient.vice("Enter your first link here, then click Enter and type the rest below:") : "",
               validate: (value) => {
                 return value.trim() === '' ? "Please enter a link." : true; // shows if no link is entered
@@ -139,16 +119,29 @@ program
           (key) => key.toLowerCase() === formattedBadgeName,
         );
         const badge = categoryData[foundBadge];
-
+      
         if (badge) {
           if (options.html) {
             // extracts the badge link and its name
-            const badgeLink = badge.match(/\(([^)]+)\)/)[1];
-            const badgeAlt = badge.match(/\[([^)]+)\]/)[1];
-            // formats the HTML code with its style option
-            const styleOption = options.style ? `&style=${options.style}` : "";
-            const htmlBadge = `<img src="${badgeLink}${styleOption}" />`;
-            console.log(chalk.hex("#FFBF00").bold(htmlBadge));
+            const badgeLinkMatch = badge.match(/\(([^)]+)\)/);
+            const badgeAltMatch = badge.match(/\[([^)]+)\]/);
+      
+            if (badgeLinkMatch && badgeAltMatch) {
+              const badgeLink = badgeLinkMatch[1];
+              const badgeAlt = badgeAltMatch[1];
+              
+              let styleOption = "";
+              if (options.style) {
+                styleOption = `&style=${options.style}`;
+              }
+      
+              const htmlBadge = `<a href="${escapeHtml(links[index])}"><img alt="${escapeHtml(badgeAlt)}" src="${badgeLink}${styleOption}"></a>`;
+              console.log(chalk.hex("#FFBF00").bold(htmlBadge));
+            } else {
+              console.log(
+                chalk.hex("#FF0000")("Error extracting badge link or alt text."),
+              );
+            }
           } else {
             let badgeStyle = "flat"; // flat is the default style if one is not specified
             if (options.style) {
@@ -175,8 +168,8 @@ program
             const badgeAlt = badge.match(/\[([^)]+)\]/)[1];
 
             const badgeMarkdown = links[index]
-              ? `[${badgeAlt}](${badgeLink}${styleOption})](${links[index]})`
-              : `[${badgeAlt}](${badgeLink}${styleOption})](#)`;
+              ? `[${escapeHtml(badgeAlt)}](${badgeLink}${styleOption})](${links[index]})`
+              : `[${escapeHtml(badgeAlt)}](${badgeLink}${styleOption})](#)`;
 
             console.log(chalk.hex("#FFBF00").bold(badgeMarkdown));
           }

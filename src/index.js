@@ -10,6 +10,7 @@ const gradient = require("gradient-string");
 const fs = require("fs");
 const inquirer = require("inquirer");
 const open = require("open");
+const boxen = require("boxen");
 const badges = require("./badges");
 const packageInfo = require("../package.json");
 
@@ -50,7 +51,7 @@ const escapeHtml = (unsafe) => {
   });
 };
 
-program.version("4.3.0").description("Find badges without ever leaving the terminal.");
+program.version("4.3.1").description("Find badges without ever leaving the terminal.");
 
 program
   .arguments("<category> [badgeNames...]") // [badgeNames...] allows for more than one badge
@@ -252,7 +253,7 @@ program
     }
   });
 
-program
+  program
   .command("update")
   .alias("upd")
   .alias("u")
@@ -262,24 +263,27 @@ program
       text: "Checking for updates...",
       color: "yellow",
     }).start();
+    
     try {
-      const response = await axios.get(
-        "https://registry.npmjs.org/mdbadges-cli",
-      );
+      const response = await axios.get("https://registry.npmjs.org/mdbadges-cli");
       const latest = response.data["dist-tags"].latest;
+
       if (latest > packageInfo.version) {
         console.log();
-        console.log(`A new version, ${gradient.cristal(latest)} is available.`);
-        console.log(
-          `Please update by running: ${gradient.cristal("npm install mdbadges-cli@latest")}`,
+        const updateMessage = boxen( // shows if update is available
+          `An update is available: ${chalk.dim(packageInfo.version)} ➜  ${chalk.hex('#BAE7BC')(latest)}\n` +
+          `Run ${gradient.cristal("npm install mdbadges-cli@latest")} to update.`,
+          { padding: 1, margin: 1, borderStyle: 'double', title: '🔵 Important', titleAlignment: 'center', borderColor: '#289FF9' }
         );
+        console.log(updateMessage); // shows the text from 3-4 lines above
         console.log();
       } else {
         console.log();
-        console.log(
-          chalk.hex("#10F66C").bold("You are already on the latest version."),
+        const updateMessageSuccess = boxen( // shows if already on latest version
+          chalk.hex("#10F66C").bold(`You are already on the latest version.`),
+          { padding: 1, margin: 1, borderStyle: 'double', title: '✅ Success', titleAlignment: 'center', borderColor: '#10F66C' }
         );
-        console.log();
+        console.log(updateMessageSuccess); // shows the text from 3 lines above
       }
     } catch (error) {
       console.log();

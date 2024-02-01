@@ -1,8 +1,6 @@
 #!/usr/bin/env node
 
 const { program } = require("commander");
-const { spawn } = require('child_process');
-const path = require('path');
 const axios = require("axios");
 const chalk = require("chalk");
 const prompts = require("prompts");
@@ -25,7 +23,7 @@ const {
   escapeHtml,
 } = utils;
 
-program.version("4.3.1").description("Find badges without ever leaving the terminal.");
+program.version("4.3.2").description("Find badges without ever leaving the terminal.");
 
 program
   .arguments("<category> [badgeNames...]") // [badgeNames...] allows for more than one badge

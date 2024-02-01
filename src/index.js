@@ -13,6 +13,7 @@ const fs = require("fs");
 const inquirer = require("inquirer");
 const open = require("open");
 const boxen = require("boxen");
+const execa = require('execa');
 const badges = require("./badges");
 const utils = require("./utils");
 const packageInfo = require("../package.json");
@@ -220,43 +221,71 @@ program
   });
 
   program
-  .command("update")
-  .alias("upd")
-  .alias("u")
-  .description("Checks for updates to the package.")
+  .command('update')
+  .alias('upd')
+  .alias('u')
+  .description('Checks for updates to the package.')
   .action(async () => {
     const spinner = ora({
-      text: "Checking for updates...",
-      color: "yellow",
+      text: 'Checking for updates...',
+      color: 'yellow',
     }).start();
-    
+
     try {
-      const response = await axios.get("https://registry.npmjs.org/mdbadges-cli");
-      const latest = response.data["dist-tags"].latest;
+      const response = await axios.get('https://registry.npmjs.org/mdbadges-cli');
+      const latest = response.data['dist-tags'].latest;
+
+      spinner.stop();
 
       if (latest > packageInfo.version) {
         console.log();
-        const updateMessage = boxen( // shows if update is available
+        const updateMessage = boxen(
           `An update is available: ${chalk.dim(packageInfo.version)} ➜  ${chalk.hex('#BAE7BC')(latest)}\n` +
-          `Run ${gradient.cristal("npm install -g mdbadges-cli@latest")} to update.`,
+          `Run ${gradient.cristal('npm install -g mdbadges-cli@latest')} to update.`,
           { padding: 1, margin: 1, borderStyle: 'double', title: '🔵 Important', titleAlignment: 'center', borderColor: '#289FF9' }
         );
-        console.log(updateMessage); // shows the text from 3-4 lines above
-        console.log();
+
+        console.log(updateMessage);
+
+        const answer = await inquirer.prompt([
+          {
+            type: 'confirm',
+            name: 'updateNow',
+            message: gradient.cristal('Would you like to update now?'),
+          },
+        ]);
+
+        if (answer.updateNow) {
+          // if user chooses "Y"
+          console.log();
+          console.log(chalk.hex("#BAE7BC")('Updating...'));
+
+          try {
+            // execa runs the command here
+            await execa.command('npm install -g mdbadges-cli@latest', { stdio: 'inherit' });
+
+            console.log();
+            console.log(chalk.hex("#10F66C")('Update complete!'));
+            console.log(chalk.hex("#10F66C")('Check out the GitHub release page for release notes: http://tinyurl.com/mdbreleases'));
+          } catch (error) {
+            console.error(`An error occurred while updating: ${error.message}`);
+          }
+        } else {
+          // User chose not to update
+          console.log(chalk.hex("#289FF9")('Update cancelled.'));
+        }
       } else {
         console.log();
-        const updateMessageSuccess = boxen( // shows if already on latest version
-          chalk.hex("#10F66C").bold(`You are already on the latest version.`),
+        const updateMessageSuccess = boxen(
+          chalk.hex('#10F66C').bold('You are already on the latest version.'),
           { padding: 1, margin: 1, borderStyle: 'double', title: '✅ Success', titleAlignment: 'center', borderColor: '#10F66C' }
         );
-        console.log(updateMessageSuccess); // shows the text from 3 lines above
+        console.log(updateMessageSuccess);
       }
     } catch (error) {
       console.log();
-      console.error(
-        chalk.hex("#FF0000")("An error occurred while checking for updates:"),
-      );
-      console.error(chalk.hex("#FF0000")(error.message));
+      console.error(chalk.hex('#FF0000')('An error occurred while checking for updates:'));
+      console.error(chalk.hex('#FF0000')(error.message));
       console.log();
     } finally {
       spinner.stop();

@@ -4,6 +4,9 @@ Thanks for considering contributing to this project!
 
 However, **please** read below before you do contribute!
 
+> [!IMPORTANT]
+> This package requires [**Node.js 16**](https://nodejs.org/en/blog/release/v16.16.0) or higher. Please make sure you have a compatible version before installing or contributing.
+
 ---
 
 # Features
@@ -19,10 +22,9 @@ Navigate to the ```/src/index.js``` file.
 
 > [!IMPORTANT]
 > Make sure you place any new code ***above*** this line, or else it will **not** work.
-
-```javascript
-program.parse(process.argv);
-```
+> ```javascript
+> program.parse(process.argv);
+> ```
 
 
 Here's a starting template for a command:

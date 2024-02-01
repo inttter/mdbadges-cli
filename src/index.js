@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 
 const { program } = require("commander");
+const { spawn } = require('child_process');
+const path = require('path');
 const axios = require("axios");
 const chalk = require("chalk");
 const prompts = require("prompts");
@@ -236,7 +238,7 @@ program
         console.log();
         const updateMessage = boxen( // shows if update is available
           `An update is available: ${chalk.dim(packageInfo.version)} ➜  ${chalk.hex('#BAE7BC')(latest)}\n` +
-          `Run ${gradient.cristal("npm install mdbadges-cli@latest")} to update.`,
+          `Run ${gradient.cristal("npm install -g mdbadges-cli@latest")} to update.`,
           { padding: 1, margin: 1, borderStyle: 'double', title: '🔵 Important', titleAlignment: 'center', borderColor: '#289FF9' }
         );
         console.log(updateMessage); // shows the text from 3-4 lines above
@@ -736,7 +738,6 @@ program
     spinner.succeed(chalk.hex("#10F66C")("Opened in your browser!"));
   } catch (error) {
     spinner.fail("An error occurred opening the link in your browser.");
-
     console.error(chalk.red(`${error.message}`));
   } finally {
     setTimeout(() => {

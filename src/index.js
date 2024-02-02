@@ -497,7 +497,7 @@ program
         console.log(gradient.vice('                                         |___/                               '));
         console.log();
         console.log(gradient.vice('                 Find badges without ever leaving the terminal.                     '));    
-        console.log(gradient.vice('                            https://cli.inttter.com                            '));
+        console.log(gradient.vice('                               https://mdbcli.xyz                            '));
         console.log();
         console.log(gradient.retro(`Latest Version: ${latestVersion}`));
 

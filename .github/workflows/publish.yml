@@ -1,16 +1,25 @@
-name: Release to NPM
+name: Release
 on:
   release:
     types: [published]
+
 jobs:
   build:
     runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [20]
+
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
         with:
-          node-version: 20
+          node-version: ${{ matrix.node-version }}
           registry-url: 'https://registry.npmjs.org'
+
       - run: npm ci
       - run: npm test
       - run: npm publish

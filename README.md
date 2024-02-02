@@ -46,12 +46,12 @@ Need to find what something does while your in the terminal? Run ```mdb -h``` to
 
 # Commands
 
-###### For more in-depth information, read the documentation [**here**](https://inttter.gitbook.io/mdbadges-cli/).
+###### For more in-depth information, read the documentation [**here**](https://docs.mdbcli.xyz).
 
 |   Command      |    Description    |     Aliases      | Additional Information |
 |----------|-----------|---------------------------|--------|
 ```mdb <category> <badgeName>``` | Displays Markdown for specified badge in a category | N/A | Prefixes available include: ```--style```, ```-s```, ```--html```, and ```--link```. **Finding more than one badge is supported.**
-```mdb search``` | Displays badges available in a [**category**](#list-of-available-categories) | ```s```, ```find```  | Use arrow keys to scroll up/down.
+```mdb search``` | Displays badges available in a [**category**](#available-categories) | ```s```, ```find```  | Use arrow keys to scroll up/down.
 ```mdb lookup <query>``` | Displays badges containing a certain keyword/phrase | ```l``` | Also displays what category the badge is in
 ```mdb create``` | Displays prompts to create your own badge | ```generate``` | **All fields** require an answer
 ```mdb random``` | Displays a random badge. | ```r``` | Supports both Markdown and HTML formats. Supports specific categories using ```--category``` or ```-c```

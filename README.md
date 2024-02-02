@@ -30,8 +30,8 @@ Install the package as you would with any other, using:
 npm install -g mdbadges-cli@latest
 ```
 
-<!-- NPM Publish Workflow !-->
-[![Release to NPM](https://github.com/inttter/mdbadges-cli/actions/workflows/publish.yml/badge.svg?event=release)](https://github.com/inttter/mdbadges-cli/actions/workflows/publish.yml) 
+<!-- NPM Publish Workflow and Tests Workflows !-->
+[![Release to NPM](https://github.com/inttter/mdbadges-cli/actions/workflows/publish.yml/badge.svg?event=release)](https://github.com/inttter/mdbadges-cli/actions/workflows/publish.yml) [![Tests](https://github.com/inttter/mdbadges-cli/actions/workflows/test.yml/badge.svg)](https://github.com/inttter/mdbadges-cli/actions/workflows/test.yml)
 
 To start using a command, add the ```mdb``` prefix, followed by the [**command name/syntax**](#commands). For example:
 

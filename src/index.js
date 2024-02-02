@@ -23,7 +23,7 @@ const {
   escapeHtml,
 } = utils;
 
-program.version("4.3.2").description("Find badges without ever leaving the terminal.");
+program.version("4.3.3").description("Find badges without ever leaving the terminal.");
 
 program
   .arguments("<category> [badgeNames...]") // [badgeNames...] allows for more than one badge
@@ -213,7 +213,7 @@ program
         console.log();
         console.log(gradient.cristal('Hasn\'t opened yet? Try one of these two links:'));
         console.log(chalk.hex("#10F66C").bold(`https://github.com/inttter/md-badges`));
-        console.log(chalk.hex("#10F66C").bold(`https://docs.inttter.com/content/badges`));
+        console.log(chalk.hex("#10F66C").bold(`https://mdbdocs.inttter.com/content/badges`));
       }, 5000); // 5 seconds
     }
   });
@@ -760,7 +760,7 @@ program
   }).start();
 
   try {
-    await open("https://inttter.gitbook.io/mdbadges-cli");
+    await open("https://docs.mdbcli.xyz/");
 
     spinner.succeed(chalk.hex("#10F66C")("Opened in your browser!"));
   } catch (error) {
@@ -770,7 +770,7 @@ program
     setTimeout(() => {
       console.log();
       console.log(gradient.cristal('Hasn\'t opened in your browser? Try clicking on the link below:'));
-      console.log(chalk.hex("#10F66C").bold(`https://inttter.gitbook.io/mdbadges-cli`));
+      console.log(chalk.hex("#10F66C").bold(`https://docs.mdbcli.xyz/`));
     }, 5000) // 5 seconds
   }
 });

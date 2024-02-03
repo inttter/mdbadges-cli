@@ -111,7 +111,7 @@ const badges = {
         'slack': '[![Slack](https://img.shields.io/badge/Slack-4A154B?logo=slack&logoColor=fff)](#) ',
         'trello': '[![Trello](https://img.shields.io/badge/Trello-0052CC?logo=trello&logoColor=fff)](#) '
     },
-    'cryptocurrency': {
+    'crypto': {
         'bitcoin': '[![Bitcoin](https://img.shields.io/badge/Bitcoin-FF9900?logo=bitcoin&logoColor=white)](#) ',
         'bitcoin-cash': '[![Bitcoin Cash](https://img.shields.io/badge/Bitcoin%20Cash-0AC18E?logo=bitcoincash&logoColor=fff)](#) ',
         'bitcoin-sv': '[![Bitcoin SV](https://img.shields.io/badge/Bitcoin%20SV-EAB300?logo=bitcoinsv&logoColor=fff)](#) ',

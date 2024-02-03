@@ -107,6 +107,30 @@ If you want to  add a badge to the list of badges, follow these steps:
 
 ---
 
+# Styling
+
+Currently, we use [**```gradient-string```**](https://github.com/bokub/gradient-string), [**```Chalk V4```**](https://github.com/chalk/chalk), and [**```ansi-colors```**](https://github.com/doowb/ansi-colors) for styling/coloring the text.
+
+Preferably, you should include at least one of these.
+
+> [!NOTE]
+> We use Chalk 4.1.2 because that is the last CommonJS version.
+
+### Syntax:
+
+```javascript
+// gradient-string example
+console.log(gradient.cristal("This will be outputted with a gradient!"))
+
+// Chalk 4.1.2 example
+console.log(chalk.hex('#FFBF00')("This will be outputted with the hex color!"))
+
+// ansi-colors example
+console.log(c.yellow.underline("This will be outputted in yellow, while being underlined!"))
+```
+
+---
+
 ## Questions
 
 For questions that require answers, open an issue and label it with the ```question``` label.

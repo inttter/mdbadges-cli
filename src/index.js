@@ -12,10 +12,12 @@ const inquirer = require("inquirer");
 const open = require("open");
 const boxen = require("boxen");
 const execa = require('execa');
+const c = require('ansi-colors');
 const badges = require("./badges");
 const utils = require("./utils");
 const packageInfo = require("../package.json");
 
+// Functions (see /src/utils.js)
 const {
   formatCategoryName,
   searchCategory,
@@ -23,8 +25,9 @@ const {
   escapeHtml,
 } = utils;
 
-program.version("4.3.3").description("Find badges without ever leaving the terminal.");
+program.version("4.4.0").description("Find badges without ever leaving the terminal.");
 
+// Main Command
 program
   .arguments("<category> [badgeNames...]") // [badgeNames...] allows for more than one badge
   .description("Displays Markdown for specified badge in a category.")
@@ -67,21 +70,20 @@ program
           }
         } else {
           console.log(
-            chalk.hex("#FF0000")(
-              `Badge "${(formatBadgeName(badgeName))}" not found.`,
+            c.red(
+              `ERROR: ${(formatBadgeName(badgeName))} is not a valid badge.`,
             ),
           );
           console.log(
-            chalk.hex("#289FF9")(
-              `If your name has a space, try entering a dash.`,
+            c.cyan(
+              `Try running ${c.blue('mdb search')} for a list of badges in that category.`,
             ),
           );
-          console.log(chalk.hex("#289FF9")(`e.g., applemusic -> apple-music`));
         }
       }
 
       if (badgesFound) {
-        console.log(gradient.cristal(`Badge found:`));
+        console.log(c.green.bold(`Badge found:`));
       }
 
       for (let index = 0; index < badgeNames.length; index++) {
@@ -108,10 +110,10 @@ program
               }
       
               const htmlBadge = `<a href="${escapeHtml(links[index])}"><img alt="${escapeHtml(badgeAlt)}" src="${badgeLink}${styleOption}"></a>`;
-              console.log(chalk.hex("#FFBF00").bold(htmlBadge));
+              console.log(chalk.hex("#FFBF00")(htmlBadge));
             } else {
               console.log(
-                chalk.hex("#FF0000")("Error extracting badge link or alt text."),
+                c.red("Error extracting badge link or alt text."),
               );
             }
           } else {
@@ -129,8 +131,8 @@ program
                 badgeStyle = options.style;
               } else {
                 console.log(
-                  chalk.hex("#FF0000")(
-                    "Invalid style. Using default (flat)...",
+                  c.red(
+                    "WARNING: An invalid style was detected.",
                   ),
                 );
               }
@@ -151,11 +153,12 @@ program
       console.log();
     } else {
       console.log()
-      console.log(chalk.hex("#FF0000")(`That category could not be found.`));
-      console.log()
+      console.log(c.red(`That category could not be found.`));
+      console.log(c.cyan(`You can try visiting the syntax list for the categories here: ${c.blue.bold('http://tinyurl.com/mdbcategories')}`));
     }
   });
 
+// Fund Command
 program
   .command("fund")
   .description("Displays funding/donation links for the package.")
@@ -177,6 +180,7 @@ program
     console.log();
   });
 
+// Version Checking Command
 program
   .command("version")
   .alias("ver")
@@ -184,10 +188,10 @@ program
   .description("Displays the current version you are on.")
   .action(() => {
     console.log();
-    console.log(gradient.cristal(`${packageInfo.version}`)); // fetches package info version from package.json
-    console.log();
+    console.log(c.white(`${packageInfo.version}`)); // fetches package info version from package.json
   });
 
+// Badge List Command
   program
   .command("badges")
   .alias("list")
@@ -195,7 +199,7 @@ program
   .action(async () => {
     console.log();
     const spinner = ora({
-      text: chalk.hex("#289FF9")("Opening in browser..."),
+      text: c.blue("Opening in browser..."),
       color: "yellow",
     }).start();
 
@@ -205,19 +209,20 @@ program
       // stops when the page is loaded in browser
       spinner.succeed(chalk.hex("#10F66C")("Opened in your browser!"));
     } catch (error) {
-      spinner.fail("An error occurred opening the link in your browser.");
+      spinner.fail(c.red("ERROR: An error occurred opening the link in your browser."));
 
-      console.error(chalk.red(`${error.message}`));
+      console.error(c.red(`${error.message}`));
     } finally {
       setTimeout(() => {
         console.log();
-        console.log(gradient.cristal('Hasn\'t opened yet? Try one of these two links:'));
-        console.log(chalk.hex("#10F66C").bold(`https://github.com/inttter/md-badges`));
-        console.log(chalk.hex("#10F66C").bold(`https://mdbdocs.inttter.com/content/badges`));
+        console.log(c.yellow('Hasn\'t opened yet? Try one of these two links:'));
+        console.log(c.dim(`https://github.com/inttter/md-badges`));
+        console.log(c.dim(`https://mdbdocs.inttter.com/content/badges`));
       }, 5000); // 5 seconds
     }
   });
 
+// Update Command
   program
   .command('update')
   .alias('upd')
@@ -225,7 +230,7 @@ program
   .description('Checks for updates to the package.')
   .action(async () => {
     const spinner = ora({
-      text: 'Checking for updates...',
+      text: c.cyan.bold('Checking for updates...'),
       color: 'yellow',
     }).start();
 
@@ -239,7 +244,7 @@ program
         console.log();
         const updateMessage = boxen(
           `An update is available: ${chalk.dim(packageInfo.version)} ➜  ${chalk.hex('#BAE7BC')(latest)}\n` +
-          `Run ${gradient.cristal('npm install -g mdbadges-cli@latest')} to update.`,
+          `Run ${c.cyan('npm install -g mdbadges-cli@latest')} to update, or select ${c.cyan('Y')} below.`, 
           { padding: 1, margin: 1, borderStyle: 'double', title: '🔵 Important', titleAlignment: 'center', borderColor: '#289FF9' }
         );
 
@@ -249,47 +254,47 @@ program
           {
             type: 'confirm',
             name: 'updateNow',
-            message: gradient.cristal('Would you like to update now?'),
+            message: c.cyan('Would you like to update now?'),
           },
         ]);
 
         if (answer.updateNow) {
           // if user chooses "Y"
           console.log();
-          console.log(chalk.hex("#BAE7BC")('Updating...'));
+          console.log(c.cyan('Updating...'));
 
           try {
             // execa runs the command here
             await execa.command('npm install -g mdbadges-cli@latest', { stdio: 'inherit' });
 
             console.log();
-            console.log(chalk.hex("#10F66C")('Update complete!'));
-            console.log(chalk.hex("#10F66C")('Check out the GitHub release page for release notes: http://tinyurl.com/mdbreleases'));
+            console.log(c.green('Update complete!'));
+            console.log(c.green('Check out the GitHub release page for release notes: http://tinyurl.com/mdbreleases'));
           } catch (error) {
-            console.error(`An error occurred while updating: ${error.message}`);
+            console.error(c.red(`ERROR: An error occurred while updating: ${error.message}`));
           }
         } else {
           // User chose not to update
-          console.log(chalk.hex("#289FF9")('Update cancelled.'));
+          console.log(c.magenta('Update cancelled.'));
         }
       } else {
         console.log();
         const updateMessageSuccess = boxen(
-          chalk.hex('#10F66C').bold('You are already on the latest version.'),
+          c.green.bold('You are already on the latest version.'),
           { padding: 1, margin: 1, borderStyle: 'double', title: '✅ Success', titleAlignment: 'center', borderColor: '#10F66C' }
         );
         console.log(updateMessageSuccess);
       }
     } catch (error) {
       console.log();
-      console.error(chalk.hex('#FF0000')('An error occurred while checking for updates:'));
-      console.error(chalk.hex('#FF0000')(error.message));
+      console.error(c.red(`ERROR: An error occurred while checking for updates: ${error.message}`));
       console.log();
     } finally {
       spinner.stop();
     }
   });
 
+// Search Command
   program
   .command('search')
   .alias('s')
@@ -315,19 +320,19 @@ program
 
       if (categoryData) {
         console.log();
-        console.log(gradient.cristal(`Badges available in ${(answers.category)}:`));
+        console.log(c.green(`Badges available in ${(answers.category)}:`));
         console.log();
         Object.keys(categoryData).forEach((badge) => {
-          console.log(gradient.cristal(`• ${badge}`));
+          console.log(c.green(`• ${badge}`));
         });
         console.log(
-          chalk.hex('#289FF9')(
-            `\nTo get the ${gradient.cristal('Markdown')} version of a badge, type 'mdb ${formattedCategory} <badgeName>'.`,
+          c.cyan(
+            `\nTo get the ${c.underline('Markdown')} version of a badge, type 'mdb ${formattedCategory} <badgeName>'.`,
           ),
         );
         console.log(
-          chalk.hex('#289FF9')(
-            `To get the ${gradient.cristal('HTML')} version of a badge, type 'mdb --html ${formattedCategory} <badgeName>'.`,
+          c.cyan(
+            `To get the ${c.underline('HTML')} version of a badge, type 'mdb --html ${formattedCategory} <badgeName>'.`,
           ),
         );
         console.log();
@@ -351,6 +356,7 @@ program
     }
   });
 
+// Badge Creator Command
   program
   .command("create")
   .alias("generate")
@@ -366,7 +372,7 @@ program
           ),
           validate: (value) => {
             if (!value.trim()) {
-              return "This field is required.";
+              return c.red("This field is required.");
             }
             return true;
           },
@@ -379,7 +385,7 @@ program
           ),
           validate: (value) => {
             if (!value.trim()) {
-              return "This field is required.";
+              return c.red("This field is required.");
             }
             return true;
           },
@@ -393,7 +399,7 @@ program
           validate: (value) => {
             const hexColorRegex = /^#?(?:[0-9a-fA-F]{3}){1,2}$/;
             if (!hexColorRegex.test(value.trim())) {
-              return "Please enter a valid hexadecimal color. (e.g., #000000, #FDE13B)";
+              return c.red("Please enter a valid hexadecimal color. (e.g., #000000, #FDE13B)");
             }
             return true;
           },
@@ -406,7 +412,7 @@ program
           ),
           validate: (value) => {
             if (!value.trim()) {
-              return "This field is required.";
+              return c.red("This field is required.");
             }
             return true;
           },
@@ -463,19 +469,20 @@ program
       const badgeHtml = `<a href="${escapeHtml(link)}"><img alt="${escapeHtml(alt)}" src="${badgeLink}" /></a>`;
 
       console.log();
-      console.log(gradient.cristal("Custom badge created:"));
+      console.log(c.green.bold("Custom badge created:"));
       console.log();
-      console.log(gradient.cristal("Markdown:"));
-      console.log(chalk.hex("#FFBF00").bold(badgeMarkdown)); // displays the code with users' inputs
+      console.log(c.yellow.underline.bold("Markdown:"));
+      console.log(c.green(badgeMarkdown)); // displays the code with users' inputs
       console.log();
-      console.log(gradient.cristal("HTML:"));
-      console.log(chalk.hex("#FFBF00").bold(badgeHtml));
+      console.log(c.yellow.underline.bold("HTML:"));
+      console.log(c.green(badgeHtml)); // displays the HTML version
       console.log();
     } catch (error) {
-      console.error(`Error creating custom badge: ${error.message}`);
+      console.error(c.red(`ERROR: An error occurred when creating your custom badge: ${error.message}`));
     }
   });
 
+// About/Info Command
   program
   .command('about')
   .alias('abt')
@@ -487,34 +494,32 @@ program
         const latestVersion = response.data["dist-tags"].latest;
 
         console.log();
-        console.log(gradient.vice('                 _  _                 _                                 _  _ '));
-        console.log(gradient.vice('                | || |               | |                               | |(_) '));
-        console.log(gradient.vice('  _ __ ___    __| || |__    __ _   __| |  __ _   ___  ___  ______  ___ | | _ '));
-        console.log(gradient.vice(' | \'_ ` _ \\  / _` || \'_ \\  / _` | / _` | / _` | / _ \\/ __||______|/ __|| || |'));
-        console.log(gradient.vice(' | | | | | || (_| || |_) || (_| || (_| || (_| ||  __/\\__ \\       | (__ | || |'));
-        console.log(gradient.vice(' |_| |_| |_| \\__,_||_.__/  \\__,_| \\__,_| \\__, | \\___||___/        \\___||_||_|'));
-        console.log(gradient.vice('                                          __/ |                              '));
-        console.log(gradient.vice('                                         |___/                               '));
+        console.log(c.green.bold('                 _  _                 _                                 _  _ '));
+        console.log(c.green.bold('                | || |               | |                               | |(_) '));
+        console.log(c.green.bold('  _ __ ___    __| || |__    __ _   __| |  __ _   ___  ___  ______  ___ | | _ '));
+        console.log(c.green.bold(' | \'_ ` _ \\  / _` || \'_ \\  / _` | / _` | / _` | / _ \\/ __||______|/ __|| || |'));
+        console.log(c.green.bold(' | | | | | || (_| || |_) || (_| || (_| || (_| ||  __/\\__ \\       | (__ | || |'));
+        console.log(c.green.bold(' |_| |_| |_| \\__,_||_.__/  \\__,_| \\__,_| \\__, | \\___||___/        \\___||_||_|'));
+        console.log(c.green.bold('                                          __/ |                              '));
+        console.log(c.green.bold('                                         |___/                               '));
         console.log();
-        console.log(gradient.vice('                 Find badges without ever leaving the terminal.                     '));    
-        console.log(gradient.vice('                               https://mdbcli.xyz                            '));
+        console.log(c.blue.bold('                 Find badges without ever leaving the terminal.                     '));    
+        console.log(c.blue.bold('                               https://mdbcli.xyz                            '));
         console.log();
-        console.log(gradient.retro(`Latest Version: ${latestVersion}`));
+        console.log(c.yellow(`${c.yellow.bold.underline('Latest Version:')} ${latestVersion}`));
 
         const userPackageVersion = packageInfo.version;
-        console.log(gradient.cristal(`Your Version: ${userPackageVersion}`));
+        console.log(c.yellow(`${c.yellow.bold.underline('Your Version:')} ${userPackageVersion}`));
+        console.log(c.blue(`If these versions do not match, run ${c.cyan.bold('mdb update')}.`));
         console.log();
-        console.log(gradient.atlas(`If you need to, update by running 'mdb update' or 'mdb upd'`));
+        console.log(c.blue(`• ${c.cyan.bold('mdb -h')} to view the available list of commands`));
+        console.log(c.blue(`• ${c.cyan.bold('mdb fund')} to donate`));
         console.log();
-        console.log(gradient.atlas(`License: https://mit-license.org/`));
-        console.log();
-        console.log(gradient.atlas(`Type 'mdb -h' to view the available list of commands`));
-        console.log(gradient.atlas(`Type 'mdb fund' if you'd like to donate`));
-        console.log();
-        console.log(gradient.atlas(`Report any issues on GitHub: https://github.com/inttter/mdbadges-cli/issues`));
-        console.log(gradient.atlas(`To add a badge, view the contributing guidelines: http://tinyurl.com/mdbcontributing`));
+        console.log(c.blue(`• Issues: ${c.blue.bold.underline('https://github.com/inttter/mdbadges-cli/issues')}`));
+        console.log(c.blue(`• Contribute: ${c.blue.bold.underline('http://tinyurl.com/mdbcontributing')}`));
+        console.log(c.green(`• License: ${c.green.underline.bold('http://tinyurl.com/mdblicense')}`));
       } catch (error) {
-        console.error(`Error fetching latest version: ${error.message}`);
+        console.error(`ERROR: An error occurred when fetching the latest version: ${error.message}`);
       }
     }
 
@@ -522,6 +527,7 @@ program
     await displayAboutInfo();
   });
 
+// Random Badge Command
   program
   .command('random')
   .alias('r')
@@ -543,7 +549,7 @@ program
       const selectedCategory = categoryPrompt.selectedCategory.toLowerCase();
 
       if (!badges[selectedCategory]) {
-        console.log(`No badges found in the selected category: ${selectedCategory}`);
+        console.log(c.red(`No badges found in the selected category: ${selectedCategory}`));
         return;
       }
 
@@ -576,9 +582,11 @@ program
 
       // this outputs BOTH versions, Markdown and HTML
       console.log();
-      console.log(gradient.cristal('Markdown:'), gradient.vice(markdownBadge));
+      console.log(c.yellow.underline.bold('Markdown:')); 
+      console.log(c.green(markdownBadge));
       console.log();
-      console.log(gradient.cristal('HTML:'), gradient.vice(htmlBadge));
+      console.log(c.yellow.underline.bold('HTML:'));
+      console.log(c.green(htmlBadge));
       // -----------------------------------------------------------------------
       // the logic below is for the command without --category/-c (aka just mdb random)
     } else {
@@ -597,12 +605,15 @@ program
 
       // Output both versions, Markdown and HTML.
       console.log();
-      console.log(gradient.cristal('Markdown:'), gradient.vice(markdownBadge));
+      console.log(c.yellow.underline.bold('Markdown:')); 
+      console.log(c.green(markdownBadge));
       console.log();
-      console.log(gradient.cristal('HTML:'), gradient.vice(htmlBadge));
+      console.log(c.yellow.underline.bold('HTML:'));
+      console.log(c.green(htmlBadge));
     }
   });
 
+// Copy Command
 program
   .command("copy <category> <badgeName>")
   .alias("c")
@@ -619,25 +630,20 @@ program
       clipboardy.writeSync(selectedBadge);
       console.log();
       console.log(
-        chalk.hex("#10F66C").bold(`Copied to the clipboard successfully.`),
+        c.green.bold(`Copied to the clipboard successfully.`),
       );
-      console.log(
-        chalk.blueBright(`Press 'Ctrl + V' to paste the copied code.`),
-      );
-      console.log();
     } else {
       console.log();
-      console.log(chalk.hex("#FF0000")(`Badge not found.`));
-      console.log();
+      console.log(c.red(`ERROR: The badge you specified could not be found.`));
       console.log(
-        chalk.hex("#289FF9")(
-          `Try running ${gradient.vice(`mdb search ${category}`)} for a full list of badges in this category.`,
+        c.blue(
+          `Try running ${c.cyan(`mdb search ${category}`)} for a full list of badges in this category.`,
         ),
       );
-      console.log();
     }
   });
 
+// Lookup Command
   program
   .command("lookup <query>")
   .alias("l")
@@ -651,8 +657,8 @@ program
           const formattedCategory = formatCategoryName(category);
           const formattedBadge = formatBadgeName(badgeName);
           badgeChoices.push({
-            name: `• ${gradient.retro(formattedBadge)} in ${gradient.vice(formattedCategory)}`,
-            value: categoryData[badgeName], // Store the badge code as the value
+            name: `${gradient.retro(formattedBadge)} in ${gradient.vice(formattedCategory)}`,
+            value: categoryData[badgeName], // stores the badge code as the value
           });
         }
       });
@@ -660,7 +666,7 @@ program
 
     if (!badgeChoices.length) {
       console.log();
-      console.log(chalk.hex("#FF0000")(`No badges found with that phrase.`));
+      console.log(c.red(`ERROR: A badge containing that keyword/phrase could not be found.`));
       console.log();
     } else {
       const { selectedBadge } = await inquirer.prompt([
@@ -673,12 +679,12 @@ program
       ]);
 
       console.log();
-      console.log(gradient.cristal('Badge found:'));
-      console.log(gradient.vice(selectedBadge));
-      console.log();
+      console.log(c.green.bold('Badge found:'));
+      console.log(chalk.hex("#FFBF00")(selectedBadge));
     }
   });
 
+// Adding Badge To File Command
   program
   .command("add <category> <badgeName> [filePath]")
   .description("Allows you to add a badge to a Markdown file.")
@@ -687,7 +693,10 @@ program
     const categoryData = badges[category.toLowerCase()];
 
     if (!categoryData) {
-      console.log(chalk.hex("#FF0000")(`Category "${formattedCategory}" not found.`));
+      console.log();
+      console.log(c.red(`ERROR: The category you specified could not be found.`));
+      console.log(c.cyan(`You can try visiting the syntax list for the categories here: ${c.blue.bold('http://tinyurl.com/mdbcategories')}`));
+      console.log
       return;
     }
 
@@ -697,10 +706,11 @@ program
     );
 
     if (!foundBadge) {
-      console.log(chalk.hex("#FF0000")(`Badge "${formattedBadgeName}" not found.`));
+      console.log();
+      console.log(chalk.hex("#FF0000")(`ERROR: The badge you specified could not be found.`));
       console.log(
-        chalk.hex("#289FF9")(
-          `Try running ${gradient.vice(`"mdb search ${category}"`)} for a full list of badges in this category.`,
+        c.cyan(
+          `Try running ${c.blue.bold(`mdb search`)} for a full list of badges in this category.`,
         )
       );
       return;
@@ -711,7 +721,7 @@ program
     // this checks if the badge is defined + if the regex match is successful
     const badgeLinkMatch = badge.match(/\(([^)]+)\)/);
     if (!badgeLinkMatch || !badgeLinkMatch[1]) {
-      console.log(chalk.hex("#FF0000")("Badge link not found in the expected format."));
+      console.log(c.red("ERROR: The badge link could not be found in the expected format."));
       return;
     }
 
@@ -723,7 +733,8 @@ program
 
     // Check if the specified file has the ".md" extension
     if (!filePath.toLowerCase().endsWith(".md")) {
-      console.log(chalk.hex("#FF0000")(`Invalid file. Please provide a Markdown file with a ".md" extension.`));
+      console.log();
+      console.log(c.red(`ERROR: This file is invalid and/or may not be supported. Please provide a Markdown file with a ".md" extension.`));
     return;
   }
 
@@ -733,7 +744,7 @@ program
     try {
       fileContent = fs.readFileSync(filePath, "utf8");
     } catch (error) {
-      console.error(chalk.hex("#FF0000")(`Error reading the file: ${error.message}`));
+      console.error(c.red(`ERROR: An error occurred when trying to read the file: ${error.message}`));
       return;
     }
 
@@ -741,13 +752,13 @@ program
     try {
       fs.appendFileSync(filePath, `\n${badgeMarkdown}\n`, "utf8");
       console.log()
-      console.log(gradient.cristal("Badge added to the file successfully."));
-      console.log()
+      console.log(c.green("Badge added to the file successfully."));
     } catch (error) {
-      console.error(chalk.hex("#FF0000")(`Error writing to the file: ${error.message}`));
+      console.error(c.red(`ERROR: An error ocurred when trying to write to the file: ${error.message}`));
     }
   });
 
+// Documentation Command
   program
   .command('documentation')
   .alias('docs')
@@ -755,7 +766,7 @@ program
   .action(async () => {
     console.log();
     const spinner = ora({
-      text: chalk.hex("#289FF9")("Opening the documentation in your browser..."),
+      text: c.blue("Opening the documentation in your browser..."),
       color: "yellow",
   }).start();
 
@@ -764,13 +775,14 @@ program
 
     spinner.succeed(chalk.hex("#10F66C")("Opened in your browser!"));
   } catch (error) {
-    spinner.fail("An error occurred opening the link in your browser.");
-    console.error(chalk.red(`${error.message}`));
+    spinner.fail(c.red("ERROR: An error occurred opening the link in your browser."));
+
+    console.error(c.red(`${error.message}`));
   } finally {
     setTimeout(() => {
       console.log();
-      console.log(gradient.cristal('Hasn\'t opened in your browser? Try clicking on the link below:'));
-      console.log(chalk.hex("#10F66C").bold(`https://docs.mdbcli.xyz/`));
+      console.log(c.yellow('Hasn\'t opened in your browser? Try clicking on the link below:'));
+      console.log(c.dim(`https://docs.mdbcli.xyz/`));
     }, 5000) // 5 seconds
   }
 });

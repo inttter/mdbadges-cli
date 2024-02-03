@@ -239,7 +239,7 @@ program
 
       spinner.stop();
 
-      if (latest < packageInfo.version) {
+      if (latest > packageInfo.version) {
         console.log();
         const updateMessage = boxen(
           `An update is available: ${c.dim(packageInfo.version)} ➜  ${c.green(latest)}\n` +

@@ -7,7 +7,6 @@ const prompts = require("prompts");
 const clipboardy = require("clipboardy");
 const ora = require("ora");
 const gradient = require("gradient-string");
-const fs = require("fs");
 const inquirer = require("inquirer");
 const open = require("open");
 const boxen = require("boxen");
@@ -60,9 +59,9 @@ program
             const linkResponse = await prompts({
               type: "text",
               name: "link",
-              message: badgeNames.length === 1 ? gradient.vice("Enter your link here:") : index === 0 ? gradient.vice("Enter your first link here, then click Enter and type the rest below:") : "",
+              message: badgeNames.length === 1 ? c.blue("Enter your link here:") : index === 0 ? c.blue("Enter your first link here, then click Enter and type the rest below:") : "",
               validate: (value) => {
-                return value.trim() === '' ? "Please enter a link." : true; // shows if no link is entered
+                return value.trim() === '' ? c.red("Please enter a link.") : true; // shows if no link is entered
               },
             });
             link = linkResponse.link;
@@ -165,17 +164,17 @@ program
   .action(() => {
     console.log();
     console.log(
-      gradient.cristal("If you would like, you can donate to me here:"),
+      c.yellow("If you would like, you can donate to me here:"),
     );
     console.log();
     console.log(
-      gradient.fruit("Buy Me A Coffee: https://www.buymeacoffee.com/intter"),
+      c.green(`Buy Me A Coffee: ${c.green.bold.underline('https://www.buymeacoffee.com/intter')}`),
     );
     console.log(
-      gradient.fruit("GitHub Sponsors: https://github.com/sponsors/inttter"),
+      c.green(`GitHub Sponsors: ${c.green.bold.underline('https://github.com/sponsors/inttter')}`),
     );
     console.log(
-      gradient.fruit("Ko-fi: https://ko-fi.com/intter")
+      c.green(`Ko-fi: ${c.green.bold.underline('https://ko-fi.com/intter')}`)
     );
     console.log();
   });
@@ -240,10 +239,10 @@ program
 
       spinner.stop();
 
-      if (latest > packageInfo.version) {
+      if (latest < packageInfo.version) {
         console.log();
         const updateMessage = boxen(
-          `An update is available: ${chalk.dim(packageInfo.version)} ➜  ${chalk.hex('#BAE7BC')(latest)}\n` +
+          `An update is available: ${c.dim(packageInfo.version)} ➜  ${c.green(latest)}\n` +
           `Run ${c.cyan('npm install -g mdbadges-cli@latest')} to update, or select ${c.cyan('Y')} below.`, 
           { padding: 1, margin: 1, borderStyle: 'double', title: '🔵 Important', titleAlignment: 'center', borderColor: '#289FF9' }
         );
@@ -338,7 +337,7 @@ program
         console.log();
       } else {
         console.log(
-          chalk.hex('#FF0000')(`Category "${answers.category}" could not be found.`),
+          chalk.hex('#FF0000')(`ERROR: The specified category could not be found.`),
         );
         console.log();
       }
@@ -657,7 +656,7 @@ program
           const formattedCategory = formatCategoryName(category);
           const formattedBadge = formatBadgeName(badgeName);
           badgeChoices.push({
-            name: `${gradient.retro(formattedBadge)} in ${gradient.vice(formattedCategory)}`,
+            name: `${c.green(formattedBadge)} in ${c.yellow(formattedCategory)}`,
             value: categoryData[badgeName], // stores the badge code as the value
           });
         }
@@ -707,7 +706,7 @@ program
 
     if (!foundBadge) {
       console.log();
-      console.log(chalk.hex("#FF0000")(`ERROR: The badge you specified could not be found.`));
+      console.log(c.red(`ERROR: The badge you specified could not be found.`));
       console.log(
         c.cyan(
           `Try running ${c.blue.bold(`mdb search`)} for a full list of badges in this category.`,

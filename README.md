@@ -86,7 +86,7 @@ Code Editor | code-editor
 Cloud Storage | cloud-storage
 Cloud System | cloud-system
 Collaboration | collaboration
-Cryptocurrency | cryptocurrency
+Cryptocurrency | crypto
 Database | database
 Design | design
 Documentation | documentation

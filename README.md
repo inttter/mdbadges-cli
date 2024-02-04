@@ -42,11 +42,11 @@ mdb social-media discord
 # [![Discord](https://img.shields.io/badge/Discord-%235865F2.svg?&logo=discord&logoColor=white)](#)
 ```
 
-Need to find what something does while your in the terminal? Run ```mdb -h``` to view all commands, aliases, and additional options.
+Need to find what something does while your in the terminal? Run ```mdb help / -h``` to view all commands, aliases, and additional options.
 
 # Commands
 
-###### For more in-depth information, read the documentation [**here**](https://docs.mdbcli.xyz).
+###### For more in-depth information, read the documentation [**here**](https://docs.mdbcli.xyz)
 
 |   Command      |    Description    |     Aliases      | Additional Information |
 |----------|-----------|---------------------------|--------|
@@ -61,7 +61,7 @@ Need to find what something does while your in the terminal? Run ```mdb -h``` to
 
 # Miscallenaous Commands
 
-###### Commands which don't serve ***too*** important of a purpose.
+###### Commands which don't serve ***too*** important of a purpose
 
 |   Command      |    Description    |     Aliases      | Additional Information |
 |----------|-----------|---------------------------|--------|
@@ -95,7 +95,6 @@ Funding | funding
 Framework | framework
 Game Engine | game-engine
 Gaming Storefront | game-stores
-Game Engine | game-engine
 Office | office
 Operating System | operating-system
 Package Manager | package-manager
@@ -112,7 +111,7 @@ Work/Job | work-and-jobs
 
 # Contributing
 
-There are multiple ways to contribute and improve this package. 
+There are multiple ways to contribute and improve this package.
 
 * [**New Features**](https://github.com/inttter/mdbadges-cli/blob/main/CONTRIBUTING.md#features "Features" ) - Features/Improvements which improve user experience.
 * [**Adding Badges**](https://github.com/inttter/mdbadges-cli/blob/main/CONTRIBUTING.md#adding-badges "Adding Badges") - New badges to be added to the already large list of badges.
@@ -126,4 +125,4 @@ There are multiple ways to contribute and improve this package.
 
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/intter)
 
-###### ©  http://license.inttter.com
+###### ©  <http://license.inttter.com>

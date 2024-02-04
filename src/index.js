@@ -784,4 +784,13 @@ program
   }
 });
 
+// Help Command
+// Do note this literally just runs what mdb -h would show.
+  program
+  .command('help')
+  .description('Displays help information.')
+  .action(() => {
+    program.outputHelp();
+  });
+
 program.parse(process.argv);

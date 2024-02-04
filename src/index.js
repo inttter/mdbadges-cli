@@ -12,6 +12,7 @@ const open = require("open");
 const boxen = require("boxen");
 const execa = require('execa');
 const c = require('ansi-colors');
+const { consola, createConsola } = require("consola");
 const badges = require("./badges");
 const utils = require("./utils");
 const packageInfo = require("../package.json");
@@ -129,9 +130,9 @@ program
               if (styles.includes(options.style)) {
                 badgeStyle = options.style;
               } else {
-                console.log(
-                  c.red(
-                    "WARNING: An invalid style was detected.",
+                consola.warn(
+                  c.yellow(
+                    "An invalid style was detected. View available styles here: https://docs.mdbcli.xyz/commands/finding-a-badge#style-s",
                   ),
                 );
               }

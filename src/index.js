@@ -69,9 +69,9 @@ program
             links.push(link);
           }
         } else {
-          console.log(
+          consola.error(
             c.red(
-              `ERROR: ${(formatBadgeName(badgeName))} is not a valid badge.`,
+              `${(formatBadgeName(badgeName))} is not a valid badge.`,
             ),
           );
           console.log(
@@ -112,8 +112,8 @@ program
               const htmlBadge = `<a href="${escapeHtml(links[index])}"><img alt="${escapeHtml(badgeAlt)}" src="${badgeLink}${styleOption}"></a>`;
               console.log(chalk.hex("#FFBF00")(htmlBadge));
             } else {
-              console.log(
-                c.red("Error extracting badge link or alt text."),
+              consola.error(
+                c.red("Could not extract badge link or alt text."),
               );
             }
           } else {
@@ -152,8 +152,7 @@ program
 
       console.log();
     } else {
-      console.log()
-      console.log(c.red(`That category could not be found.`));
+      consola.error(c.red(`That category could not be found.`));
       console.log(c.cyan(`You can try visiting the syntax list for the categories here: ${c.blue.bold('http://tinyurl.com/mdbcategories')}`));
     }
   });
@@ -444,11 +443,8 @@ program
           type: "text",
           name: "link",
           message:
-            gradient.vice(
-              `Optional - `
-            ) +
             gradient.fruit(
-              `Enter the URL you want the badge to direct to:`
+              `(Optional) Enter the URL to redirect to:`
             ),
           initial: "",
         },
@@ -513,11 +509,12 @@ program
         console.log(c.blue(`If these versions do not match, run ${c.cyan.bold('mdb update')}.`));
         console.log();
         console.log(c.blue(`• ${c.cyan.bold('mdb -h')} to view the available list of commands`));
-        console.log(c.blue(`• ${c.cyan.bold('mdb fund')} to donate`));
+        console.log(c.blue(`• ${c.cyan.bold('mdb docs')} to view the documentation`))
+        console.log(c.blue(`• ${c.cyan.bold('mdb fund')} for various donation methods`));
         console.log();
         console.log(c.blue(`• Issues: ${c.blue.bold.underline('https://github.com/inttter/mdbadges-cli/issues')}`));
         console.log(c.blue(`• Contribute: ${c.blue.bold.underline('http://tinyurl.com/mdbcontributing')}`));
-        console.log(c.green(`• License: ${c.green.underline.bold('http://tinyurl.com/mdblicense')}`));
+        console.log(c.blue(`• License: ${c.blue.underline.bold('http://tinyurl.com/mdblicense')}`));
       } catch (error) {
         console.error(`ERROR: An error occurred when fetching the latest version: ${error.message}`);
       }

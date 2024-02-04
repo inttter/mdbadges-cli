@@ -25,7 +25,7 @@ const {
   escapeHtml,
 } = utils;
 
-program.version("4.4.0").description("Find badges without ever leaving the terminal.");
+program.version(packageInfo.version).description("Find badges without ever leaving the terminal.");
 
 // Main Command
 program
@@ -186,7 +186,6 @@ program
   .alias("v")
   .description("Displays the current version you are on.")
   .action(() => {
-    console.log();
     console.log(c.white(`${packageInfo.version}`)); // fetches package info version from package.json
   });
 

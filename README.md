@@ -24,6 +24,9 @@ There's a number of features available, allowing for maximum productivity, inclu
 
 # Getting Started
 
+> [!IMPORTANT]
+> Versions **v4.4.2** and higher now require [**Node 18**](https://nodejs.org/en/blog/release/v18.0.0). Versions below this require [**Node 16**](https://nodejs.org/en/blog/release/v16.0.0).
+
 Install the package as you would with any other, using:
 
 ```bash
@@ -59,7 +62,7 @@ Need to find what something does while your in the terminal? Run ```mdb help / -
 ```mdb badges``` | Opens a link to the badge list in your browser. | ```list``` | Both links will be displayed after a few seconds, in case it does not open in your *(default)* browser.
 ```mdb add <category> <badgeName> <fileName>``` | Allows you to add a badge to a Markdown file | N/A | **Only ```.md``` files are supported.** Will work in subdirectories, so long as the file path is correct
 
-# Miscallenaous Commands
+# Miscellaneous Commands
 
 ###### Commands which don't serve ***too*** important of a purpose
 

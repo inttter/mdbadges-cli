@@ -131,6 +131,29 @@ console.log(c.yellow.underline("This will be outputted in yellow, while being un
 
 ---
 
+## Spellchecking
+
+```cspell``` is used for spell-checking Markdown files. There's a workflow within this repository which checks for spelling errors after any push/pull request to a Markdown file, which you can see [**here**](https://github.com/inttter/mdbadges-cli/blob/main/.github/workflows/spellcheck.yml).
+
+You can see the ```cspell``` config in the ```cspell.json``` file [**here**](https://github.com/inttter/mdbadges-cli/blob/main/cspell.json).
+
+> [!NOTE]
+> In certain cases, the workflow may fail. For example, if I removed `"shieldsio",` from the `words` category in the config file, the workflow will fail, and the following will appear:
+>
+> ```bash
+> ~ cspell '**/*.md'
+>
+> 1/3 .\CODE_OF_CONDUCT.md 240.94ms
+> 2/3 .\CONTRIBUTING.md 45.50ms X
+> .\CONTRIBUTING.md:141:74 - Unknown word (shieldsio) 
+> 3/3 .\README.md 78.58ms
+> CSpell: Files checked: 3, Issues found: 1 in 1 file
+> ```
+>
+> In the case above, if it is not a typo and it is, in fact, a correct word/phrase/etc., you can add it to the `words` category in `cspell.json`. After doing this, you can commit this change to your branch, and the workflow should run without problems.
+
+---
+
 ## Questions
 
 For questions that require answers, open an issue and label it with the ```question``` label.

@@ -1,11 +1,11 @@
-# Contribtuing Guidelines
+# Contributing Guidelines
 
 Thanks for considering contributing to this project!
 
 However, **please** read below before you do contribute!
 
 > [!IMPORTANT]
-> This package requires [**Node.js 16**](https://nodejs.org/en/blog/release/v16.16.0) or higher. Please make sure you have a compatible version before installing or contributing.
+> Versions past **v4.4.2** require [**Node 18**](https://nodejs.org/en/blog/release/v18.0.0) or higher, due to [**Commander now requiring Node 18 or higher.**](https://github.com/tj/commander.js/releases/tag/v12.0.0)  Please make sure you have a compatible version before installing or contributing.
 
 ---
 
@@ -38,7 +38,7 @@ Here's a starting template for a command:
   // you don't HAVE to use async, you can use a different action
 ```
 
-Using this, you should be able to create a command. Here's an example of a very simple version comamnd:
+Using this, you should be able to create a command. Here's an example of a very simple version command:
 
 ```javascript
 program
@@ -75,7 +75,7 @@ If you want to directly add a badge into this repository, follow these steps:
 
 <div align="center">
 
-###### Please note that this is an example that already exists. When adding new badges, check to make sure they aren't alreadyt added.
+###### Please note that this is an example that already exists. When adding new badges, check to make sure they aren't already added.
 
 </div>
 

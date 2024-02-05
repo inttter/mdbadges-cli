@@ -750,7 +750,7 @@ program
       console.log()
       console.log(c.green("Badge added to the file successfully."));
     } catch (error) {
-      console.error(c.red(`ERROR: An error ocurred when trying to write to the file: ${error.message}`));
+      console.error(c.red(`ERROR: An error occurred when trying to write to the file: ${error.message}`));
     }
   });
 

@@ -1,0 +1,13 @@
+{
+    "version": "0.1",
+    "language": "en-US",
+    "words": [
+        "mdbadges",
+        "cristal",
+        "shieldsio",
+        "clipboardy",
+        "execa",
+        "consola"
+    ],
+    "ignorePaths": ["node_modules", "src/badges.js", "src/utils.js"]
+  }

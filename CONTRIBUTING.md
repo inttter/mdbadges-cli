@@ -137,6 +137,20 @@ console.log(c.yellow.underline("This will be outputted in yellow, while being un
 
 You can see the ```cspell``` config in the ```cspell.json``` file [**here**](https://github.com/inttter/mdbadges-cli/blob/main/cspell.json).
 
+To avoid any spelling errors when writing new documentation/code, it's recommended to run this command:
+
+```bash
+cspell '**'
+```
+
+This will check for spelling mistakes in most files. If you spot any extra spelling mistakes outside of the file you're editing, you are free to edit those too!
+
+Here's an example of two scenarios:
+
+|    ```cspell``` ***spotting*** spelling mistakes                              | ```cspell``` finding ***no mistakes***                                   |
+|------------------------------------------|----------------------------------------------|
+| <img src="https://github.com/inttter/mdbadges-cli/assets/73017070/26f2a327-ac29-4bc3-8fd6-42f8aaf89fc8" width="750"> | <img src="https://github.com/inttter/mdbadges-cli/assets/73017070/4951ecda-f899-4d87-ba78-6ddb284537f0" width="650"> |
+
 > [!NOTE]
 > In certain cases, the workflow may fail. For example, if I removed `"shieldsio",` from the `words` category in the config file, the workflow will fail, and the following will appear:
 >

@@ -25,12 +25,14 @@ There's a number of features available, allowing for maximum productivity, inclu
 # Getting Started
 
 > [!IMPORTANT]
-> Versions **v4.4.2** and higher now require [**Node 18**](https://nodejs.org/en/blog/release/v18.0.0). Versions below this require [**Node 16**](https://nodejs.org/en/blog/release/v16.0.0).
+> You need at least [**Node 18**](https://nodejs.org/en/blog/release/v18.0.0) to install this package.
+
+###### Versions below [**v4.4.2**](https://github.com/inttter/mdbadges-cli/releases/tag/v4.4.2) require Node 16.
 
 Install the package as you would with any other, using:
 
 ```bash
-npm install -g mdbadges-cli@latest
+npm install -g mdbadges-cli
 ```
 
 <!-- NPM Publish Workflow and Tests Workflows !-->

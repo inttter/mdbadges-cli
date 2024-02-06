@@ -1,6 +1,9 @@
 {
   "name": "mdbadges-cli",
   "version": "4.4.2",
+  "engines": {
+    "node": ">=18"
+  },
   "description": "Find badges without ever leaving the terminal.",
   "scripts": {
     "test": "jest"

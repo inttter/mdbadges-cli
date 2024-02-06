@@ -242,7 +242,7 @@ program
         console.log();
         const updateMessage = boxen(
           `An update is available: ${c.dim(packageInfo.version)} ➜  ${c.green(latest)}\n` +
-          `Run ${c.cyan('npm install -g mdbadges-cli@latest')} to update, or select ${c.cyan('Y')} below.`, 
+          `Run ${c.cyan('npm install -g mdbadges-cli')} to update, or select ${c.cyan('Y')} below.`, 
           { padding: 1, margin: 1, borderStyle: 'double', title: '🔵 Important', titleAlignment: 'center', borderColor: '#289FF9' }
         );
 

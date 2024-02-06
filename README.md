@@ -8,6 +8,7 @@
 [![NPM Downloads](https://img.shields.io/npm/dw/mdbadges-cli.svg?style=flat&colorA=18181B&colorB=07B0D1&logo=npm&logoColor=eb6f92)](https://www.npmjs.com/package/mdbadges-cli/ "The amount of downloads via NPM per week.")
 [![License](https://custom-icon-badges.herokuapp.com/github/license/inttter/mdbadges-cli?logo=law&color=07B0D1&logoColor=eb6f92&labelColor=191724)](https://github.com/inttter/mdbadges-cli/blob/main/LICENSE/ "The project license.")
 
+
 ```mdbadges-cli``` is a command line tool that allows you to find Shields.io badges without needing to leave your terminal and scour the internet just to find a specific one.
 
 </div>
@@ -22,23 +23,20 @@ There's a number of features available, allowing for maximum productivity, inclu
 * Random badge generation
 * [**and more...**](https://inttter.gitbook.io/mdbadges-cli/) 💎
 
-# Getting Started
-
-> [!IMPORTANT]
-> You need at least [**Node 18**](https://nodejs.org/en/blog/release/v18.0.0) to install this package.
-
-###### Versions below [**v4.4.2**](https://github.com/inttter/mdbadges-cli/releases/tag/v4.4.2) require Node 16.
-
-Install the package as you would with any other, using:
+# Installation
 
 ```bash
-npm install -g mdbadges-cli
+npm install -g mdbadges-cli # Node 18 is required.
 ```
 
-<!-- NPM Publish Workflow and Tests Workflows !-->
-[![Release to NPM](https://github.com/inttter/mdbadges-cli/actions/workflows/publish.yml/badge.svg?event=release)](https://github.com/inttter/mdbadges-cli/actions/workflows/publish.yml) [![Tests](https://github.com/inttter/mdbadges-cli/actions/workflows/test.yml/badge.svg)](https://github.com/inttter/mdbadges-cli/actions/workflows/test.yml)
+[![Release](https://img.shields.io/github/actions/workflow/status/inttter/mdbadges-cli/test.yml?branch=main&colorA=18181B&colorB=07B0D1&logo=github&logoColor=959DA5&label=Release)](https://github.com/inttter/mdbadges-cli/actions/workflows/publish.yml "The continuous integration workflow.")
+[![Tests](https://img.shields.io/github/actions/workflow/status/inttter/mdbadges-cli/test.yml?branch=main&colorA=18181B&colorB=07B0D1&logo=github&logoColor=959DA5&label=Tests)](https://github.com/inttter/mdbadges-cli/actions/workflows/test.yml "The testing workflow.")
 
-To start using a command, add the ```mdb``` prefix, followed by the [**command name/syntax**](#commands). For example:
+# Getting Started
+
+To start using a command, add the ```mdb``` prefix, followed by the [**command name/syntax**](#commands). 
+
+For example:
 
 ```bash
 mdb social-media discord
@@ -47,11 +45,23 @@ mdb social-media discord
 # [![Discord](https://img.shields.io/badge/Discord-%235865F2.svg?&logo=discord&logoColor=white)](#)
 ```
 
-Need to find what something does while your in the terminal? Run ```mdb help / -h``` to view all commands, aliases, and additional options.
+If you want to use a prefix, such as ```--style```, you can run the same command with the prefix after it (prefixes have -- or - before them). 
+
+For example:
+
+```bash
+mdb social-media discord --style plastic
+
+# Badge found:
+# [![Discord](https://img.shields.io/badge/Discord-%235865F2.svg?&logo=discord&logoColor=white&style=plastic)](#)
+```
+
+> [!TIP]
+> If you're running mdbadges-cli in Visual Studio Code, try installing the [**Image Preview**](https://marketplace.visualstudio.com/items?itemName=kisstkondoros.vscode-gutter-preview) extension. You can hover over the badge link to see a preview of it. See an example [**here**](https://github.com/inttter/mdbadges-cli/assets/73017070/f39fc296-25c8-4a2a-846a-cf83eff00cc4).
+
+For help information, such as what commands do and/or accept, run ```mdb help / mdb -h``` in the terminal. Alternatively, you can read the documentation [**here**](https://docs.mdbcli.xyz).
 
 # Commands
-
-###### For more in-depth information, read the documentation [**here**](https://docs.mdbcli.xyz)
 
 |   Command      |    Description    |     Aliases      | Additional Information |
 |----------|-----------|---------------------------|--------|
@@ -66,8 +76,6 @@ Need to find what something does while your in the terminal? Run ```mdb help / -
 
 # Miscellaneous Commands
 
-###### Commands which don't serve ***too*** important of a purpose
-
 |   Command      |    Description    |     Aliases      | Additional Information |
 |----------|-----------|---------------------------|--------|
 ```mdb version``` | Displays the current version you are on | ```v``` | **Don't try to use this command to update.** This is for checking your version, use ```mdb update``` (see below) to update
@@ -76,7 +84,7 @@ Need to find what something does while your in the terminal? Run ```mdb help / -
 ```mdb about``` | Displays general information about the package | ```abt``` | Also shows links to the website, GitHub issues, contributing, and more
 ```mdb documentation``` | Opens a link to the documentation in your browser. | ```docs``` | Again, the link will be displayed after a few seconds, in case it does not open in your *(default)* browser.
 
-# Available categories
+# Available Categories
 
 Below you'll find categories that are currently available, with the name and syntax needed in commands which need a ```<category>``` specified.
 
@@ -91,7 +99,7 @@ Code Editor | code-editor
 Cloud Storage | cloud-storage
 Cloud System | cloud-system
 Collaboration | collaboration
-Cryptocurrency | crypto
+Crypto | crypto
 Database | database
 Design | design
 Documentation | documentation
@@ -119,9 +127,11 @@ Work/Job | work-and-jobs
 There are multiple ways to contribute and improve this package.
 
 * [**New Features**](https://github.com/inttter/mdbadges-cli/blob/main/CONTRIBUTING.md#features "Features" ) - Features/Improvements which improve user experience.
+    * See also: [**Styling**](https://github.com/inttter/mdbadges-cli/blob/main/CONTRIBUTING.md#styling)
 * [**Adding Badges**](https://github.com/inttter/mdbadges-cli/blob/main/CONTRIBUTING.md#adding-badges "Adding Badges") - New badges to be added to the already large list of badges.
 * [**Questions**](https://github.com/inttter/mdbadges-cli/blob/main/CONTRIBUTING.md#adding-badges "Questions") - Questions about the package, which can spiral into new features/improvements/suggestions.
 * [**Bugs/Inconsistencies**](https://github.com/inttter/mdbadges-cli/blob/main/CONTRIBUTING.md#bugsinconsistencies "Bugs/Inconsistencies") - Issues within the package or something that doesn't look right.
+    * See also: [**Spellchecking**](https://github.com/inttter/mdbadges-cli/blob/main/CONTRIBUTING.md#spellchecking)
 
 ##### [Read the full contributing guidelines here.](https://github.com/inttter/mdbadges-cli/blob/main/CONTRIBUTING.md)
 
@@ -130,4 +140,4 @@ There are multiple ways to contribute and improve this package.
 
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/intter)
 
-###### ©  <http://license.inttter.com>
+###### **©** <http://license.mdbcli.xyz>

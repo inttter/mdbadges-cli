@@ -26,7 +26,8 @@ const badges = {
         'wordpress': '[![WordPress](https://img.shields.io/badge/WordPress-%2321759B.svg?logo=wordpress&logoColor=white)](#) '
     },
     'browser': {
-        'edge': '![Edge](https://img.shields.io/badge/Edge-0078D7?style=for-the-badge&logo=Microsoft-edge&logoColor=white) ',
+        'brave': '[![Brave](https://img.shields.io/badge/Brave-FB542B?logo=Brave&logoColor=white)](#) ',
+        'edge': '[![Edge](https://img.shields.io/badge/Edge-0078D7?logo=Microsoft-edge&logoColor=white)](#) ',
         'firefox': '[![Firefox](https://img.shields.io/badge/Firefox-FF7139?logo=Firefox&logoColor=white)](#) ',
         'google-chrome': '[![Google Chrome](https://img.shields.io/badge/Google%20Chrome-4285F4?logo=GoogleChrome&logoColor=white)](#) ',
         'ie': '[![IE](https://img.shields.io/badge/Internet%20Explorer-0076D6?logo=Internet%20Explorer&logoColor=white)](#) ',
@@ -235,9 +236,9 @@ const badges = {
     },
     'game-engine': {
         'amazon-lumberyard': '[![Amazon Lumberyard](https://img.shields.io/badge/Amazon%20Lumberyard-66459B?logo=amazonlumberyard&logoColor=fff)](#) ',
-        'construct-3': '[![Construct 3](https://img.shields.io/badge/Construct%203-00FFDA?logo=construct3&logoColor=000&style=flat)](#) ',
+        'construct-3': '[![Construct 3](https://img.shields.io/badge/Construct%203-00FFDA?logo=construct3&logoColor=000)](#) ',
         'cryengine': '[![CryEngine](https://img.shields.io/badge/CryEngine-000?logo=cryengine&logoColor=fff)](#) ',
-        'gamemaker': '[![Gamemaker](https://img.shields.io/badge/Gamemaker-000?logo=gamemaker&logoColor=fff&style=flat)](#) ',
+        'gamemaker': '[![Gamemaker](https://img.shields.io/badge/Gamemaker-000?logo=gamemaker&logoColor=fff)](#) ',
         'godot-engine': '[![Godot Engine](https://img.shields.io/badge/Godot-%23FFFFFF.svg?logo=godot-engine)](#) ',
         'unreal-engine': '[![Unreal Engine](https://img.shields.io/badge/Unreal%20Engine-%23313131.svg?logo=unrealengine&logoColor=white)](#) ',
         'unity': '[![Unity](https://img.shields.io/badge/Unity-%23000000.svg?logo=unity&logoColor=white)](#) '
@@ -268,7 +269,7 @@ const badges = {
         'microsoft-powerpoint': '[![Microsoft PowerPoint](https://img.shields.io/badge/Microsoft_PowerPoint-B7472A?logo=microsoft-powerpoint&logoColor=white)](#) ',
         'microsoft-sharepoint': '[![Microsoft SharePoint](https://img.shields.io/badge/Microsoft_SharePoint-0078D4?logo=microsoft-sharepoint&logoColor=white)](#) ',
         'microsoft-visio': '[![Microsoft Visio](https://img.shields.io/badge/Microsoft_Visio-3955A3?logo=microsoft-visio&logoColor=white)](#) ',
-        'microsoft-teams': '[![Microsoft Teams](https://img.shields.io/badge/Microsoft%20Teams-6264A7?logo=microsoftteams&logoColor=fff&)] ',
+        'microsoft-teams': '[![Microsoft Teams](https://img.shields.io/badge/Microsoft%20Teams-6264A7?logo=microsoftteams&logoColor=fff&)](#) ',
         'microsoft-word': '[![Microsoft Word](https://img.shields.io/badge/Microsoft_Word-2B579A?logo=microsoft-word&logoColor=white)](#) '
     },
     'os': {

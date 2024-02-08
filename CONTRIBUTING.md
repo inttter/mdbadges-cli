@@ -133,6 +133,9 @@ console.log(c.yellow.underline("This will be outputted in yellow, while being un
 
 ## Spellchecking
 
+> [!NOTE]
+> This also applies to the [**Spellcheck (JavaScript**)](https://github.com/inttter/mdbadges-cli/blob/main/.github/workflows/spellcheck-js.yml) worfklow.
+
 ```cspell``` is used for spell-checking Markdown files. There's a workflow within this repository which checks for spelling errors after any push/pull request to a Markdown file, which you can see [**here**](https://github.com/inttter/mdbadges-cli/blob/main/.github/workflows/spellcheck.yml).
 
 You can see the ```cspell``` config in the ```cspell.json``` file [**here**](https://github.com/inttter/mdbadges-cli/blob/main/cspell.json).

@@ -13,6 +13,7 @@ const boxen = require("boxen");
 const execa = require('execa');
 const c = require('ansi-colors');
 const { consola } = require("consola");
+const cliSpinners = require("cli-spinners")
 const badges = require("./badges");
 const utils = require("./utils");
 const packageInfo = require("../package.json");
@@ -198,7 +199,7 @@ program
     console.log();
     const spinner = ora({
       text: c.blue("Opening in browser..."),
-      color: "yellow",
+      color: "magenta",
     }).start();
 
     try {
@@ -228,8 +229,9 @@ program
   .description('Checks for updates to the package.')
   .action(async () => {
     const spinner = ora({
-      text: c.cyan.bold('Checking for updates...'),
-      color: 'yellow',
+      text: chalk.blue('Checking for updates...'),
+      spinner: cliSpinners.earth,
+      color: 'magenta',
     }).start();
 
     try {
@@ -763,6 +765,7 @@ program
     console.log();
     const spinner = ora({
       text: c.blue("Opening the documentation in your browser..."),
+      spinner: cliSpinners.earth,
       color: "yellow",
   }).start();
 
@@ -803,7 +806,8 @@ program
     console.log();
     const spinner = ora({
       text: c.blue("Searching for the latest release..."),
-      color: "yellow",
+      spinner: cliSpinners.earth,
+      color: "magenta",
     }).start();
 
     try { // TODO - simplify this

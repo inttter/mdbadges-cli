@@ -12,7 +12,7 @@ const open = require("open");
 const boxen = require("boxen");
 const execa = require('execa');
 const c = require('ansi-colors');
-const { consola, createConsola } = require("consola");
+const { consola } = require("consola");
 const badges = require("./badges");
 const utils = require("./utils");
 const packageInfo = require("../package.json");
@@ -790,6 +790,36 @@ program
   .description('Displays help information.')
   .action(() => {
     program.outputHelp();
+  });
+
+// Changelog/Releases Command
+program
+  .command('changelog')
+  .alias('release')
+  .alias('cl')
+  .alias('rl')
+  .description('Opens a link to the latest changelog/release in your browser.')
+  .action(async () => {
+    console.log();
+    const spinner = ora({
+      text: c.blue("Searching for the latest release..."),
+      color: "yellow",
+    }).start();
+
+    try { // TODO - simplify this
+      const repoOwner = 'inttter';
+      const repoName = 'mdbadges-cli';
+      const response = await axios.get(`https://api.github.com/repos/${repoOwner}/${repoName}/releases/latest`);
+      const latestTag = response.data.tag_name;
+      const releaseUrl = `https://github.com/${repoOwner}/${repoName}/releases/tag/${latestTag}`;
+
+      await open(releaseUrl);
+
+      spinner.succeed(chalk.hex("#10F66C")("Opened in your browser!"));
+    } catch (error) {
+      spinner.fail(c.red(consola.error("Could not open the link in your browser.")));
+      console.error(chalk.red(`${error.message}`));
+    }
   });
 
 program.parse(process.argv);

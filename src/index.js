@@ -503,13 +503,14 @@ program
         console.log(c.blue.bold('                 Find badges without ever leaving the terminal.                     '));    
         console.log(c.blue.bold('                               https://mdbcli.xyz                            '));
         console.log();
-        console.log(c.yellow(`${c.yellow.bold.underline('Latest Version:')} ${latestVersion}`));
+        console.log(c.yellow(`${c.yellow.bold.underline('Latest:')} ${latestVersion}`));
 
         const userPackageVersion = packageInfo.version;
         console.log(c.yellow(`${c.yellow.bold.underline('Your Version:')} ${userPackageVersion}`));
         console.log(c.blue(`If these versions do not match, run ${c.cyan.bold('mdb update')}.`));
         console.log();
-        console.log(c.blue(`• ${c.cyan.bold('mdb -h')} to view the available list of commands`));
+        console.log(c.blue(`• ${c.cyan.bold('mdb help')} to view the available list of commands`));
+        console.log(c.blue(`• ${c.cyan.bold('mdb changelog')} to view the latest release`));
         console.log(c.blue(`• ${c.cyan.bold('mdb docs')} to view the documentation`))
         console.log(c.blue(`• ${c.cyan.bold('mdb fund')} for various donation methods`));
         console.log();

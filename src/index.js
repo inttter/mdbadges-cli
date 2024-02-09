@@ -206,7 +206,7 @@ program
       await open("https://github.com/inttter/md-badges?tab=readme-ov-file#-table-of-contents");
 
       // stops when the page is loaded in browser
-      spinner.succeed(chalk.hex("#10F66C")("Opened in your browser!"));
+      spinner.succeed(c.green("Opened in your browser!"));
     } catch (error) {
       spinner.fail(c.red("ERROR: An error occurred opening the link in your browser."));
 
@@ -772,7 +772,7 @@ program
   try {
     await open("https://docs.mdbcli.xyz/");
 
-    spinner.succeed(chalk.hex("#10F66C")("Opened in your browser!"));
+    spinner.succeed(c.green("Opened in your browser!"));
   } catch (error) {
     spinner.fail(c.red("ERROR: An error occurred opening the link in your browser."));
 
@@ -799,30 +799,28 @@ program
 program
   .command('changelog')
   .alias('release')
-  .alias('cl')
-  .alias('rl')
   .description('Opens a link to the latest changelog/release in your browser.')
   .action(async () => {
-    console.log();
+    console.log()
     const spinner = ora({
-      text: c.blue("Searching for the latest release..."),
+      text: c.blue("Opening the latest release..."),
       spinner: cliSpinners.earth,
       color: "magenta",
     }).start();
 
-    try { // TODO - simplify this
-      const repoOwner = 'inttter';
-      const repoName = 'mdbadges-cli';
-      const response = await axios.get(`https://api.github.com/repos/${repoOwner}/${repoName}/releases/latest`);
-      const latestTag = response.data.tag_name;
-      const releaseUrl = `https://github.com/${repoOwner}/${repoName}/releases/tag/${latestTag}`;
+    try {
+      await open('https://github.com/inttter/mdbadges-cli/releases/latest');
 
-      await open(releaseUrl);
-
-      spinner.succeed(chalk.hex("#10F66C")("Opened in your browser!"));
+      spinner.succeed(c.green("Opened in your browser!"));
     } catch (error) {
-      spinner.fail(c.red(consola.error("Could not open the link in your browser.")));
+      spinner.fail(c.red("Could not open the link in your browser."));
       console.error(chalk.red(`${error.message}`));
+    } finally {
+      setTimeout(() => {
+        console.log();
+        console.log(c.yellow('Hasn\'t opened in your browser? Try clicking on the link below:'));
+        console.log(c.dim(`https://github.com/inttter/mdbadges-cli/releases/latest`));
+      }, 5000) // 5 seconds
     }
   });
 

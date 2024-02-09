@@ -217,7 +217,7 @@ program
         console.log(c.yellow('Hasn\'t opened yet? Try one of these two links:'));
         console.log(c.magenta(`https://github.com/inttter/md-badges`));
         console.log(c.magenta(`https://mdbdocs.inttter.com/content/badges`));
-      }, 5000); // 5 seconds
+      }, 2000); // 5 seconds
     }
   });
 
@@ -782,7 +782,7 @@ program
       console.log();
       console.log(c.yellow('Hasn\'t opened in your browser? Try clicking on the link below:'));
       console.log(c.magenta(`https://docs.mdbcli.xyz/`));
-    }, 5000) // 5 seconds
+    }, 2000) // 5 seconds
   }
 });
 
@@ -820,7 +820,7 @@ program
         console.log();
         console.log(c.yellow('Hasn\'t opened in your browser? Try clicking on the link below:'));
         console.log(c.magenta(`https://github.com/inttter/mdbadges-cli/releases/latest`));
-      }, 5000) // 5 seconds
+      }, 2000) // 5 seconds
     }
   });
 

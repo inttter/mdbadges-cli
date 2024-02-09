@@ -83,6 +83,7 @@ For help information, such as what commands do and/or accept, run ```mdb help / 
 ```mdb fund``` | Displays funding/donation links for the package | N/A | You don't have to donate, but I'd appreciate it!
 ```mdb about``` | Displays general information about the package | ```abt``` | Also shows links to the website, GitHub issues, contributing, and more
 ```mdb documentation``` | Opens a link to the documentation in your browser. | ```docs``` | Again, the link will be displayed after a few seconds, in case it does not open in your *(default)* browser.
+```mdb changelog``` | Opens a link to the latest release with it's changelogs in your browser. | ```release``` | Once again, the link will be displayed after a few seconds, in case it does not open in your *(default)* browser.
 
 # Available Categories
 

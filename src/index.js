@@ -800,7 +800,7 @@ program
 program
   .command('changelog')
   .alias('release')
-  .description('Opens a link to the latest changelog/release in your browser.')
+  .description('Opens a link to the latest release with it\'s changelog in your browser.')
   .action(async () => {
     console.log()
     const spinner = ora({

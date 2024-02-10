@@ -1,59 +1,53 @@
 # Contributing Guidelines
 
-Thanks for considering contributing to this project!
-
-However, **please** read below before you do contribute!
+Thank you for considering contributing to this project! Take a moment to read through the guidelines below before making your contribution.
 
 > [!IMPORTANT]
-> Versions past **v4.4.2** require [**Node 18**](https://nodejs.org/en/blog/release/v18.0.0) or higher, due to [**Commander now requiring Node 18 or higher.**](https://github.com/tj/commander.js/releases/tag/v12.0.0)  Please make sure you have a compatible version before installing or contributing.
+> Node 18 or higher is required.
 
 ---
 
 # Features
-If you would like to contribute a new feature, create a new [pull request](https://github.com/inttter/mdbadges-cli/pulls), detailing the feature and any additional information, such as ```Aliases``` and ```Additional Information```, if it is a command. 
 
-For other features, please describe in as much detail as possible what the feature is and what it does.
+If you would like to contribute a new feature, create a new [pull request](https://github.com/inttter/mdbadges-cli/pulls), detailing the feature and additional information, such as what it does, and its use case.
+
+For commands, read below.
 
 ## Adding Commands
 
-[**Commander**](https://www.npmjs.com/package/commander) is used for creating new commands.
+The [**Commander**](https://www.npmjs.com/package/commander) package is used for creating new commands.
 
-Navigate to the ```/src/index.js``` file.
+To add a new command:
+
+**1.** Navigate to the ```/src/index.js``` file, where all the commands are written.
 
 > [!IMPORTANT]
-> Make sure you place any new code ***above*** this line, or else it will **not** work.
+Ensure that any new command code is placed above this line to ensure proper functionality:
 > ```javascript
 > program.parse(process.argv);
 > ```
 
+**2.** Define the new command, specifying its name, aliases (optional), a brief description of its purpose, and the command logic itself.
 
-Here's a starting template for a command:
+You can view an example command below:
 
 ```javascript
   program
-  .command('<command name here>')
-  .alias('<shorter version of name here>') // can be more than one
-  .description('<short description of the command here>')
-  .action(async () => {   // add your command's logic after this
-  // you don't HAVE to use async, you can use a different action
-```
-
-Using this, you should be able to create a command. Here's an example of a very simple version command:
-
-```javascript
-program
-  .command("version") // command name
-  .alias("ver") // shorter version of command name
-  .alias("v") // shorter version of command name
-  .description("Displays the current version you are on.") // description of the command
-  .action(() => { // anything below here is the command
-    console.log();
-    console.log(gradient.cristal(`${packageInfo.version}`)); // fetches package info version
-    console.log();
+  .command('example')
+  .alias('ex') // can be more than one
+  .description('Outputs some text in different styles.')
+  .action(async () => { // command logic goes below
+   // note: you can use a different action
+    console.log(gradient.cristal("This will be outputted with a gradient!"));
+    console.log(chalk.hex('#FFBF00')("This will be outputted with the hex color!"));
+    console.log(c.yellow.underline("This will be outputted in yellow, while being underlined!"))
   });
 ```
 
-You can add commands in any place, but preferably at the bottom, after the last command, for easier maintainability.
+> [!NOTE]
+> It is recommended to use single-word command names without spaces (e.g. instead of ```search-badges```, do ```search```). **Aim to keep command names concise and descriptive.**
+
+While commands can be added anywhere within the file, it's recommended to place them at the bottom of the file *(but above the process.argv line)*. This arrangement makes it easier to manage and update commands in the future.
 
 ---
 
@@ -65,30 +59,21 @@ When adding badges, you have two options to do so.
 
 If you want to directly add a badge into this repository, follow these steps:
 
-**1.** Navigate to the ```/src/badges.js``` file. 
+**1.** Navigate to the ```/src/badges.js``` file, which contains the definitions for the badges.
 
-**2.** If you're adding a badge to an already existing category, simply find the category (for example, **Social Media** is ```social-media```), and add a badge in this structure, ***in alphabetical order***:
+**2.** If adding a badge to an existing category, locate the relevant category for the badge, and add the badge definition in alphabetical order, like this example below:
 
 ```javascript
 'discord': '[![Discord](https://img.shields.io/badge/Discord-%235865F2.svg?&logo=discord&logoColor=white)](#) ',
 ```
 
-<div align="center">
+```'discord'``` - **Name of the badge** *(what users will type when typing the command to find a badge)*
 
-###### Please note that this is an example that already exists. When adding new badges, check to make sure they aren't already added.
+```[![Discord]``` - **Alt Text** *(preferably, should be the same as the badge name)*
 
-</div>
+```https://img.shields.io/badge/Discord-%235865F2.svg?&logo=discord&logoColor=white``` - **Badge Link**
 
-> [!NOTE]
-> Make sure to replace these with your badge details.
-
-```'discord'``` - **Name of the badge** (what users will type when typing the command to find a badge)
-
-```[![Discord]``` - Alt Text (preferably, should be the same as the badge name)
-
-```https://img.shields.io/badge/Discord-%235865F2.svg?&logo=discord&logoColor=white``` - badge link
-
-```(#)``` - where links will go
+```(#)``` - Where links that redirect to other pages will go
 
 > [!IMPORTANT]
 > **DO NOT** place anything other than (#) in the section after your link. This is for the ```mdb create``` command and the ```--link``` option in the main command.
@@ -109,12 +94,9 @@ If you want to  add a badge to the list of badges, follow these steps:
 
 # Styling
 
-Currently, we use [**```gradient-string```**](https://github.com/bokub/gradient-string), [**```Chalk V4```**](https://github.com/chalk/chalk), and [**```ansi-colors```**](https://github.com/doowb/ansi-colors) for styling/coloring the text.
+Currently, [**```gradient-string```**](https://github.com/bokub/gradient-string), [**```Chalk```**](https://github.com/chalk/chalk), and [**```ansi-colors```**](https://github.com/doowb/ansi-colors) are used for styling the text.
 
-Preferably, you should include at least one of these.
-
-> [!NOTE]
-> We use Chalk 4.1.2 because that is the last CommonJS version.
+To maintain consistency in styling, consider including at least one of these.
 
 ### Syntax:
 
@@ -122,12 +104,28 @@ Preferably, you should include at least one of these.
 // gradient-string example
 console.log(gradient.cristal("This will be outputted with a gradient!"))
 
-// Chalk 4.1.2 example
+// Chalk (CommonJS) example
 console.log(chalk.hex('#FFBF00')("This will be outputted with the hex color!"))
 
 // ansi-colors example
 console.log(c.yellow.underline("This will be outputted in yellow, while being underlined!"))
 ```
+
+### Example Use Case:
+
+<div align="center">
+
+<img src="https://github.com/inttter/mdbadges-cli/assets/73017070/be0f7d7f-1ab5-4022-95d2-f9a89c9f1757" width="500">
+
+</div>
+
+### Output:
+
+<div align="center">
+
+<img src="https://github.com/inttter/mdbadges-cli/assets/73017070/0d51b39b-883e-4a71-bfe3-478364f22bcb" width="500">
+
+</div>
 
 ---
 
@@ -152,7 +150,7 @@ Here's an example of two scenarios:
 
 |    ```cspell``` ***spotting*** spelling mistakes                              | ```cspell``` finding ***no mistakes***                                   |
 |------------------------------------------|----------------------------------------------|
-| <img src="https://github.com/inttter/mdbadges-cli/assets/73017070/26f2a327-ac29-4bc3-8fd6-42f8aaf89fc8" width="750"> | <img src="https://github.com/inttter/mdbadges-cli/assets/73017070/4951ecda-f899-4d87-ba78-6ddb284537f0" width="650"> |
+| <img src="https://github.com/inttter/mdbadges-cli/assets/73017070/b9ae506e-8cbb-4632-8eb2-4055e8435b91" width="750"> | <img src="https://github.com/inttter/mdbadges-cli/assets/73017070/d67e0a58-1e40-42ea-a835-e6531b88c7ca" width="650"> |
 
 > [!NOTE]
 > In certain cases, the workflow may fail. For example, if I removed `"shieldsio",` from the `words` category in the config file, the workflow will fail, and the following will appear:
@@ -160,10 +158,13 @@ Here's an example of two scenarios:
 > ```bash
 > ~ cspell '**/*.md'
 >
-> 1/3 .\CODE_OF_CONDUCT.md 240.94ms
+> ... # other files...
+>
 > 2/3 .\CONTRIBUTING.md 45.50ms X
 > .\CONTRIBUTING.md:141:74 - Unknown word (shieldsio) 
-> 3/3 .\README.md 78.58ms
+>
+> ... # other files...
+>
 > CSpell: Files checked: 3, Issues found: 1 in 1 file
 > ```
 >
@@ -173,7 +174,7 @@ Here's an example of two scenarios:
 
 ## Questions
 
-For questions that require answers, open an issue and label it with the ```question``` label.
+For any questions you have, open an issue and label it with the ```question``` label.
 
 <div align="center">
 
@@ -183,10 +184,10 @@ For questions that require answers, open an issue and label it with the ```quest
 
 ## Bugs/Inconsistencies
 
-If you come across any bugs, report them by [creating an issue](https://github.com/inttter/mdbadges-cli/issues). Provide details on how you encountered the bug and any potential fixes you might have identified.
+If you come across any bugs, report them by [creating an issue](https://github.com/inttter/mdbadges-cli/issues). Provide details on how you encountered the bug, any error messages that may appear, and any potential fixes you might have identified.
 
 ---
 
 ## License
 
-By contributing, you agree that your contributions will be licensed under the MIT License, which you can view [here](LICENSE).
+By contributing, you agree that your contributions will be licensed under the MIT License, which you can view [here](http://license.mdbcli.xyz).

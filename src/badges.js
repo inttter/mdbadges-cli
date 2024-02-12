@@ -266,6 +266,14 @@ const badges = {
         'uplay': '[![Uplay](https://img.shields.io/badge/Uplay-black?logo=ubisoft)](#) ',
         'xbox-store': '[![Xbox](https://img.shields.io/badge/Xbox%20Store-%23107C10.svg?logo=xbox&logoColor=white)](#) '
     },
+    'jobs': {
+        'fiverr': '[![Fiverr](https://img.shields.io/badge/Fiverr-1DBF73?logo=fiverr&logoColor=fff)](#) ',
+        'glassdoor': '[![Glassdoor](https://img.shields.io/badge/Glassdoor-0CAA41?logo=glassdoor&logoColor=fff)](#) ',
+        'indeed': '[![Indeed](https://img.shields.io/badge/Indeed-003A9B?logo=indeed&logoColor=fff)](#) ',
+        'linkedin': '[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?logo=linkedin&logoColor=fff)](#) ',
+        'monster': '[![Monster](https://img.shields.io/badge/Monster-6D4C9F?logo=monster&logoColor=fff)](#) ',
+        'upwork': '[![Upwork](https://img.shields.io/badge/Upwork-6FDA44?logo=upwork&logoColor=fff)](#) '
+    },
     'office': {
         'microsoft': '[![Microsoft](https://img.shields.io/badge/Microsoft-0078D4?logo=microsoft&logoColor=white)](#) ',
         'microsoft-access': '[![Microsoft Access](https://img.shields.io/badge/Microsoft_Access-A4373A?logo=microsoft-access&logoColor=white)](#) ',
@@ -453,14 +461,6 @@ const badges = {
         'oculus': '[![Oculus](https://img.shields.io/badge/Oculus-%231A1A1A.svg?logo=oculus&logoColor=white)](#) ',
         'playstation-vr': '[![PlayStation VR](https://img.shields.io/badge/PlayStation%20VR-%23007ACC.svg?logo=playstation&logoColor=white)](#) ',
         'steamvr': '[![SteamVR](https://img.shields.io/badge/SteamVR-%23232F3E.svg?logo=steam&logoColor=white)](#) '
-    },
-    'work-and-jobs': {
-        'fiverr': '[![Fiverr](https://img.shields.io/badge/Fiverr-1DBF73?logo=fiverr&logoColor=fff)](#) ',
-        'glassdoor': '[![Glassdoor](https://img.shields.io/badge/Glassdoor-0CAA41?logo=glassdoor&logoColor=fff)](#) ',
-        'indeed': '[![Indeed](https://img.shields.io/badge/Indeed-003A9B?logo=indeed&logoColor=fff)](#) ',
-        'linkedin': '[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?logo=linkedin&logoColor=fff)](#) ',
-        'monster': '[![Monster](https://img.shields.io/badge/Monster-6D4C9F?logo=monster&logoColor=fff)](#) ',
-        'upwork': '[![Upwork](https://img.shields.io/badge/Upwork-6FDA44?logo=upwork&logoColor=fff)](#) '
     }
 };
 

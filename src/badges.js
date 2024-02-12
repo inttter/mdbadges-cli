@@ -455,11 +455,11 @@ const badges = {
         'netflix': '[![Netflix](https://img.shields.io/badge/Netflix-E50914?logo=netflix&logoColor=white)](#) ',
         'roku': '[![Roku](https://img.shields.io/badge/Roku-6f1ab1?logo=roku&logoColor=white)](#) '
     },
-    'virtual-reality': {
+    'vr': {
         'arkit': '[![ARKit](https://img.shields.io/badge/ARKit-%23000000.svg?logo=apple&logoColor=white)](#) ',
         'google-cardboard': '[![Google Cardboard](https://img.shields.io/badge/Google%20Cardboard-%23FF713B.svg?logo=google-cardboard&logoColor=white)](#) ',
         'oculus': '[![Oculus](https://img.shields.io/badge/Oculus-%231A1A1A.svg?logo=oculus&logoColor=white)](#) ',
-        'playstation-vr': '[![PlayStation VR](https://img.shields.io/badge/PlayStation%20VR-%23007ACC.svg?logo=playstation&logoColor=white)](#) ',
+        'psvr': '[![PlayStation VR](https://img.shields.io/badge/PlayStation%20VR-%23007ACC.svg?logo=playstation&logoColor=white)](#) ',
         'steamvr': '[![SteamVR](https://img.shields.io/badge/SteamVR-%23232F3E.svg?logo=steam&logoColor=white)](#) '
     }
 };

@@ -103,25 +103,26 @@ Collaboration | collaboration
 Crypto | crypto
 Database | database
 Design | design
+Delivery | delivery
 Documentation | documentation
 Education | education
 Funding | funding
 Framework | framework
 Game Engine | game-engine
 Gaming Storefront | game-stores
+Jobs | jobs
 Office | office
-Operating System | operating-system
+Operating System | os
 Package Manager | package-manager
 Payment | payment
 Programming Language | programming
-Restaurant/Delivery | restaurant-and-delivery
+Restaurant | restaurant
 Search Engine | search-engine
-Social Media | social-media
+Social Media | social
 Sound | sound
 Static Site | static-site
 Video Streaming | video-streaming
-Virtual Reality | virtual-reality
-Work/Job | work-and-jobs
+Virtual Reality | vr
 
 # Contributing
 

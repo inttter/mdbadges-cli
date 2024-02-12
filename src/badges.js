@@ -375,7 +375,7 @@ const badges = {
         'duckduckgo': '[![DuckDuckGo](https://img.shields.io/badge/DuckDuckGo-FF5722?logo=duckduckgo&logoColor=white)](#) ',
         'google': '[![Google](https://img.shields.io/badge/Google-4285F4?logo=google&logoColor=white)](#) '
     },
-    'social-media': {
+    'social': {
         'bluesky': '[![Bluesky](https://img.shields.io/badge/Bluesky-0285FF?logo=bluesky&logoColor=fff)](#) ',
         'deviantart': '[![DeviantArt](https://img.shields.io/badge/DeviantArt-05CC47?logo=deviantart&logoColor=fff)](#) ',
         'discord': '[![Discord](https://img.shields.io/badge/Discord-%235865F2.svg?&logo=discord&logoColor=white)](#) ',

@@ -144,6 +144,13 @@ const badges = {
         'sqlite': '[![SQLite](https://img.shields.io/badge/SQLite-%2307405e.svg?logo=sqlite&logoColor=white)](#) ',
         'teradata': '[![Teradata](https://img.shields.io/badge/Teradata-F37440?logo=teradata&logoColor=fff)](#) '
     },
+    'delivery': {
+        'deliveroo': '[![Deliveroo](https://img.shields.io/badge/Deliveroo-00CCBC?logo=Deliveroo&logoColor=white)](#) ',
+        'doordash': '[![Doordash](https://img.shields.io/badge/DoorDash-FF3008?logo=DoorDash&logoColor=white)](#) ',
+        'grubhub': '[![GrubHub](https://img.shields.io/badge/Grubhub-F63440?logo=Grubhub&logoColor=white)](#) ',
+        'just-eat': '[![Just Eat](https://img.shields.io/badge/Just%20Eat-F36D00?logo=justeat&logoColor=fff)](#) ',
+        'uber-eats': '[![Uber Eats](https://img.shields.io/badge/Uber_Eats-5FB709?logo=uber-eats&logoColor=white)](#) '
+    },
     'design': {
         'after-effects': '[![Adobe After Effects](https://img.shields.io/badge/Adobe%20After%20Effects-CF96FD?logo=Adobe%20After%20Effects&logoColor=393665)](#) ',
         'behance': '[![Behance](https://img.shields.io/badge/Behance-0054F7?logo=behance&logoColor=white)](#) ',
@@ -355,16 +362,11 @@ const badges = {
         'typescript': '[![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=fff)](#) ',
         'windows-terminal': '[![Windows Terminal](https://img.shields.io/badge/Windows%20Terminal-%234D4D4D.svg?&logo=windows-terminal&logoColor=white)](#) '
     },
-    'restaurant-and-delivery': {
+    'restaurant': {
         'burger-king': '[![Burger King](https://img.shields.io/badge/Burger%20King-D62300?logo=burgerking&logoColor=fff)](#) ',
-        'deliveroo': '[![Deliveroo](https://img.shields.io/badge/Deliveroo-00CCBC?logo=Deliveroo&logoColor=white)](#) ',
-        'doordash': '[![Doordash](https://img.shields.io/badge/DoorDash-FF3008?logo=DoorDash&logoColor=white)](#) ',
-        'grubhub': '[![GrubHub](https://img.shields.io/badge/Grubhub-F63440?logo=Grubhub&logoColor=white)](#) ',
-        'just-eat': '[![Just Eat](https://img.shields.io/badge/Just%20Eat-F36D00?logo=justeat&logoColor=fff)](#) ',
         'kfc': '[![KFC](https://img.shields.io/badge/KFC-F40027?logo=kfc&logoColor=white)](#) ',
         'mcdonalds': '[![McDonalds](https://img.shields.io/badge/McDonald%27s-FBC817?logo=McDonald%27s&logoColor=white)](#) ',
         'taco-bell': '[![Taco Bell](https://img.shields.io/badge/Taco%20Bell-38096C?logo=tacobell&logoColor=fff)](#) ',
-        'uber-eats': '[![Uber Eats](https://img.shields.io/badge/Uber_Eats-5FB709?logo=uber-eats&logoColor=white)](#) '
     },
     'search-engine': {
         'aol': '[![AOL](https://img.shields.io/badge/AOL-39F?logo=aol&logoColor=fff)](#) ',

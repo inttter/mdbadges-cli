@@ -39,7 +39,7 @@ To start using a command, add the ```mdb``` prefix, followed by the [**command n
 For example:
 
 ```bash
-mdb social-media discord
+mdb social discord
 
 # Badge found:
 # [![Discord](https://img.shields.io/badge/Discord-%235865F2.svg?&logo=discord&logoColor=white)](#)
@@ -50,7 +50,7 @@ If you want to use a prefix, such as ```--style```, you can run the same command
 For example:
 
 ```bash
-mdb social-media discord --style plastic
+mdb social discord --style plastic
 
 # Badge found:
 # [![Discord](https://img.shields.io/badge/Discord-%235865F2.svg?&logo=discord&logoColor=white&style=plastic)](#)

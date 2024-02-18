@@ -221,13 +221,13 @@ program
     }
   });
 
-// Update Command
   program
-  .command('update')
+  .command('update [check]')
   .alias('upd')
   .alias('u')
-  .description('Checks for updates to the package.')
-  .action(async () => {
+  .description('Checks for updates to the package or updates it if no arguments are provided.')
+  .option('--check', 'Only checks for updates without performing any updates')
+  .action(async (check, options) => {
     const spinner = ora({
       text: chalk.blue('Checking for updates...'),
       spinner: cliSpinners.earth,
@@ -240,50 +240,35 @@ program
 
       spinner.stop();
 
-      if (latest > packageInfo.version) {
+      if (options.check && latest < packageInfo.version) {
         console.log();
         const updateMessage = boxen(
-          `An update is available: ${c.dim(packageInfo.version)} ➜  ${c.green(latest)}\n` +
-          `Run ${c.cyan('npm install -g mdbadges-cli')} to update, or select ${c.cyan('Y')} below.`, 
+          `An update is available: ${c.dim(packageInfo.version)} ➜  ${c.green(latest)}\nRun ${c.cyan('mdb update')} to update`, 
           { padding: 1, margin: 1, borderStyle: 'double', title: '🔵 Important', titleAlignment: 'center', borderColor: '#289FF9' }
         );
-
         console.log(updateMessage);
-
-        const answer = await inquirer.prompt([
-          {
-            type: 'confirm',
-            name: 'updateNow',
-            message: c.cyan('Would you like to update now?'),
-          },
-        ]);
-
-        if (answer.updateNow) {
-          // if user chooses "Y"
-          console.log();
-          console.log(c.cyan('Updating...'));
-
-          try {
-            // execa runs the command here
-            await execa.command('npm install -g mdbadges-cli@latest', { stdio: 'inherit' });
-
-            console.log();
-            console.log(c.green('Update complete!'));
-            console.log(c.green('Check out the GitHub release page for release notes: http://tinyurl.com/mdbreleases'));
-          } catch (error) {
-            console.error(c.red(`ERROR: An error occurred while updating: ${error.message}`));
-          }
-        } else {
-          // User chose not to update
-          console.log(c.magenta('Update cancelled.'));
-        }
-      } else {
+      } else if (options.check && latest >= packageInfo.version) {
         console.log();
-        const updateMessageSuccess = boxen(
-          c.green.bold('You are already on the latest version.'),
-          { padding: 1, margin: 1, borderStyle: 'double', title: '✅ Success', titleAlignment: 'center', borderColor: '#10F66C' }
-        );
-        console.log(updateMessageSuccess);
+        console.log(c.green.bold(`You are already on the latest version, ${c.cyan(packageInfo.version)}.`));
+        console.log();
+      } else if (!options.check && latest < packageInfo.version) {
+        console.log();
+        const updateSpinner = ora({ text: chalk.cyan('Updating...\n\n'), spinner: cliSpinners.arc }).start();
+
+        try {
+          await execa.command('npm install -g mdbadges-cli@latest', { stdio: 'inherit' });
+
+          updateSpinner.succeed(chalk.green('Update complete!'));
+          console.log();
+          console.log(c.green(`Check out what's changed by running ${c.cyan('mdb changelog')}.`));
+          console.log();
+        } catch (error) {
+          updateSpinner.fail(chalk.red(`Update failed: ${error.message}`));
+        }
+      } else if (!options.check && latest >= packageInfo.version) {
+        console.log();
+        console.log(c.green.bold('You are already on the latest version.'));
+        console.log();
       }
     } catch (error) {
       console.log();

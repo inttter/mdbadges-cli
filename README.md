@@ -67,21 +67,21 @@ For help information, such as what commands do and/or accept, run ```mdb help / 
 |----------|-----------|---------------------------|--------|
 ```mdb <category> <badgeName>``` | Displays Markdown for specified badge in a category | N/A | Prefixes available include: ```--style```, ```-s```, ```--html```, and ```--link```. **Finding more than one badge is supported.**
 ```mdb search``` | Displays badges available in a [**category**](#available-categories) | ```s```, ```find```  | Use arrow keys to scroll up/down.
-```mdb lookup <query>``` | Displays badges containing a certain keyword/phrase | ```l``` | Also displays what category the badge is in
-```mdb create``` | Displays prompts to create your own badge | ```generate``` | **All fields** require an answer
-```mdb random``` | Displays a random badge. | ```r``` | Supports both Markdown and HTML formats. Supports specific categories using ```--category``` or ```-c```
-```mdb copy <category> <badgeName>``` | Copies a badges' code to the clipboard | ```c``` | On Windows 11, you can do <kbd>⊞</kbd> <kbd>+</kbd> <kbd>V</kbd> to verify it's been copied
+```mdb lookup <query>``` | Displays badges containing a certain keyword/phrase | ```l``` | Also displays what category the badge is in, and clicking ```ENTER``` on a badge will give you the badge code.
+```mdb create``` | Displays prompts to create your own badge | ```generate``` | Only hexadecimal colors (e.g #000, #FFFFFF) are supported.
+```mdb random``` | Displays a random badge. | ```r``` | Supports both Markdown and HTML formats. Supports specific categories using ```--category``` or ```-c```.
+```mdb copy <category> <badgeName>``` | Copies a badges' code to the clipboard | ```c``` | On Windows 11, you can do <kbd>⊞</kbd> <kbd>+</kbd> <kbd>V</kbd> to verify it's been copied.
 ```mdb badges``` | Opens a link to the badge list in your browser. | ```list``` | Both links will be displayed after a few seconds, in case it does not open in your *(default)* browser.
-```mdb add <category> <badgeName> <fileName>``` | Allows you to add a badge to a Markdown file | N/A | **Only ```.md``` files are supported.** Will work in subdirectories, so long as the file path is correct
+```mdb add <category> <badgeName> <fileName>``` | Allows you to add a badge to a Markdown file | N/A | **Only ```.md``` files are supported.** Will work in subdirectories, so long as the file path is correct.
 
 # Miscellaneous Commands
 
 |   Command      |    Description    |     Aliases      | Additional Information |
 |----------|-----------|---------------------------|--------|
-```mdb version``` | Displays the current version you are on | ```v``` | **Don't try to use this command to update.** This is for checking your version, use ```mdb update``` (see below) to update
-```mdb update``` | Checks for updates to the package | ```upd```, ```u``` | ```npm install``` can be directly ran from this command.
+```mdb version``` | Displays the current version you are on | ```v``` | This command is *not* for updating, this simply outputs your version. To update, see below.
+```mdb update``` | Automatically updates the package | ```upd```, ```u``` | Running this command with ```--check``` will only check for updates and tell you if an update is available. Running it without that option will automatically run ```npm install -g mdbadges-cli@latest```.
 ```mdb fund``` | Displays funding/donation links for the package | N/A | You don't have to donate, but I'd appreciate it!
-```mdb about``` | Displays general information about the package | ```abt``` | Also shows links to the website, GitHub issues, contributing, and more
+```mdb about``` | Displays general information about the package | ```abt``` | Also shows links to the website, GitHub issues, contributing, and more.
 ```mdb documentation``` | Opens a link to the documentation in your browser. | ```docs``` | Again, the link will be displayed after a few seconds, in case it does not open in your *(default)* browser.
 ```mdb changelog``` | Opens a link to the latest release with it's changelogs in your browser. | ```release``` | Once again, the link will be displayed after a few seconds, in case it does not open in your *(default)* browser.
 

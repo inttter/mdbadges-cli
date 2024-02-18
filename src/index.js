@@ -32,9 +32,9 @@ program.version(packageInfo.version).description("Find badges without ever leavi
 program
   .arguments("<category> [badgeNames...]") // [badgeNames...] allows for more than one badge
   .description("Displays Markdown for specified badge in a category.")
-  .option("--html", "Toggles HTML version of a badge") // tag that toggles html code
-  .option("-s, --style <badgeStyle>", "Toggles style of a badge") // tags that toggle badge style
-  .option("--link", "Toggles links in a badge") // tag that toggles links in the badge
+  .option("--html", "toggle HTML version of a badge") // tag that toggles html code
+  .option("-s, --style <badgeStyle>", "toggle style of a badge") // tags that toggle badge style
+  .option("--link", "toggle links in a badge") // tag that toggles links in the badge
   .action(async (category, badgeNames = [], options) => {
     const formattedCategory = utils.formatCategoryName(category);
     const categoryData = badges[utils.searchCategory(category)];
@@ -161,7 +161,7 @@ program
 // Fund Command
 program
   .command("fund")
-  .description("Displays funding/donation links for the package.")
+  .description("display funding/donation links for the package")
   .action(() => {
     console.log();
     console.log(
@@ -185,7 +185,7 @@ program
   .command("version")
   .alias("ver")
   .alias("v")
-  .description("Displays the current version you are on.")
+  .description("display the current version you are on")
   .action(() => {
     console.log(c.white(`${packageInfo.version}`)); // fetches package info version from package.json
   });
@@ -194,7 +194,7 @@ program
   program
   .command("badges")
   .alias("list")
-  .description("Opens a link to the badge list in your browser.")
+  .description("open a link to the badge list in your browser")
   .action(async () => {
     console.log();
     const spinner = ora({
@@ -225,8 +225,8 @@ program
   .command('update [check]')
   .alias('upd')
   .alias('u')
-  .description('Checks for updates to the package or updates it if no arguments are provided.')
-  .option('--check', 'Only checks for updates without performing any updates')
+  .description('automatically update the package')
+  .option('--check', 'check for updates')
   .action(async (check, options) => {
     const spinner = ora({
       text: chalk.blue('Checking for updates...'),
@@ -284,7 +284,7 @@ program
   .command('search')
   .alias('s')
   .alias('find')
-  .description('Displays badges available in a category.')
+  .description('display badges available in a category')
   .action(async () => {
     let continueSearch = true;
 
@@ -345,7 +345,7 @@ program
   program
   .command("create")
   .alias("generate")
-  .description("Displays prompts to create your own badge.")
+  .description("display prompts to create your own badge")
   .action(async () => {
     try {
       const response = await inquirer.prompt([
@@ -468,7 +468,7 @@ program
   program
   .command('about')
   .alias('abt')
-  .description('Displays general information about the package.')
+  .description('display general information about the package')
   .action(async () => {
     async function displayAboutInfo() {
       try {
@@ -515,8 +515,8 @@ program
   program
   .command('random')
   .alias('r')
-  .description('Displays a random badge.')
-  .option('-c, --category', 'Brings up a prompt with the categories')
+  .description('display a random badge')
+  .option('-c, --category', 'pick random badge from a specific category')
   .action(async (options) => {
     // the logic below is for --category/-c
     if (options.category) {
@@ -601,7 +601,7 @@ program
 program
   .command("copy <category> <badgeName>")
   .alias("c")
-  .description("Copies a badge's code to the clipboard.")
+  .description("copy a badge's code to the clipboard")
   .action((category, badgeName) => {
     const formattedCategory = category.toLowerCase();
     const formattedBadgeName = badgeName.toLowerCase();
@@ -631,7 +631,7 @@ program
   program
   .command("lookup <query>")
   .alias("l")
-  .description("Displays badges containing a certain keyword/phrase.")
+  .description("display badges containing a certain keyword/phrase")
   .action(async (query) => {
     let badgeChoices = [];
     Object.keys(badges).forEach((category) => {
@@ -671,7 +671,7 @@ program
 // Adding Badge To File Command
   program
   .command("add <category> <badgeName> [filePath]")
-  .description("Allows you to add a badge to a Markdown file.")
+  .description("add a badge to a Markdown file")
   .action((category, badgeName, filePath = "README.md") => {
     const formattedCategory = formatCategoryName(category);
     const categoryData = badges[category.toLowerCase()];
@@ -746,7 +746,7 @@ program
   program
   .command('documentation')
   .alias('docs')
-  .description('Opens a link to the documentation in your browser.')
+  .description('open a link to the documentation in your browser')
   .action(async () => {
     console.log();
     const spinner = ora({
@@ -776,7 +776,7 @@ program
 // Do note this literally just runs what mdb -h would show.
   program
   .command('help')
-  .description('Displays help information.')
+  .description('display help information')
   .action(() => {
     program.outputHelp();
   });
@@ -785,7 +785,7 @@ program
 program
   .command('changelog')
   .alias('release')
-  .description('Opens a link to the latest release with it\'s changelog in your browser.')
+  .description('open a link to the latest release with it\'s changelog in your browser')
   .action(async () => {
     console.log()
     const spinner = ora({

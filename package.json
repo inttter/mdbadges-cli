@@ -1,6 +1,6 @@
 {
   "name": "mdbadges-cli",
-  "version": "5.1.0",
+  "version": "5.1.1",
   "engines": {
     "node": ">=18"
   },
@@ -31,7 +31,7 @@
   "author": "Inter",
   "license": "MIT",
   "bin": {
-    "mdb": "./src/index.js"
+    "mdb": "src/index.js"
   },
   "dependencies": {
     "ansi-colors": "^4.1.3",
@@ -55,7 +55,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/inttter/mdbadges-cli.git"
+    "url": "git+https://github.com/inttter/mdbadges-cli.git"
   },
   "devDependencies": {
     "jest": "^29.7.0",

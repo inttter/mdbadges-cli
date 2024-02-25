@@ -482,16 +482,16 @@ program
         });
 
         console.log();
-        console.log(c.green.bold('                 _  _                 _                                 _  _ '));
-        console.log(c.green.bold('                | || |               | |                               | |(_) '));
-        console.log(c.green.bold('  _ __ ___    __| || |__    __ _   __| |  __ _   ___  ___  ______  ___ | | _ '));
-        console.log(c.green.bold(' | \'_ ` _ \\  / _` || \'_ \\  / _` | / _` | / _` | / _ \\/ __||______|/ __|| || |'));
-        console.log(c.green.bold(' | | | | | || (_| || |_) || (_| || (_| || (_| ||  __/\\__ \\       | (__ | || |'));
-        console.log(c.green.bold(' |_| |_| |_| \\__,_||_.__/  \\__,_| \\__,_| \\__, | \\___||___/        \\___||_||_|'));
-        console.log(c.green.bold('                                          __/ |                              '));
-        console.log(c.green.bold('                                         |___/                               '));
+        console.log(c.green.bold('                    _  _                 _                                 _  _ '));
+        console.log(c.green.bold('                    | || |               | |                               | |(_) '));
+        console.log(c.green.bold('      _ __ ___    __| || |__    __ _   __| |  __ _   ___  ___  ______  ___ | | _ '));
+        console.log(c.green.bold('     | \'_ ` _ \\  / _` || \'_ \\  / _` | / _` | / _` | / _ \\/ __||______|/ __|| || |'));
+        console.log(c.green.bold('     | | | | | || (_| || |_) || (_| || (_| || (_| ||  __/\\__ \\       | (__ | || |'));
+        console.log(c.green.bold('     |_| |_| |_| \\__,_||_.__/  \\__,_| \\__,_| \\__, | \\___||___/        \\___||_||_|'));
+        console.log(c.green.bold('                                              __/ |                              '));
+        console.log(c.green.bold('                                             |___/                               '));
         console.log();
-        console.log(c.blue.bold('                 Find badges without ever leaving the terminal.                     '));    
+        console.log(c.blue.bold('An extensive CLI tool to find Shields.io badges without needing to leaving the terminal.'));    
         console.log(c.blue.bold('                               https://mdbcli.xyz                            '));
         console.log();
         console.log(c.yellow(`${c.yellow.bold.underline('Latest:')} ${latestVersion}`));

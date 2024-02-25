@@ -242,7 +242,7 @@ const badges = {
         'redux': '[![Redux](https://img.shields.io/badge/Redux-764ABC?logo=redux&logoColor=fff)](#) ',
         'sass': '[![Sass](https://img.shields.io/badge/Sass-C69?logo=sass&logoColor=fff)](#) ',
         'shadcn/ui': '[![shadcn/ui](https://img.shields.io/badge/shadcn%2Fui-000?logo=shadcnui&logoColor=fff)](#) ',
-        'spring boot': '[![Spring Boot](https://img.shields.io/badge/Spring%20Boot-6DB33F?logo=springboot&logoColor=fff)](#) ',
+        'spring-boot': '[![Spring Boot](https://img.shields.io/badge/Spring%20Boot-6DB33F?logo=springboot&logoColor=fff)](#) ',
         'strapi': '[![Strapi](https://img.shields.io/badge/Strapi-%232E7EEA.svg?logo=strapi&logoColor=white)](#) ',
         'symfony': '[![Symfony](https://img.shields.io/badge/Symfony-black?logo=symfony)](#) ',
         'svelte': '[![Svelte](https://img.shields.io/badge/Svelte-%23f1413d.svg?logo=svelte&logoColor=white)](#) ',

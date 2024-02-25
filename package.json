@@ -1,10 +1,10 @@
 {
   "name": "mdbadges-cli",
-  "version": "5.1.1",
+  "version": "5.2.0",
   "engines": {
     "node": ">=18"
   },
-  "description": "Find badges without ever leaving the terminal.",
+  "description": "An extensive CLI tool to find Shields.io badges without needing to leaving the terminal.",
   "scripts": {
     "test": "jest"
   },

@@ -288,17 +288,16 @@ const badges = {
         'upwork': '[![Upwork](https://img.shields.io/badge/Upwork-6FDA44?logo=upwork&logoColor=fff)](#) '
     },
     'office': {
-        'microsoft': '[![Microsoft](https://img.shields.io/badge/Microsoft-0078D4?logo=microsoft&logoColor=white)](#) ',
-        'microsoft-access': '[![Microsoft Access](https://img.shields.io/badge/Microsoft_Access-A4373A?logo=microsoft-access&logoColor=white)](#) ',
-        'micorosft-excel': '[![Microsoft Excel](https://img.shields.io/badge/Microsoft_Excel-217346?logo=microsoft-excel&logoColor=white)](#)',
-        'microsoft-onedrive': '[![Microsoft OneDrive](https://img.shields.io/badge/Microsoft%20OneDrive-0078D4?logo=microsoftonedrive&logoColor=fff)](#) ',
-        'microsoft-onenote': '[![Microsoft OneNote](https://img.shields.io/badge/Microsoft%20OneNote-7719AA?logo=microsoftonenote&logoColor=fff)](#) ',
-        'microsoft-outlook': '[![Microsoft Outlook](https://img.shields.io/badge/Microsoft%20Outlook-0078D4?logo=microsoftoutlook&logoColor=fff)](#) ',
-        'microsoft-powerpoint': '[![Microsoft PowerPoint](https://img.shields.io/badge/Microsoft_PowerPoint-B7472A?logo=microsoft-powerpoint&logoColor=white)](#) ',
-        'microsoft-sharepoint': '[![Microsoft SharePoint](https://img.shields.io/badge/Microsoft_SharePoint-0078D4?logo=microsoft-sharepoint&logoColor=white)](#) ',
-        'microsoft-visio': '[![Microsoft Visio](https://img.shields.io/badge/Microsoft_Visio-3955A3?logo=microsoft-visio&logoColor=white)](#) ',
-        'microsoft-teams': '[![Microsoft Teams](https://img.shields.io/badge/Microsoft%20Teams-6264A7?logo=microsoftteams&logoColor=fff&)](#) ',
-        'microsoft-word': '[![Microsoft Word](https://img.shields.io/badge/Microsoft_Word-2B579A?logo=microsoft-word&logoColor=white)](#) '
+        'access': '[![Microsoft Access](https://img.shields.io/badge/Microsoft_Access-A4373A?logo=microsoft-access&logoColor=white)](#) ',
+        'excel': '[![Microsoft Excel](https://img.shields.io/badge/Microsoft_Excel-217346?logo=microsoft-excel&logoColor=white)](#)',
+        'onedrive': '[![Microsoft OneDrive](https://img.shields.io/badge/Microsoft%20OneDrive-0078D4?logo=microsoftonedrive&logoColor=fff)](#) ',
+        'onenote': '[![Microsoft OneNote](https://img.shields.io/badge/Microsoft%20OneNote-7719AA?logo=microsoftonenote&logoColor=fff)](#) ',
+        'outlook': '[![Microsoft Outlook](https://img.shields.io/badge/Microsoft%20Outlook-0078D4?logo=microsoftoutlook&logoColor=fff)](#) ',
+        'powerpoint': '[![Microsoft PowerPoint](https://img.shields.io/badge/Microsoft_PowerPoint-B7472A?logo=microsoft-powerpoint&logoColor=white)](#) ',
+        'sharepoint': '[![Microsoft SharePoint](https://img.shields.io/badge/Microsoft_SharePoint-0078D4?logo=microsoft-sharepoint&logoColor=white)](#) ',
+        'teams': '[![Microsoft Teams](https://img.shields.io/badge/Microsoft%20Teams-6264A7?logo=microsoftteams&logoColor=fff&)](#) ',
+        'visio': '[![Microsoft Visio](https://img.shields.io/badge/Microsoft_Visio-3955A3?logo=microsoft-visio&logoColor=white)](#) ',
+        'word': '[![Microsoft Word](https://img.shields.io/badge/Microsoft_Word-2B579A?logo=microsoft-word&logoColor=white)](#) '
     },
     'os': {
         'android': '[![Android](https://img.shields.io/badge/Android-3DDC84?logo=android&logoColor=white)](#) ',

@@ -465,7 +465,7 @@ program
   });
 
 // About/Info Command
-  program
+program
   .command('about')
   .alias('abt')
   .description('display general information about the package')
@@ -474,6 +474,12 @@ program
       try {
         const response = await axios.get(`https://registry.npmjs.org/mdbadges-cli`);
         const latestVersion = response.data["dist-tags"].latest;
+
+        // counts the number of badges and saves it in numOfBadges
+        let numOfBadges = 0;
+        Object.values(badges).forEach(category => {
+          numOfBadges += Object.keys(category).length;
+        });
 
         console.log();
         console.log(c.green.bold('                 _  _                 _                                 _  _ '));
@@ -494,6 +500,8 @@ program
         console.log(c.yellow(`${c.yellow.bold.underline('Your Version:')} ${userPackageVersion}`));
         console.log(c.blue(`If these versions do not match, run ${c.cyan.bold('mdb update')}.`));
         console.log();
+        console.log(c.yellow(`Badges Available: ${numOfBadges}`));
+        consola.log();
         console.log(c.blue(`• ${c.cyan.bold('mdb help')} to view the available list of commands`));
         console.log(c.blue(`• ${c.cyan.bold('mdb changelog')} to view the latest release`));
         console.log(c.blue(`• ${c.cyan.bold('mdb docs')} to view the documentation`))

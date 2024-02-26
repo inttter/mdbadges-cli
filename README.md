@@ -117,6 +117,7 @@ Package Manager | package-manager
 Payment | payment
 Programming Language | programming
 Restaurant | restaurant
+Review | review
 Search Engine | search-engine
 Social Media | social
 Sound | sound

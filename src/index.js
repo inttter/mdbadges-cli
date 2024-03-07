@@ -64,23 +64,15 @@ program
               name: "link",
               message: badgeNames.length === 1 ? c.blue("Enter your link here:") : index === 0 ? c.blue("Enter your first link here, then click Enter and type the rest below:") : "",
               validate: (value) => {
-                return value.trim() === '' ? c.red("Please enter a link.") : true; // shows if no link is entered
+                return value.trim() === '' ? c.red("Please enter a link.") : true; 
               },
             });
             link = linkResponse.link;
             links.push(link);
           }
         } else {
-          consola.error(
-            c.red(
-              `${(formatBadgeName(badgeName))} is not a valid badge.`,
-            ),
-          );
-          console.log(
-            c.cyan(
-              `Try running ${c.blue('mdb search')} for a list of badges in that category.`,
-            ),
-          );
+          consola.error(c.red(`${(formatBadgeName(badgeName))} is not a valid badge.`));
+          console.log(c.cyan(`Try running ${c.blue('mdb search')} for a list of badges in that category.`));
         }
       }
 
@@ -114,9 +106,7 @@ program
               const htmlBadge = `<a href="${escapeHtml(links[index])}"><img alt="${escapeHtml(badgeAlt)}" src="${badgeLink}${styleOption}"></a>`;
               console.log(chalk.hex("#FFBF00")(htmlBadge));
             } else {
-              consola.error(
-                c.red("Could not extract badge link or alt text."),
-              );
+              consola.error(c.red("Could not extract badge link or alt text."));
             }
           } else {
             let badgeStyle = "flat"; // flat is the default style if one is not specified
@@ -132,14 +122,10 @@ program
               if (styles.includes(options.style)) {
                 badgeStyle = options.style;
               } else {
-                consola.warn(
-                  c.yellow(
-                    "An invalid style was detected. View available styles here: https://docs.mdbcli.xyz/commands/finding-a-badge#style-s",
-                  ),
-                );
+                consola.warn(c.yellow("An invalid style was detected. View available styles here: https://docs.mdbcli.xyz/commands/finding-a-badge#style-s"));
               }
             }
-            const styleOption = options.style ? `&style=${options.style}` : ""; // Adds style option if one is provided
+            const styleOption = options.style ? `&style=${options.style}` : ""; // adds style option if one is provided
             const badgeLink = badge.match(/\(([^)]+)\)/)[1];
             const badgeAlt = badge.match(/\[([^)]+)\]/)[1];
 
@@ -165,19 +151,11 @@ program
   .description("display funding/donation links for the package")
   .action(() => {
     console.log();
-    console.log(
-      c.yellow("If you would like, you can donate to me here:"),
-    );
+    console.log(c.yellow("If you would like, you can donate to me here:"));
     console.log();
-    console.log(
-      c.green(`Buy Me A Coffee: ${c.green.bold.underline('https://www.buymeacoffee.com/intter')}`),
-    );
-    console.log(
-      c.green(`GitHub Sponsors: ${c.green.bold.underline('https://github.com/sponsors/inttter')}`),
-    );
-    console.log(
-      c.green(`Ko-fi: ${c.green.bold.underline('https://ko-fi.com/intter')}`)
-    );
+    console.log(c.green(`Buy Me A Coffee: ${c.green.bold.underline('https://www.buymeacoffee.com/intter')}`));
+    console.log(c.green(`GitHub Sponsors: ${c.green.bold.underline('https://github.com/sponsors/inttter')}`));
+    console.log(c.green(`Ko-fi: ${c.green.bold.underline('https://ko-fi.com/intter')}`));
     console.log();
   });
 
@@ -200,6 +178,7 @@ program
     console.log();
     const spinner = ora({
       text: c.blue("Opening in browser..."),
+      spinner: cliSpinners.earth,
       color: "magenta",
     }).start();
 
@@ -209,9 +188,8 @@ program
       // stops when the page is loaded in browser
       spinner.succeed(c.green("Opened in your browser!"));
     } catch (error) {
-      spinner.fail(c.red("ERROR: An error occurred opening the link in your browser."));
-
-      console.error(c.red(`${error.message}`));
+      consola.error(c.red(`An error occurred when trying to open the link in your browser: ${error.message}`));
+      spinner.stop()
     } finally {
       setTimeout(() => {
         console.log();
@@ -273,7 +251,7 @@ program
       }
     } catch (error) {
       console.log();
-      console.error(c.red(`ERROR: An error occurred while checking for updates: ${error.message}`));
+      consola.error(c.red(`An error occurred while checking for updates: ${error.message}`));
       console.log();
     } finally {
       spinner.stop();
@@ -312,20 +290,12 @@ program
           console.log(c.green(`• ${badge}`));
         });
         console.log(
-          c.cyan(
-            `\nTo get the ${c.underline('Markdown')} version of a badge, type 'mdb ${formattedCategory} <badgeName>'.`,
-          ),
-        );
+          c.cyan(`\nTo get the ${c.underline('Markdown')} version of a badge, type 'mdb ${formattedCategory} <badgeName>'.`));
         console.log(
-          c.cyan(
-            `To get the ${c.underline('HTML')} version of a badge, type 'mdb --html ${formattedCategory} <badgeName>'.`,
-          ),
-        );
+          c.cyan(`To get the ${c.underline('HTML')} version of a badge, type 'mdb --html ${formattedCategory} <badgeName>'.`));
         console.log();
       } else {
-        console.log(
-          chalk.hex('#FF0000')(`ERROR: The specified category could not be found.`),
-        );
+        consola.error(c.red(`The specified category could not be found.`));
         console.log();
       }
 
@@ -353,9 +323,7 @@ program
         {
           type: "text",
           name: "alt",
-          message: gradient.fruit(
-            "Enter the Alt Text for the badge (e.g. ![Alt Text]):",
-          ),
+          message: gradient.fruit("Enter the Alt Text for the badge (e.g. ![Alt Text]):"),
           validate: (value) => {
             if (!value.trim()) {
               return c.red("This field is required.");
@@ -366,9 +334,7 @@ program
         {
           type: "text",
           name: "name",
-          message: gradient.fruit(
-            "Enter the text you'd like to display on the badge:",
-          ),
+          message: gradient.fruit("Enter the text you'd like to display on the badge:"),
           validate: (value) => {
             if (!value.trim()) {
               return c.red("This field is required.");
@@ -379,9 +345,7 @@ program
         {
           type: "text",
           name: "color",
-          message: gradient.fruit(
-            "Enter a hexadecimal value for the badge:",
-          ),
+          message: gradient.fruit("Enter a hexadecimal value for the badge:"),
           validate: (value) => {
             const hexColorRegex = /^#?(?:[0-9a-fA-F]{3}){1,2}$/;
             if (!hexColorRegex.test(value.trim())) {
@@ -393,9 +357,7 @@ program
         {
           type: "text",
           name: "logo",
-          message: gradient.fruit(
-            "Enter the logo for the badge:"
-          ),
+          message: gradient.fruit("Enter the logo for the badge:"),
           validate: (value) => {
             if (!value.trim()) {
               return c.red("This field is required.");
@@ -406,9 +368,7 @@ program
         {
           type: "list",
           name: "style",
-          message: gradient.fruit(
-            "Choose the style of the badge:"
-          ),
+          message: gradient.fruit("Choose the style of the badge:"),
           choices: [
             "flat",
             "flat-square",
@@ -420,19 +380,13 @@ program
         {
           type: "text",
           name: "logoColor",
-          message:
-            gradient.fruit(
-              "Enter the logo color for the badge:"
-            ),
+          message:gradient.fruit("Enter the logo color for the badge:"),
           initial: "",
         },
         {
           type: "text",
           name: "link",
-          message:
-            gradient.fruit(
-              `(Optional) Enter the URL to redirect to:`
-            ),
+          message:gradient.fruit(`(Optional) Enter the URL to redirect to:`),
           initial: "",
         },
       ]);
@@ -461,7 +415,7 @@ program
       console.log(c.green(badgeHtml)); // displays the HTML version
       console.log();
     } catch (error) {
-      console.error(c.red(`ERROR: An error occurred when creating your custom badge: ${error.message}`));
+      consola.error(c.red(`An error occurred when trying to make your badge: ${error.message}`));
     }
   });
 
@@ -512,7 +466,7 @@ program
         console.log(c.blue(`• Contribute: ${c.blue.bold.underline('http://tinyurl.com/mdbcontributing')}`));
         console.log(c.blue(`• License: ${c.blue.underline.bold('http://tinyurl.com/mdblicense')}`));
       } catch (error) {
-        console.error(`ERROR: An error occurred when fetching the latest version: ${error.message}`);
+        consola.error(c.red(`An error occurred when fetching the latest version: ${error.message}`));
       }
     }
 
@@ -535,7 +489,7 @@ program
           name: 'selectedCategory',
           message: gradient.fruit('Choose a category:'),
           choices: Object.keys(badges),
-          // turns out formatCategoryName seems to break it here
+          // turns out formatCategoryName seems to break it here, so its not being used
         },
       ]);
 
@@ -626,21 +580,17 @@ program
         c.green.bold(`Copied to the clipboard successfully.`),
       );
     } else {
+      consola.error(c.red(`The specified could not be found.`));
+      console.log(c.blue(`Try running ${c.cyan(`mdb search`)} and then selecting ${c.cyan(category)} for a full list of badges in this category.`));
       console.log();
-      console.log(c.red(`ERROR: The badge you specified could not be found.`));
-      console.log(
-        c.blue(
-          `Try running ${c.cyan(`mdb search ${category}`)} for a full list of badges in this category.`,
-        ),
-      );
     }
   });
 
 // Lookup Command
   program
-  .command("lookup <query>")
+  .command("lookup <keyword>")
   .alias("l")
-  .description("display badges containing a certain keyword/phrase")
+  .description("display badges containing a certain keyword")
   .action(async (query) => {
     let badgeChoices = [];
     Object.keys(badges).forEach((category) => {
@@ -658,9 +608,7 @@ program
     });
 
     if (!badgeChoices.length) {
-      console.log();
-      console.log(c.red(`ERROR: A badge containing that keyword/phrase could not be found.`));
-      console.log();
+      consola.error(c.red(`A badge containing that keyword could not be found.`));
     } else {
       const { selectedBadge } = await inquirer.prompt([
         {
@@ -686,10 +634,9 @@ program
     const categoryData = badges[category.toLowerCase()];
 
     if (!categoryData) {
-      console.log();
-      console.log(c.red(`ERROR: The category you specified could not be found.`));
+      consola.error(c.red(`The category you specified could not be found.`));
       console.log(c.cyan(`You can try visiting the syntax list for the categories here: ${c.blue.bold('http://tinyurl.com/mdbcategories')}`));
-      console.log
+      console.log();
       return;
     }
 
@@ -700,12 +647,9 @@ program
 
     if (!foundBadge) {
       console.log();
-      console.log(c.red(`ERROR: The badge you specified could not be found.`));
-      console.log(
-        c.cyan(
-          `Try running ${c.blue.bold(`mdb search`)} for a full list of badges in this category.`,
-        )
-      );
+      consola.error(c.red(`The badge you specified could not be found.`));
+      console.log(c.cyan(`Try running ${c.blue.bold(`mdb search`)} for a full list of badges in this category.`,));
+      console.log();
       return;
     }
 
@@ -714,7 +658,7 @@ program
     // this checks if the badge is defined + if the regex match is successful
     const badgeLinkMatch = badge.match(/\(([^)]+)\)/);
     if (!badgeLinkMatch || !badgeLinkMatch[1]) {
-      console.log(c.red("ERROR: The badge link could not be found in the expected format."));
+      consola.error(c.red("The badge link could not be found in the expected format."));
       return;
     }
 
@@ -727,7 +671,7 @@ program
     // Check if the specified file has the ".md" extension
     if (!filePath.toLowerCase().endsWith(".md")) {
       console.log();
-      console.log(c.red(`ERROR: This file is invalid and/or may not be supported. Please provide a Markdown file with a ".md" extension.`));
+      consola.error(c.red(`Could not add badge to your file. Try checking that your file type and file name is valid. If you're working with subdirectories, make sure the path you specified exists.`));
     return;
   }
 
@@ -737,7 +681,7 @@ program
     try {
       fileContent = fs.readFileSync(filePath, "utf8");
     } catch (error) {
-      console.error(c.red(`ERROR: An error occurred when trying to read the file: ${error.message}`));
+      consola.error(c.red(`Could not read the file: ${error.message}`));
       return;
     }
 
@@ -747,7 +691,7 @@ program
       console.log()
       console.log(c.green("Badge added to the file successfully."));
     } catch (error) {
-      console.error(c.red(`ERROR: An error occurred when trying to write to the file: ${error.message}`));
+      consola.error(c.red(`Could not write to the file: ${error.message}`));
     }
   });
 
@@ -769,9 +713,8 @@ program
 
     spinner.succeed(c.green("Opened in your browser!"));
   } catch (error) {
-    spinner.fail(c.red("ERROR: An error occurred opening the link in your browser."));
-
-    console.error(c.red(`${error.message}`));
+    consola.error(c.red(`An error occurred when trying to open the link in your browser: ${error.message}`));
+    spinner.stop()
   } finally {
     setTimeout(() => {
       console.log();
@@ -782,7 +725,7 @@ program
 });
 
 // Help Command
-// Do note this literally just runs what mdb -h would show.
+// Do note this literally just runs what mdb --help would show.
   program
   .command('help')
   .description('display help information')
@@ -808,8 +751,8 @@ program
 
       spinner.succeed(c.green("Opened in your browser!"));
     } catch (error) {
-      spinner.fail(c.red("Could not open the link in your browser."));
-      console.error(chalk.red(`${error.message}`));
+      consola.error(c.red(`Could not open the link in your browser: ${error.message}`));
+      spinner.stop()
     } finally {
       setTimeout(() => {
         console.log();

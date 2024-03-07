@@ -1,7 +1,0 @@
-# Ignore these:
-.github/
-node_modules/
-badges.js
-README.md
-package.json
-package-lock.json

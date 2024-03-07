@@ -222,8 +222,8 @@ program
       if (options.check && latest < packageInfo.version) {
         console.log();
         const updateMessage = boxen(
-          `An update is available: ${c.dim(packageInfo.version)} ➜  ${c.green(latest)}\nRun ${c.cyan('mdb update')} to update`, 
-          { padding: 1, margin: 1, borderStyle: 'double', title: '🔵 Important', titleAlignment: 'center', borderColor: '#289FF9' }
+          `An update is available: ${c.dim(packageInfo.version)} ➜  ${c.green(latest)}\nRun ${c.cyan('mdb update')} to update.\nRun ${c.cyan('mdb changelog')} for the changes.`, 
+          { borderStyle: 'round', padding: 1, margin: 1, title: '🔔 Note', titleAlignment: 'center', borderColor: 'cyan' }
         );
         console.log(updateMessage);
       } else if (options.check && latest >= packageInfo.version) {

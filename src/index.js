@@ -26,15 +26,16 @@ const {
   escapeHtml,
 } = utils;
 
-program.version(packageInfo.version).description("Find badges without ever leaving the terminal.");
+program.version(packageInfo.version);
 
 // Main Command
 program
-  .arguments("<category> [badgeNames...]") // [badgeNames...] allows for more than one badge
-  .description("Displays Markdown for specified badge in a category.")
-  .option("--html", "toggle HTML version of a badge") // tag that toggles html code
-  .option("-s, --style <badgeStyle>", "toggle style of a badge") // tags that toggle badge style
-  .option("--link", "toggle links in a badge") // tag that toggles links in the badge
+  .name("mdb") // name = prefix
+  .arguments("<category> [badgeNames...]")
+  .usage("<category> [badgeNames] [--options]")
+  .option("--html", "toggle HTML version of a badge")
+  .option("-s, --style <badgeStyle>", "toggle style of a badge")
+  .option("--link", "toggle links in a badge")
   .action(async (category, badgeNames = [], options) => {
     const formattedCategory = utils.formatCategoryName(category);
     const categoryData = badges[utils.searchCategory(category)];
@@ -222,7 +223,7 @@ program
   });
 
   program
-  .command('update [check]')
+  .command('update [--check]')
   .alias('upd')
   .alias('u')
   .description('automatically update the package')

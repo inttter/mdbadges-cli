@@ -65,9 +65,9 @@ For help information, such as what commands do and/or accept, run ```mdb help / 
 
 |   Command      |    Description    |     Aliases      | Additional Information |
 |----------|-----------|---------------------------|--------|
-```mdb <category> <badgeName>``` | Displays Markdown for specified badge in a category | N/A | Prefixes available include: ```--style```, ```-s```, ```--html```, and ```--link```. **Finding more than one badge is supported.**
+```mdb <category> <badgeName>``` | Displays Markdown for specified badge in a category | N/A | Prefixes available include: ```--style / -s```, ```--html```, ```--jsx / --tsx```, and ```--link```. **Finding more than one badge is supported.**
 ```mdb search``` | Displays badges available in a [**category**](#available-categories) | ```s```, ```find```  | Use arrow keys to scroll up/down.
-```mdb lookup <query>``` | Displays badges containing a certain keyword/phrase | ```l``` | Also displays what category the badge is in, and clicking ```ENTER``` on a badge will give you the badge code.
+```mdb lookup <keyword>``` | Displays badges containing a certain keyword. | ```l``` | Also displays what category the badge is in, and clicking ```ENTER``` on a badge will give you the badge code.
 ```mdb create``` | Displays prompts to create your own badge | ```generate``` | Only hexadecimal colors (e.g #000, #FFFFFF) are supported.
 ```mdb random``` | Displays a random badge. | ```r``` | Supports both Markdown and HTML formats. Supports specific categories using ```--category``` or ```-c```.
 ```mdb copy <category> <badgeName>``` | Copies a badges' code to the clipboard | ```c``` | On Windows 11, you can do <kbd>⊞</kbd> <kbd>+</kbd> <kbd>V</kbd> to verify it's been copied.

@@ -163,7 +163,7 @@ program
       }
     } else {
       consola.error(c.red(`"${category}" is not a valid category.`));
-      console.log(c.cyan(`Try running ${c.blue('mdb categories')} for a list of available categories.`));
+      console.log(c.cyan(`Visit ${c.blue('https://tinyurl.com/mdbcategories')} for a list of available categories.`));
     }
   });
 

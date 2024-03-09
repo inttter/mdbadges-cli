@@ -34,6 +34,7 @@ program
   .arguments("<category> [badgeNames...]")
   .usage("<category> [badgeNames] [--options]")
   .option("--html", "toggle HTML version of a badge")
+  .option("--jsx, --tsx", "toggle JSX version of a badge")
   .option("-s, --style <badgeStyle>", "toggle style of a badge")
   .option("--link", "toggle links in a badge")
   .action(async (category, badgeNames = [], options) => {
@@ -89,7 +90,7 @@ program
         const badge = categoryData[foundBadge];
       
         if (badge) {
-          if (options.html) {
+          if (options.html) { // --html
             // extracts the badge link and its name
             const badgeLinkMatch = badge.match(/\(([^)]+)\)/);
             const badgeAltMatch = badge.match(/\[([^)]+)\]/);
@@ -108,40 +109,61 @@ program
             } else {
               consola.error(c.red("Could not extract badge link or alt text."));
             }
-          } else {
+          } else if (options.jsx || options.tsx) { // --jsx
             let badgeStyle = "flat"; // flat is the default style if one is not specified
             if (options.style) {
-              // provided style must match one of these styles
-              const styles = [
-                "flat",
-                "flat-square",
-                "plastic",
-                "social",
-                "for-the-badge",
-              ];
-              if (styles.includes(options.style)) {
-                badgeStyle = options.style;
-              } else {
-                consola.warn(c.yellow("An invalid style was detected. View available styles here: https://docs.mdbcli.xyz/commands/finding-a-badge#style-s"));
-              }
+                // provided style must match one of these styles
+                const styles = [
+                    "flat",
+                    "flat-square",
+                    "plastic",
+                    "social",
+                    "for-the-badge",
+                ];
+                if (styles.includes(options.style)) {
+                    badgeStyle = options.style;
+                } else {
+                    consola.warn(c.yellow("An invalid style was detected. View available styles here: https://docs.mdbcli.xyz/commands/finding-a-badge#style-s"));
+                }
             }
             const styleOption = options.style ? `&style=${options.style}` : ""; // adds style option if one is provided
             const badgeLink = badge.match(/\(([^)]+)\)/)[1];
             const badgeAlt = badge.match(/\[([^)]+)\]/)[1];
-
-            const badgeMarkdown = links[index]
-              ? `[${escapeHtml(badgeAlt)}](${badgeLink}${styleOption})](${links[index]})`
-              : `[${escapeHtml(badgeAlt)}](${badgeLink}${styleOption})](#)`;
-
+            const link = links[index] ? escapeHtml(links[index]) : "#"; // uses "#" if link is not provided
+        
+            const tsxBadge = `<a href="${link}"><img src="${badgeLink}${styleOption}" alt="${badgeAlt}" /></a>`;
+            console.log(chalk.hex("#FFBF00").bold(tsxBadge));
+          } else {
+            let badgeStyle = "flat"; // flat is the default style if one is not specified
+            if (options.style) {
+                // provided style must match one of these styles
+                const styles = [
+                    "flat",
+                    "flat-square",
+                    "plastic",
+                    "social",
+                    "for-the-badge",
+                ];
+                if (styles.includes(options.style)) {
+                    badgeStyle = options.style;
+                } else {
+                    consola.warn(c.yellow("An invalid style was detected. View available styles here: https://docs.mdbcli.xyz/commands/finding-a-badge#style-s"));
+                }
+            }
+            const styleOption = options.style ? `&style=${options.style}` : ""; // adds style option if one is provided
+            const badgeLink = badge.match(/\(([^)]+)\)/)[1];
+            const badgeAlt = badge.match(/\[([^)]+)\]/)[1];
+            const link = links[index] ? escapeHtml(links[index]) : "#"; // use "#" if link is not provided
+        
+            const badgeMarkdown = `[${badgeAlt}](${badgeLink}${styleOption})](${link})`;
+        
             console.log(chalk.hex("#FFBF00").bold(badgeMarkdown));
-          }
+        }
         }
       }
-
-      console.log();
     } else {
-      consola.error(c.red(`That category could not be found.`));
-      console.log(c.cyan(`You can try visiting the syntax list for the categories here: ${c.blue.bold('http://tinyurl.com/mdbcategories')}`));
+      consola.error(c.red(`"${category}" is not a valid category.`));
+      console.log(c.cyan(`Try running ${c.blue('mdb categories')} for a list of available categories.`));
     }
   });
 

@@ -485,8 +485,8 @@ program
         console.log(c.blue(`• ${c.cyan.bold('mdb fund')} for various donation methods`));
         console.log();
         console.log(c.blue(`• Issues: ${c.blue.bold.underline('https://github.com/inttter/mdbadges-cli/issues')}`));
-        console.log(c.blue(`• Contribute: ${c.blue.bold.underline('http://tinyurl.com/mdbcontributing')}`));
-        console.log(c.blue(`• License: ${c.blue.underline.bold('http://tinyurl.com/mdblicense')}`));
+        console.log(c.blue(`• Contribute: ${c.blue.bold.underline('https://tinyurl.com/mdbcontributing')}`));
+        console.log(c.blue(`• License: ${c.blue.underline.bold('https://tinyurl.com/mdblicense')}`));
       } catch (error) {
         consola.error(c.red(`An error occurred when fetching the latest version: ${error.message}`));
       }
@@ -657,7 +657,7 @@ program
 
     if (!categoryData) {
       consola.error(c.red(`The category you specified could not be found.`));
-      console.log(c.cyan(`You can try visiting the syntax list for the categories here: ${c.blue.bold('http://tinyurl.com/mdbcategories')}`));
+      console.log(c.cyan(`You can try visiting the syntax list for the categories here: ${c.blue.bold('https://tinyurl.com/mdbcategories')}`));
       console.log();
       return;
     }

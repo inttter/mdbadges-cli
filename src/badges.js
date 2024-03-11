@@ -93,6 +93,7 @@ const badges = {
         'codepen': '[![CodePen](https://img.shields.io/badge/CodePen-white?&logo=codepen&logoColor=black)](#) ',
         'eclipse': '[![Eclipse](https://img.shields.io/badge/Eclipse-FE7A16.svg?logo=Eclipse&logoColor=white)](#) ',
         'emacs': '[![Emacs](https://img.shields.io/badge/Emacs-%237F5AB6.svg?&logo=gnu-emacs&logoColor=white)](#) ',
+        'git': '[![Git](https://img.shields.io/badge/Git-F05032?logo=git&logoColor=fff)](#) ',
         'intellij-idea': '[![IntelliJ IDEA](https://img.shields.io/badge/IntelliJIDEA-000000.svg?logo=intellij-idea&logoColor=white)](#) ',
         'netbeans-ide': '[![NetBeans IDE](https://img.shields.io/badge/NetBeans%20IDE-1B6AC6.svg?logo=apache-netbeans-ide&logoColor=white)](#) ',
         'neovim': '[![Neovim](https://img.shields.io/badge/Neovim-57A143?logo=neovim&logoColor=fff)](#) ',

@@ -72,8 +72,46 @@ program
             links.push(link);
           }
         } else {
-          consola.error(c.red(`${(formatBadgeName(badgeName))} is not a valid badge.`));
+          consola.error(c.red(`"${formatBadgeName(badgeName)}" is not a valid badge.`));
           console.log(c.cyan(`Try running ${c.blue('mdb search')} for a list of badges in that category.`));
+          console.log();
+        
+          // prompt for similar badges in the same category if it cant find the badge
+          const similarBadges = Object.keys(categoryData).filter(key =>
+            key.toLowerCase().includes(badgeName.toLowerCase())
+          );
+        
+          // similar badge prompt/logic
+          if (similarBadges.length > 0) {
+            inquirer.prompt([
+              {
+                type: "list",
+                name: "selectedBadge",
+                message: gradient.fruit("Did you mean one of these?"),
+                choices: [
+                  ...similarBadges.map(similarBadge => ({
+                    name: similarBadge,
+                    value: categoryData[similarBadge],
+                  })),
+                  new inquirer.Separator(),
+                  {
+                    name: 'None of these',
+                    value: 'none',
+                  }
+                ],
+              },
+            ])
+            .then(({ selectedBadge }) => {
+              if (selectedBadge === 'none') {
+                process.exit(0);
+              } else {
+                console.log();
+                console.log(c.green.bold('Badge found:'));
+                console.log(chalk.hex.bold("#FFBF00")(selectedBadge));
+                console.log();
+              }
+            });
+          }
         }
       }
 

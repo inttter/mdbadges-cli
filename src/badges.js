@@ -112,6 +112,7 @@ const badges = {
     'collaboration': {
         'asana': '[![Asana](https://img.shields.io/badge/Asana-F06A6A?logo=asana&logoColor=fff)](#) ',
         'jira': '[![Jira](https://img.shields.io/badge/Jira-0052CC?logo=jira&logoColor=fff)](#) ',
+        'linear': '[![Linear](https://img.shields.io/badge/Linear-5E6AD2?logo=linear&logoColor=fff)](#) ',
         'microsoft-teams': '[![Microsoft Teams](https://img.shields.io/badge/Microsoft%20Teams-6264A7?logo=microsoftteams&logoColor=fff)](#) ',
         'slack': '[![Slack](https://img.shields.io/badge/Slack-4A154B?logo=slack&logoColor=fff)](#) ',
         'trello': '[![Trello](https://img.shields.io/badge/Trello-0052CC?logo=trello&logoColor=fff)](#) '

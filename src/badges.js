@@ -197,6 +197,7 @@ const badges = {
         'udemy': '[![Udemy](https://img.shields.io/badge/Udemy-A435F0?logo=udemy&logoColor=fff)](#) ',
     },
     'funding': {
+        'alipay': '[![Alipay](https://img.shields.io/badge/Alipay-1677FF?logo=alipay&logoColor=fff)](#) ',
         'buymeacoffee': '[![Buy Me a Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-ffdd00?&logo=buy-me-a-coffee&logoColor=black)](#) ',
         'github-sponsors': '[![Github-Sponsors](https://img.shields.io/badge/Sponsor-30363D?&logo=GitHub-Sponsors&logoColor=#EA4AAA)](#) ',
         'kofi': '[![Ko-fi](https://img.shields.io/badge/Ko--fi-FF5E5B?logo=ko-fi&logoColor=white)](#) ',

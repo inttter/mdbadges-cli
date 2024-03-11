@@ -387,6 +387,7 @@ const badges = {
         'rust': '[![Rust](https://img.shields.io/badge/Rust-%23000000.svg?e&logo=rust&logoColor=white)](#) ',
         'sass': '[![Sass](https://img.shields.io/badge/Sass-C69?logo=sass&logoColor=fff)](#) ',
         'scala': '[![Scala](https://img.shields.io/badge/Scala-%23DC322F.svg?logo=scala&logoColor=white)](#) ',
+        'solidity': '[![Solidity](https://img.shields.io/badge/Solidity-363636?logo=solidity&logoColor=fff)](#) ',
         'swift': '[![Swift](https://img.shields.io/badge/Swift-F54A2A?logo=swift&logoColor=white)](#) ',
         'typescript': '[![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=fff)](#) ',
         'zig': '[![Zig](https://img.shields.io/badge/Zig-F7A41D?logo=zig&logoColor=fff)](#) '

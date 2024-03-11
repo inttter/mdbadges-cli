@@ -107,7 +107,7 @@ program
               } else {
                 console.log();
                 console.log(c.green.bold('Badge found:'));
-                console.log(chalk.hex.bold("#FFBF00")(selectedBadge));
+                console.log(chalk.hex("#FFBF00").bold(selectedBadge));
                 console.log();
               }
             });

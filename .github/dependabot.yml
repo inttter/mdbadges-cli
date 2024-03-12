@@ -6,13 +6,11 @@ updates:
       interval: "daily"
       time: "09:30"
     commit-message:
-      # Prefixes all commit messages with "package:"
-      prefix: "package:"
+      prefix: "📦 chore(package):"
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
      interval: "daily"
      time: "09:30"
     commit-message:
-      # Prefixes all commit messages with "action:"
-      prefix: "action:"
+      prefix: "🤖 chore(action):"

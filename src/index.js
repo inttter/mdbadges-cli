@@ -281,7 +281,7 @@ program
 
       spinner.stop();
 
-      if (options.check && latest >= packageInfo.version) {
+      if (options.check && latest > packageInfo.version) {
         console.log();
         const updateMessage = boxen(
           `An update is available: ${c.dim(packageInfo.version)} ➜  ${c.green(latest)}\nRun ${c.cyan('mdb update')} to update.\nRun ${c.cyan('mdb changelog')} for the changes.${latestMajor > currentMajor ? `\n\n${c.yellow.bold('Warning:')} \n ${c.magenta.bold('This is a major version bump, which may include ')}${c.magenta.underline.bold('breaking changes')} ${c.magenta.bold('that aren\'t backwards compatible.')}\n ${c.magenta.bold('Visit the GitHub page for more details:')} ${c.yellow.bold(`https://github.com/inttter/${packageInfo.name}`)}` : ''}`,

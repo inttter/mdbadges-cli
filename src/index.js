@@ -274,7 +274,7 @@ program
     }).start();
 
     try {
-      const response = await axios.get('https://registry.npmjs.org/mdbadges-cli');
+      const response = await axios.get(`https://registry.npmjs.org/${packageInfo.name}`);
       const latest = response.data['dist-tags'].latest;
       const [currentMajor, ,] = packageInfo.version.split('.');
       const [latestMajor, ,] = latest.split('.');
@@ -284,7 +284,7 @@ program
       if (options.check && latest >= packageInfo.version) {
         console.log();
         const updateMessage = boxen(
-          `An update is available: ${c.dim(packageInfo.version)} ➜  ${c.green(latest)}\nRun ${c.cyan('mdb update')} to update.\nRun ${c.cyan('mdb changelog')} for the changes.${latestMajor > currentMajor ? `\n\n${c.yellow.bold('Warning:')} \n ${c.magenta.bold('This is a major version bump, which may include ')}${c.magenta.underline.bold('breaking changes')} ${c.magenta.bold('that aren\'t backwards compatible.')}\n ${c.magenta.bold('Visit the GitHub page for more details:')} ${c.yellow.bold('https://github.com/inttter/mdbadges-cli')}` : ''}`,
+          `An update is available: ${c.dim(packageInfo.version)} ➜  ${c.green(latest)}\nRun ${c.cyan('mdb update')} to update.\nRun ${c.cyan('mdb changelog')} for the changes.${latestMajor > currentMajor ? `\n\n${c.yellow.bold('Warning:')} \n ${c.magenta.bold('This is a major version bump, which may include ')}${c.magenta.underline.bold('breaking changes')} ${c.magenta.bold('that aren\'t backwards compatible.')}\n ${c.magenta.bold('Visit the GitHub page for more details:')} ${c.yellow.bold(`https://github.com/inttter/${packageInfo.name}`)}` : ''}`,
           { borderStyle: 'round', padding: 1, margin: 1, title: '🔔 Note', titleAlignment: 'center', borderColor: 'cyan' }
         );
         console.log(updateMessage);
@@ -297,7 +297,7 @@ program
         const updateSpinner = ora({ text: chalk.cyan('Updating...\n\n'), spinner: cliSpinners.arc }).start();
 
         try {
-          await execa.command('npm install -g mdbadges-cli@latest', { stdio: 'inherit' });
+          await execa.command(`npm install -g ${packageInfo.name}@latest`, { stdio: 'inherit' });
 
           updateSpinner.succeed(chalk.green('Update complete!'));
           console.log();
@@ -489,7 +489,7 @@ program
   .action(async () => {
     async function displayAboutInfo() {
       try {
-        const response = await axios.get(`https://registry.npmjs.org/mdbadges-cli`);
+        const response = await axios.get(`https://registry.npmjs.org/${packageInfo.name}`);
         const latestVersion = response.data["dist-tags"].latest;
 
         // counts the number of badges and saves it in numOfBadges
@@ -524,7 +524,7 @@ program
         console.log(c.blue(`• ${c.cyan.bold('mdb docs')} to view the documentation`))
         console.log(c.blue(`• ${c.cyan.bold('mdb fund')} for various donation methods`));
         console.log();
-        console.log(c.blue(`• Issues: ${c.blue.bold.underline('https://github.com/inttter/mdbadges-cli/issues')}`));
+        console.log(c.blue(`• Issues: ${c.blue.bold.underline(`https://github.com/inttter/${packageInfo.name}/issues`)}`));
         console.log(c.blue(`• Contribute: ${c.blue.bold.underline('https://tinyurl.com/mdbcontributing')}`));
         console.log(c.blue(`• License: ${c.blue.underline.bold('https://tinyurl.com/mdblicense')}`));
       } catch (error) {
@@ -809,7 +809,7 @@ program
     }).start();
 
     try {
-      await open('https://github.com/inttter/mdbadges-cli/releases/latest');
+      await open(`https://github.com/inttter/${packageInfo.name}/releases/latest`);
 
       spinner.succeed(c.green("Opened in your browser!"));
     } catch (error) {
@@ -819,7 +819,7 @@ program
       setTimeout(() => {
         console.log();
         console.log(c.yellow('Hasn\'t opened in your browser? Try clicking on the link below:'));
-        console.log(c.magenta(`https://github.com/inttter/mdbadges-cli/releases/latest`));
+        console.log(c.magenta(`https://github.com/inttter/${packageInfo.name}/releases/latest`));
       }, 2000) // 5 seconds
     }
   });

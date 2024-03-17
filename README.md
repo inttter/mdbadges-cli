@@ -79,7 +79,7 @@ For help information, such as what commands do and/or accept, run ```mdb help / 
 |   Command      |    Description    |     Aliases      | Additional Information |
 |----------|-----------|---------------------------|--------|
 ```mdb version``` | Displays the current version you are on | ```v``` | This command is *not* for updating, this simply outputs your version. To update, see below.
-```mdb update``` | Automatically updates the package | ```upd```, ```u``` | Running this command with ```--check``` will only check for updates and tell you if an update is available. Running it without that option will automatically run ```npm install -g mdbadges-cli@latest```.
+```mdb update``` | Automatically updates the package | ```upd```, ```u``` | Will notify you of major bumps, and also prompts you if you'd like to update first.
 ```mdb fund``` | Displays funding/donation links for the package | N/A | You don't have to donate, but I'd appreciate it!
 ```mdb about``` | Displays general information about the package | ```abt``` | Also shows links to the website, GitHub issues, contributing, and more.
 ```mdb documentation``` | Opens a link to the documentation in your browser. | ```docs``` | Again, the link will be displayed after a few seconds, in case it does not open in your *(default)* browser.

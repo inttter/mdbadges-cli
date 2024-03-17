@@ -50,7 +50,7 @@ const badges = {
         'semaphore': '[![Semaphore](https://img.shields.io/badge/Semaphore-19A974?logo=semaphoreci&logoColor=fff)](#) ',
         'travis-ci': '[![Travis CI](https://img.shields.io/badge/Travis%20CI-3EAAAF?logo=travisci&logoColor=fff)](#) '
     },
-    'cloud-system': {
+    'cloud': {
         'alibaba-cloud': '[![Alibaba Cloud](https://img.shields.io/badge/AlibabaCloud-%23FF6701.svg?logo=alibabacloud&logoColor=white)](#) ',
         'aws': '[![AWS](https://img.shields.io/badge/AWS-%23FF9900.svg?logo=amazon-aws&logoColor=white)](#) ',
         'azure': '[![Azure](https://img.shields.io/badge/Azure-%230072C6.svg?logo=microsoftazure&logoColor=white)](#) ',

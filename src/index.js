@@ -261,12 +261,11 @@ program
   });
 
   program
-  .command('update [--check]')
+  .command('update')
   .alias('upd')
   .alias('u')
   .description('automatically update the package')
-  .option('--check', 'check for updates')
-  .action(async (check, options) => {
+  .action(async () => {
     const spinner = ora({
       text: chalk.blue('Checking for updates...'),
       spinner: cliSpinners.earth,
@@ -281,35 +280,42 @@ program
 
       spinner.stop();
 
-      if (options.check && latest > packageInfo.version) {
+      if (latest > packageInfo.version) {
         console.log();
         const updateMessage = boxen(
           `An update is available: ${c.dim(packageInfo.version)} ➜  ${c.green(latest)}\nRun ${c.cyan('mdb update')} to update.\nRun ${c.cyan('mdb changelog')} for the changes.${latestMajor > currentMajor ? `\n\n${c.yellow.bold('Warning:')} \n ${c.magenta.bold('This is a major version bump, which may include ')}${c.magenta.underline.bold('breaking changes')} ${c.magenta.bold('that aren\'t backwards compatible.')}\n ${c.magenta.bold('Visit the GitHub page for more details:')} ${c.yellow.bold(`https://github.com/inttter/${packageInfo.name}/releases/tag/${latest}`)}` : ''}`,
           { borderStyle: 'round', padding: 1, margin: 1, title: '🔔 Note', titleAlignment: 'center', borderColor: 'cyan' }
         );
         console.log(updateMessage);
-      } else if (options.check && latest <= packageInfo.version) {
+
+        const { confirm } = await inquirer.prompt({
+          type: 'confirm',
+          name: 'confirm',
+          message: gradient.fruit('▲ Are you sure you want to update now?'),
+        });
+
+        if (confirm) {
+          const updateSpinner = ora({ text: chalk.cyan('Updating...\n\n'), spinner: cliSpinners.arc }).start();
+
+          try {
+            await execa.command(`npm install -g ${packageInfo.name}@latest`, { stdio: 'inherit' });
+
+            updateSpinner.succeed(chalk.green('Update complete!'));
+            console.log();
+            console.log(c.green(`Check out what's changed by running ${c.cyan('mdb changelog')}.`));
+            console.log();
+          } catch (error) {
+            consola.error(c.red(`Update failed: ${error.message}`));
+            spinner.stop();
+          }
+        } else {
+          console.log();
+          console.log(c.green.bold('Update canceled.'));
+          console.log();
+        }
+      } else {
         console.log();
         console.log(c.green.bold(`You are already on the latest version, ${c.cyan(packageInfo.version)}.`));
-        console.log();
-      } else if (!options.check && latest < packageInfo.version) {
-        console.log();
-        const updateSpinner = ora({ text: chalk.cyan('Updating...\n\n'), spinner: cliSpinners.arc }).start();
-
-        try {
-          await execa.command(`npm install -g ${packageInfo.name}@latest`, { stdio: 'inherit' });
-
-          updateSpinner.succeed(chalk.green('Update complete!'));
-          console.log();
-          console.log(c.green(`Check out what's changed by running ${c.cyan('mdb changelog')}.`));
-          console.log();
-        } catch (error) {
-          consola.error(chalk.red(`Update failed: ${error.message}`));
-          spinner.stop();
-        }
-      } else if (!options.check && latest <= packageInfo.version) {
-        console.log();
-        console.log(c.green.bold(`You are already on the latest version, ${c.cyan(packageInfo.version)}`));
         console.log();
       }
     } catch (error) {

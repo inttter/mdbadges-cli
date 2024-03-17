@@ -87,7 +87,7 @@ For help information, such as what commands do and/or accept, run ```mdb help / 
 
 # Available Categories
 
-Below you'll find categories that are currently available, with the name and syntax needed in commands which need a ```<category>``` specified.
+Below you'll find categories that are currently available, with the name and syntax needed in the ```<category>``` field of certain commands.
 
 | Name | Syntax |
 |---------|---------------|
@@ -97,8 +97,7 @@ Blog | blog
 Browser | browser
 Code Coverage | code-coverage
 Code Editor | code-editor
-Cloud Storage | cloud-storage
-Cloud System | cloud-system
+Cloud | cloud
 Collaboration | collaboration
 Crypto | crypto
 Database | database
@@ -122,6 +121,7 @@ Search Engine | search-engine
 Social Media | social
 Sound | sound
 Static Site | static-site
+Storage | storage
 Video Streaming | video-streaming
 Virtual Reality | vr
 
@@ -143,4 +143,4 @@ There are multiple ways to contribute and improve this package.
 
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/intter)
 
-###### **©** <http://license.mdbcli.xyz>
+###### **©** ```2024``` · [MIT License](http://license.mdbcli.xyz)

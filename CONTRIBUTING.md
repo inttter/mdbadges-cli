@@ -59,12 +59,15 @@ When adding badges, you have two options to do so.
 
 If you want to directly add a badge into this repository, follow these steps:
 
-**1.** Navigate to the ```/src/badges.js``` file, which contains the definitions for the badges.
+**1.** Navigate to the ```src/badges.js``` file, which contains the definitions for the badges.
 
-**2.** If adding a badge to an existing category, locate the relevant category for the badge, and add the badge definition in alphabetical order, like this example below:
+**2.** If you're adding a badge to an existing category, locate the relevant category for the badge, and add the badge definition in alphabetical order, like this example below:
 
 ```javascript
-'discord': '[![Discord](https://img.shields.io/badge/Discord-%235865F2.svg?&logo=discord&logoColor=white)](#) ',
+'social': {
+  // other badges...
+  'discord': '[![Discord](https://img.shields.io/badge/Discord-%235865F2.svg?&logo=discord&logoColor=white)](#) ',
+}
 ```
 
 ```'discord'``` - **Name of the badge** *(what users will type when typing the command to find a badge)*
@@ -94,38 +97,43 @@ If you want to  add a badge to the list of badges, follow these steps:
 
 # Styling
 
-Currently, [**```gradient-string```**](https://github.com/bokub/gradient-string), [**```Chalk```**](https://github.com/chalk/chalk), and [**```ansi-colors```**](https://github.com/doowb/ansi-colors) are used for styling the text.
-
-To maintain consistency in styling, consider including at least one of these.
-
-### Syntax:
+* ```ansi-colors``` is the main coloring package used in mdbadges-cli. Almost all text is colored using the ```c``` prefix. See some examples below:
 
 ```javascript
-// gradient-string example
-console.log(gradient.cristal("This will be outputted with a gradient!"))
+// coloring the whole message
+console.log(c.yellow('Hasn\'t opened in your browser? Try clicking on the link below:'));
+console.log(c.magenta(`https://github.com/inttter/${packageInfo.name}/releases/latest`));
 
-// Chalk (CommonJS) example
-console.log(chalk.hex('#FFBF00')("This will be outputted with the hex color!"))
+// different colors within the same message
+console.log(c.cyan(`Try running ${c.blue.bold(`mdb search`)} for a full list of badges in this category.`,));
 
-// ansi-colors example
-console.log(c.yellow.underline("This will be outputted in yellow, while being underlined!"))
+// template literals with ansi-colors
+name: ${c.green(formattedBadge)} in ${c.yellow(formattedCategory)}
 ```
 
-### Example Use Case:
+<br>
 
-<div align="center">
+* ```gradient-string``` is used for prompts to the user. Specifically, ```gradient.fruit``` is used for all prompt messages, such as this example below:
 
-<img src="https://github.com/inttter/mdbadges-cli/assets/73017070/be0f7d7f-1ab5-4022-95d2-f9a89c9f1757" width="500">
+```javascript
+const answers = await inquirer.prompt([
+  {
+    type: 'list',
+    name: 'category',
+    message: gradient.fruit('Select a category:'), // this will have the gradient
+    choices: categories.map(formatCategoryName),
+    },
+  ]);
+```
 
-</div>
+<br>
 
-### Output:
+* ```Chalk``` is used for badge code outputs, such as this example below:
 
-<div align="center">
-
-<img src="https://github.com/inttter/mdbadges-cli/assets/73017070/0d51b39b-883e-4a71-bfe3-478364f22bcb" width="500">
-
-</div>
+```javascript
+console.log(c.green.bold('Badge found:'));
+console.log(chalk.hex("#FFBF00")(selectedBadge)); // this is colored with hex #FFBF00
+```
 
 ---
 

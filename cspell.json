@@ -8,7 +8,8 @@
         "clipboardy",
         "execa",
         "inttter",
-        "consola"
+        "consola",
+        "Gitmoji"
     ],
     "ignorePaths": ["node_modules", "src/badges.js", "src/utils.js"]
   }

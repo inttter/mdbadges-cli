@@ -5,8 +5,6 @@ Thank you for considering contributing to this project! Take a moment to read th
 > [!IMPORTANT]
 > Node 18 or higher is required.
 
----
-
 # Features
 
 If you would like to contribute a new feature, create a new [pull request](https://github.com/inttter/mdbadges-cli/pulls), detailing the feature and additional information, such as what it does, and its use case.
@@ -48,8 +46,6 @@ You can view an example command below:
 > It is recommended to use single-word command names without spaces (e.g. instead of ```search-badges```, do ```search```). **Aim to keep command names concise and descriptive.**
 
 While commands can be added anywhere within the file, it's recommended to place them at the bottom of the file *(but above the process.argv line)*. This arrangement makes it easier to manage and update commands in the future.
-
----
 
 # Adding Badges
 
@@ -93,8 +89,6 @@ If you want to  add a badge to the list of badges, follow these steps:
 
 **4.** When badges are added to **md-badges**, they will be added accordingly to this package in future releases.
 
----
-
 # Styling
 
 * ```ansi-colors``` is the main coloring package used in mdbadges-cli. Almost all text is colored using the ```c``` prefix. See some examples below:
@@ -134,8 +128,6 @@ const answers = await inquirer.prompt([
 console.log(c.green.bold('Badge found:'));
 console.log(chalk.hex("#FFBF00")(selectedBadge)); // this is colored with hex #FFBF00
 ```
-
----
 
 ## Spellchecking
 
@@ -177,6 +169,31 @@ Here's an example of two scenarios:
 > ```
 >
 > In the case above, if it is not a typo and it is, in fact, a correct word/phrase/etc., you can add it to the `words` category in `cspell.json`. After doing this, you can commit this change to your branch, and the workflow should run without problems.
+
+
+# Committing
+
+* mdbadges-cli uses [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) for commit messages, so commit messages should be in this format:
+
+    ```
+    chore: remove old code
+    ```
+
+* [Gitmoji](https://gitmoji.dev) is used for (most) commit emoji's, as well as some others (which you can decide what they should be). For example:
+
+    ```
+    ✨ feat: add GitHub badge
+    ```
+
+For more specific things, you can do something like the following examples below:
+
+```
+🔖 chore(release): bump version to 6.0.0
+
+✨ feat(update): show update progress bar
+
+🐛 fix(badges): fix incorrect GitHub badge code
+```
 
 ---
 

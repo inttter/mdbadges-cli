@@ -1,6 +1,6 @@
 {
   "name": "mdbadges-cli",
-  "version": "5.4.1",
+  "version": "5.4.2",
   "engines": {
     "node": ">=18"
   },
@@ -46,8 +46,7 @@
     "gradient-string": "^2.0.2",
     "inquirer": "^8.2.4",
     "open": "^8.4.2",
-    "ora": "^5.4.1",
-    "prompts": "^2.4.2"
+    "ora": "^5.4.1"
   },
   "funding": {
     "type": "individual",

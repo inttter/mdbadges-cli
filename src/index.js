@@ -475,13 +475,13 @@ program
       const badgeHtml = `<a href="${escapeHtml(link)}"><img alt="${escapeHtml(alt)}" src="${badgeLink}" /></a>`;
 
       console.log();
-      console.log(c.green.bold("Custom badge created:"));
+      console.log(c.green.bold("✅ Custom badge created succesfully!"));
       console.log();
-      console.log(c.yellow.underline.bold("Markdown:"));
-      console.log(c.green(badgeMarkdown)); // displays the code with users' inputs
+      console.log(c.green.bold("Markdown:"));
+      console.log(chalk.hex("#FFBF00").bold(badgeMarkdown)); // displays the code with users' inputs
       console.log();
-      console.log(c.yellow.underline.bold("HTML:"));
-      console.log(c.green(badgeHtml)); // displays the HTML version
+      console.log(c.green.bold("HTML:"));
+      console.log(chalk.hex("#FFBF00").bold(badgeHtml)); // displays the HTML version
       console.log();
     } catch (error) {
       consola.error(c.red(`An error occurred when trying to make your badge: ${error.message}`));

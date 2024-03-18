@@ -3,7 +3,6 @@
 const { program } = require("commander");
 const axios = require("axios");
 const chalk = require("chalk");
-const prompts = require("prompts");
 const clipboardy = require("clipboardy");
 const ora = require("ora");
 const gradient = require("gradient-string");
@@ -60,10 +59,10 @@ program
           // Prompt for the link only if --link is specified
           let link = "";
           if (options.link) {
-            const linkResponse = await prompts({
+            const linkResponse = await inquirer.prompt({
               type: "text",
               name: "link",
-              message: badgeNames.length === 1 ? c.blue("Enter your link here:") : index === 0 ? c.blue("Enter your first link here, then click Enter and type the rest below:") : "",
+              message: badgeNames.length === 1 ? gradient.fruit("▲ Enter your link here:") : index === 0 ? gradient.fruit("▲ Enter your first link here, then click Enter and type the rest below:") : "",
               validate: (value) => {
                 return value.trim() === '' ? c.red("Please enter a link.") : true; 
               },

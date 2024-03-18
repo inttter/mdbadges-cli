@@ -475,7 +475,7 @@ program
       const badgeHtml = `<a href="${escapeHtml(link)}"><img alt="${escapeHtml(alt)}" src="${badgeLink}" /></a>`;
 
       console.log();
-      console.log(c.green.bold("✅ Custom badge created succesfully!"));
+      console.log(c.green.bold("✅ Custom badge created successfully!"));
       console.log();
       console.log(c.green.bold("Markdown:"));
       console.log(chalk.hex("#FFBF00").bold(badgeMarkdown)); // displays the code with users' inputs

@@ -301,7 +301,8 @@ program
 
             updateSpinner.succeed(chalk.green('Update complete!'));
             console.log();
-            console.log(c.green(`Check out what's changed by running ${c.cyan('mdb changelog')}.`));
+            console.log(c.green(`You are now on ${c.green.bold.underline(`v${packageInfo.version}`)}! To verify, run ${c.cyan.bold('mdb version')}.`));
+            console.log(c.green(`Check out what's changed by running ${c.cyan.bold('mdb changelog')}.`));
             console.log();
           } catch (error) {
             consola.error(c.red(`Update failed: ${error.message}`));

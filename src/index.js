@@ -756,7 +756,7 @@ program
 
     // adds the badge to the file
     try {
-      fs.appendFileSync(filePath, `\n${badgeMarkdown}\n`, "utf8");
+      fs.appendFileSync(filePath, `\n${badgeMarkdown}`, "utf8");
       console.log()
       console.log(c.green("Badge added to the file successfully."));
     } catch (error) {

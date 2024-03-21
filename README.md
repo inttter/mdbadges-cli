@@ -9,11 +9,11 @@
 [![License](https://custom-icon-badges.herokuapp.com/github/license/inttter/mdbadges-cli?logo=law&color=07B0D1&logoColor=eb6f92&labelColor=191724)](https://github.com/inttter/mdbadges-cli/blob/main/LICENSE/ "The project license.")
 
 
-```mdbadges-cli``` is a command line tool that allows you to find Shields.io badges without needing to leave your terminal and scour the internet just to find a specific one.
+```mdbadges-cli``` is an extensive CLI tool to find over 400+ Shields.io badges for your projects without needing to leaving the terminal.
 
 </div>
 
-There's a number of features available, allowing for maximum productivity, including:
+There's a number of features available, including:
 
 * A wide range of over 400+ badges
 * 30+ categories to search between
@@ -21,7 +21,7 @@ There's a number of features available, allowing for maximum productivity, inclu
 * Aliases for many commands
 * Custom badges just by using simple prompts
 * Random badge generation
-* [**and more...**](https://inttter.gitbook.io/mdbadges-cli/) 💎
+* [**and more...**](https://docs.mdbcli.xyz) 💎
 
 # Installation
 

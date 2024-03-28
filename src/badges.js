@@ -236,7 +236,7 @@ const badges = {
         'next': '[![Next.js](https://img.shields.io/badge/Next.js-black?logo=next.js&logoColor=white)](#) ',
         'nodejs': '[![NodeJS](https://img.shields.io/badge/Node.js-6DA55F?logo=node.js&logoColor=white)](#) ',
         'nuxt': '[![Nuxt.js](https://img.shields.io/badge/Nuxt.js-002E3B?logo=nuxtdotjs&logoColor=#00DC82)](#) ',
-        'preact': '[![Preact](https://img.shields.io/badge/Preact-673AB8?logo=preact&logoColor=fff)] ',
+        'preact': '[![Preact](https://img.shields.io/badge/Preact-673AB8?logo=preact&logoColor=fff)](#) ',
         'rails': '[![Rails](https://img.shields.io/badge/Rails-%23CC0000.svg?logo=ruby-on-rails&logoColor=white)](#) ',
         'react': '[![React](https://img.shields.io/badge/React-%2320232a.svg?logo=react&logoColor=%2361DAFB)](#) ',
         'react-native': '[![React Native](https://img.shields.io/badge/React_Native-%2320232a.svg?logo=react&logoColor=%2361DAFB)](#) ',

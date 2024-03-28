@@ -8,7 +8,7 @@ const badges = {
         'chatgpt': '[![ChatGPT](https://img.shields.io/badge/ChatGPT-74aa9c?logo=openai&logoColor=white)](#) ',
         'dependabot': '[![Dependabot](https://img.shields.io/badge/Dependabot-025E8C?logo=dependabot&logoColor=fff)](#) ',
         'google-assistant': '[![Google Assistant](https://img.shields.io/badge/Google%20Assistant-4285F4?logo=googleassistant&logoColor=fff)](#) ',
-        'google-bard': '[![Google Bard](https://img.shields.io/badge/Google%20Bard-886FBF?logo=googlebard&logoColor=fff)](#) ',
+        'google-gemini': '[![Google Bard](https://img.shields.io/badge/Google%20Gemini-886FBF?logo=googlebard&logoColor=fff)](#) ',
         'renovatebot': '[![RenovateBot](https://img.shields.io/badge/RenovateBot-1A1F6C?logo=renovatebot&logoColor=fff)](#) '
     },
     'blog': {

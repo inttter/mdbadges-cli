@@ -8,7 +8,7 @@ const badges = {
         'chatgpt': '[![ChatGPT](https://img.shields.io/badge/ChatGPT-74aa9c?logo=openai&logoColor=white)](#) ',
         'dependabot': '[![Dependabot](https://img.shields.io/badge/Dependabot-025E8C?logo=dependabot&logoColor=fff)](#) ',
         'google-assistant': '[![Google Assistant](https://img.shields.io/badge/Google%20Assistant-4285F4?logo=googleassistant&logoColor=fff)](#) ',
-        'google-gemini': '[![Google Bard](https://img.shields.io/badge/Google%20Gemini-886FBF?logo=googlebard&logoColor=fff)](#) ',
+        'google-gemini': '[![Google Gemini](https://img.shields.io/badge/Google%20Gemini-886FBF?logo=googlegemini&logoColor=fff)](#) ',
         'renovatebot': '[![RenovateBot](https://img.shields.io/badge/RenovateBot-1A1F6C?logo=renovatebot&logoColor=fff)](#) '
     },
     'blog': {
@@ -34,6 +34,7 @@ const badges = {
         'firefox': '[![Firefox](https://img.shields.io/badge/Firefox-FF7139?logo=Firefox&logoColor=white)](#) ',
         'ie': '[![IE](https://img.shields.io/badge/Internet%20Explorer-0076D6?logo=Internet%20Explorer&logoColor=white)](#) ',
         'opera': '[![Opera](https://img.shields.io/badge/Opera-FF1B2D?logo=Opera&logoColor=white)](#) ',
+        'opera-gx': '[![Opera GX](https://img.shields.io/badge/Opera%20GX-EE2950?logo=operagx&logoColor=fff)](#) ',
         'safari': '[![Safari](https://img.shields.io/badge/Safari-006CFF?logo=safari&logoColor=fff)](#) ',
         'tor': '[![Tor](https://img.shields.io/badge/Tor-7D4698?logo=Tor-Browser&logoColor=white)](#) ',
         'vivaldi': '[![Vivaldi](https://img.shields.io/badge/Vivaldi-EF3939?logo=Vivaldi&logoColor=white)](#) '
@@ -173,6 +174,7 @@ const badges = {
         'docusaurus': '[![Docusaurus](https://img.shields.io/badge/Docusaurus-3ECC5F?logo=docusaurus&logoColor=fff)](#) ',
         'gitbook': '[![GitBook](https://img.shields.io/badge/GitBook-3884FF?logo=gitbook&logoColor=fff)](#) ',
         'mkdocs': '[![MkDocs](https://img.shields.io/badge/MkDocs-526CFE?logo=materialformkdocs&logoColor=fff)](#) ',
+        'readme': '[![ReadMe](https://img.shields.io/badge/ReadMe-018EF5?logo=readme&logoColor=fff)](#) ',
         'read-the-docs': '[![Read the Docs](https://img.shields.io/badge/Read%20the%20Docs-8CA1AF?logo=readthedocs&logoColor=fff)](#) ',
         'sphinx': '[![Sphinx](https://img.shields.io/badge/Sphinx-000?logo=sphinx&logoColor=fff)](#) ',
         'vuepress': '[![VuePress](https://img.shields.io/badge/VuePress-4FC08D?logo=vuedotjs&logoColor=fff)](#) ',
@@ -234,9 +236,12 @@ const badges = {
         'next': '[![Next.js](https://img.shields.io/badge/Next.js-black?logo=next.js&logoColor=white)](#) ',
         'nodejs': '[![NodeJS](https://img.shields.io/badge/Node.js-6DA55F?logo=node.js&logoColor=white)](#) ',
         'nuxt': '[![Nuxt.js](https://img.shields.io/badge/Nuxt.js-002E3B?logo=nuxtdotjs&logoColor=#00DC82)](#) ',
+        'preact': '[![Preact](https://img.shields.io/badge/Preact-673AB8?logo=preact&logoColor=fff)] ',
         'rails': '[![Rails](https://img.shields.io/badge/Rails-%23CC0000.svg?logo=ruby-on-rails&logoColor=white)](#) ',
         'react': '[![React](https://img.shields.io/badge/React-%2320232a.svg?logo=react&logoColor=%2361DAFB)](#) ',
         'react-native': '[![React Native](https://img.shields.io/badge/React_Native-%2320232a.svg?logo=react&logoColor=%2361DAFB)](#) ',
+        'react-query': '[![React Query](https://img.shields.io/badge/React%20Query-FF4154?logo=reactquery&logoColor=fff)](#) ',
+        'react-router': '[![React Router](https://img.shields.io/badge/React_Router-CA4245?logo=react-router&logoColor=white)](#) ',
         'redux': '[![Redux](https://img.shields.io/badge/Redux-764ABC?logo=redux&logoColor=fff)](#) ',
         'remix': '[![Remix](https://img.shields.io/badge/Remix-000?logo=remix&logoColor=fff)](#) ',
         'sass': '[![Sass](https://img.shields.io/badge/Sass-C69?logo=sass&logoColor=fff)](#) ',
@@ -387,6 +392,8 @@ const badges = {
         'solidity': '[![Solidity](https://img.shields.io/badge/Solidity-363636?logo=solidity&logoColor=fff)](#) ',
         'swift': '[![Swift](https://img.shields.io/badge/Swift-F54A2A?logo=swift&logoColor=white)](#) ',
         'typescript': '[![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=fff)](#) ',
+        'v': '[![V](https://img.shields.io/badge/V-5D87BF?logo=v&logoColor=fff)](#) ',
+        'yaml': '[![YAML](https://img.shields.io/badge/YAML-CB171E?logo=yaml&logoColor=fff)](#) ',
         'zig': '[![Zig](https://img.shields.io/badge/Zig-F7A41D?logo=zig&logoColor=fff)](#) '
     },
     'restaurant': {

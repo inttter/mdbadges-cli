@@ -246,7 +246,7 @@ program
       setTimeout(() => {
         console.log(c.yellow('\nHasn\'t opened yet? Try one of these two links:'));
         console.log(c.magenta(`https://github.com/inttter/md-badges`));
-        console.log(c.magenta(`https://mdbdocs.inttter.com/content/badges`));
+        console.log(c.magenta(`https://mdb.iinter.me/content/badges`));
       }, 2000); // 5 seconds
     }
   });

@@ -72,9 +72,7 @@ program
           }
         } else {
           consola.error(c.red(`"${formatBadgeName(badgeName)}" is not a valid badge.`));
-          console.log(c.cyan(`Try running ${c.blue('mdb search')} for a list of badges in that category.`));
-          console.log();
-        
+          console.log(c.cyan(`Try running ${c.blue('mdb search')} for a list of badges in that category.\n`));        
           // prompt for similar badges in the same category if it cant find the badge
           const similarBadges = Object.keys(categoryData).filter(key =>
             key.toLowerCase().includes(badgeName.toLowerCase())
@@ -104,10 +102,8 @@ program
               if (selectedBadge === 'none') {
                 process.exit(0);
               } else {
-                console.log();
-                console.log(c.green.bold('Badge found:'));
-                console.log(chalk.hex("#FFBF00").bold(selectedBadge));
-                console.log();
+                console.log(c.green.bold('\nBadge found:'));
+                console.log(chalk.hex("#FFBF00").bold(`${selectedBadge}\n`));
               }
             });
           }
@@ -209,13 +205,10 @@ program
   .command("fund")
   .description("display funding/donation links for the package")
   .action(() => {
-    console.log();
-    console.log(c.yellow("If you would like, you can donate to me here:"));
-    console.log();
+    console.log(c.yellow("\nIf you would like, you can donate to me here:\n"));
     console.log(c.green(`Buy Me A Coffee: ${c.green.bold.underline('https://www.buymeacoffee.com/intter')}`));
     console.log(c.green(`GitHub Sponsors: ${c.green.bold.underline('https://github.com/sponsors/inttter')}`));
-    console.log(c.green(`Ko-fi: ${c.green.bold.underline('https://ko-fi.com/intter')}`));
-    console.log();
+    console.log(c.green(`Ko-fi: ${c.green.bold.underline('https://ko-fi.com/intter')}\n`));
   });
 
 // Version Checking Command
@@ -234,7 +227,7 @@ program
   .alias("list")
   .description("open a link to the badge list in your browser")
   .action(async () => {
-    console.log();
+    console.log()
     const spinner = ora({
       text: c.blue("Opening in browser..."),
       spinner: cliSpinners.earth,
@@ -251,8 +244,7 @@ program
       spinner.stop()
     } finally {
       setTimeout(() => {
-        console.log();
-        console.log(c.yellow('Hasn\'t opened yet? Try one of these two links:'));
+        console.log(c.yellow('\nHasn\'t opened yet? Try one of these two links:'));
         console.log(c.magenta(`https://github.com/inttter/md-badges`));
         console.log(c.magenta(`https://mdbdocs.inttter.com/content/badges`));
       }, 2000); // 5 seconds
@@ -280,7 +272,6 @@ program
       spinner.stop();
 
       if (latest > packageInfo.version) {
-        console.log();
         const updateMessage = boxen(
           `An update is available: ${c.dim(packageInfo.version)} ➜  ${c.green(latest)}\nRun ${c.cyan('mdb changelog')} for the changes.${latestMajor > currentMajor ? `\n\n${c.yellow.bold('Warning:')} \n ${c.magenta.bold('This is a major version bump, which may include ')}${c.magenta.underline.bold('breaking changes')} ${c.magenta.bold('that aren\'t backwards compatible.')}\n ${c.magenta.bold('Visit the GitHub page for more details:')} ${c.yellow.bold(`https://github.com/inttter/${packageInfo.name}/releases/tag/${latest}`)}` : ''}`,
           { borderStyle: 'round', padding: 1, margin: 1, title: '🔔 Note', titleAlignment: 'center', borderColor: 'cyan' }
@@ -300,26 +291,20 @@ program
             await execa.command(`npm install -g ${packageInfo.name}@latest`, { stdio: 'inherit' });
 
             updateSpinner.succeed(chalk.green('Update complete!'));
-            console.log();
-            console.log(c.green(`You are now on ${c.green.bold.underline(`v${packageInfo.version}`)}! To verify, run ${c.cyan.bold('mdb version')}.`));
-            console.log(c.green(`Check out what's changed by running ${c.cyan.bold('mdb changelog')}.`));
-            console.log();
+            console.log(c.green(`\nYou are now on ${c.green.bold.underline(`v${packageInfo.version}`)}! To verify, run ${c.cyan.bold('mdb version')}.`));
+            console.log(c.green(`Check out what's changed by running ${c.cyan.bold('mdb changelog')}.\n`));
           } catch (error) {
             consola.error(c.red(`Update failed: ${error.message}`));
             spinner.stop();
           }
         } else {
-          console.log();
-          console.log(c.green.bold('Update canceled.'));
-          console.log();
+          console.log(c.green.bold('\nUpdate canceled.\n'));
         }
       } else {
-        console.log();
-        console.log(c.green.bold(`You are already on the latest version, ${c.cyan(packageInfo.version)}.`));
-        console.log();
+        console.log(c.green.bold(`\nYou are already on the latest version, ${c.cyan(packageInfo.version)}.\n`));
       }
     } catch (error) {
-      console.log();
+      console.log()
       consola.error(c.red(`An error occurred while checking for updates: ${error.message}`));
       console.log();
     } finally {
@@ -352,17 +337,12 @@ program
       const categoryData = badges[formattedCategory];
 
       if (categoryData) {
-        console.log();
-        console.log(c.green(`Badges available in ${(answers.category)}:`));
-        console.log();
+        console.log(c.green(`\nBadges available in ${(answers.category)}:\n`));
         Object.keys(categoryData).forEach((badge) => {
           console.log(c.green(`• ${badge}`));
         });
-        console.log(
-          c.cyan(`\nTo get the ${c.underline('Markdown')} version of a badge, type 'mdb ${formattedCategory} <badgeName>'.`));
-        console.log(
-          c.cyan(`To get the ${c.underline('HTML')} version of a badge, type 'mdb --html ${formattedCategory} <badgeName>'.`));
-        console.log();
+        console.log(c.cyan(`\nTo get the ${c.underline('Markdown')} version of a badge, type 'mdb ${formattedCategory} <badgeName>'.`));
+        console.log(c.cyan(`To get the ${c.underline('HTML')} version of a badge, type 'mdb --html ${formattedCategory} <badgeName>'.\n`));
       } else {
         consola.error(c.red(`The specified category could not be found.`));
         console.log();
@@ -474,15 +454,11 @@ program
 
       const badgeHtml = `<a href="${escapeHtml(link)}"><img alt="${escapeHtml(alt)}" src="${badgeLink}" /></a>`;
 
-      console.log();
-      console.log(c.green.bold("✅ Custom badge created successfully!"));
-      console.log();
+      console.log(c.green.bold("\n✅ Custom badge created successfully!\n"));
       console.log(c.green.bold("Markdown:"));
-      console.log(chalk.hex("#FFBF00").bold(badgeMarkdown)); // displays the code with users' inputs
-      console.log();
+      console.log(chalk.hex("#FFBF00").bold(`${badgeMarkdown}\n`)); // displays the code with users' inputs
       console.log(c.green.bold("HTML:"));
-      console.log(chalk.hex("#FFBF00").bold(badgeHtml)); // displays the HTML version
-      console.log();
+      console.log(chalk.hex("#FFBF00").bold(`${badgeHtml}\n`)); // displays the HTML version
     } catch (error) {
       consola.error(c.red(`An error occurred when trying to make your badge: ${error.message}`));
     }
@@ -505,32 +481,29 @@ program
           numOfBadges += Object.keys(category).length;
         });
 
-        console.log();
-        console.log(c.green.bold('                    _  _                 _                                 _  _ '));
+        console.log(c.green.bold('\n                    _  _                 _                                 _  _ '));
         console.log(c.green.bold('                    | || |               | |                               | |(_) '));
         console.log(c.green.bold('      _ __ ___    __| || |__    __ _   __| |  __ _   ___  ___  ______  ___ | | _ '));
         console.log(c.green.bold('     | \'_ ` _ \\  / _` || \'_ \\  / _` | / _` | / _` | / _ \\/ __||______|/ __|| || |'));
         console.log(c.green.bold('     | | | | | || (_| || |_) || (_| || (_| || (_| ||  __/\\__ \\       | (__ | || |'));
         console.log(c.green.bold('     |_| |_| |_| \\__,_||_.__/  \\__,_| \\__,_| \\__, | \\___||___/        \\___||_||_|'));
         console.log(c.green.bold('                                              __/ |                              '));
-        console.log(c.green.bold('                                             |___/                               '));
-        console.log();
+        console.log(c.green.bold('                                             |___/                               \n'));
         console.log(c.blue.bold('An extensive CLI tool to find Shields.io badges without needing to leaving the terminal.'));    
-        console.log(c.blue.bold('                               https://mdbcli.xyz                            '));
-        console.log();
+        console.log(c.blue.bold('                               https://mdbcli.xyz                            \n'));
         console.log(c.yellow(`${c.yellow.bold.underline('Latest:')} ${latestVersion}`));
 
         const userPackageVersion = packageInfo.version;
         console.log(c.yellow(`${c.yellow.bold.underline('Your Version:')} ${userPackageVersion}`));
-        console.log(c.blue(`If these versions do not match, run ${c.cyan.bold('mdb update')}.`));
-        console.log();
-        console.log(c.yellow(`Badges Available: ${numOfBadges}`));
-        consola.log();
+        console.log(c.blue(`If these versions do not match, run ${c.cyan.bold('mdb update')}.\n`));
+
+        console.log(c.yellow(`Badges Available: ${numOfBadges}\n`));
+
         console.log(c.blue(`• ${c.cyan.bold('mdb help')} to view the available list of commands`));
         console.log(c.blue(`• ${c.cyan.bold('mdb changelog')} to view the latest release`));
         console.log(c.blue(`• ${c.cyan.bold('mdb docs')} to view the documentation`))
-        console.log(c.blue(`• ${c.cyan.bold('mdb fund')} for various donation methods`));
-        console.log();
+        console.log(c.blue(`• ${c.cyan.bold('mdb fund')} for various donation methods\n`));
+
         console.log(c.blue(`• Issues: ${c.blue.bold.underline(`https://github.com/inttter/${packageInfo.name}/issues`)}`));
         console.log(c.blue(`• Contribute: ${c.blue.bold.underline('https://tinyurl.com/mdbcontributing')}`));
         console.log(c.blue(`• License: ${c.blue.underline.bold('https://tinyurl.com/mdblicense')}`));
@@ -597,15 +570,13 @@ program
       const htmlBadge = `<img src="${badgeLink}${styleParam}" />`;
 
       // this outputs BOTH versions, Markdown and HTML
-      console.log();
-      console.log(c.yellow.underline.bold('Markdown:')); 
-      console.log(c.green(markdownBadge));
-      console.log();
+      console.log(c.yellow.underline.bold('\nMarkdown:')); 
+      console.log(c.green(`${markdownBadge}\n`));
+
       console.log(c.yellow.underline.bold('HTML:'));
       console.log(c.green(htmlBadge));
-      // -----------------------------------------------------------------------
-      // the logic below is for the command without --category/-c (aka just mdb random)
     } else {
+      // the logic below is for the command without --category/-c (aka just mdb random)
       const categories = Object.keys(badges);
       const randomCategory = categories[Math.floor(Math.random() * categories.length)];
       const badgesInCategory = Object.keys(badges[randomCategory]);
@@ -620,10 +591,9 @@ program
       const htmlBadge = `<img src="${badgeLink}" />`;
 
       // Output both versions, Markdown and HTML.
-      console.log();
-      console.log(c.yellow.underline.bold('Markdown:')); 
-      console.log(c.green(markdownBadge));
-      console.log();
+      console.log(c.yellow.underline.bold('\nMarkdown:')); 
+      console.log(c.green(`${markdownBadge}\n`));
+
       console.log(c.yellow.underline.bold('HTML:'));
       console.log(c.green(htmlBadge));
     }
@@ -644,14 +614,10 @@ program
     ) {
       const selectedBadge = badges[formattedCategory][formattedBadgeName];
       clipboardy.writeSync(selectedBadge);
-      console.log();
-      console.log(
-        c.green.bold(`Copied to the clipboard successfully.`),
-      );
+      console.log(c.green.bold(`\nCopied to the clipboard successfully.\n`));
     } else {
       consola.error(c.red(`The specified could not be found.`));
-      console.log(c.blue(`Try running ${c.cyan(`mdb search`)} and then selecting ${c.cyan(category)} for a full list of badges in this category.`));
-      console.log();
+      console.log(c.blue(`Try running ${c.cyan(`mdb search`)} and then selecting ${c.cyan(category)} for a full list of badges in this category.\n`));
     }
   });
 
@@ -688,8 +654,7 @@ program
         },
       ]);
 
-      console.log();
-      console.log(c.green.bold('Badge found:'));
+      console.log(c.green.bold('\nBadge found:'));
       console.log(chalk.hex("#FFBF00")(selectedBadge));
     }
   });
@@ -704,8 +669,7 @@ program
 
     if (!categoryData) {
       consola.error(c.red(`The category you specified could not be found.`));
-      console.log(c.cyan(`You can try visiting the syntax list for the categories here: ${c.blue.bold('https://tinyurl.com/mdbcategories')}`));
-      console.log();
+      console.log(c.cyan(`You can try visiting the syntax list for the categories here: ${c.blue.bold('https://tinyurl.com/mdbcategories')}\n`));
       return;
     }
 
@@ -715,10 +679,8 @@ program
     );
 
     if (!foundBadge) {
-      console.log();
-      consola.error(c.red(`The badge you specified could not be found.`));
-      console.log(c.cyan(`Try running ${c.blue.bold(`mdb search`)} for a full list of badges in this category.`,));
-      console.log();
+      consola.error(c.red(`\nThe badge you specified could not be found.`));
+      console.log(c.cyan(`Try running ${c.blue.bold(`mdb search`)} for a full list of badges in this category.\n`));
       return;
     }
 
@@ -739,8 +701,7 @@ program
 
     // Check if the specified file has the ".md" extension
     if (!filePath.toLowerCase().endsWith(".md")) {
-      console.log();
-      consola.error(c.red(`Could not add badge to your file. Try checking that your file type and file name is valid. If you're working with subdirectories, make sure the path you specified exists.`));
+      consola.error(c.red(`Could not add badge to your file. \nTry checking that your file type and file name is valid. \nIf you're working with subdirectories, make sure the path you specified exists.`));
     return;
   }
 
@@ -757,8 +718,7 @@ program
     // adds the badge to the file
     try {
       fs.appendFileSync(filePath, `\n${badgeMarkdown}`, "utf8");
-      console.log()
-      console.log(c.green("Badge added to the file successfully."));
+      console.log(c.green("\nBadge added to the file successfully."));
     } catch (error) {
       consola.error(c.red(`Could not write to the file: ${error.message}`));
     }
@@ -786,8 +746,7 @@ program
     spinner.stop()
   } finally {
     setTimeout(() => {
-      console.log();
-      console.log(c.yellow('Hasn\'t opened in your browser? Try clicking on the link below:'));
+      console.log(c.yellow('\nHasn\'t opened in your browser? Try clicking on the link below:'));
       console.log(c.magenta(`https://docs.mdbcli.xyz/`));
     }, 2000) // 5 seconds
   }
@@ -824,8 +783,7 @@ program
       spinner.stop()
     } finally {
       setTimeout(() => {
-        console.log();
-        console.log(c.yellow('Hasn\'t opened in your browser? Try clicking on the link below:'));
+        console.log(c.yellow('\nHasn\'t opened in your browser? Try clicking on the link below:'));
         console.log(c.magenta(`https://github.com/inttter/${packageInfo.name}/releases/latest`));
       }, 2000) // 5 seconds
     }

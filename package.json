@@ -16,9 +16,6 @@
     "generator",
     "documentation",
     "CLI",
-    "technology",
-    "status",
-    "utilities",
     "shields",
     "shields.io",
     "shieldsio",
@@ -48,6 +45,9 @@
     "open": "^8.4.2",
     "ora": "^5.4.1"
   },
+  "devDependencies": {
+    "jest": "^29.7.0"
+  },
   "funding": {
     "type": "individual",
     "url": "https://github.com/sponsors/inttter"
@@ -56,8 +56,8 @@
     "type": "git",
     "url": "git+https://github.com/inttter/mdbadges-cli.git"
   },
-  "devDependencies": {
-    "jest": "^29.7.0"
-  },
-  "homepage": "https://mdbcli.xyz"
+  "homepage": "https://mdbcli.xyz",
+  "bugs": {
+    "url": "https://github.com/inttter/mdbadges-cli/issues"
+  }
 }

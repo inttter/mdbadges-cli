@@ -138,7 +138,7 @@ program
               }
       
               const htmlBadge = `<a href="${escapeHtml(links[index])}"><img alt="${escapeHtml(badgeAlt)}" src="${badgeLink}${styleOption}"></a>`;
-              console.log(chalk.hex("#FFBF00")(htmlBadge));
+              console.log(chalk.hex("#FFBF00")(`${htmlBadge}\n`));
             } else {
               consola.error(c.red("Could not extract badge link or alt text."));
             }
@@ -165,7 +165,7 @@ program
             const link = links[index] ? escapeHtml(links[index]) : "#"; // uses "#" if link is not provided
         
             const tsxBadge = `<a href="${link}"><img src="${badgeLink}${styleOption}" alt="${badgeAlt}" /></a>`;
-            console.log(chalk.hex("#FFBF00").bold(tsxBadge));
+            console.log(chalk.hex("#FFBF00").bold(`${tsxBadge}\n`));
           } else {
             let badgeStyle = "flat"; // flat is the default style if one is not specified
             if (options.style) {
@@ -190,7 +190,7 @@ program
         
             const badgeMarkdown = `[${badgeAlt}](${badgeLink}${styleOption})](${link})`;
         
-            console.log(chalk.hex("#FFBF00").bold(badgeMarkdown));
+            console.log(chalk.hex("#FFBF00").bold(`${badgeMarkdown}\n`));
         }
         }
       }

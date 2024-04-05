@@ -1,6 +1,8 @@
 <div align="center">
+  <div style="width: 125px">
 
-<img src="assets/logo.png" width="125">
+  ![Logo](https://github.com/inttter/mdbadges-cli/assets/73017070/ef4b96c7-d412-40e1-bf0f-ea86e70b97ef)
+</div>
 
 # mdbadges-cli
 

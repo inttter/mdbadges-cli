@@ -270,6 +270,7 @@ program
       const [latestMajor, ,] = latest.split('.');
 
       spinner.stop();
+      
 
       if (latest > packageInfo.version) {
         const updateMessage = boxen(
@@ -291,7 +292,7 @@ program
             await execa.command(`npm install -g ${packageInfo.name}@latest`, { stdio: 'inherit' });
 
             updateSpinner.succeed(chalk.green('Update complete!'));
-            console.log(c.green(`\nYou are now on ${c.green.bold.underline(`v${packageInfo.version}`)}! To verify, run ${c.cyan.bold('mdb version')}.`));
+            console.log(c.green(`\nYou are now on ${c.green.bold.underline(`v${latest}`)}! To verify, run ${c.cyan.bold('mdb version')}.`));
             console.log(c.green(`Check out what's changed by running ${c.cyan.bold('mdb changelog')}.\n`));
           } catch (error) {
             consola.error(c.red(`Update failed: ${error.message}`));

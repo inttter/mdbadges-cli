@@ -1,7 +1,5 @@
 <div align="center">
-  <div style="width: 125px">
-
-  ![Logo](https://github.com/inttter/mdbadges-cli/assets/73017070/ef4b96c7-d412-40e1-bf0f-ea86e70b97ef)
+  <img src="https://github.com/inttter/mdbadges-cli/assets/73017070/ef4b96c7-d412-40e1-bf0f-ea86e70b97ef" width="125px">
 </div>
 
 # mdbadges-cli

@@ -1,14 +1,11 @@
 <div align="center">
-  <div style="width: 125px">
-
-  ![Logo](https://github.com/inttter/mdbadges-cli/assets/73017070/ef4b96c7-d412-40e1-bf0f-ea86e70b97ef)
-</div>
+  <img src="https://github.com/inttter/mdbadges-cli/assets/73017070/ef4b96c7-d412-40e1-bf0f-ea86e70b97ef" width="125">
 
 # mdbadges-cli
 
-[![Release](https://img.shields.io/npm/v/mdbadges-cli.svg?style=flat&colorA=18181B&colorB=07B0D1&logo=npm&logoColor=eb6f92)](https://github.com/inttter/mdbadges-cli/releases/ "The latest NPM version.")
-[![NPM Downloads](https://img.shields.io/npm/dw/mdbadges-cli.svg?style=flat&colorA=18181B&colorB=07B0D1&logo=npm&logoColor=eb6f92)](https://www.npmjs.com/package/mdbadges-cli/ "The amount of downloads via NPM per week.")
-[![License](https://custom-icon-badges.herokuapp.com/github/license/inttter/mdbadges-cli?logo=law&color=07B0D1&logoColor=eb6f92&labelColor=191724)](https://github.com/inttter/mdbadges-cli/blob/main/LICENSE/ "The project license.")
+[![Release](https://img.shields.io/npm/v/mdbadges-cli.svg?style=flat&colorA=18181B&colorB=07B0D1&logo=npm&logoColor=eb6f92)][Releases]
+[![NPM Downloads](https://img.shields.io/npm/dw/mdbadges-cli.svg?style=flat&colorA=18181B&colorB=07B0D1&logo=npm&logoColor=eb6f92)][NPM Page]
+[![License](https://custom-icon-badges.herokuapp.com/github/license/inttter/mdbadges-cli?logo=law&color=07B0D1&logoColor=eb6f92&labelColor=191724)][License]
 
 
 ```mdbadges-cli``` is an extensive CLI tool to find over 400+ Shields.io badges for your projects without needing to leaving the terminal.
@@ -23,7 +20,7 @@ There's a number of features available, including:
 * Aliases for many commands
 * Custom badges just by using simple prompts
 * Random badge generation
-* [**and more...**](https://docs.mdbcli.xyz) 💎
+* [**and more...**][Docs] 💎
 
 # Installation
 
@@ -31,8 +28,8 @@ There's a number of features available, including:
 npm install -g mdbadges-cli # Node 18 is required.
 ```
 
-[![Release](https://img.shields.io/github/actions/workflow/status/inttter/mdbadges-cli/test.yml?branch=main&colorA=18181B&colorB=07B0D1&logo=github&logoColor=959DA5&label=Release)](https://github.com/inttter/mdbadges-cli/actions/workflows/publish.yml "The continuous integration workflow.")
-[![Tests](https://img.shields.io/github/actions/workflow/status/inttter/mdbadges-cli/test.yml?branch=main&colorA=18181B&colorB=07B0D1&logo=github&logoColor=959DA5&label=Tests)](https://github.com/inttter/mdbadges-cli/actions/workflows/test.yml "The testing workflow.")
+[![Release](https://img.shields.io/github/actions/workflow/status/inttter/mdbadges-cli/test.yml?branch=main&colorA=18181B&colorB=07B0D1&logo=github&logoColor=959DA5&label=Release)][Release Workflow]
+[![Tests](https://img.shields.io/github/actions/workflow/status/inttter/mdbadges-cli/test.yml?branch=main&colorA=18181B&colorB=07B0D1&logo=github&logoColor=959DA5&label=Tests)][Test Workflow]
 
 # Getting Started
 
@@ -59,9 +56,9 @@ mdb social discord --style plastic
 ```
 
 > [!TIP]
-> If you're running mdbadges-cli in Visual Studio Code, try installing the [**Image Preview**](https://marketplace.visualstudio.com/items?itemName=kisstkondoros.vscode-gutter-preview) extension. You can hover over the badge link to see a preview of it. See an example [**here**](https://github.com/inttter/mdbadges-cli/assets/73017070/f39fc296-25c8-4a2a-846a-cf83eff00cc4).
+> If you're running mdbadges-cli in Visual Studio Code, try installing the [**Image Preview**][Extension] extension. You can hover over the badge link to see a preview of it. See an example [**here**](https://github.com/inttter/mdbadges-cli/assets/73017070/f39fc296-25c8-4a2a-846a-cf83eff00cc4).
 
-For help information, such as what commands do and/or accept, run ```mdb help / mdb -h``` in the terminal. Alternatively, you can read the documentation [**here**](https://docs.mdbcli.xyz).
+For help information, such as what commands do and/or accept, run ```mdb help / mdb -h``` in the terminal. Alternatively, you can read the documentation [**here**][Docs].
 
 # Commands
 
@@ -72,7 +69,7 @@ For help information, such as what commands do and/or accept, run ```mdb help / 
 ```mdb lookup <keyword>``` | Displays badges containing a certain keyword. | ```l``` | Also displays what category the badge is in, and clicking ```ENTER``` on a badge will give you the badge code.
 ```mdb create``` | Displays prompts to create your own badge | ```generate``` | Only hexadecimal colors (e.g #000, #FFFFFF) are supported.
 ```mdb random``` | Displays a random badge. | ```r``` | Supports both Markdown and HTML formats. Supports specific categories using ```--category``` or ```-c```.
-```mdb copy <category> <badgeName>``` | Copies a badges' code to the clipboard | ```c``` | On Windows 11, you can do <kbd>⊞</kbd> <kbd>+</kbd> <kbd>V</kbd> to verify it's been copied.
+```mdb copy <category> <badgeName>``` | Copies a badges' code to the clipboard | ```c``` | On Windows 11, you can do <kbd>⊞ + V</kbd> to verify it's been copied.
 ```mdb badges``` | Opens a link to the badge list in your browser. | ```list``` | Both links will be displayed after a few seconds, in case it does not open in your *(default)* browser.
 ```mdb add <category> <badgeName> <fileName>``` | Allows you to add a badge to a Markdown file | N/A | **Only ```.md``` files are supported.** Will work in subdirectories, so long as the file path is correct.
 
@@ -131,18 +128,31 @@ Virtual Reality | vr
 
 There are multiple ways to contribute and improve this package.
 
-* [**New Features**](https://github.com/inttter/mdbadges-cli/blob/main/CONTRIBUTING.md#features "Features" ) - Features/Improvements which improve user experience.
-    * See also: [**Styling**](https://github.com/inttter/mdbadges-cli/blob/main/CONTRIBUTING.md#styling)
-* [**Adding Badges**](https://github.com/inttter/mdbadges-cli/blob/main/CONTRIBUTING.md#adding-badges "Adding Badges") - New badges to be added to the already large list of badges.
-* [**Questions**](https://github.com/inttter/mdbadges-cli/blob/main/CONTRIBUTING.md#adding-badges "Questions") - Questions about the package, which can spiral into new features/improvements/suggestions.
-* [**Bugs/Inconsistencies**](https://github.com/inttter/mdbadges-cli/blob/main/CONTRIBUTING.md#bugsinconsistencies "Bugs/Inconsistencies") - Issues within the package or something that doesn't look right.
-    * See also: [**Spellchecking**](https://github.com/inttter/mdbadges-cli/blob/main/CONTRIBUTING.md#spellchecking)
+* [**New Features**](CONTRIBUTING.md#features) - Features/Improvements which improve user experience.
+    * See also: [**Styling**](CONTRIBUTING.md#adding-badges)
+* [**Adding Badges**](CONTRIBUTING.md#adding-badges) - New badges to be added to the already large list of badges.
+* [**Questions**](CONTRIBUTING.md#questions) - Questions about the package, which can spiral into new features/improvements/suggestions.
+* [**Bugs/Inconsistencies**](CONTRIBUTING.md#bugsinconsistencies) - Issues within the package or something that doesn't look right.
+    * See also: [**Spellchecking**](CONTRIBUTING.md#spellchecking)
 
-##### [Read the full contributing guidelines here.](https://github.com/inttter/mdbadges-cli/blob/main/CONTRIBUTING.md)
+##### [Read the full contributing guidelines here.][Contributing]
 
 ---
 <div align="center">
 
-[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/intter)
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)][Donating]
 
-###### **©** ```2024``` · [MIT License](http://license.mdbcli.xyz)
+###### **©** ```2024``` · [MIT License][License]
+
+<!-- Link Definitions -->
+[Releases]: https://github.com/inttter/mdbadges-cli/releases/
+[NPM Page]: https://www.npmjs.com/package/mdbadges-cli/
+[License]: https://github.com/inttter/mdbadges-cli/blob/main/LICENSE/
+[Donating]: https://ko-fi.com/intter
+
+[Test Workflow]: https://github.com/inttter/mdbadges-cli/actions/workflows/test.yml
+[Release Workflow]: https://github.com/inttter/mdbadges-cli/actions/workflows/publish.yml
+
+[Docs]: https://docs.mdbcli.xyz/
+[Contributing]: https://github.com/inttter/mdbadges-cli/blob/main/CONTRIBUTING.md
+[Extension]: https://marketplace.visualstudio.com/items?itemName=kisstkondoros.vscode-gutter-preview

@@ -7,17 +7,17 @@ Thank you for considering contributing to this project! Take a moment to read th
 
 # Features
 
-If you would like to contribute a new feature, create a new [pull request](https://github.com/inttter/mdbadges-cli/pulls), detailing the feature and additional information, such as what it does, and its use case.
+If you would like to contribute a new feature, create a new [pull request][Pull Requests], detailing the feature and additional information, such as what it does, and its use case.
 
 For commands, read below.
 
 ## Adding Commands
 
-The [**Commander**](https://www.npmjs.com/package/commander) package is used for creating new commands.
+The [**Commander**][Commander] package is used for creating new commands.
 
 To add a new command:
 
-**1.** Navigate to the ```/src/index.js``` file, where all the commands are written.
+**1.** Navigate to the [```index.js```][index.js] file, where all the commands are written.
 
 > [!IMPORTANT]
 Ensure that any new command code is placed above this line to ensure proper functionality:
@@ -55,7 +55,7 @@ When adding badges, you have two options to do so.
 
 If you want to directly add a badge into this repository, follow these steps:
 
-**1.** Navigate to the ```src/badges.js``` file, which contains the definitions for the badges.
+**1.** Navigate to the [```badges.js```][badges.js] file, which contains the definitions for the badges.
 
 **2.** If you're adding a badge to an existing category, locate the relevant category for the badge, and add the badge definition in alphabetical order, like this example below:
 
@@ -81,13 +81,13 @@ If you want to directly add a badge into this repository, follow these steps:
 
 If you want to  add a badge to the list of badges, follow these steps:
 
-**1.** Navigate to the [**md-badges repository**](https://github.com/inttter/md-badges).
+**1.** Navigate to the [**md-badges repository**][md-badges].
 
-**2.** Read the [**contributing guidelines**](https://github.com/inttter/md-badges/blob/main/CONTRIBUTING.md) before contributing.
+**2.** Read the [**contributing guidelines**][md-badges Contributing Guidelines] before contributing.
 
 **3.** Contribute a new badge to that repository.
 
-**4.** When badges are added to **md-badges**, they will be added accordingly to this package in future releases.
+**4.** When badges are added to md-badges, they will be added accordingly to this package in future releases.
 
 # Styling
 
@@ -132,11 +132,11 @@ console.log(chalk.hex("#FFBF00")(selectedBadge)); // this is colored with hex #F
 ## Spellchecking
 
 > [!NOTE]
-> This also applies to the [**Spellcheck (JavaScript**)](https://github.com/inttter/mdbadges-cli/blob/main/.github/workflows/spellcheck-js.yml) workflow.
+> This also applies to the Spellcheck (JavaScript) workflow.
 
-```cspell``` is used for spell-checking Markdown files. There's a workflow within this repository which checks for spelling errors after any push/pull request to a Markdown file, which you can see [**here**](https://github.com/inttter/mdbadges-cli/blob/main/.github/workflows/spellcheck.yml).
+```cspell``` is used for spell-checking Markdown files. There's a workflow within this repository which checks for spelling errors after any push/pull request to a Markdown file, which you can see [**here**][spellcheck.yml].
 
-You can see the ```cspell``` config in the ```cspell.json``` file [**here**](https://github.com/inttter/mdbadges-cli/blob/main/cspell.json).
+You can see the ```cspell``` config in the ```cspell.json``` file [**here**][cspell.json].
 
 To avoid any spelling errors when writing new documentation/code, it's recommended to run this command:
 
@@ -148,7 +148,7 @@ This will check for spelling mistakes in most files. If you spot any extra spell
 
 Here's an example of two scenarios:
 
-|    ```cspell``` ***spotting*** spelling mistakes                              | ```cspell``` finding ***no mistakes***                                   |
+|    ```cspell``` ***spotting*** spelling mistakes | ```cspell``` finding ***no mistakes*** |
 |------------------------------------------|----------------------------------------------|
 | <img src="https://github.com/inttter/mdbadges-cli/assets/73017070/b9ae506e-8cbb-4632-8eb2-4055e8435b91" width="750"> | <img src="https://github.com/inttter/mdbadges-cli/assets/73017070/d67e0a58-1e40-42ea-a835-e6531b88c7ca" width="650"> |
 
@@ -173,13 +173,13 @@ Here's an example of two scenarios:
 
 # Committing
 
-* mdbadges-cli uses [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) for commit messages, so commit messages should be in this format:
+* mdbadges-cli uses [Conventional Commits][Convential Commits] for commit messages, so commit messages should be in this format:
 
     ```
     chore: remove old code
     ```
 
-* [Gitmoji](https://gitmoji.dev) is used for (most) commit emoji's, as well as some others (which you can decide what they should be). For example:
+* [Gitmoji][Gitmoji] is used for (most) commit emoji's, as well as some others (which you can decide what they should be). For example:
 
     ```
     ✨ feat: add GitHub badge
@@ -209,10 +209,26 @@ For any questions you have, open an issue and label it with the ```question``` l
 
 ## Bugs/Inconsistencies
 
-If you come across any bugs, report them by [creating an issue](https://github.com/inttter/mdbadges-cli/issues). Provide details on how you encountered the bug, any error messages that may appear, and any potential fixes you might have identified.
+If you come across any bugs, report them by [creating an issue][Issues]. Provide details on how you encountered the bug, any error messages that may appear, and any potential fixes you might have identified.
 
 ---
 
 ## License
 
-By contributing, you agree that your contributions will be licensed under the MIT License, which you can view [here](http://license.mdbcli.xyz).
+By contributing, you agree that your contributions will be licensed under the MIT License, which you can view [here][License].
+
+<!-- Link Definitions -->
+[md-badges]: https://github.com/inttter/md-badges
+[md-badges Contributing Guidelines]: https://github.com/inttter/md-badges/blob/main/CONTRIBUTING.md
+[Pull Requests]: https://github.com/inttter/mdbadges-cli/pulls
+[Issues]: https://github.com/inttter/mdbadges-cli/issues
+[License]: https://github.com/inttter/mdbadges-cli/blob/main/LICENSE
+
+[index.js]: https://github.com/inttter/mdbadges-cli/blob/main/src/index.js
+[badges.js]: https://github.com/inttter/mdbadges-cli/blob/main/src/badges.js
+[spellcheck.yml]: https://github.com/inttter/mdbadges-cli/blob/main/.github/workflows/spellcheck.yml
+[cspell.json]: https://github.com/inttter/mdbadges-cli/blob/main/cspell.json
+
+[Commander]: https://www.npmjs.com/package/commander
+[Convential Commits]: https://www.conventionalcommits.org/en/v1.0.0/
+[Gitmoji]: https://gitmoji.dev

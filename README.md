@@ -145,14 +145,12 @@ There are multiple ways to contribute and improve this package.
 ###### **©** ```2024``` · [MIT License][License]
 
 <!-- Link Definitions -->
-[Releases]: https://github.com/inttter/mdbadges-cli/releases/
-[NPM Page]: https://www.npmjs.com/package/mdbadges-cli/
-[License]: https://github.com/inttter/mdbadges-cli/blob/main/LICENSE/
-[Donating]: https://ko-fi.com/intter
-
-[Test Workflow]: https://github.com/inttter/mdbadges-cli/actions/workflows/test.yml
-[Release Workflow]: https://github.com/inttter/mdbadges-cli/actions/workflows/publish.yml
-
-[Docs]: https://docs.mdbcli.xyz/
 [Contributing]: https://github.com/inttter/mdbadges-cli/blob/main/CONTRIBUTING.md
+[Docs]: https://docs.mdbcli.xyz/
+[Donating]: https://ko-fi.com/intter
 [Extension]: https://marketplace.visualstudio.com/items?itemName=kisstkondoros.vscode-gutter-preview
+[License]: https://github.com/inttter/mdbadges-cli/blob/main/LICENSE/
+[NPM Page]: https://www.npmjs.com/package/mdbadges-cli/
+[Release Workflow]: https://github.com/inttter/mdbadges-cli/actions/workflows/publish.yml
+[Releases]: https://github.com/inttter/mdbadges-cli/releases/
+[Test Workflow]: https://github.com/inttter/mdbadges-cli/actions/workflows/test.yml

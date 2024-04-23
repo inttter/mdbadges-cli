@@ -244,9 +244,8 @@ program
       spinner.stop()
     } finally {
       setTimeout(() => {
-        console.log(c.yellow('\nHasn\'t opened yet? Try one of these two links:'));
+        console.log(c.yellow('\nHasn\'t opened in your browser? Try clicking on the link below:'));
         console.log(c.magenta(`https://github.com/inttter/md-badges`));
-        console.log(c.magenta(`https://mdb.iinter.me/content/badges`));
       }, 2000); // 5 seconds
     }
   });

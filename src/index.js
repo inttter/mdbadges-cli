@@ -338,12 +338,12 @@ program
       const categoryData = badges[formattedCategory];
 
       if (categoryData) {
-        console.log(c.green(`\nBadges available in ${(answers.category)}:\n`));
+        console.log(c.green(`\nBadges available in ${c.magenta(answers.category)}:\n`));
         Object.keys(categoryData).forEach((badge) => {
           console.log(c.green(`• ${badge}`));
         });
-        console.log(c.cyan(`\nTo get the ${c.underline('Markdown')} version of a badge, type 'mdb ${formattedCategory} <badgeName>'.`));
-        console.log(c.cyan(`To get the ${c.underline('HTML')} version of a badge, type 'mdb --html ${formattedCategory} <badgeName>'.\n`));
+        console.log(c.cyan(`\nTo get the ${c.underline('Markdown')} version of a badge, type ${c.magenta(`mdb ${formattedCategory} <badgeName>`)}.`));
+        console.log(c.cyan(`To get the ${c.underline('HTML')} version of a badge, type ${c.magenta(`mdb ${formattedCategory} <badgeName> --html`)}.\n`));
       } else {
         consola.error(c.red(`The specified category could not be found.`));
         console.log();

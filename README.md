@@ -7,20 +7,10 @@
 [![NPM Downloads](https://img.shields.io/npm/dw/mdbadges-cli.svg?style=flat&colorA=18181B&colorB=07B0D1&logo=npm&logoColor=eb6f92)][NPM Page]
 [![License](https://custom-icon-badges.herokuapp.com/github/license/inttter/mdbadges-cli?logo=law&color=07B0D1&logoColor=eb6f92&labelColor=191724)][License]
 
-
-```mdbadges-cli``` is an extensive CLI tool to find over 400+ Shields.io badges for your projects without needing to leaving the terminal.
-
 </div>
 
-There's a number of features available, including:
 
-* A wide range of over 400+ badges
-* 30+ categories to search between
-* Markdown and HTML support for most commands
-* Aliases for many commands
-* Custom badges just by using simple prompts
-* Random badge generation
-* [**and more...**][Docs] 💎
+**mdbadges-cli** is an extensive CLI tool to find over 400+ Shields.io badges for your projects without needing to leaving the terminal, with multiple commands for different purposes.
 
 # Installation
 

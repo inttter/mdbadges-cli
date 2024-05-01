@@ -252,7 +252,7 @@ const badges = {
         'strapi': '[![Strapi](https://img.shields.io/badge/Strapi-%232E7EEA.svg?logo=strapi&logoColor=white)](#) ',
         'symfony': '[![Symfony](https://img.shields.io/badge/Symfony-black?logo=symfony)](#) ',
         'svelte': '[![Svelte](https://img.shields.io/badge/Svelte-%23f1413d.svg?logo=svelte&logoColor=white)](#) ',
-        'tailwind': '[![TailwindCSS](https://img.shields.io/badge/Tailwind$20CSS-%2338B2AC.svg?logo=tailwind-css&logoColor=white)](#) ',
+        'tailwind': '[![TailwindCSS](https://img.shields.io/badge/Tailwind%20CSS-%2338B2AC.svg?logo=tailwind-css&logoColor=white)](#) ',
         'tauri': '[![Tauri](https://img.shields.io/badge/Tauri-24C8D8?logo=tauri&logoColor=fff)](#) ',
         'three': '[![Three.js](https://img.shields.io/badge/Three.js-000?logo=threedotjs&logoColor=fff)](#) ',
         'vite': '[![Vite](https://img.shields.io/badge/Vite-646CFF?logo=vite&logoColor=fff)](#) ',

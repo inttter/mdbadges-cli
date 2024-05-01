@@ -129,48 +129,6 @@ console.log(c.green.bold('Badge found:'));
 console.log(chalk.hex("#FFBF00")(selectedBadge)); // this is colored with hex #FFBF00
 ```
 
-## Spellchecking
-
-> [!NOTE]
-> This also applies to the Spellcheck (JavaScript) workflow.
-
-```cspell``` is used for spell-checking Markdown files. There's a workflow within this repository which checks for spelling errors after any push/pull request to a Markdown file, which you can see [**here**][spellcheck.yml].
-
-You can see the ```cspell``` config in the ```cspell.json``` file [**here**][cspell.json].
-
-To avoid any spelling errors when writing new documentation/code, it's recommended to run this command:
-
-```bash
-cspell '**'
-```
-
-This will check for spelling mistakes in most files. If you spot any extra spelling mistakes outside of the file you're editing, you are free to edit those too!
-
-Here's an example of two scenarios:
-
-|    ```cspell``` ***spotting*** spelling mistakes | ```cspell``` finding ***no mistakes*** |
-|------------------------------------------|----------------------------------------------|
-| <img src="https://github.com/inttter/mdbadges-cli/assets/73017070/b9ae506e-8cbb-4632-8eb2-4055e8435b91" width="750"> | <img src="https://github.com/inttter/mdbadges-cli/assets/73017070/d67e0a58-1e40-42ea-a835-e6531b88c7ca" width="650"> |
-
-> [!NOTE]
-> In certain cases, the workflow may fail. For example, if I removed `"shieldsio",` from the `words` category in the config file, the workflow will fail, and the following will appear:
->
-> ```bash
-> ~ cspell '**/*.md'
->
-> ... # other files...
->
-> 2/3 .\CONTRIBUTING.md 45.50ms X
-> .\CONTRIBUTING.md:141:74 - Unknown word (shieldsio) 
->
-> ... # other files...
->
-> CSpell: Files checked: 3, Issues found: 1 in 1 file
-> ```
->
-> In the case above, if it is not a typo and it is, in fact, a correct word/phrase/etc., you can add it to the `words` category in `cspell.json`. After doing this, you can commit this change to your branch, and the workflow should run without problems.
-
-
 # Committing
 
 * mdbadges-cli uses [Conventional Commits][Convential Commits] for commit messages, so commit messages should be in this format:
@@ -226,8 +184,6 @@ By contributing, you agree that your contributions will be licensed under the MI
 
 [index.js]: https://github.com/inttter/mdbadges-cli/blob/main/src/index.js
 [badges.js]: https://github.com/inttter/mdbadges-cli/blob/main/src/badges.js
-[spellcheck.yml]: https://github.com/inttter/mdbadges-cli/blob/main/.github/workflows/spellcheck.yml
-[cspell.json]: https://github.com/inttter/mdbadges-cli/blob/main/cspell.json
 
 [Commander]: https://www.npmjs.com/package/commander
 [Convential Commits]: https://www.conventionalcommits.org/en/v1.0.0/

@@ -62,7 +62,7 @@ program
             const linkResponse = await inquirer.prompt({
               type: "text",
               name: "link",
-              message: badgeNames.length === 1 ? gradient.fruit("▲ Enter your link here:") : index === 0 ? gradient.fruit("▲ Enter your first link here, then click Enter and type the rest below:") : "",
+              message: badgeNames.length === 1 ? gradient.fruit("Enter your link here:") : index === 0 ? gradient.fruit("▲ Enter your first link here, then click Enter and type the rest below:") : "",
               validate: (value) => {
                 return value.trim() === '' ? c.red("Please enter a link.") : true; 
               },
@@ -71,7 +71,9 @@ program
             links.push(link);
           }
         } else {
-          consola.error(c.red(`"${formatBadgeName(badgeName)}" is not a valid badge.`));
+          // Note: don't use new Error() here because we display similar badges and this will 
+          // clog up that prompt and could hide the actual error
+          consola.error(c.red(`'${formatBadgeName(badgeName)}' is not a valid badge.`));
           console.log(c.cyan(`Try running ${c.blue('mdb search')} for a list of badges in that category.\n`));        
           // prompt for similar badges in the same category if it cant find the badge
           const similarBadges = Object.keys(categoryData).filter(key =>
@@ -140,7 +142,7 @@ program
               const htmlBadge = `<a href="${escapeHtml(links[index])}"><img alt="${escapeHtml(badgeAlt)}" src="${badgeLink}${styleOption}"></a>`;
               console.log(chalk.hex("#FFBF00")(`${htmlBadge}\n`));
             } else {
-              consola.error(c.red("Could not extract badge link or alt text."));
+              consola.error(new Error(c.red("Could not extract badge link or alt text.")));
             }
           } else if (options.jsx || options.tsx) { // --jsx
             let badgeStyle = "flat"; // flat is the default style if one is not specified
@@ -195,8 +197,8 @@ program
         }
       }
     } else {
-      consola.error(c.red(`"${category}" is not a valid category.`));
-      console.log(c.cyan(`Visit ${c.blue('https://tinyurl.com/mdbcategories')} for a list of available categories.`));
+      consola.error(new Error(c.red(`"${category}" is not a valid category.`)));
+      console.log(c.cyan(`  Visit ${c.blue('https://tinyurl.com/mdbcategories')} for a list of available categories.`));
     }
   });
 
@@ -240,7 +242,7 @@ program
       // stops when the page is loaded in browser
       spinner.succeed(c.green("Opened in your browser!"));
     } catch (error) {
-      consola.error(c.red(`An error occurred when trying to open the link in your browser: ${error.message}`));
+      consola.error(new Error(c.red(`An error occurred when trying to open the link in your browser: ${error.message}`)));
       spinner.stop()
     } finally {
       setTimeout(() => {
@@ -281,7 +283,7 @@ program
         const { confirm } = await inquirer.prompt({
           type: 'confirm',
           name: 'confirm',
-          message: gradient.fruit('▲ Are you sure you want to update now?'),
+          message: gradient.fruit('Are you sure you want to update now?'),
         });
 
         if (confirm) {
@@ -294,7 +296,7 @@ program
             console.log(c.green(`\nYou are now on ${c.green.bold.underline(`v${latest}`)}! To verify, run ${c.cyan.bold('mdb version')}.`));
             console.log(c.green(`Check out what's changed by running ${c.cyan.bold('mdb changelog')}.\n`));
           } catch (error) {
-            consola.error(c.red(`Update failed: ${error.message}`));
+            consola.error(new Error(c.red(`Update failed: ${error.message}`)));
             spinner.stop();
           }
         } else {
@@ -305,8 +307,7 @@ program
       }
     } catch (error) {
       console.log()
-      consola.error(c.red(`An error occurred while checking for updates: ${error.message}`));
-      console.log();
+      consola.error(new Error(c.red(`An error occurred while checking for updates: ${error.message}`)));
     } finally {
       spinner.stop();
     }
@@ -344,8 +345,7 @@ program
         console.log(c.cyan(`\nTo get the ${c.underline('Markdown')} version of a badge, type ${c.magenta(`mdb ${formattedCategory} <badgeName>`)}.`));
         console.log(c.cyan(`To get the ${c.underline('HTML')} version of a badge, type ${c.magenta(`mdb ${formattedCategory} <badgeName> --html`)}.\n`));
       } else {
-        consola.error(c.red(`The specified category could not be found.`));
-        console.log();
+        consola.error(new Error(c.red(`The specified category could not be found.`)));
       }
 
       const { searchAgain } = await inquirer.prompt([
@@ -456,11 +456,11 @@ program
 
       console.log(c.green.bold("\n✅ Custom badge created successfully!\n"));
       console.log(c.green.bold("Markdown:"));
-      console.log(chalk.hex("#FFBF00").bold(`${badgeMarkdown}\n`)); // displays the code with users' inputs
+      console.log(chalk.hex("#FFBF00").bold(`${badgeMarkdown}\n`)); // Markdown
       console.log(c.green.bold("HTML:"));
-      console.log(chalk.hex("#FFBF00").bold(`${badgeHtml}\n`)); // displays the HTML version
+      console.log(chalk.hex("#FFBF00").bold(`${badgeHtml}\n`)); // HTML
     } catch (error) {
-      consola.error(c.red(`An error occurred when trying to make your badge: ${error.message}`));
+      consola.error(new Error(c.red(`An error occurred when trying to make your badge: ${error.message}`)));
     }
   });
 
@@ -508,7 +508,7 @@ program
         console.log(c.blue(`• Contribute: ${c.blue.bold.underline('https://tinyurl.com/mdbcontributing')}`));
         console.log(c.blue(`• License: ${c.blue.underline.bold('https://tinyurl.com/mdblicense')}`));
       } catch (error) {
-        consola.error(c.red(`An error occurred when fetching the latest version: ${error.message}`));
+        consola.error(new Error(c.red(`An error occurred when fetching the latest version: ${error.message}`)));
       }
     }
 
@@ -616,8 +616,8 @@ program
       clipboardy.writeSync(selectedBadge);
       console.log(c.green.bold(`\nCopied to the clipboard successfully.\n`));
     } else {
-      consola.error(c.red(`The specified could not be found.`));
-      console.log(c.blue(`Try running ${c.cyan(`mdb search`)} and then selecting ${c.cyan(category)} for a full list of badges in this category.\n`));
+      consola.error(new Error(c.red(`The specified category could not be found.`)));
+      console.log(c.blue(`   Try running ${c.cyan(`mdb search`)} and then selecting a category which fits theme of your badge.\n`));
     }
   });
 
@@ -643,7 +643,7 @@ program
     });
 
     if (!badgeChoices.length) {
-      consola.error(c.red(`A badge containing that keyword could not be found.`));
+      consola.error(c.red('A badge containing that keyword could not be found.'));
     } else {
       const { selectedBadge } = await inquirer.prompt([
         {
@@ -679,7 +679,7 @@ program
     );
 
     if (!foundBadge) {
-      consola.error(c.red(`\nThe badge you specified could not be found.`));
+      consola.error(c.red(`The badge you specified could not be found.`));
       console.log(c.cyan(`Try running ${c.blue.bold(`mdb search`)} for a full list of badges in this category.\n`));
       return;
     }
@@ -689,7 +689,7 @@ program
     // this checks if the badge is defined + if the regex match is successful
     const badgeLinkMatch = badge.match(/\(([^)]+)\)/);
     if (!badgeLinkMatch || !badgeLinkMatch[1]) {
-      consola.error(c.red("The badge link could not be found in the expected format."));
+      consola.error(new Error(c.red("The badge link could not be found in the expected format.")));
       return;
     }
 
@@ -701,9 +701,8 @@ program
 
     // Check if the specified file has the ".md" extension
     if (!filePath.toLowerCase().endsWith(".md")) {
-      consola.error(c.red(`Could not add badge to your file. \nTry checking that your file type and file name is valid. \nIf you're working with subdirectories, make sure the path you specified exists.`));
-    return;
-  }
+      consola.error(c.red('Could not add badge to your file. Try checking that your file type and file name are valid. If you are working with subdirectories, make sure the path you specified exists.'));
+    }
 
     // reads the existing content of the file
     const fs = require("fs");
@@ -711,7 +710,7 @@ program
     try {
       fileContent = fs.readFileSync(filePath, "utf8");
     } catch (error) {
-      consola.error(c.red(`Could not read the file: ${error.message}`));
+      consola.error(new Error(c.red(`Could not read the file: ${error.message}`)));
       return;
     }
 
@@ -720,7 +719,7 @@ program
       fs.appendFileSync(filePath, `\n${badgeMarkdown}`, "utf8");
       console.log(c.green("\nBadge added to the file successfully."));
     } catch (error) {
-      consola.error(c.red(`Could not write to the file: ${error.message}`));
+      consola.error(new Error(c.red(`Could not write to the file: ${error.message}`)));
     }
   });
 
@@ -742,7 +741,7 @@ program
 
     spinner.succeed(c.green("Opened in your browser!"));
   } catch (error) {
-    consola.error(c.red(`An error occurred when trying to open the link in your browser: ${error.message}`));
+    consola.error(new Error(c.red(`An error occurred when trying to open the link in your browser: ${error.message}`)));
     spinner.stop()
   } finally {
     setTimeout(() => {
@@ -779,7 +778,7 @@ program
 
       spinner.succeed(c.green("Opened in your browser!"));
     } catch (error) {
-      consola.error(c.red(`Could not open the link in your browser: ${error.message}`));
+      consola.error(new Error(c.red(`Could not open the link in your browser: ${error.message}`)));
       spinner.stop()
     } finally {
       setTimeout(() => {

@@ -1,21 +1,17 @@
 {
   "name": "mdbadges-cli",
-  "version": "5.5.2",
+  "version": "5.5.3",
   "engines": {
     "node": ">=18"
   },
-  "description": "An extensive CLI tool to find Shields.io badges without needing to leaving the terminal.",
+  "description": "An extensive CLI tool to find over 400+ Shields.io badges for your projects.",
   "scripts": {
     "test": "jest"
   },
   "keywords": [
     "markdown",
-    "html",
     "badges",
     "badge",
-    "generator",
-    "documentation",
-    "CLI",
     "shields",
     "shields.io",
     "shieldsio",

@@ -74,7 +74,7 @@ program
           // Note: don't use new Error() here because we display similar badges and this will 
           // clog up that prompt and could hide the actual error
           consola.error(c.red(`'${formatBadgeName(badgeName)}' is not a valid badge.`));
-          console.log(c.cyan(`Try running ${c.blue('mdb search')} for a list of badges in that category.\n`));        
+          console.log(c.cyan(`Try running ${c.magenta.bold('mdb search')} and selecting '${c.magenta.bold(formattedCategory)}' for a list of badges in that category.\n`));        
           // prompt for similar badges in the same category if it cant find the badge
           const similarBadges = Object.keys(categoryData).filter(key =>
             key.toLowerCase().includes(badgeName.toLowerCase())
@@ -197,8 +197,8 @@ program
         }
       }
     } else {
-      consola.error(new Error(c.red(`"${category}" is not a valid category.`)));
-      console.log(c.cyan(`  Visit ${c.blue('https://tinyurl.com/mdbcategories')} for a list of available categories.`));
+      consola.error(new Error(c.red(`'${category}' is not a valid category.`)));
+      console.log(c.cyan(`  Visit ${c.magenta.bold('https://tinyurl.com/mdbcategories')} for a list of available categories.`));
     }
   });
 
@@ -303,7 +303,7 @@ program
           console.log(c.green.bold('\nUpdate canceled.\n'));
         }
       } else {
-        console.log(c.green.bold(`\nYou are already on the latest version, ${c.cyan(packageInfo.version)}.\n`));
+        console.log(c.green(`\nYou are already on the latest version, ${c.magenta(packageInfo.version)}.\n`));
       }
     } catch (error) {
       console.log()
@@ -338,26 +338,26 @@ program
       const categoryData = badges[formattedCategory];
 
       if (categoryData) {
-        console.log(c.green(`\nBadges available in ${c.magenta(answers.category)}:\n`));
+        console.log(c.green(`\nBadges available in ${c.green.underline(answers.category)}:\n`));
         Object.keys(categoryData).forEach((badge) => {
           console.log(c.green(`• ${badge}`));
         });
-        console.log(c.cyan(`\nTo get the ${c.underline('Markdown')} version of a badge, type ${c.magenta(`mdb ${formattedCategory} <badgeName>`)}.`));
-        console.log(c.cyan(`To get the ${c.underline('HTML')} version of a badge, type ${c.magenta(`mdb ${formattedCategory} <badgeName> --html`)}.\n`));
+        console.log(c.cyan(`\nTo get the ${c.underline('Markdown')} version of a badge, type ${c.magenta(`mdb ${formattedCategory} <badgeName>`)}.\n`));
       } else {
         consola.error(new Error(c.red(`The specified category could not be found.`)));
       }
 
+      // by default, this is selected as Yes
       const { searchAgain } = await inquirer.prompt([
         {
           type: 'confirm',
           name: 'searchAgain',
-          message: gradient.fruit('Do you want to search another category?'),
-          default: true, // if nothing is selected, true (aka y/yes) is automatically selected
+          message: gradient.fruit('Would you like to search another category?'),
+          default: true,
         },
       ]);
 
-      continueSearch = searchAgain; // if "y", it loops the command
+      continueSearch = searchAgain; // loop
     }
   });
 
@@ -497,7 +497,7 @@ program
         console.log(c.yellow(`${c.yellow.bold.underline('Your Version:')} ${userPackageVersion}`));
         console.log(c.blue(`If these versions do not match, run ${c.cyan.bold('mdb update')}.\n`));
 
-        console.log(c.yellow(`Badges Available: ${numOfBadges}\n`));
+        console.log(c.yellow(`Badges Available: ${c.yellow.bold(numOfBadges)}\n`));
 
         console.log(c.blue(`• ${c.cyan.bold('mdb help')} to view the available list of commands`));
         console.log(c.blue(`• ${c.cyan.bold('mdb changelog')} to view the latest release`));
@@ -617,7 +617,7 @@ program
       console.log(c.green.bold(`\nCopied to the clipboard successfully.\n`));
     } else {
       consola.error(new Error(c.red(`The specified category could not be found.`)));
-      console.log(c.blue(`   Try running ${c.cyan(`mdb search`)} and then selecting a category which fits theme of your badge.\n`));
+      console.log(c.blue(`  Try running ${c.magenta.bold(`mdb search`)} for a list of categories.\n`));
     }
   });
 
@@ -669,7 +669,7 @@ program
 
     if (!categoryData) {
       consola.error(c.red(`The category you specified could not be found.`));
-      console.log(c.cyan(`You can try visiting the syntax list for the categories here: ${c.blue.bold('https://tinyurl.com/mdbcategories')}\n`));
+      console.log(c.cyan(`You can try visiting the syntax list for the categories here: ${c.magenta.bold('https://tinyurl.com/mdbcategories')}\n`));
       return;
     }
 
@@ -680,7 +680,7 @@ program
 
     if (!foundBadge) {
       consola.error(c.red(`The badge you specified could not be found.`));
-      console.log(c.cyan(`Try running ${c.blue.bold(`mdb search`)} for a full list of badges in this category.\n`));
+      console.log(c.cyan(`Try running ${c.magenta.bold(`mdb search`)} for a full list of badges in this category.\n`));
       return;
     }
 

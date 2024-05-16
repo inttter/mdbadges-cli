@@ -197,8 +197,8 @@ program
         }
       }
     } else {
-      consola.error(new Error(c.red(`'${category}' is not a valid category.`)));
-      console.log(c.cyan(`  Visit ${c.magenta.bold('https://tinyurl.com/mdbcategories')} for a list of available categories.`));
+      consola.error(c.red(`'${category}' is not a valid category.`));
+      console.log(c.cyan(`Visit ${c.magenta.bold('https://tinyurl.com/mdbcategories')} for a list of available categories.`));
     }
   });
 
@@ -344,7 +344,7 @@ program
         });
         console.log(c.cyan(`\nTo get the ${c.underline('Markdown')} version of a badge, type ${c.magenta(`mdb ${formattedCategory} <badgeName>`)}.\n`));
       } else {
-        consola.error(new Error(c.red(`The specified category could not be found.`)));
+        consola.error(c.red(`The specified category could not be found.`));
       }
 
       // by default, this is selected as Yes
@@ -616,8 +616,8 @@ program
       clipboardy.writeSync(selectedBadge);
       console.log(c.green.bold(`\nCopied to the clipboard successfully.\n`));
     } else {
-      consola.error(new Error(c.red(`The specified category could not be found.`)));
-      console.log(c.blue(`  Try running ${c.magenta.bold(`mdb search`)} for a list of categories.\n`));
+      consola.error(c.red(`The specified category could not be found.`));
+      console.log(c.cyan(`Try running ${c.magenta.bold(`mdb search`)} for a list of categories.\n`));
     }
   });
 
@@ -698,11 +698,6 @@ program
     const badgeAlt = badge.match(/\[([^)]+)\]/)[1];
 
     const badgeMarkdown = `[${badgeAlt}](${badgeLink})](#)`;
-
-    // Check if the specified file has the ".md" extension
-    if (!filePath.toLowerCase().endsWith(".md")) {
-      consola.error(c.red('Could not add badge to your file. Try checking that your file type and file name are valid. If you are working with subdirectories, make sure the path you specified exists.'));
-    }
 
     // reads the existing content of the file
     const fs = require("fs");

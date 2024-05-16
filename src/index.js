@@ -481,62 +481,7 @@ program
   .command('random')
   .alias('r')
   .description('display a random badge')
-  .option('-c, --category', 'pick random badge from a specific category')
-  .action(async (options) => {
-    // the logic below is for --category/-c
-    if (options.category) {
-      const categoryPrompt = await inquirer.prompt([
-        {
-          type: 'list',
-          name: 'selectedCategory',
-          message: gradient.fruit('Choose a category:'),
-          choices: Object.keys(badges),
-          // turns out formatCategoryName seems to break it here, so its not being used
-        },
-      ]);
-
-      const selectedCategory = categoryPrompt.selectedCategory.toLowerCase();
-
-      if (!badges[selectedCategory]) {
-        console.log(c.red(`No badges found in the selected category: ${selectedCategory}`));
-        return;
-      }
-
-      const stylePrompt = await inquirer.prompt([
-        {
-          type: 'list',
-          name: 'selectedStyle',
-          message: gradient.fruit('Choose a style:'),
-          choices: ['flat', 'flat-square', 'plastic', 'social', 'for-the-badge'],
-        },
-      ]);
-
-      const selectedStyle = stylePrompt.selectedStyle;
-
-      const badgesInCategory = Object.keys(badges[selectedCategory]);
-      const randomBadgeName =
-        badgesInCategory[Math.floor(Math.random() * badgesInCategory.length)];
-      const badge = badges[selectedCategory][randomBadgeName];
-
-      const badgeLink = badge.match(/\(([^)]+)\)/)[1];
-      const badgeAlt = badge.match(/\[([^)]+)\]/)[1];
-
-      let styleParam = '';
-      if (selectedStyle) {
-        styleParam = `&style=${selectedStyle}`;
-      }
-
-      const markdownBadge = `[${badgeAlt}](${badgeLink}${styleParam})`;
-      const htmlBadge = `<img src="${badgeLink}${styleParam}" />`;
-
-      // this outputs BOTH versions, Markdown and HTML
-      console.log(c.yellow.underline.bold('\nMarkdown:')); 
-      console.log(c.green(`${markdownBadge}\n`));
-
-      console.log(c.yellow.underline.bold('HTML:'));
-      console.log(c.green(htmlBadge));
-    } else {
-      // the logic below is for the command without --category/-c (aka just mdb random)
+  .action(async => {
       const categories = Object.keys(badges);
       const randomCategory = categories[Math.floor(Math.random() * categories.length)];
       const badgesInCategory = Object.keys(badges[randomCategory]);
@@ -547,17 +492,17 @@ program
       const badgeLink = badge.match(/\(([^)]+)\)/)[1];
       const badgeAlt = badge.match(/\[([^)]+)\]/)[1];
 
-      const markdownBadge = `[${badgeAlt}](${badgeLink})`;
+      const markdownBadge = `[${badgeAlt}](${badgeLink})](#)`;
       const htmlBadge = `<img src="${badgeLink}" />`;
 
-      // Output both versions, Markdown and HTML.
-      console.log(c.yellow.underline.bold('\nMarkdown:')); 
-      console.log(c.green(`${markdownBadge}\n`));
+      // outputs both versions, Markdown and HTML
+      console.log(c.green.underline.bold('\nMarkdown:')); 
+      console.log(chalk.hex("#FFBF00").bold(`${markdownBadge}\n`));
 
-      console.log(c.yellow.underline.bold('HTML:'));
-      console.log(c.green(htmlBadge));
+      console.log(c.green.underline.bold('HTML:'));
+      console.log(chalk.hex("#FFBF00").bold(htmlBadge));
     }
-  });
+  );
 
 // Copy Command
 program

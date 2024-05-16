@@ -58,7 +58,7 @@ For help information, such as what commands do and/or accept, run `mdb help / md
 `mdb search` | Displays badges available in a [**category**](#available-categories) | `s`, `find` | Use arrow keys to scroll up/down.
 `mdb lookup <keyword>` | Displays badges containing a certain keyword. | `l` | Also displays what category the badge is in, and clicking `ENTER` on a badge will give you the badge code.
 `mdb create` | Displays prompts to create your own badge | `generate` | Only hexadecimal colors (e.g #000, #FFFFFF) are supported.
-`mdb random` | Displays a random badge. | `r` | Supports both Markdown and HTML formats. Supports specific categories using `--category` or `-c`.
+`mdb random` | Displays a random badge. | `r` | Supports both Markdown and HTML formats.
 `mdb copy <category> <badgeName>` | Copies a badges' code to the clipboard | `c` | N/A 
 `mdb badges` | Opens a link to the badge list in your browser. | `list` | N/A
 `mdb add <category> <badgeName> <fileName>` | Allows you to add a badge to a Markdown file | N/A | Will work in subdirectories, so long as the file path is correct.
@@ -69,7 +69,6 @@ For help information, such as what commands do and/or accept, run `mdb help / md
 |----------|-----------|---------------------------|--------|
 `mdb version` | Displays the current version you are on | `v` | This command is *not* for updating, this simply outputs your version. To update, see below.
 `mdb update` | Automatically updates the package | `upd`, `u` | Will notify you of major bumps, and also prompts you if you would like to update first.
-`mdb fund` | Displays funding/donation links for the package | N/A | You don't have to donate, but I'd appreciate it!
 `mdb about` | Displays general information about the package | `abt` | Also shows links to the website, GitHub issues, contributing, and more.
 `mdb documentation` | Opens a link to the documentation in your browser. | `docs` | N/A
 `mdb changelog` | Opens a link to the latest release with it's changelogs in your browser. | `release` | N/A

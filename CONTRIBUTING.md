@@ -5,19 +5,47 @@ Thank you for considering contributing to this project! Take a moment to read th
 > [!IMPORTANT]
 > You must have Node.js 18 or higher installed before contributing.
 
-# Features
+# Installing locally
 
-If you would like to contribute a new feature, create a new [pull request][Pull Requests], detailing the feature and additional information, such as what it does, and its use case.
+You will need to have a local copy of the repository. 
 
-For commands, read below.
+To do this, fork the project locally by clicking the '**Fork**' button at the top of the repository to create a fork of mdbadges-cli to your GitHub account.
+
+You'll then need to clone it on your local machine. In order to do this, make sure you have [Git][Git] installed, then run the following commands:
+
+```bash
+# Replace 'YOUR-USERNAME' with your GitHub username
+git clone https://github.com/YOUR-USERNAME/mdbadges-cli.git
+cd mdbadges-cli
+```
+
+Create a branch to work on your changes by running these commands:
+
+```bash
+# Replace '[NAME]' with the name of your branch
+git branch [NAME]
+git checkout [NAME]
+```
+
+You can now start making your change. Once you are ready to to commit your changes and push them to remote, run:
+
+```bash
+git add .
+git checkout -m "✨ feat: [commit message here]"
+git push
+```
+
+> When writing commit messages, make sure to follow the [Convential Commits][Convential Commits] guidelines. If you would like, you can use [Gitmoji][Gitmoji] aswell for commit emojis.
+
+You can now create a pull request with your changes.
 
 # Commands
 
-To add a new command using [Commander][Commander]:
+mdbadges-cli uses [Commander][Commander] for its commands. In order to add a new command, follow the steps outlined below:
 
-  **1.** Navigate to the [main file][index.js] of this package.
+**1.** Navigate to the [main file][index.js] where all of the commands are stored in.
 
-  **2.** Define the new command, specifying its name, aliases (optional), a brief description of its purpose, and the command logic itself.
+**2.** Define the new command, specifying its name, aliases *(optional)*, a brief description of its purpose, and the command logic itself.
 
 ```javascript
 // An example command
@@ -30,7 +58,7 @@ program
   });
 ```
 
-Generally, you should stick to single-word command names without spaces (for example: instead of *'search-badges'*, do *'search'*). 
+Generally, you should stick to single-word command names without spaces. For example: instead of *'search-badges'*, do *'search'*. 
 
 You should also aim to keep command names, descriptions, and aliases **concise and descriptive** to avoid any confusion.
 
@@ -81,17 +109,16 @@ When badges are added to md-badges, they will be added accordingly to this packa
 
 In mdbadges-cli, three different styling packages are used.
 
-* **ansi-colors** — This is the main coloring package used in mdbadges-cli. To use ansi-colors, use the `c` prefix, followed by the color of choice, which you can see [here][ansi-colors Color Options].
+* **ansi-colors** — This is the main coloring package that is used. To use ansi-colors, use the `c` prefix, followed by the color of choice, which you can see [here][ansi-colors Color Options].
 
     ```javascript
     // coloring the whole message
-    console.log(c.yellow('Hasn\'t opened in your browser? Try clicking on the link below:'));
-    console.log(c.magenta(`https://github.com/inttter/${packageInfo.name}/releases/latest`));
+    spinner.succeed(c.green("Opened in your browser!"));
 
    // different colors within the same message
   console.log(c.cyan(`Try running ${c.blue.bold(`mdb search`)} for a full list of badges in this category.`,));
 
-  // template literals with ansi-colors
+  // using template literals
   name: ${c.green(formattedBadge)} in ${c.yellow(formattedCategory)}
   ```
 
@@ -119,7 +146,7 @@ In mdbadges-cli, three different styling packages are used.
 * mdbadges-cli uses [Conventional Commits][Convential Commits] for commit messages, so commit messages should be in this format:
 
     ```
-    chore: remove old code
+    <type>[optional scope]: <description>
     ```
 
 * When using emoji in commit messages, [Gitmoji][Gitmoji] is most commonly used, as well as some others (which you can decide what they should be). For example:
@@ -140,8 +167,6 @@ For more specific instances, you can include a scope for the commit. A scope is 
     # A bug within the badge definitions which is being fixed
 🐛 fix(badges): fix incorrect GitHub badge code
 ```
-
----
 
 ## Questions
 
@@ -165,10 +190,10 @@ By contributing, you agree that your contributions will be licensed under the MI
 [Commander]: https://www.npmjs.com/package/commander
 [Convential Commits]: https://www.conventionalcommits.org/en/v1.0.0/
 [Create an issue]: https://github.com/inttter/mdbadges-cli/issues/new
+[Git]: https://git-scm.com
 [Gitmoji]: https://gitmoji.dev
 [index.js]: https://github.com/inttter/mdbadges-cli/blob/main/src/index.js
 [Issues]: https://github.com/inttter/mdbadges-cli/issues
 [License]: https://github.com/inttter/mdbadges-cli/blob/main/LICENSE
 [md-badges]: https://github.com/inttter/md-badges
 [md-badges Contributing Guidelines]: https://github.com/inttter/md-badges/blob/main/CONTRIBUTING.md
-[Pull Requests]: https://github.com/inttter/mdbadges-cli/pulls

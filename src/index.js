@@ -13,6 +13,7 @@ const execa = require('execa');
 const c = require('ansi-colors');
 const { consola } = require("consola");
 const cliSpinners = require("cli-spinners")
+const fs = require("fs");
 const badges = require("./badges");
 const utils = require("./utils");
 const packageInfo = require("../package.json");
@@ -196,7 +197,7 @@ program
     console.log()
     const spinner = ora({
       text: c.blue("Opening in browser..."),
-      spinner: cliSpinners.earth,
+      spinner: cliSpinners.arc,
       color: "magenta",
     }).start();
 
@@ -220,7 +221,7 @@ program
   .action(async () => {
     const spinner = ora({
       text: chalk.blue('Checking for updates...'),
-      spinner: cliSpinners.earth,
+      spinner: cliSpinners.arc,
       color: 'magenta',
     }).start();
 
@@ -570,6 +571,7 @@ program
   .description("add a badge to a Markdown file")
   .action((category, badgeName, filePath = "README.md") => {
     const formattedCategory = formatCategoryName(category);
+    const formattedBadgeName = badgeName.toLowerCase();
     const categoryData = badges[category.toLowerCase()];
 
     if (!categoryData) {
@@ -578,7 +580,6 @@ program
       return;
     }
 
-    const formattedBadgeName = badgeName.toLowerCase();
     const foundBadge = Object.keys(categoryData).find(
       (key) => key.toLowerCase() === formattedBadgeName,
     );
@@ -591,7 +592,7 @@ program
 
     const badge = categoryData[foundBadge];
 
-    // this checks if the badge is defined + if the regex match is successful
+    // checks if the badge is defined and checks if the regex match is successful
     const badgeLinkMatch = badge.match(/\(([^)]+)\)/);
     if (!badgeLinkMatch || !badgeLinkMatch[1]) {
       consola.error(new Error(c.red("The badge link could not be found in the expected format.")));
@@ -604,9 +605,6 @@ program
 
     const badgeMarkdown = `[${badgeAlt}](${badgeLink})](#)`;
 
-    // reads the existing content of the file
-    const fs = require("fs");
-    let fileContent = "";
     try {
       fileContent = fs.readFileSync(filePath, "utf8");
     } catch (error) {
@@ -614,10 +612,10 @@ program
       return;
     }
 
-    // adds the badge to the file
+    // appends the badge to the specified file (path)
     try {
       fs.appendFileSync(filePath, `\n${badgeMarkdown}`, "utf8");
-      console.log(c.green("\nBadge added to the file successfully."));
+      consola.success(c.green(`Badge has been added to the file successfully.`));
     } catch (error) {
       consola.error(new Error(c.red(`Could not write to the file: ${error.message}`)));
     }
@@ -632,21 +630,21 @@ program
     console.log();
     const spinner = ora({
       text: c.blue("Opening the documentation in your browser..."),
-      spinner: cliSpinners.earth,
+      spinner: cliSpinners.arc,
       color: "yellow",
-  }).start();
+    }).start();
 
-  const docsLink = 'https://docs.mdbcli.xyz/'
+    const docsLink = 'https://docs.mdbcli.xyz/'
 
-  try {
-    await open(docsLink);
-    spinner.succeed(c.green("Opened in your browser!"));
-  } catch (error) {
-    consola.error(new Error(c.red(`An error occurred when trying to open the link in your browser: ${error.message}`)));
-    console.log(c.cyan(`\n  You can visit the page by clicking on the following link instead: ${c.magenta.bold(docsLink)}`))
-    spinner.stop()
-  }
-});
+    try {
+      await open(docsLink);
+      spinner.succeed(c.green("Opened in your browser!"));
+    } catch (error) {
+      consola.error(new Error(c.red(`An error occurred when trying to open the link in your browser: ${error.message}`)));
+      console.log(c.cyan(`\n  You can visit the page by clicking on the following link instead: ${c.magenta.bold(docsLink)}`))
+      spinner.stop()
+    }
+  });
 
 // Help Command
   program
@@ -665,7 +663,7 @@ program
     console.log()
     const spinner = ora({
       text: c.blue("Opening the latest release..."),
-      spinner: cliSpinners.earth,
+      spinner: cliSpinners.arc,
       color: "magenta",
     }).start();
 

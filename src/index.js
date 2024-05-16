@@ -200,19 +200,15 @@ program
       color: "magenta",
     }).start();
 
-    try {
-      await open("https://github.com/inttter/md-badges?tab=readme-ov-file#-table-of-contents");
+    const listLink = 'https://github.com/inttter/md-badges?tab=readme-ov-file#-table-of-contents'
 
-      // stops when the page is loaded in browser
+    try {
+      await open(listLink);
       spinner.succeed(c.green("Opened in your browser!"));
     } catch (error) {
       consola.error(new Error(c.red(`An error occurred when trying to open the link in your browser: ${error.message}`)));
+      console.log(c.cyan(`\n  You can visit the page by clicking on the following link instead: ${c.magenta.bold(listLink)}`))
       spinner.stop()
-    } finally {
-      setTimeout(() => {
-        console.log(c.yellow('\nHasn\'t opened in your browser? Try clicking on the link below:'));
-        console.log(c.magenta(`https://github.com/inttter/md-badges`));
-      }, 2000); // 5 seconds
     }
   });
 
@@ -695,23 +691,19 @@ program
       color: "yellow",
   }).start();
 
-  try {
-    await open("https://docs.mdbcli.xyz/");
+  const docsLink = 'https://docs.mdbcli.xyz/'
 
+  try {
+    await open(docsLink);
     spinner.succeed(c.green("Opened in your browser!"));
   } catch (error) {
     consola.error(new Error(c.red(`An error occurred when trying to open the link in your browser: ${error.message}`)));
+    console.log(c.cyan(`\n  You can visit the page by clicking on the following link instead: ${c.magenta.bold(docsLink)}`))
     spinner.stop()
-  } finally {
-    setTimeout(() => {
-      console.log(c.yellow('\nHasn\'t opened in your browser? Try clicking on the link below:'));
-      console.log(c.magenta(`https://docs.mdbcli.xyz/`));
-    }, 2000) // 5 seconds
   }
 });
 
 // Help Command
-// Do note this literally just runs what mdb --help would show.
   program
   .command('help')
   .description('display help information')
@@ -723,7 +715,7 @@ program
 program
   .command('changelog')
   .alias('release')
-  .description('open a link to the latest release with it\'s changelog in your browser')
+  .description('open a link to the latest release and it\'s changelog in your browser')
   .action(async () => {
     console.log()
     const spinner = ora({
@@ -732,18 +724,16 @@ program
       color: "magenta",
     }).start();
 
+    const changelogLink = `https://github.com/inttter/${packageInfo.name}/releases/latest`
+
     try {
-      await open(`https://github.com/inttter/${packageInfo.name}/releases/latest`);
+      await open(changelogLink);
 
       spinner.succeed(c.green("Opened in your browser!"));
     } catch (error) {
       consola.error(new Error(c.red(`Could not open the link in your browser: ${error.message}`)));
+      console.log(c.cyan(`\n  You can visit the page by clicking on the following link instead: ${c.magenta.bold(changelogLink)}`))
       spinner.stop()
-    } finally {
-      setTimeout(() => {
-        console.log(c.yellow('\nHasn\'t opened in your browser? Try clicking on the link below:'));
-        console.log(c.magenta(`https://github.com/inttter/${packageInfo.name}/releases/latest`));
-      }, 2000) // 5 seconds
     }
   });
 

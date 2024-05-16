@@ -177,18 +177,7 @@ program
     }
   });
 
-// Fund Command
-program
-  .command("fund")
-  .description("display funding/donation links for the package")
-  .action(() => {
-    console.log(c.yellow("\nIf you would like, you can donate to me here:\n"));
-    console.log(c.green(`Buy Me A Coffee: ${c.green.bold.underline('https://www.buymeacoffee.com/intter')}`));
-    console.log(c.green(`GitHub Sponsors: ${c.green.bold.underline('https://github.com/sponsors/inttter')}`));
-    console.log(c.green(`Ko-fi: ${c.green.bold.underline('https://ko-fi.com/intter')}\n`));
-  });
-
-// Version Checking Command
+// Version Command
 program
   .command("version")
   .alias("ver")

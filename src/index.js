@@ -139,7 +139,7 @@ program
                 styleOption = `&style=${options.style}`;
               }
       
-              const htmlBadge = `<a href="${escapeHtml(links[index])}"><img alt="${escapeHtml(badgeAlt)}" src="${badgeLink}${styleOption}"></a>`;
+              const htmlBadge = `<a href="${escapeHtml(links[index])}">\n  <img src="${badgeLink}${styleOption}" alt="${escapeHtml(badgeAlt)}">\n</a>`;
               console.log(chalk.hex("#FFBF00")(`${htmlBadge}\n`));
             } else {
               consola.error(new Error(c.red("Could not extract badge link or alt text.")));
@@ -452,7 +452,7 @@ program
         ? `[![${alt}](${badgeLink})](${link})`
         : `[![${alt}](${badgeLink})](#)`;
 
-      const badgeHtml = `<a href="${escapeHtml(link)}"><img alt="${escapeHtml(alt)}" src="${badgeLink}" /></a>`;
+      const badgeHtml = `<a href="${escapeHtml(link)}">\n  <img src="${badgeLink}" alt="${escapeHtml(alt)}" />\n</a>`;
 
       console.log(c.green.bold("\n✅ Custom badge created successfully!\n"));
       console.log(c.green.bold("Markdown:"));

@@ -31,8 +31,8 @@ program.version(packageInfo.version);
 // Main Command
 program
   .name("mdb") // name = prefix
-  .arguments("<category> [badgeNames...]")
-  .usage("<category> [badgeNames] [--options]")
+  .arguments("[category] [badgeNames...]")
+  .usage("[category] [badgeNames] [--options]")
   .option("--html", "toggle HTML version of a badge")
   .option("-s, --style <badgeStyle>", "toggle style of a badge")
   .option("--link", "toggle links in a badge")
@@ -507,7 +507,7 @@ program
 
 // Copy Command
 program
-  .command("copy <category> <badgeName>")
+  .command("copy [category] [badgeName]")
   .alias("c")
   .description("copy a badge's code to the clipboard")
   .action((category, badgeName) => {
@@ -529,7 +529,7 @@ program
 
 // Lookup Command
   program
-  .command("lookup <keyword>")
+  .command("lookup [keyword]")
   .alias("l")
   .description("display badges containing a certain keyword")
   .action(async (query) => {
@@ -567,7 +567,7 @@ program
 
 // Adding Badge To File Command
   program
-  .command("add <category> <badgeName> [filePath]")
+  .command("add [category] [badgeName] [filePath]")
   .description("add a badge to a Markdown file")
   .action((category, badgeName, filePath = "README.md") => {
     const formattedCategory = formatCategoryName(category);

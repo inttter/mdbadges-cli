@@ -1,24 +1,23 @@
 #!/usr/bin/env node
 
-const { program } = require("commander");
-const axios = require("axios");
-const chalk = require("chalk");
-const clipboardy = require("clipboardy");
-const ora = require("ora");
-const gradient = require("gradient-string");
-const inquirer = require("inquirer");
-const open = require("open");
-const boxen = require("boxen");
-const execa = require('execa');
+const { program } = require('commander');
+const axios = require('axios');
+const chalk = require('chalk');
 const c = require('ansi-colors');
-const { consola } = require("consola");
-const cliSpinners = require("cli-spinners")
-const fs = require("fs");
-const badges = require("./badges");
-const utils = require("./utils");
-const packageInfo = require("../package.json");
+const clipboardy = require('clipboardy');
+const ora = require('ora');
+const inquirer = require('inquirer');
+const open = require('open');
+const boxen = require('boxen');
+const execa = require('execa');
+const { consola } = require('consola');
+const cliSpinners = require('cli-spinners');
+const fs = require('fs');
+const badges = require('./badges');
+const utils = require('./utils');
+const packageInfo = require('../package.json');
 
-// Functions (see /src/utils.js)
+// Utils
 const {
   formatCategoryName,
   searchCategory,
@@ -63,7 +62,7 @@ program
             const linkResponse = await inquirer.prompt({
               type: "text",
               name: "link",
-              message: badgeNames.length === 1 ? gradient.fruit("Enter your link here:") : index === 0 ? gradient.fruit("▲ Enter your first link here, then click Enter and type the rest below:") : "",
+              message: badgeNames.length === 1 ? c.cyan("Enter your link here:") : index === 0 ? c.cyan("Enter your first link here, then click Enter and type the rest below:") : "",
               validate: (value) => {
                 return value.trim() === '' ? c.red("Please enter a link.") : true; 
               },
@@ -88,7 +87,7 @@ program
               {
                 type: "list",
                 name: "selectedBadge",
-                message: gradient.fruit("Did you mean one of these?"),
+                message: c.cyan("Did you mean one of these?"),
                 choices: [
                   ...similarBadges.map(similarBadge => ({
                     name: similarBadge,
@@ -252,7 +251,7 @@ program
         const { confirm } = await inquirer.prompt({
           type: 'confirm',
           name: 'confirm',
-          message: gradient.fruit('Are you sure you want to update now?'),
+          message: c.cyan('Are you sure you want to update now?'),
         });
 
         if (confirm) {
@@ -298,7 +297,7 @@ program
         {
           type: 'list',
           name: 'category',
-          message: gradient.fruit('Select a category:'),
+          message: c.cyan('Select a category:'),
           choices: categories.map(formatCategoryName),
         },
       ]);
@@ -309,7 +308,7 @@ program
       if (categoryData) {
         console.log(c.green(`\nBadges available in ${c.green.underline(answers.category)}:\n`));
         Object.keys(categoryData).forEach((badge) => {
-          console.log(c.green(`• ${badge}`));
+          console.log(`• ${badge}`);
         });
         console.log(c.cyan(`\nTo get the ${c.underline('Markdown')} version of a badge, type ${c.magenta(`mdb ${formattedCategory} <badgeName>`)}.\n`));
       } else {
@@ -321,7 +320,7 @@ program
         {
           type: 'confirm',
           name: 'searchAgain',
-          message: gradient.fruit('Would you like to search another category?'),
+          message: c.cyan('Would you like to search another category?'),
           default: true,
         },
       ]);
@@ -341,18 +340,12 @@ program
         {
           type: "text",
           name: "alt",
-          message: gradient.fruit("Enter the Alt Text for the badge (e.g. ![Alt Text]):"),
-          validate: (value) => {
-            if (!value.trim()) {
-              return c.red("This field is required.");
-            }
-            return true;
-          },
+          message: c.cyan("Enter the Alt Text for the badge:"),
         },
         {
           type: "text",
           name: "name",
-          message: gradient.fruit("Enter the text you'd like to display on the badge:"),
+          message: c.cyan("Enter the text you'd like to display on the badge:"),
           validate: (value) => {
             if (!value.trim()) {
               return c.red("This field is required.");
@@ -363,11 +356,11 @@ program
         {
           type: "text",
           name: "color",
-          message: gradient.fruit("Enter a hexadecimal value for the badge:"),
+          message: c.cyan("Enter a hexadecimal value for the badge:"),
           validate: (value) => {
             const hexColorRegex = /^#?(?:[0-9a-fA-F]{3}){1,2}$/;
             if (!hexColorRegex.test(value.trim())) {
-              return c.red("Please enter a valid hexadecimal color. (e.g., #000000, #FDE13B)");
+              return c.red("Please enter a valid hexadecimal color (e.g., #000000, #FDE13B).");
             }
             return true;
           },
@@ -375,7 +368,7 @@ program
         {
           type: "text",
           name: "logo",
-          message: gradient.fruit("Enter the logo for the badge:"),
+          message: c.cyan("Enter the logo for the badge:"),
           validate: (value) => {
             if (!value.trim()) {
               return c.red("This field is required.");
@@ -386,7 +379,7 @@ program
         {
           type: "list",
           name: "style",
-          message: gradient.fruit("Choose the style of the badge:"),
+          message: c.cyan("Choose the style of the badge:"),
           choices: [
             "flat",
             "flat-square",
@@ -398,14 +391,18 @@ program
         {
           type: "text",
           name: "logoColor",
-          message:gradient.fruit("Enter the logo color for the badge:"),
-          initial: "",
+          message: c.cyan("Enter the logo color for the badge:"),
+          validate: (value) => {
+            if (!value.trim()) {
+              return c.red("This field is required.");
+            }
+            return true;
+          },
         },
         {
           type: "text",
           name: "link",
-          message:gradient.fruit(`(Optional) Enter the URL to redirect to:`),
-          initial: "",
+          message: c.cyan(`[Optional] - Enter the URL to redirect to:`),
         },
       ]);
 
@@ -560,7 +557,7 @@ program
         {
           type: 'list',
           name: 'selectedBadge',
-          message: gradient.fruit('Select a badge:'),
+          message: c.cyan('Select a badge:'),
           choices: badgeChoices,
         },
       ]);

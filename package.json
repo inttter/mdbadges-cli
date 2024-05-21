@@ -36,7 +36,6 @@
     "commander": "^12.1.0",
     "consola": "^3.2.3",
     "execa": "^5.1.1",
-    "gradient-string": "^2.0.2",
     "inquirer": "^8.2.4",
     "open": "^8.4.2",
     "ora": "^5.4.1"

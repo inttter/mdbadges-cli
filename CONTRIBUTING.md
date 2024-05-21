@@ -107,7 +107,7 @@ When badges are added to md-badges, they will be added accordingly to this packa
 
 # Styling
 
-In mdbadges-cli, three different styling packages are used.
+In **mdbadges-cli**, two different styling packages are used.
 
 * **ansi-colors** — This is the main coloring package that is used. To use ansi-colors, use the `c` prefix, followed by the color of choice, which you can see [here][ansi-colors Color Options].
 
@@ -120,19 +120,6 @@ In mdbadges-cli, three different styling packages are used.
 
   // using template literals
   name: ${c.green(formattedBadge)} in ${c.yellow(formattedCategory)}
-  ```
-
-* `gradient-string` — This is used when prompting the user for something, for example, a text input. Specifically, `gradient.fruit` is used in almost all instances for prompt messages. See this example below:
-
-  ```javascript
-  const answers = await inquirer.prompt([
-    {
-      type: 'list',
-      name: 'category',
-      message: gradient.fruit('Select a category:'),
-      choices: categories.map(formatCategoryName),
-      },
-    ]);
   ```
 
 * `Chalk` — This is used for badge code outputs, such as this example below:

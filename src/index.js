@@ -477,33 +477,32 @@ program
     await displayAboutInfo();
   });
 
-// Random Badge Command
-  program
+/// Random Badge Command
+program
   .command('random')
   .alias('r')
   .description('display a random badge')
-  .action(async => {
-      const categories = Object.keys(badges);
-      const randomCategory = categories[Math.floor(Math.random() * categories.length)];
-      const badgesInCategory = Object.keys(badges[randomCategory]);
-      const randomBadgeName =
-        badgesInCategory[Math.floor(Math.random() * badgesInCategory.length)];
-      const badge = badges[randomCategory][randomBadgeName];
+  .action(async () => {
+    const categories = Object.keys(badges);
+    const randomCategory = categories[Math.floor(Math.random() * categories.length)];
+    const badgesInCategory = Object.keys(badges[randomCategory]);
+    const randomBadgeName = badgesInCategory[Math.floor(Math.random() * badgesInCategory.length)];
+    const badge = badges[randomCategory][randomBadgeName];
 
-      const badgeLink = badge.match(/\(([^)]+)\)/)[1];
-      const badgeAlt = badge.match(/\[([^)]+)\]/)[1];
+    const badgeLink = badge.match(/\(([^)]+)\)/)[1];
+    const badgeAlt = badge.match(/\[([^)]+)\]/)[1];
 
-      const markdownBadge = `[${badgeAlt}](${badgeLink})](#)`;
-      const htmlBadge = `<img src="${badgeLink}" />`;
+    const markdownBadge = `[${badgeAlt}](${badgeLink})`;
+    const htmlBadgeAlt = badgeAlt.replace(/^!\[/, ''); // Strip the '!' from the alt text
+    const htmlBadge = `<img src="${badgeLink}" alt="${htmlBadgeAlt}" />`;
 
-      // outputs both versions, Markdown and HTML
-      console.log(c.green.underline.bold('\nMarkdown:')); 
-      console.log(chalk.hex("#FFBF00").bold(`${markdownBadge}\n`));
+    // outputs both versions, Markdown and HTML
+    console.log(c.green.underline.bold('\nMarkdown:'));
+    console.log(chalk.hex("#FFBF00").bold(`${markdownBadge}\n`));
 
-      console.log(c.green.underline.bold('HTML:'));
-      console.log(chalk.hex("#FFBF00").bold(htmlBadge));
-    }
-  );
+    console.log(c.green.underline.bold('HTML:'));
+    console.log(chalk.hex("#FFBF00").bold(htmlBadge));
+  });
 
 // Copy Command
 program

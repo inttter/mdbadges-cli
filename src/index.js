@@ -29,12 +29,12 @@ program.version(packageInfo.version);
 
 // Main Command
 program
-  .name("mdb") // name = prefix
-  .arguments("[category] [badgeNames...]")
-  .usage("[category] [badgeNames] [--options]")
-  .option("--html", "toggle HTML version of a badge")
-  .option("-s, --style <badgeStyle>", "toggle style of a badge")
-  .option("--link", "toggle links in a badge")
+  .name('mdb') // name = prefix
+  .arguments('[category] [badgeNames...]')
+  .usage('[category] [badgeNames] [--options]')
+  .option('--html', 'toggle HTML version of a badge')
+  .option('-s, --style <badgeStyle>', 'toggle style of a badge')
+  .option('--link', 'toggle links in a badge')
   .action(async (category, badgeNames = [], options) => {
     const formattedCategory = utils.formatCategoryName(category);
     const categoryData = badges[utils.searchCategory(category)];
@@ -55,16 +55,16 @@ program
 
         if (badge) {
           badgesFound = true;
-          let link = "";
+          let link = '';
 
           // --link
           if (options.link) {
             const linkResponse = await inquirer.prompt({
-              type: "text",
-              name: "link",
-              message: badgeNames.length === 1 ? c.cyan("Enter your link here:") : index === 0 ? c.cyan("Enter your first link here, then click Enter and type the rest below:") : "",
+              type: 'text',
+              name: 'link',
+              message: badgeNames.length === 1 ? c.cyan('Enter your link here:') : index === 0 ? c.cyan('Enter your first link here, then click Enter and type the rest below:') : '',
               validate: (value) => {
-                return value.trim() === '' ? c.red("Please enter a link.") : true; 
+                return value.trim() === '' ? c.red('Please enter a link.') : true; 
               },
             });
             link = linkResponse.link;
@@ -85,9 +85,9 @@ program
           if (similarBadges.length > 0) {
             inquirer.prompt([
               {
-                type: "list",
-                name: "selectedBadge",
-                message: c.cyan("Did you mean one of these?"),
+                type: 'list',
+                name: 'selectedBadge',
+                message: c.cyan('Did you mean one of these?'),
                 choices: [
                   ...similarBadges.map(similarBadge => ({
                     name: similarBadge,
@@ -106,7 +106,7 @@ program
                 process.exit(0);
               } else {
                 console.log(c.green.bold('\nBadge found:'));
-                console.log(chalk.hex("#FFBF00").bold(`${selectedBadge}\n`));
+                console.log(chalk.hex('#FFBF00').bold(`${selectedBadge}\n`));
               }
             });
           }
@@ -114,7 +114,7 @@ program
       }
 
       if (badgesFound) {
-        console.log(c.green.bold(`Badge found:`));
+        console.log(c.green.bold('Badge found:'));
       }
 
       for (let index = 0; index < badgeNames.length; index++) {
@@ -136,83 +136,82 @@ program
               const badgeAlt = badgeAltMatch[1];
               const htmlBadgeAlt = badgeAlt.replace(/^!\[/, ''); // strips the '![' from the alt text
               
-              let styleOption = "";
+              let styleOption = '';
               if (options.style) {
                 styleOption = `&style=${options.style}`;
               }
       
               let htmlBadge;
-              if (options.link && links[index]) {
+              if (options.link && links[index]) { // if --link is specified, we append the <a> tags
                 htmlBadge = `<a href="${escapeHtml(links[index])}">\n  <img src="${badgeLink}${styleOption}" alt="${escapeHtml(htmlBadgeAlt)}">\n</a>`;
               } else {
                 htmlBadge = `<img src="${badgeLink}${styleOption}" alt="${escapeHtml(htmlBadgeAlt)}">`;
               }
-              console.log(chalk.hex("#FFBF00")(`${htmlBadge}\n`));
+              console.log(chalk.hex('#FFBF00')(`${htmlBadge}\n`));
             } else {
-              consola.error(new Error(c.red("Could not extract badge link or alt text.")));
+              consola.error(new Error(c.red('Could not extract badge link or alt text.')));
             }
           } else {
-            let badgeStyle = "flat"; // flat is the default style if one is not specified
             if (options.style) {
                 // provided style must match one of these styles
                 const styles = [
-                    "flat",
-                    "flat-square",
-                    "plastic",
-                    "social",
-                    "for-the-badge",
+                    'flat',
+                    'flat-square',
+                    'plastic',
+                    'social',
+                    'for-the-badge',
                 ];
                 if (styles.includes(options.style)) {
                     badgeStyle = options.style;
                 } else {
-                    consola.warn(c.yellow("An invalid style was detected. View available styles here: https://docs.mdbcli.xyz/commands/finding-a-badge#style-s"));
+                    consola.warn(c.yellow(`An invalid style was detected. View available styles here at ${c.magenta.bold('https://docs.mdbcli.xyz/commands/finding-a-badge#style-s')}.`));
                 }
             }
-            const styleOption = options.style ? `&style=${options.style}` : "";
+            const styleOption = options.style ? `&style=${options.style}` : '';
             const badgeLink = badge.match(/\(([^)]+)\)/)[1];
             const badgeAlt = badge.match(/\[([^)]+)\]/)[1];
-            const link = links[index] ? escapeHtml(links[index]) : "#"; // use "#" if link is not provided
+            const link = links[index] ? escapeHtml(links[index]) : '#'; // use '#' if link is not provided
         
             const badgeMarkdown = `[${badgeAlt}](${badgeLink}${styleOption})](${link})`;
         
-            console.log(chalk.hex("#FFBF00").bold(`${badgeMarkdown}\n`));
+            console.log(chalk.hex('#FFBF00').bold(`${badgeMarkdown}\n`));
         }
         }
       }
     } else {
-      consola.error(c.red(`'${category}' is not a valid category.`));
+      consola.error(c.red(`'${c.red.bold(category)}' is not a valid category.`));
       console.log(c.cyan(`Visit ${c.magenta.bold('https://tinyurl.com/mdbcategories')} for a list of available categories.`));
     }
   });
 
 // Version Command
 program
-  .command("version")
-  .alias("ver")
-  .alias("v")
-  .description("display the current version you are on")
+  .command('version')
+  .alias('ver')
+  .alias('v')
+  .description('display the current version you are on')
   .action(() => {
     console.log(c.white(`${packageInfo.version}`)); // fetches package info version from package.json
   });
 
 // Badge List Command
   program
-  .command("badges")
-  .alias("list")
-  .description("open a link to the badge list in your browser")
+  .command('badges')
+  .alias('list')
+  .description('open a link to the badge list in your browser')
   .action(async () => {
     console.log()
     const spinner = ora({
-      text: c.blue("Opening in browser..."),
+      text: c.blue('Opening in browser...'),
       spinner: cliSpinners.arc,
-      color: "magenta",
+      color: 'magenta',
     }).start();
 
     const listLink = 'https://github.com/inttter/md-badges?tab=readme-ov-file#-table-of-contents'
 
     try {
       await open(listLink);
-      spinner.succeed(c.green("Opened in your browser!"));
+      spinner.succeed(c.green('Opened in your browser!'));
     } catch (error) {
       consola.error(new Error(c.red(`An error occurred when trying to open the link in your browser: ${error.message}`)));
       console.log(c.cyan(`\n  You can visit the page by clicking on the following link instead: ${c.magenta.bold(listLink)}`))
@@ -240,7 +239,6 @@ program
 
       spinner.stop();
       
-
       if (latest > packageInfo.version) {
         const updateMessage = boxen(
           `An update is available: ${c.dim(packageInfo.version)} ➜  ${c.green(latest)}\nRun ${c.cyan('mdb changelog')} for the changes.${latestMajor > currentMajor ? `\n\n${c.yellow.bold('Warning:')} \n ${c.magenta.bold('This is a major version bump, which may include ')}${c.magenta.underline.bold('breaking changes')} ${c.magenta.bold('that aren\'t backwards compatible.')}\n ${c.magenta.bold('Visit the GitHub page for more details:')} ${c.yellow.bold(`https://github.com/inttter/${packageInfo.name}/releases/tag/${latest}`)}` : ''}`,
@@ -331,78 +329,78 @@ program
 
 // Badge Creator Command
 program
-  .command("create")
-  .alias("generate")
-  .description("display prompts to create your own badge")
+  .command('create')
+  .alias('generate')
+  .description('display prompts to create your own badge')
   .action(async () => {
     try {
       const response = await inquirer.prompt([
         {
-          type: "text",
-          name: "alt",
-          message: c.cyan("Enter the Alt Text for the badge:"),
+          type: 'text',
+          name: 'alt',
+          message: c.cyan('Enter the Alt Text for the badge:'),
         },
         {
-          type: "text",
-          name: "name",
-          message: c.cyan("Enter the text you'd like to display on the badge:"),
+          type: 'text',
+          name: 'name',
+          message: c.cyan('Enter the text you\'d like to display on the badge:'),
           validate: (value) => {
             if (!value.trim()) {
-              return c.red("This field is required.");
+              return c.red('This field is required.');
             }
             return true;
           },
         },
         {
-          type: "text",
-          name: "color",
-          message: c.cyan("Enter a hexadecimal value for the badge:"),
+          type: 'text',
+          name: 'color',
+          message: c.cyan('Enter a hexadecimal value for the badge:'),
           validate: (value) => {
             const hexColorRegex = /^#?(?:[0-9a-fA-F]{3}){1,2}$/;
             if (!hexColorRegex.test(value.trim())) {
-              return c.red("Please enter a valid hexadecimal color (e.g., #000000, #FDE13B).");
+              return c.red('Enter a valid hexadecimal color (eg. #000000, #FDE13B).');
             }
             return true;
           },
         },
         {
-          type: "text",
-          name: "logo",
-          message: c.cyan("Enter the logo for the badge:"),
+          type: 'text',
+          name: 'logo',
+          message: c.cyan('Enter the logo for the badge:'),
           validate: (value) => {
             if (!value.trim()) {
-              return c.red("This field is required.");
+              return c.red('This field is required.');
             }
             return true;
           },
         },
         {
-          type: "list",
-          name: "style",
-          message: c.cyan("Choose the style of the badge:"),
+          type: 'list',
+          name: 'style',
+          message: c.cyan('Choose the style of the badge:'),
           choices: [
-            "flat",
-            "flat-square",
-            "plastic",
-            "social",
-            "for-the-badge",
+            'flat',
+            'flat-square',
+            'plastic',
+            'social',
+            'for-the-badge',
           ],
         },
         {
-          type: "text",
-          name: "logoColor",
-          message: c.cyan("Enter the logo color for the badge:"),
+          type: 'text',
+          name: 'logoColor',
+          message: c.cyan('Enter the logo color for the badge:'),
           validate: (value) => {
             if (!value.trim()) {
-              return c.red("This field is required.");
+              return c.red('This field is required.');
             }
             return true;
           },
         },
         {
-          type: "text",
-          name: "link",
-          message: c.cyan(`[Optional] - Enter the URL to redirect to:`),
+          type: 'text',
+          name: 'link',
+          message: c.cyan('[Optional] - Enter the URL to redirect to:'),
         },
       ]);
 
@@ -418,11 +416,11 @@ program
 
       const badgeHtml = link ? `<a href="${escapeHtml(link)}">\n  <img src="${badgeLink}" alt="${escapeHtml(alt)}" />\n</a>` : `<img src="${badgeLink}" alt="${escapeHtml(alt)}" />`;
 
-      console.log(c.green.bold("\n✅ Custom badge created successfully!\n"));
-      console.log(c.green.bold("Markdown:"));
-      console.log(chalk.hex("#FFBF00").bold(`${badgeMarkdown}\n`)); // Markdown
-      console.log(c.green.bold("HTML:"));
-      console.log(chalk.hex("#FFBF00").bold(`${badgeHtml}\n`)); // HTML
+      console.log(c.green.bold('\n✅ Custom badge created successfully!\n'));
+      console.log(c.green.bold('Markdown:'));
+      console.log(chalk.hex('#FFBF00').bold(`${badgeMarkdown}\n`)); // Markdown
+      console.log(c.green.bold('HTML:'));
+      console.log(chalk.hex('#FFBF00').bold(`${badgeHtml}\n`)); // HTML
     } catch (error) {
       consola.error(new Error(c.red(`An error occurred when trying to make your badge: ${error.message}`)));
     }
@@ -437,7 +435,7 @@ program
     async function displayAboutInfo() {
       try {
         const response = await axios.get(`https://registry.npmjs.org/${packageInfo.name}`);
-        const latestVersion = response.data["dist-tags"].latest;
+        const latestVersion = response.data['dist-tags'].latest;
 
         // counts the number of badges and saves it in numOfBadges
         let numOfBadges = 0;
@@ -501,17 +499,17 @@ program
 
     // outputs both versions, Markdown and HTML
     console.log(c.green.underline.bold('\nMarkdown:'));
-    console.log(chalk.hex("#FFBF00").bold(`${markdownBadge}\n`));
+    console.log(chalk.hex('#FFBF00').bold(`${markdownBadge}\n`));
 
     console.log(c.green.underline.bold('HTML:'));
-    console.log(chalk.hex("#FFBF00").bold(htmlBadge));
+    console.log(chalk.hex('#FFBF00').bold(htmlBadge));
   });
 
 // Copy Command
 program
-  .command("copy [category] [badgeName]")
-  .alias("c")
-  .description("copy a badge's code to the clipboard")
+  .command('copy [category] [badgeName]')
+  .alias('c')
+  .description('copy a badge\'s code to the clipboard')
   .action((category, badgeName) => {
     const formattedCategory = category.toLowerCase();
     const formattedBadgeName = badgeName.toLowerCase();
@@ -531,9 +529,9 @@ program
 
 // Lookup Command
   program
-  .command("lookup [keyword]")
-  .alias("l")
-  .description("display badges containing a certain keyword")
+  .command('lookup [keyword]')
+  .alias('l')
+  .description('display badges containing a certain keyword')
   .action(async (query) => {
     let badgeChoices = [];
     Object.keys(badges).forEach((category) => {
@@ -563,15 +561,15 @@ program
       ]);
 
       console.log(c.green.bold('\nBadge found:'));
-      console.log(chalk.hex("#FFBF00")(selectedBadge));
+      console.log(chalk.hex('#FFBF00').bold(selectedBadge));
     }
   });
 
 // Adding Badge To File Command
   program
-  .command("add [category] [badgeName] [filePath]")
-  .description("add a badge to a Markdown file")
-  .action((category, badgeName, filePath = "README.md") => {
+  .command('add [category] [badgeName] [filePath]')
+  .description('add a badge to a Markdown file')
+  .action((category, badgeName, filePath = 'README.md') => {
     const formattedCategory = formatCategoryName(category);
     const formattedBadgeName = badgeName.toLowerCase();
     const categoryData = badges[category.toLowerCase()];
@@ -597,7 +595,7 @@ program
     // checks if the badge is defined and checks if the regex match is successful
     const badgeLinkMatch = badge.match(/\(([^)]+)\)/);
     if (!badgeLinkMatch || !badgeLinkMatch[1]) {
-      consola.error(new Error(c.red("The badge link could not be found in the expected format.")));
+      consola.error(new Error(c.red('The badge link could not be found in the expected format.')));
       return;
     }
 
@@ -608,7 +606,7 @@ program
     const badgeMarkdown = `[${badgeAlt}](${badgeLink})](#)`;
 
     try {
-      fileContent = fs.readFileSync(filePath, "utf8");
+      fileContent = fs.readFileSync(filePath, 'utf8');
     } catch (error) {
       consola.error(new Error(c.red(`Could not read the file: ${error.message}`)));
       return;
@@ -616,7 +614,7 @@ program
 
     // appends the badge to the specified file (path)
     try {
-      fs.appendFileSync(filePath, `\n${badgeMarkdown}`, "utf8");
+      fs.appendFileSync(filePath, `\n${badgeMarkdown}`, 'utf8');
       consola.success(c.green(`Badge has been added to the file successfully.`));
     } catch (error) {
       consola.error(new Error(c.red(`Could not write to the file: ${error.message}`)));
@@ -631,16 +629,16 @@ program
   .action(async () => {
     console.log();
     const spinner = ora({
-      text: c.blue("Opening the documentation in your browser..."),
+      text: c.blue('Opening the documentation in your browser...'),
       spinner: cliSpinners.arc,
-      color: "yellow",
+      color: 'yellow',
     }).start();
 
     const docsLink = 'https://docs.mdbcli.xyz/'
 
     try {
       await open(docsLink);
-      spinner.succeed(c.green("Opened in your browser!"));
+      spinner.succeed(c.green('Opened in your browser!'));
     } catch (error) {
       consola.error(new Error(c.red(`An error occurred when trying to open the link in your browser: ${error.message}`)));
       console.log(c.cyan(`\n  You can visit the page by clicking on the following link instead: ${c.magenta.bold(docsLink)}`))
@@ -664,9 +662,9 @@ program
   .action(async () => {
     console.log()
     const spinner = ora({
-      text: c.blue("Opening the latest release..."),
+      text: c.blue('Opening the latest release...'),
       spinner: cliSpinners.arc,
-      color: "magenta",
+      color: 'magenta',
     }).start();
 
     const changelogLink = `https://github.com/inttter/${packageInfo.name}/releases/latest`
@@ -674,7 +672,7 @@ program
     try {
       await open(changelogLink);
 
-      spinner.succeed(c.green("Opened in your browser!"));
+      spinner.succeed(c.green('Opened in your browser!'));
     } catch (error) {
       consola.error(new Error(c.red(`Could not open the link in your browser: ${error.message}`)));
       console.log(c.cyan(`\n  You can visit the page by clicking on the following link instead: ${c.magenta.bold(changelogLink)}`))

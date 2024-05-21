@@ -56,8 +56,9 @@ program
 
         if (badge) {
           badgesFound = true;
-          // Prompt for the link only if --link is specified
           let link = "";
+
+          // --link
           if (options.link) {
             const linkResponse = await inquirer.prompt({
               type: "text",
@@ -75,12 +76,13 @@ program
           // clog up that prompt and could hide the actual error
           consola.error(c.red(`'${formatBadgeName(badgeName)}' is not a valid badge.`));
           console.log(c.cyan(`Try running ${c.magenta.bold('mdb search')} and selecting '${c.magenta.bold(formattedCategory)}' for a list of badges in that category.\n`));        
+          
           // prompt for similar badges in the same category if it cant find the badge
           const similarBadges = Object.keys(categoryData).filter(key =>
             key.toLowerCase().includes(badgeName.toLowerCase())
           );
         
-          // similar badge prompt/logic
+          // similar badge prompt + logic
           if (similarBadges.length > 0) {
             inquirer.prompt([
               {
@@ -140,7 +142,12 @@ program
                 styleOption = `&style=${options.style}`;
               }
       
-              const htmlBadge = `<a href="${escapeHtml(links[index])}">\n  <img src="${badgeLink}${styleOption}" alt="${escapeHtml(htmlBadgeAlt)}">\n</a>`;
+              let htmlBadge;
+              if (options.link && links[index]) {
+                htmlBadge = `<a href="${escapeHtml(links[index])}">\n  <img src="${badgeLink}${styleOption}" alt="${escapeHtml(htmlBadgeAlt)}">\n</a>`;
+              } else {
+                htmlBadge = `<img src="${badgeLink}${styleOption}" alt="${escapeHtml(htmlBadgeAlt)}">`;
+              }
               console.log(chalk.hex("#FFBF00")(`${htmlBadge}\n`));
             } else {
               consola.error(new Error(c.red("Could not extract badge link or alt text.")));
@@ -324,7 +331,7 @@ program
   });
 
 // Badge Creator Command
-  program
+program
   .command("create")
   .alias("generate")
   .description("display prompts to create your own badge")
@@ -412,7 +419,7 @@ program
 
       const badgeMarkdown = link ? `[![${alt}](${badgeLink})](${link})` : `[![${alt}](${badgeLink})](#)`;
 
-      const badgeHtml = `<a href="${escapeHtml(link)}">\n  <img src="${badgeLink}" alt="${escapeHtml(alt)}" />\n</a>`;
+      const badgeHtml = link ? `<a href="${escapeHtml(link)}">\n  <img src="${badgeLink}" alt="${escapeHtml(alt)}" />\n</a>` : `<img src="${badgeLink}" alt="${escapeHtml(alt)}" />`;
 
       console.log(c.green.bold("\n✅ Custom badge created successfully!\n"));
       console.log(c.green.bold("Markdown:"));

@@ -133,13 +133,14 @@ program
             if (badgeLinkMatch && badgeAltMatch) {
               const badgeLink = badgeLinkMatch[1];
               const badgeAlt = badgeAltMatch[1];
+              const htmlBadgeAlt = badgeAlt.replace(/^!\[/, ''); // strips the '![' from the alt text
               
               let styleOption = "";
               if (options.style) {
                 styleOption = `&style=${options.style}`;
               }
       
-              const htmlBadge = `<a href="${escapeHtml(links[index])}">\n  <img src="${badgeLink}${styleOption}" alt="${escapeHtml(badgeAlt)}">\n</a>`;
+              const htmlBadge = `<a href="${escapeHtml(links[index])}">\n  <img src="${badgeLink}${styleOption}" alt="${escapeHtml(htmlBadgeAlt)}">\n</a>`;
               console.log(chalk.hex("#FFBF00")(`${htmlBadge}\n`));
             } else {
               consola.error(new Error(c.red("Could not extract badge link or alt text.")));
@@ -161,7 +162,7 @@ program
                     consola.warn(c.yellow("An invalid style was detected. View available styles here: https://docs.mdbcli.xyz/commands/finding-a-badge#style-s"));
                 }
             }
-            const styleOption = options.style ? `&style=${options.style}` : ""; // adds style option if one is provided
+            const styleOption = options.style ? `&style=${options.style}` : "";
             const badgeLink = badge.match(/\(([^)]+)\)/)[1];
             const badgeAlt = badge.match(/\[([^)]+)\]/)[1];
             const link = links[index] ? escapeHtml(links[index]) : "#"; // use "#" if link is not provided
@@ -409,9 +410,7 @@ program
         badgeLink += `&logoColor=${encodeURIComponent(logoColor)}`;
       }
 
-      const badgeMarkdown = link
-        ? `[![${alt}](${badgeLink})](${link})`
-        : `[![${alt}](${badgeLink})](#)`;
+      const badgeMarkdown = link ? `[![${alt}](${badgeLink})](${link})` : `[![${alt}](${badgeLink})](#)`;
 
       const badgeHtml = `<a href="${escapeHtml(link)}">\n  <img src="${badgeLink}" alt="${escapeHtml(alt)}" />\n</a>`;
 
@@ -493,7 +492,7 @@ program
     const badgeAlt = badge.match(/\[([^)]+)\]/)[1];
 
     const markdownBadge = `[${badgeAlt}](${badgeLink})`;
-    const htmlBadgeAlt = badgeAlt.replace(/^!\[/, ''); // Strip the '!' from the alt text
+    const htmlBadgeAlt = badgeAlt.replace(/^!\[/, ''); // strips the '![' from the alt text
     const htmlBadge = `<img src="${badgeLink}" alt="${htmlBadgeAlt}" />`;
 
     // outputs both versions, Markdown and HTML

@@ -34,7 +34,7 @@ mdb social discord
 # [![Discord](https://img.shields.io/badge/Discord-%235865F2.svg?&logo=discord&logoColor=white)](#)
 ```
 
-If you want to use a prefix, such as `--style`, you can run the same command with the prefix after it (prefixes have -- or - before them). 
+If you want to use a prefix, such as `--style`, you can run the same command with the prefix after it. 
 
 For example:
 
@@ -48,37 +48,37 @@ mdb social discord --style plastic
 > [!TIP]
 > If you are running mdbadges-cli in Visual Studio Code, try installing the [**Image Preview**][Extension] extension. You can hover over the badge link to see a preview of it. See an example [**here**](https://github.com/inttter/mdbadges-cli/assets/73017070/f39fc296-25c8-4a2a-846a-cf83eff00cc4).
 
-For help information, such as what commands do and/or accept, run `mdb help / mdb -h` in the terminal. Alternatively, you can read the documentation [**here**][Docs].
+For help information, such as what commands do and/or accept, run `mdb help` in the terminal. Alternatively, you can read the documentation [**here**][Docs].
 
 # Commands
 
 |   Command      |    Description    |     Aliases      | Additional Information |
 |----------|-----------|---------------------------|--------|
-`mdb <category> <badgeName>` | Displays Markdown for specified badge in a category | N/A | View all available options [here][Docs].
-`mdb search` | Displays badges available in a [**category**](#available-categories) | `s`, `find` | Use arrow keys to scroll up/down.
-`mdb lookup <keyword>` | Displays badges containing a certain keyword. | `l` | Also displays what category the badge is in, and clicking `ENTER` on a badge will give you the badge code.
-`mdb create` | Displays prompts to create your own badge | `generate` | Only hexadecimal colors (e.g #000, #FFFFFF) are supported.
+`mdb [category] [badgeName]` | Displays Markdown for specified badge in a category. | N/A | View all available options on the [documentation][Docs].
+`mdb search` | Displays badges available in a [**category**](#available-categories). | `s`, `find` | Use arrow keys to scroll up/down.
+`mdb lookup [keyword]` | Displays badges containing a certain keyword. | `l` | Also displays what category the badge is in, and clicking <kbd>Enter</kbd> on a badge will give you the badge code.
+`mdb create` | Displays prompts to create your own badge. | `generate` | Both Markdown and HTML versions of your badge are given. Only hexadecimal colors are supported.
 `mdb random` | Displays a random badge. | `r` | Supports both Markdown and HTML formats.
-`mdb copy <category> <badgeName>` | Copies a badges' code to the clipboard | `c` | N/A 
+`mdb copy [category] [badgeName]` | Copies a badges' code to the clipboard. | `c` | N/A 
 `mdb badges` | Opens a link to the badge list in your browser. | `list` | N/A
-`mdb add <category> <badgeName> <fileName>` | Allows you to add a badge to a Markdown file | N/A | Will work in subdirectories, so long as the file path is correct.
+`mdb add [category] [badgeName] [fileName]` | Allows you to add a badge to a Markdown file. | N/A | Will work in subdirectories, so long as the file path is correct.
 
 # Miscellaneous Commands
 
 |   Command      |    Description    |     Aliases      | Additional Information |
 |----------|-----------|---------------------------|--------|
-`mdb version` | Displays the current version you are on | `v` | This command is *not* for updating, this simply outputs your version. To update, see below.
-`mdb update` | Automatically updates the package | `upd`, `u` | Will notify you of major bumps, and also prompts you if you would like to update first.
-`mdb about` | Displays general information about the package | `abt` | Also shows links to the website, GitHub issues, contributing, and more.
+`mdb version` | Displays the current version you are on. | `v` | To update, see below.
+`mdb update` | Automatically updates the package. | `upd`, `u` | Will notify you of major bumps, and also prompts you if you would like to update first.
+`mdb about` | Displays general information about the package. | `abt` | Also shows links to the website, GitHub issues, contributing, and more.
 `mdb documentation` | Opens a link to the documentation in your browser. | `docs` | N/A
 `mdb changelog` | Opens a link to the latest release with it's changelogs in your browser. | `release` | N/A
 
 # Available Categories
 
-This contains the categories that are currently available, with the names and syntax. The syntax is needed for the `<category>` field of certain commands.
+This contains the categories that are currently available, with the names and syntax. The syntax is needed for the `[category]` field of certain commands.
 
 | Name | Syntax |
-|---------|---------------|
+|------|--------|
 App Store | app-store
 Artificial Intelligence | ai
 Blog | blog

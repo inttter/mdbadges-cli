@@ -122,7 +122,7 @@ In **mdbadges-cli**, two different styling packages are used.
   name: ${c.green(formattedBadge)} in ${c.yellow(formattedCategory)}
   ```
 
-* `Chalk` — This is used for badge code outputs, such as this example below:
+* `Chalk` — This is mostly used for badge code outputs, although may be used in other certain cases if applicable.
 
   ```javascript
   console.log(chalk.hex("#FFBF00")(selectedBadge));
@@ -136,13 +136,13 @@ In **mdbadges-cli**, two different styling packages are used.
     <type>[optional scope]: <description>
     ```
 
-* When using emoji in commit messages, [Gitmoji][Gitmoji] is most commonly used, as well as some others (which you can decide what they should be). For example:
+* If you would like to also use emoji in your commit messages, you should try to adhere to the [Gitmoji][Gitmoji] emoji's, as they are most commonly used, as well as other miscellaneous emoji's, which you can decide on what they should be represneted by. For example:
 
     ```
     ✨ feat: add GitHub badge
     ```
 
-For more specific instances, you can include a scope for the commit. A scope is what is in the parenthesis of a commit message. See these examples below for more:
+For more specific instances, you can include a **scope** for the commit. A scope is what is in the parenthesis of a commit message. This is helpful in instances where you are making changes to a certain section of the package. See these examples below:
 
 ```bash
     # Related to releasing a new version
@@ -162,10 +162,15 @@ For any questions you have, open an [issue][Create an issue] and label it with t
 <div align="center">
   <img src="https://github.com/inttter/mdbadges-cli/assets/73017070/6175f030-109b-4931-aa25-7803360ce303" width="250" alt="Question Label">
 </div>
+<br>
+
+Before you ask your question, you should consider whether it has already been answered, and what haven't tried/thought about.
 
 ## Bugs/Inconsistencies
 
-If you come across any bugs, report them by [creating an issue][Issues]. Provide details on how you encountered the bug, any error messages that may appear, and any potential fixes you might have identified.
+If you come across any bugs, report them by [creating an issue][Issues]. 
+
+You should provide details on **how you encountered the issue**, any **error messages** you may have recieved, s**creenshots (if applicable)** and, if you find one, what you believe is **a plausible fix** for the issue.
 
 ## License
 

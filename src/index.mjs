@@ -10,18 +10,13 @@ import clipboardy from 'clipboardy';
 import ora from 'ora';
 import inquirer from 'inquirer';
 import open from 'open';
-import boxen from 'boxen';
-import { execa } from 'execa';
 import { consola } from 'consola';
 import cliSpinners from 'cli-spinners';
 import fs from 'fs';
 import badges from './badges.mjs';
 import * as utils from './utils.mjs';
-import { loadPackageInfo } from './utils.mjs';
 
-const packageInfo = loadPackageInfo();
-
-program.version(packageInfo.version);
+const packageName = 'mdbadges-cli'
 
 // Main Command
 program
@@ -183,16 +178,6 @@ program
     }
   });
 
-// Version Command
-program
-  .command('version')
-  .alias('ver')
-  .alias('v')
-  .description('display the current version you are on')
-  .action(() => {
-    console.log(c.white(`${packageInfo.version}`)); // fetches package info version from package.json
-  });
-
 // Badge List Command
 program
   .command('badges')
@@ -215,66 +200,6 @@ program
       consola.error(new Error(c.red(`An error occurred when trying to open the link in your browser: ${error.message}`)));
       console.log(c.cyan(`\n  You can visit the page by clicking on the following link instead: ${c.magenta.bold(listLink)}`))
       spinner.stop()
-    }
-  });
-
-program
-  .command('update')
-  .alias('upd')
-  .alias('u')
-  .description('automatically update the package')
-  .action(async () => {
-    const spinner = ora({
-      text: chalk.blue('Checking for updates...'),
-      spinner: cliSpinners.arc,
-      color: 'magenta',
-    }).start();
-
-    try {
-      const response = await axios.get(`https://registry.npmjs.org/${packageInfo.name}`);
-      const latest = response.data['dist-tags'].latest;
-      const [currentMajor, ,] = packageInfo.version.split('.');
-      const [latestMajor, ,] = latest.split('.');
-
-      spinner.stop();
-      
-      if (latest > packageInfo.version) {
-        const updateMessage = boxen(
-          `An update is available: ${c.dim(packageInfo.version)} ➜  ${c.green(latest)}\nRun ${c.cyan('mdb changelog')} for the changes.${latestMajor > currentMajor ? `\n\n${c.yellow.bold('Warning:')} \n ${c.magenta.bold('This is a major version bump, which may include ')}${c.magenta.underline.bold('breaking changes')} ${c.magenta.bold('that aren\'t backwards compatible.')}\n ${c.magenta.bold('Visit the GitHub page for more details:')} ${c.yellow.bold(`https://github.com/inttter/${packageInfo.name}/releases/tag/${latest}`)}` : ''}`,
-          { borderStyle: 'round', padding: 1, margin: 1, title: '🔔 Note', titleAlignment: 'center', borderColor: 'cyan' }
-        );
-        console.log(updateMessage);
-
-        const { confirm } = await inquirer.prompt({
-          type: 'confirm',
-          name: 'confirm',
-          message: c.cyan('Are you sure you want to update now?'),
-        });
-
-        if (confirm) {
-          const updateSpinner = ora({ text: chalk.cyan('Updating...\n\n'), spinner: cliSpinners.arc }).start();
-
-          try {
-            await execa(`npm install -g ${packageInfo.name}@latest`, { stdio: 'inherit' });
-
-            updateSpinner.succeed(chalk.green('Update complete!'));
-            console.log(c.green(`\nYou are now on ${c.green.bold.underline(`v${latest}`)}! To verify, run ${c.cyan.bold('mdb version')}.`));
-            console.log(c.green(`Check out what's changed by running ${c.cyan.bold('mdb changelog')}.\n`));
-          } catch (error) {
-            consola.error(new Error(c.red(`Update failed: ${error.message}`)));
-            spinner.stop();
-          }
-        } else {
-          console.log(c.green.bold('\nUpdate canceled.\n'));
-        }
-      } else {
-        console.log(c.green(`\nYou are already on the latest version, ${c.magenta(packageInfo.version)}.\n`));
-      }
-    } catch (error) {
-      console.log()
-      consola.error(new Error(c.red(`An error occurred while checking for updates: ${error.message}`)));
-    } finally {
-      spinner.stop();
     }
   });
 
@@ -433,7 +358,7 @@ program
   .action(async () => {
     async function displayAboutInfo() {
       try {
-        const response = await axios.get(`https://registry.npmjs.org/${packageInfo.name}`);
+        const response = await axios.get(`https://registry.npmjs.org/${packageName}`);
         const latestVersion = response.data['dist-tags'].latest;
 
         // counts the number of badges and saves it in numOfBadges
@@ -454,18 +379,13 @@ program
         console.log(c.blue.bold('                               https://mdbcli.xyz                            \n'));
         console.log(c.yellow(`${c.yellow.bold.underline('Latest:')} ${latestVersion}`));
 
-        const userPackageVersion = packageInfo.version;
-        console.log(c.yellow(`${c.yellow.bold.underline('Your Version:')} ${userPackageVersion}`));
-        console.log(c.blue(`If these versions do not match, run ${c.cyan.bold('mdb update')}.\n`));
-
         console.log(c.yellow(`Badges Available: ${c.yellow.bold(numOfBadges)}\n`));
 
         console.log(c.blue(`• ${c.cyan.bold('mdb help')} to view the available list of commands`));
         console.log(c.blue(`• ${c.cyan.bold('mdb changelog')} to view the latest release`));
-        console.log(c.blue(`• ${c.cyan.bold('mdb docs')} to view the documentation`))
-        console.log(c.blue(`• ${c.cyan.bold('mdb fund')} for various donation methods\n`));
+        console.log(c.blue(`• ${c.cyan.bold('mdb docs')} to view the documentation\n`))
 
-        console.log(c.blue(`• Issues: ${c.blue.bold.underline(`https://github.com/inttter/${packageInfo.name}/issues`)}`));
+        console.log(c.blue(`• Issues: ${c.blue.bold.underline(`https://github.com/inttter/${packageName}/issues`)}`));
         console.log(c.blue(`• Contribute: ${c.blue.bold.underline('https://tinyurl.com/mdbcontributing')}`));
         console.log(c.blue(`• License: ${c.blue.underline.bold('https://tinyurl.com/mdblicense')}`));
       } catch (error) {
@@ -667,7 +587,7 @@ program
       color: 'magenta',
     }).start();
 
-    const changelogLink = `https://github.com/inttter/${packageInfo.name}/releases/latest`
+    const changelogLink = `https://github.com/inttter/${packageName}/releases/latest`
 
     try {
       await open(changelogLink);

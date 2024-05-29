@@ -40,10 +40,5 @@ function formatCategoryName(category) {
       }
     });
   };
-
-  export function loadPackageInfo() {
-    const jsonString = fs.readFileSync('./package.json', 'utf8');
-    return JSON.parse(jsonString);
-  }
   
   export { formatCategoryName, searchCategory, formatBadgeName, escapeHtml };

@@ -9,7 +9,6 @@
 
 </div>
 
-
 **mdbadges-cli** is an extensive CLI tool to find over 400+ Shields.io badges for your projects without needing to leaving the terminal, with multiple commands for different purposes.
 
 # Installation
@@ -67,8 +66,6 @@ For help information, such as what commands do and/or accept, run `mdb help` in 
 
 |   Command      |    Description    |     Aliases      | Additional Information |
 |----------|-----------|---------------------------|--------|
-`mdb version` | Displays the current version you are on. | `v` | To update, see below.
-`mdb update` | Automatically updates the package. | `upd`, `u` | Will notify you of major bumps, and also prompts you if you would like to update first.
 `mdb about` | Displays general information about the package. | `abt` | Also shows links to the website, GitHub issues, contributing, and more.
 `mdb documentation` | Opens a link to the documentation in your browser. | `docs` | N/A
 `mdb changelog` | Opens a link to the latest release with it's changelogs in your browser. | `release` | N/A

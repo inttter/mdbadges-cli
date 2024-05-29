@@ -1,3 +1,9 @@
+// Contains all the badge definitions for the [category] and [badgeName] fields.
+
+// Format:
+// [category] == '[category name]': {
+// [badgeName] = '[badgeName]': '[markdown] '
+
 const badges = {
     'app-store': {
         'app-store': '[![App Store](https://img.shields.io/badge/App_Store-0D96F6?logo=app-store&logoColor=white)](#) ',

@@ -64,15 +64,15 @@ You should also aim to keep command names, descriptions, and aliases **concise a
 
 # Adding Badges
 
-When adding badges to mdbadges-cli, you have a few options in terms of in what ways you can contribute.
+When adding badges to mdbadges-cli, you have two options in terms of in what ways you can add them.
 
 ### Adding directly to JavaScript
 
 If you want to directly add a badge into this repository, follow the steps below.
 
-**1.** Navigate to the [file][badges.js] where badges are stored and defined from.
+**1.** Navigate to the [file][badges.js] where badges are stored and defined in.
 
-**2.** If you are adding a badge to an existing category, locate the relevant category for the badge, and add the badge definition in alphabetical order, like this example below:
+**2.** If you are adding a badge to an existing category, locate the relevant category for the badge, and add the definition for the badge in **alphabetical order**, like this example below:
 
 ```javascript
 'social': {
@@ -82,16 +82,21 @@ If you want to directly add a badge into this repository, follow the steps below
 }
 ```
 
-`'discord'` — **The definition** of the badge.
+`'discord'` is the **definition** of the badge.
 
-`[![Discord]` — **The alternate text** of the badge.
+`[![Discord]` is the **alternate text** of the badge.
 
-`https://img.shields.io/badge/Discord-%235865F2.svg?&logo=discord&logoColor=white` — The **badge link**.
+`https://img.shields.io/badge/Discord-%235865F2.svg?&logo=discord&logoColor=white` is the **badge link**.
 
-`(#)` — The **URL where users will be redirected to** when clicking on the badge.
+`(#)` is the URL where **users will be redirected to** when clicking on the badge. Make sure this stays as (#), and do not add your own links within this part.
 
 > [!IMPORTANT]
-> When adding a badge, **do not** place a URL within the enclosed hashtags, as this space is reserved for the user to replace with any specific URL that they decide to enter.
+> Make sure that your badge uses the correct format (as shown above) in order for it to pass the [badge validation][Badge Validation Test] test.
+>
+> You can check if your badge passes the test by running:
+> ```bash
+> npm run test
+> ```
 
 ### Adding to Markdown file
 
@@ -179,12 +184,14 @@ By contributing, you agree that your contributions will be licensed under the MI
 <!-- Link Definitions -->
 [ansi-colors Color Options]: https://github.com/doowb/ansi-colors?tab=readme-ov-file#available-styles
 [badges.js]: https://github.com/inttter/mdbadges-cli/blob/main/src/badges.js
+[Badge Validation Test]: https://github.com/inttter/mdbadges-cli/blob/main/tests/badge-info.test.js
 [Commander]: https://www.npmjs.com/package/commander
 [Convential Commits]: https://www.conventionalcommits.org/en/v1.0.0/
 [Create an issue]: https://github.com/inttter/mdbadges-cli/issues/new
 [Git]: https://git-scm.com
 [Gitmoji]: https://gitmoji.dev
 [index.js]: https://github.com/inttter/mdbadges-cli/blob/main/src/index.js
+
 [Issues]: https://github.com/inttter/mdbadges-cli/issues
 [License]: https://github.com/inttter/mdbadges-cli/blob/main/LICENSE
 [md-badges]: https://github.com/inttter/md-badges

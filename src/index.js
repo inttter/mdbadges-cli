@@ -18,12 +18,7 @@ const utils = require('./utils');
 const packageInfo = require('../package.json');
 
 // Utils
-const {
-  formatCategoryName,
-  searchCategory,
-  formatBadgeName,
-  escapeHtml,
-} = utils;
+const { formatCategoryName, searchCategory, formatBadgeName, escapeHtml } = utils;
 
 program.version(packageInfo.version);
 
@@ -126,7 +121,8 @@ program
         const badge = categoryData[foundBadge];
       
         if (badge) {
-          if (options.html) { // --html
+          // --html
+          if (options.html) {
             // extracts the badge link and its name
             const badgeLinkMatch = badge.match(/\(([^)]+)\)/);
             const badgeAltMatch = badge.match(/\[([^)]+)\]/);
@@ -147,11 +143,12 @@ program
               } else {
                 htmlBadge = `<img src="${badgeLink}${styleOption}" alt="${escapeHtml(htmlBadgeAlt)}">`;
               }
-              console.log(chalk.hex('#FFBF00')(`${htmlBadge}\n`));
+              console.log(chalk.hex('#FFBF00').bold(`${htmlBadge}\n`));
             } else {
               consola.error(new Error(c.red('Could not extract badge link or alt text.')));
             }
           } else {
+            // --style
             if (options.style) {
                 // provided style must match one of these styles
                 const styles = [
@@ -195,7 +192,7 @@ program
   });
 
 // Badge List Command
-  program
+program
   .command('badges')
   .alias('list')
   .description('open a link to the badge list in your browser')
@@ -219,7 +216,7 @@ program
     }
   });
 
-  program
+program
   .command('update')
   .alias('upd')
   .alias('u')
@@ -280,7 +277,7 @@ program
   });
 
 // Search Command
-  program
+program
   .command('search')
   .alias('s')
   .alias('find')
@@ -528,7 +525,7 @@ program
   });
 
 // Lookup Command
-  program
+program
   .command('lookup [keyword]')
   .alias('l')
   .description('display badges containing a certain keyword')
@@ -566,7 +563,7 @@ program
   });
 
 // Adding Badge To File Command
-  program
+program
   .command('add [category] [badgeName] [filePath]')
   .description('add a badge to a Markdown file')
   .action((category, badgeName, filePath = 'README.md') => {
@@ -622,7 +619,7 @@ program
   });
 
 // Documentation Command
-  program
+program
   .command('documentation')
   .alias('docs')
   .description('open a link to the documentation in your browser')
@@ -647,7 +644,7 @@ program
   });
 
 // Help Command
-  program
+program
   .command('help')
   .description('display help information')
   .action(() => {

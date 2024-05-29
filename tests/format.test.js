@@ -1,9 +1,9 @@
-const {
+import {
     formatCategoryName,
     searchCategory,
     formatBadgeName,
     escapeHtml,
-  } = require('../src/utils');
+  } from '../src/utils';
   
     describe('formatCategoryName', () => {
       test('should format category names that have dashes between the spaces', () => {

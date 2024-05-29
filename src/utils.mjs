@@ -1,3 +1,5 @@
+import fs from 'fs';
+
 function formatCategoryName(category) {
     return category
       .split("-")
@@ -38,10 +40,10 @@ function formatCategoryName(category) {
       }
     });
   };
+
+  export function loadPackageInfo() {
+    const jsonString = fs.readFileSync('./package.json', 'utf8');
+    return JSON.parse(jsonString);
+  }
   
-  module.exports = {
-    formatCategoryName,
-    formatBadgeName,
-    escapeHtml,
-    searchCategory,
-  };
+  export { formatCategoryName, searchCategory, formatBadgeName, escapeHtml };

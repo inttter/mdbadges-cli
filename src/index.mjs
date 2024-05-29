@@ -1,24 +1,25 @@
-#!/usr/bin/env node
+#!/usr/bin/env -S node --no-warnings=ExperimentalWarning
 
-const { program } = require('commander');
-const axios = require('axios');
-const chalk = require('chalk');
-const c = require('ansi-colors');
-const clipboardy = require('clipboardy');
-const ora = require('ora');
-const inquirer = require('inquirer');
-const open = require('open');
-const boxen = require('boxen');
-const execa = require('execa');
-const { consola } = require('consola');
-const cliSpinners = require('cli-spinners');
-const fs = require('fs');
-const badges = require('./badges');
-const utils = require('./utils');
-const packageInfo = require('../package.json');
+// shebang: https://github.com/nodejs/node/issues/51347#issuecomment-1893074523
 
-// Utils
-const { formatCategoryName, searchCategory, formatBadgeName, escapeHtml } = utils;
+import { program } from 'commander';
+import axios from 'axios';
+import chalk from 'chalk';
+import c from 'ansi-colors';
+import clipboardy from 'clipboardy';
+import ora from 'ora';
+import inquirer from 'inquirer';
+import open from 'open';
+import boxen from 'boxen';
+import { execa } from 'execa';
+import { consola } from 'consola';
+import cliSpinners from 'cli-spinners';
+import fs from 'fs';
+import badges from './badges.mjs';
+import * as utils from './utils.mjs';
+import { loadPackageInfo } from './utils.mjs';
+
+const packageInfo = loadPackageInfo();
 
 program.version(packageInfo.version);
 
@@ -139,9 +140,9 @@ program
       
               let htmlBadge;
               if (options.link && links[index]) { // if --link is specified, we append the <a> tags
-                htmlBadge = `<a href="${escapeHtml(links[index])}">\n  <img src="${badgeLink}${styleOption}" alt="${escapeHtml(htmlBadgeAlt)}">\n</a>`;
+                htmlBadge = `<a href="${utils.escapeHtml(links[index])}">\n  <img src="${badgeLink}${styleOption}" alt="${utils.escapeHtml(htmlBadgeAlt)}">\n</a>`;
               } else {
-                htmlBadge = `<img src="${badgeLink}${styleOption}" alt="${escapeHtml(htmlBadgeAlt)}">`;
+                htmlBadge = `<img src="${badgeLink}${styleOption}" alt="${utils.escapeHtml(htmlBadgeAlt)}">`;
               }
               console.log(chalk.hex('#FFBF00').bold(`${htmlBadge}\n`));
             } else {
@@ -159,6 +160,7 @@ program
                     'for-the-badge',
                 ];
                 if (styles.includes(options.style)) {
+                    let badgeStyle = ''
                     badgeStyle = options.style;
                 } else {
                     consola.warn(c.yellow(`An invalid style was detected. View available styles here at ${c.magenta.bold('https://docs.mdbcli.xyz/commands/finding-a-badge#style-s')}.`));
@@ -167,7 +169,7 @@ program
             const styleOption = options.style ? `&style=${options.style}` : '';
             const badgeLink = badge.match(/\(([^)]+)\)/)[1];
             const badgeAlt = badge.match(/\[([^)]+)\]/)[1];
-            const link = links[index] ? escapeHtml(links[index]) : '#'; // use '#' if link is not provided
+            const link = links[index] ? utils.escapeHtml(links[index]) : '#'; // use '#' if link is not provided
         
             const badgeMarkdown = `[${badgeAlt}](${badgeLink}${styleOption})](${link})`;
         
@@ -253,7 +255,7 @@ program
           const updateSpinner = ora({ text: chalk.cyan('Updating...\n\n'), spinner: cliSpinners.arc }).start();
 
           try {
-            await execa.command(`npm install -g ${packageInfo.name}@latest`, { stdio: 'inherit' });
+            await execa(`npm install -g ${packageInfo.name}@latest`, { stdio: 'inherit' });
 
             updateSpinner.succeed(chalk.green('Update complete!'));
             console.log(c.green(`\nYou are now on ${c.green.bold.underline(`v${latest}`)}! To verify, run ${c.cyan.bold('mdb version')}.`));
@@ -293,11 +295,11 @@ program
           type: 'list',
           name: 'category',
           message: c.cyan('Select a category:'),
-          choices: categories.map(formatCategoryName),
+          choices: categories.map(utils.formatCategoryName),
         },
       ]);
 
-      const formattedCategory = searchCategory(answers.category);
+      const formattedCategory = utils.searchCategory(answers.category);
       const categoryData = badges[formattedCategory];
 
       if (categoryData) {
@@ -411,7 +413,7 @@ program
 
       const badgeMarkdown = link ? `[![${alt}](${badgeLink})](${link})` : `[![${alt}](${badgeLink})](#)`;
 
-      const badgeHtml = link ? `<a href="${escapeHtml(link)}">\n  <img src="${badgeLink}" alt="${escapeHtml(alt)}" />\n</a>` : `<img src="${badgeLink}" alt="${escapeHtml(alt)}" />`;
+      const badgeHtml = link ? `<a href="${utils.escapeHtml(link)}">\n  <img src="${badgeLink}" alt="${utils.escapeHtml(alt)}" />\n</a>` : `<img src="${badgeLink}" alt="${utils.escapeHtml(alt)}" />`;
 
       console.log(c.green.bold('\n✅ Custom badge created successfully!\n'));
       console.log(c.green.bold('Markdown:'));
@@ -535,8 +537,8 @@ program
       const categoryData = badges[category];
       Object.keys(categoryData).forEach((badgeName) => {
         if (badgeName.toLowerCase().includes(query.toLowerCase())) {
-          const formattedCategory = formatCategoryName(category);
-          const formattedBadge = formatBadgeName(badgeName);
+          const formattedCategory = utils.formatCategoryName(category);
+          const formattedBadge = utils.formatBadgeName(badgeName);
           badgeChoices.push({
             name: `${c.green(formattedBadge)} in ${c.yellow(formattedCategory)}`,
             value: categoryData[badgeName], // stores the badge code as the value
@@ -567,7 +569,7 @@ program
   .command('add [category] [badgeName] [filePath]')
   .description('add a badge to a Markdown file')
   .action((category, badgeName, filePath = 'README.md') => {
-    const formattedCategory = formatCategoryName(category);
+    const formattedCategory = utils.formatCategoryName(category);
     const formattedBadgeName = badgeName.toLowerCase();
     const categoryData = badges[category.toLowerCase()];
 
@@ -603,6 +605,7 @@ program
     const badgeMarkdown = `[${badgeAlt}](${badgeLink})](#)`;
 
     try {
+      let fileContent = ''
       fileContent = fs.readFileSync(filePath, 'utf8');
     } catch (error) {
       consola.error(new Error(c.red(`Could not read the file: ${error.message}`)));

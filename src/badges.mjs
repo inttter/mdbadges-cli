@@ -529,4 +529,4 @@ const badges = {
     }
 };
 
-module.exports = badges;
+export default badges;

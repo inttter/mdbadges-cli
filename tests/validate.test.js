@@ -1,4 +1,6 @@
-const badges = require('../src/badges');
+// Importing testing functions explicitly from Jest
+import { describe, test, expect } from '@jest/globals';
+import badges from '../src/badges.mjs';
 
 // Test to validate that all badges are in the right format of:
 // [![Badge Name](Badge Link)](#)]
@@ -17,7 +19,7 @@ describe('All badges display correctly', () => {
 
           const badgeName = badgeNameMatch[1];
 
-          // wxtracts badge URL from badge value
+          // extracts badge URL from badge value
           const badgeUrlMatch = badgeValue.match(/\((https:\/\/[^\)]+)\)/);
           expect(badgeUrlMatch).toBeDefined();
 
@@ -26,7 +28,7 @@ describe('All badges display correctly', () => {
           // escape special characters in the badge name
           const escapedBadgeName = badgeName.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, '\\$1');
           
-          // escapes special characters in the badge URL
+          // escape special characters in the badge URL
           const escapedBadgeUrl = badgeUrl.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, '\\$1');
 
           const expectedRegex = new RegExp(

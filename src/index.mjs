@@ -330,7 +330,7 @@ program
 
       console.log(c.green.bold('\n✅ Custom badge created successfully!\n'));
       console.log(c.green.bold('Markdown:'));
-      console.log(cliSpinners.hex('#FFBF00').bold(`${badgeMarkdown}\n`)); // Markdown
+      console.log(c.hex('#FFBF00').bold(`${badgeMarkdown}\n`)); // Markdown
       console.log(c.green.bold('HTML:'));
       console.log(c.hex('#FFBF00').bold(`${badgeHtml}\n`)); // HTML
     } catch (error) {

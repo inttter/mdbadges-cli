@@ -11,7 +11,7 @@ You will need to have a local copy of the repository.
 
 To do this, fork the project locally by clicking the '**Fork**' button at the top of the repository to create a fork of mdbadges-cli to your GitHub account.
 
-You'll then need to clone it on your local machine. In order to do this, make sure you have [Git][Git] installed, then run the following commands:
+You'll then need to clone it on your local machine. In order to do this, make sure you have [Git][] installed, then run the following commands:
 
 ```bash
 # Replace 'YOUR-USERNAME' with your GitHub username
@@ -35,13 +35,13 @@ git checkout -m "✨ feat: [commit message here]"
 git push
 ```
 
-> When writing commit messages, make sure to follow the [Convential Commits][Convential Commits] guidelines. If you would like, you can use [Gitmoji][Gitmoji] aswell for commit emojis.
+> When writing commit messages, make sure to follow the [Convential Commits][] guidelines. If you would like, you can use [Gitmoji][] aswell for commit emojis.
 
 You can now create a pull request with your changes.
 
 # Commands
 
-mdbadges-cli uses [Commander][Commander] for its commands. In order to add a new command, follow the steps outlined below:
+mdbadges-cli uses [Commander][] for its commands. In order to add a new command, follow the steps outlined below:
 
 **1.** Navigate to the [main file][index.js] where all of the commands are stored in.
 
@@ -54,7 +54,8 @@ program
   .alias('eg')
   .description('an example command for the docs!')
   .action(() => {
-    console.log(c.green("This was successful!"));
+    // ...do something
+    console.log(c.green("This is an example!"));
   });
 ```
 
@@ -91,7 +92,7 @@ If you want to directly add a badge into this repository, follow the steps below
 `(#)` is the URL where **users will be redirected to** when clicking on the badge. Make sure this stays as (#), and do not add your own links within this part.
 
 > [!IMPORTANT]
-> Make sure that your badge uses the correct format (as shown above) in order for it to pass the [badge validation][Badge Validation Test] test.
+> Make sure that your badge uses the correct format (as shown above) in order for it to pass the [badge validation test][].
 >
 > You can check if your badge passes the test by running:
 > ```bash
@@ -100,7 +101,7 @@ If you want to directly add a badge into this repository, follow the steps below
 
 ### Adding to Markdown file
 
-You can also add a badge to [md-badges][md-badges], which is a list of badges and the main source for every badge within mdbadges-cli. To add them, you can:
+You can also add a badge to [md-badges][], which is a list of badges and the main source for every badge within mdbadges-cli. To add them, you can:
 
 * Navigate to the repository for md-badges via the link above.
 
@@ -112,36 +113,23 @@ When badges are added to md-badges, they will be added accordingly to this packa
 
 # Styling
 
-In **mdbadges-cli**, two different styling packages are used.
-
-* **ansi-colors** — This is the main coloring package that is used. To use ansi-colors, use the `c` prefix, followed by the color of choice, which you can see [here][ansi-colors Color Options].
-
-    ```javascript
-    // coloring the whole message
-    spinner.succeed(c.green("Opened in your browser!"));
-
-   // different colors within the same message
-  console.log(c.cyan(`Try running ${c.blue.bold(`mdb search`)} for a full list of badges in this category.`,));
-
-  // using template literals
-  name: ${c.green(formattedBadge)} in ${c.yellow(formattedCategory)}
-  ```
-
-* `Chalk` — This is mostly used for badge code outputs, although may be used in other certain cases if applicable.
+In mdbadges-cli, `Chalk` is the main coloring package that is used. To use Chalk, use the `c` prefix, followed by the color of choice, which you can see [here][Chalk Color Options].
 
   ```javascript
-  console.log(chalk.hex("#FFBF00")(selectedBadge));
+  // Examples
+  console.log(c.green.bold('\nBadge found:'));
+  console.log(c.hex('#FFBF00').bold(`${selectedBadge}\n`));
   ```
 
 # Committing
 
-* mdbadges-cli uses [Conventional Commits][Convential Commits] for commit messages, so commit messages should be in this format:
+* mdbadges-cli uses [Convential Commits][] for commit messages, so commit messages should be in this format:
 
     ```
     <type>[optional scope]: <description>
     ```
 
-* If you would like to also use emoji in your commit messages, you should try to adhere to the [Gitmoji][Gitmoji] emoji's, as they are most commonly used, as well as other miscellaneous emoji's, which you can decide on what they should be represneted by. For example:
+* If you would like to also use emoji in your commit messages, you should try to adhere to the [Gitmoji][] emoji's, as they are most commonly used, as well as other miscellaneous emoji's, which you can decide on what they should be represneted by. For example:
 
     ```
     ✨ feat: add GitHub badge
@@ -162,7 +150,7 @@ For more specific instances, you can include a **scope** for the commit. A scope
 
 ## Questions
 
-For any questions you have, open an [issue][Create an issue] and label it with the `question` label.
+For any questions you have, [create an issue][] and label it with the `question` label.
 
 <div align="center">
   <img src="https://github.com/inttter/mdbadges-cli/assets/73017070/6175f030-109b-4931-aa25-7803360ce303" width="250" alt="Question Label">
@@ -173,26 +161,22 @@ Before you ask your question, you should consider whether it has already been an
 
 ## Bugs/Inconsistencies
 
-If you come across any bugs, report them by [creating an issue][Issues]. 
+If you come across any bugs, [create an issue][] to report them. 
 
-You should provide details on **how you encountered the issue**, any **error messages** you may have recieved, s**creenshots (if applicable)** and, if you find one, what you believe is **a plausible fix** for the issue.
+You should provide details on **how you encountered the issue**, any **error messages** you may have recieved, **screenshots** (if applicable) and, if you find one, what you believe is **a plausible fix** for the issue.
 
 ## License
 
-By contributing, you agree that your contributions will be licensed under the MIT License, which you can view [here][License].
+By contributing, you agree that your contributions will be licensed under the [MIT License][].
 
 <!-- Link Definitions -->
-[ansi-colors Color Options]: https://github.com/doowb/ansi-colors?tab=readme-ov-file#available-styles
 [badges.js]: https://github.com/inttter/mdbadges-cli/blob/main/src/badges.js
-[Badge Validation Test]: https://github.com/inttter/mdbadges-cli/blob/main/tests/badge-info.test.js
+[Chalk Color Options]: https://github.com/chalk/chalk?tab=readme-ov-file#styles
 [Commander]: https://www.npmjs.com/package/commander
 [Convential Commits]: https://www.conventionalcommits.org/en/v1.0.0/
-[Create an issue]: https://github.com/inttter/mdbadges-cli/issues/new
 [Git]: https://git-scm.com
 [Gitmoji]: https://gitmoji.dev
 [index.js]: https://github.com/inttter/mdbadges-cli/blob/main/src/index.js
-
-[Issues]: https://github.com/inttter/mdbadges-cli/issues
-[License]: https://github.com/inttter/mdbadges-cli/blob/main/LICENSE
 [md-badges]: https://github.com/inttter/md-badges
 [md-badges Contributing Guidelines]: https://github.com/inttter/md-badges/blob/main/CONTRIBUTING.md
+[MIT License]: https://github.com/inttter/mdbadges-cli/blob/main/LICENSE

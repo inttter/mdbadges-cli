@@ -4,8 +4,7 @@
 
 import { program } from 'commander';
 import axios from 'axios';
-import chalk from 'chalk';
-import c from 'ansi-colors';
+import c from 'chalk';
 import clipboardy from 'clipboardy';
 import ora from 'ora';
 import { select, confirm, text } from '@clack/prompts';
@@ -88,7 +87,7 @@ program
               process.exit(0);
             } else {
               console.log(c.green.bold('\nBadge found:'));
-              console.log(chalk.hex('#FFBF00').bold(`${selectedBadge}\n`));
+              console.log(c.hex('#FFBF00').bold(`${selectedBadge}\n`));
             }
           }
         }
@@ -129,7 +128,7 @@ program
               } else {
                 htmlBadge = `<img src="${badgeLink}${styleOption}" alt="${utils.escapeHtml(htmlBadgeAlt)}">`;
               }
-              console.log(chalk.hex('#FFBF00').bold(`${htmlBadge}\n`));
+              console.log(c.hex('#FFBF00').bold(`${htmlBadge}\n`));
             } else {
               consola.error(new Error(c.red('Could not extract badge link or alt text.')));
             }
@@ -153,7 +152,7 @@ program
         
             const badgeMarkdown = `[${badgeAlt}](${badgeLink}${styleOption})](${link})`;
         
-            console.log(chalk.hex('#FFBF00').bold(`${badgeMarkdown}\n`));
+            console.log(c.hex('#FFBF00').bold(`${badgeMarkdown}\n`));
           }
         }
       }
@@ -212,7 +211,7 @@ program
       const categoryData = badges[formattedCategory];
 
       if (categoryData) {
-        console.log(c.green(`\nBadges available in ${c.green.underline(selectedCategory)}:\n`));
+        console.log(c.green(`\nBadges available in ${c.green.underline(utils.formatCategoryName(selectedCategory))}:\n`));
         Object.keys(categoryData).forEach((badge) => {
           console.log(`• ${badge}`);
         });
@@ -222,7 +221,7 @@ program
       }
 
       continueSearch = await confirm({
-        message: c.cyan.bold('Would you like to search another category?'),
+        message: ('Would you like to search another category?'),
         initial: true
       });
     }
@@ -307,9 +306,9 @@ program
 
       console.log(c.green.bold('\n✅ Custom badge created successfully!\n'));
       console.log(c.green.bold('Markdown:'));
-      console.log(chalk.hex('#FFBF00').bold(`${badgeMarkdown}\n`)); // Markdown
+      console.log(cliSpinners.hex('#FFBF00').bold(`${badgeMarkdown}\n`)); // Markdown
       console.log(c.green.bold('HTML:'));
-      console.log(chalk.hex('#FFBF00').bold(`${badgeHtml}\n`)); // HTML
+      console.log(c.hex('#FFBF00').bold(`${badgeHtml}\n`)); // HTML
     } catch (error) {
       consola.error(new Error(c.red(`An error occurred when trying to make your badge: ${error.message}`)));
     }
@@ -383,10 +382,10 @@ program
 
     // outputs both versions, Markdown and HTML
     console.log(c.green.underline.bold('\nMarkdown:'));
-    console.log(chalk.hex('#FFBF00').bold(`${markdownBadge}\n`));
+    console.log(c.hex('#FFBF00').bold(`${markdownBadge}\n`));
 
     console.log(c.green.underline.bold('HTML:'));
-    console.log(chalk.hex('#FFBF00').bold(htmlBadge));
+    console.log(c.hex('#FFBF00').bold(htmlBadge));
   });
 
 // Copy Command
@@ -444,7 +443,7 @@ program
       });
 
       console.log(c.green.bold('\nBadge found:'));
-      console.log(chalk.hex('#FFBF00').bold(selectedBadge));
+      console.log(c.hex('#FFBF00').bold(selectedBadge));
     }
   });
 

@@ -158,7 +158,7 @@ program
       }
     } else {
       consola.error(c.red(`'${c.red.bold(category)}' is not a valid category.`));
-      console.log(c.cyan(`Visit ${c.magenta.bold('https://tinyurl.com/mdbcategories')} for a list of available categories.`));
+      console.log(c.cyan(`Visit ${c.magenta.bold('https://mdbcli.xyz/categories')} for a list of available categories.`));
     }
   });
 
@@ -350,8 +350,8 @@ program
         console.log(c.blue(`• ${c.cyan.bold('mdb docs')} to view the documentation\n`))
 
         console.log(c.blue(`• Issues: ${c.blue.bold.underline(`https://github.com/inttter/${packageName}/issues`)}`));
-        console.log(c.blue(`• Contribute: ${c.blue.bold.underline('https://tinyurl.com/mdbcontributing')}`));
-        console.log(c.blue(`• License: ${c.blue.underline.bold('https://tinyurl.com/mdblicense')}`));
+        console.log(c.blue(`• Contribute: ${c.blue.bold.underline(`https://github.com/inttter/${packageName}/blob/main/CONTRIBUTING.md`)}`));
+        console.log(c.blue(`• License: ${c.blue.underline.bold(`https://github.com/inttter/${packageName}/blob/main/LICENSE`)}`));
       } catch (error) {
         consola.error(new Error(c.red(`An error occurred when fetching the latest version: ${error.message}`)));
       }
@@ -458,7 +458,7 @@ program
 
     if (!categoryData) {
       consola.error(c.red(`The category you specified could not be found.`));
-      console.log(c.cyan(`You can try visiting the syntax list for the categories here: ${c.magenta.bold('https://tinyurl.com/mdbcategories')}\n`));
+      console.log(c.cyan(`You can try visiting the syntax list for the categories here: ${c.magenta.bold('https://mdbcli.xyz/categories')}\n`));
       return;
     }
 
@@ -554,7 +554,6 @@ program
 
     try {
       await open(changelogLink);
-
       spinner.succeed(c.green('Opened in your browser!'));
     } catch (error) {
       consola.error(new Error(c.red(`Could not open the link in your browser: ${error.message}`)));

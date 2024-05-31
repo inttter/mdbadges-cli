@@ -1,5 +1,3 @@
-// Importing testing functions explicitly from Jest
-import { describe, test, expect } from '@jest/globals';
 import badges from '../src/badges.mjs';
 
 // Test to validate that all badges are in the right format of:

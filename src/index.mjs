@@ -157,8 +157,32 @@ program
         }
       }
     } else {
-      consola.error(c.red(`'${c.red.bold(category)}' is not a valid category.`));
-      console.log(c.cyan(`Visit ${c.magenta.bold('https://mdbcli.xyz/categories')} for a list of available categories.`));
+      // LookS for the badge in all categories to suggest the correct category
+      let badgeFoundInOtherCategory = false;
+      let correctCategory = '';
+      let foundBadgeName = '';
+
+      for (const cat of Object.keys(badges)) {
+        const badgeKeys = Object.keys(badges[cat]);
+        const foundBadge = badgeKeys.find(key => badgeNames.includes(key.toLowerCase()));
+        if (foundBadge) {
+          badgeFoundInOtherCategory = true;
+          correctCategory = cat;
+          foundBadgeName = foundBadge;
+          break;
+        }
+      }
+
+      // suggests the correct command to run if [badgeName] is valid but [category] is not
+      if (badgeFoundInOtherCategory) {
+        consola.error(c.red(`You have a valid badge name of '${c.red.bold(utils.formatBadgeName(foundBadgeName))}', but '${c.red.bold(utils.formatCategoryName(category))}' is not a valid category.`));
+        console.log(c.cyan(`Run ${c.magenta.bold(`mdb ${correctCategory} ${foundBadgeName}`)} to get the correct badge code.\n`));
+      } else {
+        // if neither [category] or [badgeName] is valid
+        consola.error(c.red(`'${c.red.bold(utils.formatCategoryName(category))}' is not a valid category, and your badge name is also not valid.`));
+        console.log(c.cyan(`Visit ${c.magenta.bold('https://mdbcli.xyz/categories')} for a list of available categories.`));
+        console.log(c.cyan(`You can also run ${c.magenta.bold('mdb search')} for a list of available badges within any category.`));
+      }
     }
   });
 

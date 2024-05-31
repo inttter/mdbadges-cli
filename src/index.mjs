@@ -262,7 +262,7 @@ program
         message: c.cyan.bold('Enter the alt text for the badge:'),
       });
 
-      const name = await text({
+      let name = await text({
         message: c.cyan.bold('Enter the text you\'d like to display on the badge:'),
         validate: (value) => {
           if (!value.trim()) {
@@ -271,6 +271,10 @@ program
           return;
         },
       });
+
+      // URL-encode the dashes in the name by having double dashes
+      // https://github.com/norwoodj/helm-docs/issues/56
+      name = name.replace(/-/g, '--');
 
       const color = await text({
         message: c.cyan.bold('Enter a hexadecimal value for the badge:'),
@@ -289,14 +293,14 @@ program
           if (!value.trim()) {
             return c.red('This field is required.');
           }
-          return ;
+          return;
         },
       });
 
       const style = await select({
         message: c.cyan.bold('Choose the style of the badge:'),
         options: [
-          { value: 'flat', label: 'Flat', 'hint': 'Popular' },
+          { value: 'flat', label: 'Flat', hint: 'Popular' },
           { value: 'flat-square', label: 'Flat Square' },
           { value: 'plastic', label: 'Plastic' },
           { value: 'social', label: 'Social' },
@@ -318,7 +322,7 @@ program
         message: c.cyan.bold('[Optional] - Enter the URL to redirect to:'),
       });
 
-      let badgeLink = `https://img.shields.io/badge/${encodeURIComponent(name)}-${encodeURIComponent(color)}?logo=${encodeURIComponent(logo)}&style=${encodeURIComponent(style)}`;
+      let badgeLink = `https://img.shields.io/badge/${name}-${encodeURIComponent(color)}?logo=${encodeURIComponent(logo)}&style=${encodeURIComponent(style)}`;
 
       if (logoColor) {
         badgeLink += `&logoColor=${encodeURIComponent(logoColor)}`;

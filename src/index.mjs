@@ -8,7 +8,7 @@ import chalk from 'chalk';
 import c from 'ansi-colors';
 import clipboardy from 'clipboardy';
 import ora from 'ora';
-import inquirer from 'inquirer';
+import { select, confirm, text } from '@clack/prompts';
 import open from 'open';
 import { consola } from 'consola';
 import cliSpinners from 'cli-spinners';
@@ -50,56 +50,46 @@ program
 
           // --link
           if (options.link) {
-            const linkResponse = await inquirer.prompt({
-              type: 'text',
-              name: 'link',
-              message: badgeNames.length === 1 ? c.cyan('Enter your link here:') : index === 0 ? c.cyan('Enter your first link here, then click Enter and type the rest below:') : '',
-              validate: (value) => {
-                return value.trim() === '' ? c.red('Please enter a link.') : true; 
-              },
+            const linkResponse = await text({
+              message: badgeNames.length === 1 ? c.cyan('Enter your link here:') : index === 0 ? c.cyan(`Enter your first link here, then click ${c.magenta('Enter')} and type the rest below in correct order:`) : '',
+              validate: input => {
+                if (!utils.isValidURL(input)) {
+                    return "Please enter a valid URL.";
+                }
+                return;
+            }
             });
-            link = linkResponse.link;
+            link = linkResponse;
             links.push(link);
           }
         } else {
-          // Note: don't use new Error() here because we display similar badges and this will 
-          // clog up that prompt and could hide the actual error
-          consola.error(c.red(`'${formatBadgeName(badgeName)}' is not a valid badge.`));
-          console.log(c.cyan(`Try running ${c.magenta.bold('mdb search')} and selecting '${c.magenta.bold(formattedCategory)}' for a list of badges in that category.\n`));        
+          // don't use new Error() here
+          consola.error(c.red(`'${utils.formatBadgeName(badgeName)}' is not a valid badge.`));
+          console.log(c.cyan(`Try running ${c.magenta.bold('mdb search')} and selecting '${c.magenta.bold(utils.formatCategoryName(formattedCategory))}' for a list of badges in that category.\n`));
           
-          // prompt for similar badges in the same category if it cant find the badge
           const similarBadges = Object.keys(categoryData).filter(key =>
             key.toLowerCase().includes(badgeName.toLowerCase())
           );
-        
-          // similar badge prompt + logic
+
+          // prompt for similar badges in the same category if it cant find the badge
           if (similarBadges.length > 0) {
-            inquirer.prompt([
-              {
-                type: 'list',
-                name: 'selectedBadge',
-                message: c.cyan('Did you mean one of these?'),
-                choices: [
-                  ...similarBadges.map(similarBadge => ({
-                    name: similarBadge,
-                    value: categoryData[similarBadge],
-                  })),
-                  new inquirer.Separator(),
-                  {
-                    name: 'None of these',
-                    value: 'none',
-                  }
-                ],
-              },
-            ])
-            .then(({ selectedBadge }) => {
-              if (selectedBadge === 'none') {
-                process.exit(0);
-              } else {
-                console.log(c.green.bold('\nBadge found:'));
-                console.log(chalk.hex('#FFBF00').bold(`${selectedBadge}\n`));
-              }
+            const selectedBadge = await select({
+              message: c.cyan('Did you mean one of these?'),
+              options: [
+                ...similarBadges.map(similarBadge => ({
+                  label: similarBadge,
+                  value: (categoryData[similarBadge]),
+                })),
+                { label: 'None of these', value: 'none' },
+              ],
             });
+
+            if (selectedBadge === 'none') {
+              process.exit(0);
+            } else {
+              console.log(c.green.bold('\nBadge found:'));
+              console.log(chalk.hex('#FFBF00').bold(`${selectedBadge}\n`));
+            }
           }
         }
       }
@@ -147,18 +137,13 @@ program
             // --style
             if (options.style) {
                 // provided style must match one of these styles
-                const styles = [
-                    'flat',
-                    'flat-square',
-                    'plastic',
-                    'social',
-                    'for-the-badge',
-                ];
+                const styles = ['flat', 'flat-square', 'plastic', 'social', 'for-the-badge'];
                 if (styles.includes(options.style)) {
-                    let badgeStyle = ''
+                    let badgeStyle = '' // don't remove this or it causes badgeStyle to not be defined
                     badgeStyle = options.style;
                 } else {
-                    consola.warn(c.yellow(`An invalid style was detected. View available styles here at ${c.magenta.bold('https://docs.mdbcli.xyz/commands/finding-a-badge#style-s')}.`));
+                    consola.warn(c.yellow(`An invalid style was detected.`));
+                    console.log(c.yellow(`View available styles at ${c.magenta.bold(' https://docs.mdbcli.xyz/commands/finding-a-badge#style-s')}.`))
                 }
             }
             const styleOption = options.style ? `&style=${options.style}` : '';
@@ -169,7 +154,7 @@ program
             const badgeMarkdown = `[${badgeAlt}](${badgeLink}${styleOption})](${link})`;
         
             console.log(chalk.hex('#FFBF00').bold(`${badgeMarkdown}\n`));
-        }
+          }
         }
       }
     } else {
@@ -215,20 +200,19 @@ program
     while (continueSearch) {
       const categories = Object.keys(badges);
 
-      const answers = await inquirer.prompt([
-        {
-          type: 'list',
-          name: 'category',
-          message: c.cyan('Select a category:'),
-          choices: categories.map(utils.formatCategoryName),
-        },
-      ]);
+      const selectedCategory = await select({
+        message: c.cyan.bold('Select a category:'),
+        options: categories.map(category => ({
+          label: utils.formatCategoryName(category),
+          value: category,
+        })),
+      });
 
-      const formattedCategory = utils.searchCategory(answers.category);
+      const formattedCategory = utils.searchCategory(selectedCategory);
       const categoryData = badges[formattedCategory];
 
       if (categoryData) {
-        console.log(c.green(`\nBadges available in ${c.green.underline(answers.category)}:\n`));
+        console.log(c.green(`\nBadges available in ${c.green.underline(selectedCategory)}:\n`));
         Object.keys(categoryData).forEach((badge) => {
           console.log(`• ${badge}`);
         });
@@ -237,17 +221,10 @@ program
         consola.error(c.red(`The specified category could not be found.`));
       }
 
-      // by default, this is selected as Yes
-      const { searchAgain } = await inquirer.prompt([
-        {
-          type: 'confirm',
-          name: 'searchAgain',
-          message: c.cyan('Would you like to search another category?'),
-          default: true,
-        },
-      ]);
-
-      continueSearch = searchAgain; // loop
+      continueSearch = await confirm({
+        message: c.cyan.bold('Would you like to search another category?'),
+        initial: true
+      });
     }
   });
 
@@ -258,77 +235,65 @@ program
   .description('display prompts to create your own badge')
   .action(async () => {
     try {
-      const response = await inquirer.prompt([
-        {
-          type: 'text',
-          name: 'alt',
-          message: c.cyan('Enter the Alt Text for the badge:'),
-        },
-        {
-          type: 'text',
-          name: 'name',
-          message: c.cyan('Enter the text you\'d like to display on the badge:'),
-          validate: (value) => {
-            if (!value.trim()) {
-              return c.red('This field is required.');
-            }
-            return true;
-          },
-        },
-        {
-          type: 'text',
-          name: 'color',
-          message: c.cyan('Enter a hexadecimal value for the badge:'),
-          validate: (value) => {
-            const hexColorRegex = /^#?(?:[0-9a-fA-F]{3}){1,2}$/;
-            if (!hexColorRegex.test(value.trim())) {
-              return c.red('Enter a valid hexadecimal color (eg. #000000, #FDE13B).');
-            }
-            return true;
-          },
-        },
-        {
-          type: 'text',
-          name: 'logo',
-          message: c.cyan('Enter the logo for the badge:'),
-          validate: (value) => {
-            if (!value.trim()) {
-              return c.red('This field is required.');
-            }
-            return true;
-          },
-        },
-        {
-          type: 'list',
-          name: 'style',
-          message: c.cyan('Choose the style of the badge:'),
-          choices: [
-            'flat',
-            'flat-square',
-            'plastic',
-            'social',
-            'for-the-badge',
-          ],
-        },
-        {
-          type: 'text',
-          name: 'logoColor',
-          message: c.cyan('Enter the logo color for the badge:'),
-          validate: (value) => {
-            if (!value.trim()) {
-              return c.red('This field is required.');
-            }
-            return true;
-          },
-        },
-        {
-          type: 'text',
-          name: 'link',
-          message: c.cyan('[Optional] - Enter the URL to redirect to:'),
-        },
-      ]);
+      const alt = await text({
+        message: c.cyan.bold('Enter the alt text for the badge:'),
+      });
 
-      const { alt, name, color, logo, style, logoColor, link } = response;
+      const name = await text({
+        message: c.cyan.bold('Enter the text you\'d like to display on the badge:'),
+        validate: (value) => {
+          if (!value.trim()) {
+            return c.red('This field is required.');
+          }
+          return;
+        },
+      });
+
+      const color = await text({
+        message: c.cyan.bold('Enter a hexadecimal value for the badge:'),
+        validate: (value) => {
+          const hexColorRegex = /^#?(?:[0-9a-fA-F]{3}){1,2}$/;
+          if (!hexColorRegex.test(value.trim())) {
+            return c.red('Enter a valid hexadecimal color [eg. #FDE13B].');
+          }
+          return;
+        },
+      });
+
+      const logo = await text({
+        message: c.cyan.bold('Enter the logo for the badge:'),
+        validate: (value) => {
+          if (!value.trim()) {
+            return c.red('This field is required.');
+          }
+          return ;
+        },
+      });
+
+      const style = await select({
+        message: c.cyan.bold('Choose the style of the badge:'),
+        options: [
+          { value: 'flat', label: 'Flat', 'hint': 'Popular' },
+          { value: 'flat-square', label: 'Flat Square' },
+          { value: 'plastic', label: 'Plastic' },
+          { value: 'social', label: 'Social' },
+          { value: 'for-the-badge', label: 'For The Badge', hint: 'Popular' },
+        ],
+      });
+
+      const logoColor = await text({
+        message: c.cyan.bold('Enter the logo color for the badge:'),
+        validate: (value) => {
+          if (!value.trim()) {
+            return c.red('This field is required.');
+          }
+          return;
+        },
+      });
+
+      const link = await text({
+        message: c.cyan.bold('[Optional] - Enter the URL to redirect to:'),
+      });
 
       let badgeLink = `https://img.shields.io/badge/${encodeURIComponent(name)}-${encodeURIComponent(color)}?logo=${encodeURIComponent(logo)}&style=${encodeURIComponent(style)}`;
 
@@ -470,14 +435,13 @@ program
     if (!badgeChoices.length) {
       consola.error(c.red('A badge containing that keyword could not be found.'));
     } else {
-      const { selectedBadge } = await inquirer.prompt([
-        {
-          type: 'list',
-          name: 'selectedBadge',
-          message: c.cyan('Select a badge:'),
-          choices: badgeChoices,
-        },
-      ]);
+      const selectedBadge = await select({
+        message: c.cyan.bold('Select a badge:'),
+        options: badgeChoices.map(badge => ({
+          label: badge.name,
+          value: badge.value,
+        })),
+      });
 
       console.log(c.green.bold('\nBadge found:'));
       console.log(chalk.hex('#FFBF00').bold(selectedBadge));

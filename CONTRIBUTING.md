@@ -35,7 +35,7 @@ git checkout -m "✨ feat: [commit message here]"
 git push
 ```
 
-> When writing commit messages, make sure to follow the [Convential Commits][] guidelines. If you would like, you can use [Gitmoji][] aswell for commit emojis.
+> When writing commit messages, make sure to follow the [Conventional Commits][] guidelines. If you would like, you can use [Gitmoji][] as well for commit emojis.
 
 You can now create a pull request with your changes.
 
@@ -123,7 +123,7 @@ In mdbadges-cli, `Chalk` is the main coloring package that is used. To use Chalk
 
 # Committing
 
-* mdbadges-cli uses [Convential Commits][] for commit messages, so commit messages should be in this format:
+* mdbadges-cli uses [Conventional Commits][] for commit messages, so commit messages should be in this format:
 
     ```
     <type>[optional scope]: <description>
@@ -163,7 +163,7 @@ Before you ask your question, you should consider whether it has already been an
 
 If you come across any bugs, [create an issue][] to report them. 
 
-You should provide details on **how you encountered the issue**, any **error messages** you may have recieved, **screenshots** (if applicable) and, if you find one, what you believe is **a plausible fix** for the issue.
+You should provide details on **how you encountered the issue**, any **error messages** you may have received, **screenshots** (if applicable) and, if you find one, what you believe is **a plausible fix** for the issue.
 
 ## License
 

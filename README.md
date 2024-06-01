@@ -4,8 +4,8 @@
 # mdbadges-cli
 
 [![Release](https://img.shields.io/npm/v/mdbadges-cli.svg?style=flat&colorA=18181B&colorB=07B0D1&logo=npm&logoColor=eb6f92)][Releases]
-[![NPM Downloads](https://img.shields.io/npm/dw/mdbadges-cli.svg?style=flat&colorA=18181B&colorB=07B0D1&logo=npm&logoColor=eb6f92)][NPM Page]
-[![License](https://custom-icon-badges.herokuapp.com/github/license/inttter/mdbadges-cli?logo=law&color=07B0D1&logoColor=eb6f92&labelColor=191724)][License]
+[![NPM Downloads](https://img.shields.io/npm/dw/mdbadges-cli.svg?style=flat&colorA=18181B&colorB=07B0D1&logo=npm&logoColor=eb6f92)][npm]
+[![License](https://custom-icon-badges.herokuapp.com/github/license/inttter/mdbadges-cli?logo=law&color=07B0D1&logoColor=eb6f92&labelColor=191724)][MIT License]
 
 </div>
 
@@ -14,15 +14,15 @@
 # Installation
 
 ```bash
-npm install -g mdbadges-cli # Node 18 is required.
+npm install -g mdbadges-cli
 ```
 
-[![Release](https://img.shields.io/github/actions/workflow/status/inttter/mdbadges-cli/test.yml?branch=main&colorA=18181B&colorB=07B0D1&logo=github&logoColor=959DA5&label=Release)][Release Workflow]
-[![Tests](https://img.shields.io/github/actions/workflow/status/inttter/mdbadges-cli/test.yml?branch=main&colorA=18181B&colorB=07B0D1&logo=github&logoColor=959DA5&label=Tests)][Test Workflow]
+[![Release Workflow](https://img.shields.io/github/actions/workflow/status/inttter/mdbadges-cli/test.yml?branch=main&colorA=18181B&colorB=07B0D1&logo=github&logoColor=959DA5&label=Release)][Release Workflow]
+[![Tests](https://img.shields.io/github/actions/workflow/status/inttter/mdbadges-cli/test.yml?branch=main&colorA=18181B&colorB=07B0D1&logo=github&logoColor=959DA5&label=Tests)][Tests Workflow]
 
 # Getting Started
 
-To start using a command, add the `mdb` prefix, followed by the [**command name/syntax**](#commands). 
+To start using a command, add the `mdb` prefix, followed by the [command name/syntax](#commands).
 
 For example:
 
@@ -45,32 +45,32 @@ mdb social discord --style plastic
 ```
 
 > [!TIP]
-> If you are running mdbadges-cli in Visual Studio Code, try installing the [**Image Preview**][Extension] extension. You can hover over the badge link to see a preview of it. See an example [**here**](https://github.com/inttter/mdbadges-cli/assets/73017070/f39fc296-25c8-4a2a-846a-cf83eff00cc4).
+> If you are running mdbadges-cli in Visual Studio Code, try installing the Image Preview [extension][]. You can hover over the badge link to see a preview of it. See an example [here](https://github.com/inttter/mdbadges-cli/assets/73017070/f39fc296-25c8-4a2a-846a-cf83eff00cc4).
 
-For help information, such as what commands do and/or accept, run `mdb help` in the terminal. Alternatively, you can read the documentation [**here**][Docs].
+For help information, such as what commands do and/or accept, run `mdb help` in the terminal. Alternatively, you can read the [documentation][].
 
 # Commands
 
 |   Command      |    Description    |     Aliases      | Additional Information |
 |----------|-----------|---------------------------|--------|
-`mdb [category] [badgeName]` | Displays Markdown for specified badge in a category. | N/A | View all available options on the [documentation][Docs].
-`mdb search` | Displays badges available in a [**category**](#available-categories). | `s`, `find` | Use arrow keys to scroll up/down.
-`mdb lookup [keyword]` | Displays badges containing a certain keyword. | `l` | Also displays what category the badge is in, and clicking <kbd>Enter</kbd> on a badge will give you the badge code.
-`mdb create` | Displays prompts to create your own badge. | `generate` | Both Markdown and HTML versions of your badge are given. Only hexadecimal colors are supported.
+`mdb [category] [badgeName]` | Displays badge from a specific category. | N/A | View all available options on the [documentation][].
+`mdb search` | Displays badges available in a [category](#categories). | `s`, `find` | Badges are listed in the format you need to fill the `[badgeName]` field out in.
+`mdb lookup [keyword]` | Displays badges containing a certain keyword. | `l` | Clicking <kbd>Enter</kbd> on a badge will give you the badge code.
+`mdb create` | Displays prompts to create your own badge. | `generate` | Both Markdown and HTML versions of your badge are given. For logo colors, only hexadecimal colors (eg. 000, #d8e, #FAF126) are supported.
 `mdb random` | Displays a random badge. | `r` | Supports both Markdown and HTML formats.
-`mdb copy [category] [badgeName]` | Copies a badges' code to the clipboard. | `c` | N/A 
+`mdb copy [category] [badgeName]` | Copies a badges' code to the clipboard. | `c` | Only supports copying Markdown version.
 `mdb badges` | Opens a link to the badge list in your browser. | `list` | N/A
-`mdb add [category] [badgeName] [fileName]` | Allows you to add a badge to a Markdown file. | N/A | Will work in subdirectories, so long as the file path is correct.
+`mdb add [category] [badgeName] [fileName]` | Allows you to add a badge to a Markdown file. | N/A | Only supports Markdown versions of badges. Works in subdirectories, as long as the file path is correct.
 
 # Miscellaneous Commands
 
 |   Command      |    Description    |     Aliases      | Additional Information |
 |----------|-----------|---------------------------|--------|
-`mdb about` | Displays general information about the package. | `abt` | Also shows links to the website, GitHub issues, contributing, and more.
+`mdb about` | Displays general information about the package. | `abt` | Also shows links to various important places and information like the current amount of badges.
 `mdb documentation` | Opens a link to the documentation in your browser. | `docs` | N/A
 `mdb changelog` | Opens a link to the latest release with it's changelogs in your browser. | `release` | N/A
 
-# Available Categories
+# Categories
 
 This contains the categories that are currently available, with the names and syntax. The syntax is needed for the `[category]` field of certain commands.
 
@@ -112,16 +112,18 @@ Virtual Reality | vr
 
 # Contributing
 
-If you would like to contribute, please read the contributing guidelines [**here**][Contributing] before you submit a pull request. 
+If you would like to contribute, please ensure to read the [contributing guidelines][] before you submit a pull request. 
 
-###### **©** 2024 · [MIT License][License]
+# License 
+
+**©** 2024 · Licensed under the [MIT License][]
 
 <!-- Link Definitions -->
-[Contributing]: https://github.com/inttter/mdbadges-cli/blob/main/CONTRIBUTING.md
-[Docs]: https://docs.mdbcli.xyz/
+[Contributing Guidelines]: https://github.com/inttter/mdbadges-cli/blob/main/CONTRIBUTING.md
+[Documentation]: https://docs.mdbcli.xyz/
 [Extension]: https://marketplace.visualstudio.com/items?itemName=kisstkondoros.vscode-gutter-preview
-[License]: https://github.com/inttter/mdbadges-cli/blob/main/LICENSE/
-[NPM Page]: https://www.npmjs.com/package/mdbadges-cli/
+[MIT License]: https://github.com/inttter/mdbadges-cli/blob/main/LICENSE/
+[npm]: https://www.npmjs.com/package/mdbadges-cli/
 [Release Workflow]: https://github.com/inttter/mdbadges-cli/actions/workflows/publish.yml
-[Releases]: https://github.com/inttter/mdbadges-cli/releases/
-[Test Workflow]: https://github.com/inttter/mdbadges-cli/actions/workflows/test.yml
+[Releases]: https://github.com/inttter/mdbadges-cli/releases/latest
+[Tests Workflow]: https://github.com/inttter/mdbadges-cli/actions/workflows/test.yml

@@ -1,30 +1,37 @@
 {
   "name": "mdbadges-cli",
-  "version": "6.0.1",
-  "engines": {
-    "node": ">=18"
-  },
+  "version": "6.1.0",
+  "author": "Inter",
+  "license": "MIT",
   "description": "An extensive CLI tool to find over 400+ Shields.io badges for your projects.",
-  "scripts": {
-    "test": "node --no-warnings --experimental-vm-modules node_modules/jest/bin/jest.js"
-  },
   "keywords": [
     "markdown",
     "badges",
-    "badge",
     "shields",
     "shields.io",
-    "shieldsio",
-    "shields-io",
-    "md-badges",
-    "mdbadges",
     "github",
     "readme"
   ],
-  "author": "Inter",
-  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "test": "node --no-warnings --experimental-vm-modules node_modules/jest/bin/jest.js"
+  },
   "bin": {
     "mdb": "src/index.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/inttter/mdbadges-cli.git"
+  },
+  "homepage": "https://mdbcli.xyz",
+  "bugs": {
+    "url": "https://github.com/inttter/mdbadges-cli/issues"
+  },
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/inttter"
   },
   "dependencies": {
     "@clack/prompts": "^0.7.0",
@@ -39,18 +46,6 @@
   },
   "devDependencies": {
     "jest": "^29.7.0"
-  },
-  "funding": {
-    "type": "github",
-    "url": "https://github.com/sponsors/inttter"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/inttter/mdbadges-cli.git"
-  },
-  "homepage": "https://mdbcli.xyz",
-  "bugs": {
-    "url": "https://github.com/inttter/mdbadges-cli/issues"
   },
   "type": "module"
 }

@@ -20,8 +20,7 @@ const packageName = 'mdbadges-cli'
 // Main Command
 program
   .name('mdb') // name = prefix
-  .arguments('[category] [badgeNames...]')
-  .usage('[category] [badgeNames] [--options]')
+  .usage('[category] [badgeName] [--options]')
   .option('--html', 'toggle HTML version of a badge')
   .option('-s, --style <badgeStyle>', 'toggle style of a badge')
   .option('--link', 'toggle links in a badge')
@@ -175,11 +174,11 @@ program
 
       // suggests the correct command to run if [badgeName] is valid but [category] is not
       if (badgeFoundInOtherCategory) {
-        consola.error(c.red(`You have a valid badge name of '${c.red.bold(utils.formatBadgeName(foundBadgeName))}', but '${c.red.bold(utils.formatCategoryName(category))}' is not a valid category.`));
+        consola.error(c.red(`The specified category could not be found, but '${c.red.bold(utils.formatBadgeName(foundBadgeName))}' is a valid badge in the '${c.red.bold(utils.formatCategoryName(correctCategory))}' category.`));
         console.log(c.cyan(`Run ${c.magenta.bold(`mdb ${correctCategory} ${foundBadgeName}`)} to get the correct badge code.\n`));
       } else {
         // if neither [category] or [badgeName] is valid
-        consola.error(c.red(`'${c.red.bold(utils.formatCategoryName(category))}' is not a valid category, and your badge name is also not valid.`));
+        consola.error(c.red(`The specified badge and category could not be found.`));
         console.log(c.cyan(`Visit ${c.magenta.bold('https://mdbcli.xyz/categories')} for a list of available categories.`));
         console.log(c.cyan(`You can also run ${c.magenta.bold('mdb search')} for a list of available badges within any category.`));
       }
@@ -272,7 +271,7 @@ program
         },
       });
 
-      // URL-encode the dashes in the name by having double dashes
+      // escape the dashes in the name by having double dashes
       // https://github.com/norwoodj/helm-docs/issues/56
       name = name.replace(/-/g, '--');
 
@@ -433,8 +432,17 @@ program
       clipboardy.writeSync(selectedBadge);
       console.log(c.green.bold(`\nCopied to the clipboard successfully.\n`));
     } else {
-      consola.error(c.red(`The specified category could not be found.`));
-      console.log(c.cyan(`Try running ${c.magenta.bold(`mdb search`)} for a list of categories.\n`));
+      const validCategory = Object.keys(badges).find(cat =>
+        Object.keys(badges[cat]).some(badge => badge.toLowerCase() === formattedBadgeName)
+      );
+
+      if (validCategory) {
+        consola.error(c.red(`The specified category could not be found, but '${c.red.bold(utils.formatBadgeName(badgeName))}' is a valid badge in the '${c.red.bold(utils.formatCategoryName(validCategory))}' category.`));
+        console.log(c.cyan(`Run ${c.magenta.bold(`mdb copy ${validCategory} ${badgeName}`)} to copy the correct badge.\n`));
+      } else {
+        consola.error(c.red(`The specified badge and category could not be found.`));
+        console.log(c.cyan(`Try running ${c.magenta.bold(`mdb search`)} for a list of categories and badges within specific categories.\n`));
+      }
     }
   });
 
@@ -479,14 +487,29 @@ program
 program
   .command('add [category] [badgeName] [filePath]')
   .description('add a badge to a Markdown file')
-  .action((category, badgeName, filePath = 'README.md') => {
+  .action((category, badgeName, filePath) => {
+    if (!filePath) {
+      // very simple check, so don't use new Error() here
+      consola.error(c.red('No file or file path was specified.'));
+      return;
+    }
+
     const formattedCategory = utils.formatCategoryName(category);
     const formattedBadgeName = badgeName.toLowerCase();
     const categoryData = badges[category.toLowerCase()];
 
     if (!categoryData) {
-      consola.error(c.red(`The category you specified could not be found.`));
-      console.log(c.cyan(`You can try visiting the syntax list for the categories here: ${c.magenta.bold('https://mdbcli.xyz/categories')}\n`));
+      const validCategory = Object.keys(badges).find(cat =>
+        Object.keys(badges[cat]).some(badge => badge.toLowerCase() === formattedBadgeName)
+      );
+
+      if (validCategory) {
+        consola.error(c.red(`The specified category could not be found, but '${c.red.bold(utils.formatBadgeName(badgeName))}' is a valid badge in the '${c.red.bold(utils.formatCategoryName(validCategory))}' category.`));
+        console.log(c.cyan(`Run ${c.magenta.bold(`mdb add ${validCategory} ${badgeName} ${filePath}`)} to add the badge to your file.\n`));
+      } else {
+        consola.error(c.red(`The category you specified could not be found.`));
+        console.log(c.cyan(`You can try visiting the syntax list for the categories here: ${c.magenta.bold('https://mdbcli.xyz/categories')}\n`));
+      }
       return;
     }
 
@@ -516,7 +539,7 @@ program
     const badgeMarkdown = `[${badgeAlt}](${badgeLink})](#)`;
 
     try {
-      let fileContent = ''
+      let fileContent = '';
       fileContent = fs.readFileSync(filePath, 'utf8');
     } catch (error) {
       consola.error(new Error(c.red(`Could not read the file: ${error.message}`)));

@@ -20,6 +20,7 @@ const packageName = 'mdbadges-cli'
 // Main Command
 program
   .name('mdb') // name = prefix
+  .arguments('[category] [badgeNames...]')
   .usage('[category] [badgeName] [--options]')
   .option('--html', 'toggle HTML version of a badge')
   .option('-s, --style <badgeStyle>', 'toggle style of a badge')

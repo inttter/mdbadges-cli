@@ -271,9 +271,8 @@ program
         },
       });
 
-      // escape the dashes in the name by having double dashes
-      // https://github.com/norwoodj/helm-docs/issues/56
-      name = name.replace(/-/g, '--');
+      name = name.replace(/-/g, '--'); // escape dashes in the name with double dashes
+      name = name.replace(/\s/g, '_'); // escape spaces in the name with an underscore
 
       const color = await text({
         message: c.cyan.bold('Enter a hexadecimal value for the badge:'),

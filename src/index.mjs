@@ -271,8 +271,9 @@ program
         },
       });
 
-      name = name.replace(/-/g, '--'); // escape dashes in the name with double dashes
-      name = name.replace(/\s/g, '_'); // escape spaces in the name with an underscore
+      name = name.replace(/-/g, '--'); // escape dashes
+      name = name.replace(/\s/g, '_'); // escape spaces
+      name = name.replace(/_/g, '__'); // escape underscores
 
       const color = await text({
         message: c.cyan.bold('Enter a hexadecimal value for the badge:'),

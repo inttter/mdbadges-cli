@@ -380,7 +380,7 @@ const badges = {
         'go': '[![Go](https://img.shields.io/badge/Go-%2300ADD8.svg?&logo=go&logoColor=white)](#) ',
         'haskell': '[![Haskell](https://img.shields.io/badge/Haskell-5e5086?logo=haskell&logoColor=white)](#) ',
         'html': '[![HTML](https://img.shields.io/badge/HTML-%23E34F26.svg?logo=html5&logoColor=white)](#) ',
-        'htmx': '![HTMX](https://img.shields.io/badge/HTMX-36C?logo=htmx&logoColor=fff)](#) ',
+        'htmx': '[![HTMX](https://img.shields.io/badge/HTMX-36C?logo=htmx&logoColor=fff)](#) ',
         'java': '[![Java](https://img.shields.io/badge/Java-%23ED8B00.svg?logo=openjdk&logoColor=white)](#) ',
         'javascript': '[![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=000)](#) ',
         'json': '[![JSON](https://img.shields.io/badge/JSON-000?logo=json&logoColor=fff)](#) ',

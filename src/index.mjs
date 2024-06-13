@@ -49,16 +49,25 @@ program
 
           // --link
           if (options.link) {
+            let linkMessage = '';
+            if (badgeNames.length === 1) {
+              linkMessage = c.cyan('Enter your link here:');
+            } else if (index === 0) {
+              linkMessage = c.cyan(`Enter the link for ${c.magenta(utils.formatBadgeName(badgeName))} here:`);
+            } else {
+              linkMessage = c.cyan(`Enter the link for ${c.magenta(utils.formatBadgeName(badgeName))} (Badge ${index + 1}) here:`);
+            }
+
             const linkResponse = await text({
-              message: badgeNames.length === 1 ? c.cyan('Enter your link here:') : index === 0 ? c.cyan(`Enter your first link here, then click ${c.magenta('Enter')} and type the rest below in correct order:`) : '',
+              message: linkMessage,
               validate: input => {
                 if (!utils.isValidURL(input)) {
-                    return c.dim('Enter a valid link.');
+                  return c.dim('Enter a valid link.');
                 }
                 return;
-            }
+              }
             });
-            
+
             await utils.checkCancellation(linkResponse)
 
             link = linkResponse;

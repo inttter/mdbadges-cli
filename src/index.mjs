@@ -117,20 +117,22 @@ program
               const badgeAlt = badgeAltMatch[1];
               const htmlBadgeAlt = badgeAlt.replace(/^!\[/, ''); // strips the '![' from the alt text
               
+              // for when --style and --html are used together
               let styleOption = '';
               if (options.style) {
                 styleOption = `&style=${options.style}`;
               }
       
+              // if --link is specified, ppend the <a> tags
               let htmlBadge;
-              if (options.link && links[index]) { // if --link is specified, we append the <a> tags
+              if (options.link && links[index]) {
                 htmlBadge = `<a href="${utils.escapeHtml(links[index])}">\n  <img src="${badgeLink}${styleOption}" alt="${utils.escapeHtml(htmlBadgeAlt)}">\n</a>`;
               } else {
                 htmlBadge = `<img src="${badgeLink}${styleOption}" alt="${utils.escapeHtml(htmlBadgeAlt)}">`;
               }
               console.log(c.hex('#FFBF00').bold(`${htmlBadge}\n`));
             } else {
-              consola.error(new Error(c.red('Could not extract badge link or alt text.')));
+              consola.error(new Error(c.red('Could not extract the badge link or alt text.')));
             }
           } else {
             // --style
@@ -138,11 +140,10 @@ program
                 // provided style must match one of these styles
                 const styles = ['flat', 'flat-square', 'plastic', 'social', 'for-the-badge'];
                 if (styles.includes(options.style)) {
-                    let badgeStyle = '' // don't remove this or it causes badgeStyle to not be defined
                     badgeStyle = options.style;
                 } else {
                     consola.warn(c.yellow(`An invalid style was detected.`));
-                    console.log(c.yellow(`View available styles at ${c.magenta.bold(' https://docs.mdbcli.xyz/commands/finding-a-badge#style-s')}.`))
+                    console.log(c.yellow(`       Available styles are ${c.magenta.bold(styles.join(', '))}\n`))
                 }
             }
             const styleOption = options.style ? `&style=${options.style}` : '';

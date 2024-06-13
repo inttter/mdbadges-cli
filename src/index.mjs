@@ -316,6 +316,18 @@ program
 
       await utils.checkCancellation(logo)
 
+      const logoColor = await text({
+        message: c.cyan.bold('Enter the color for the logo:'),
+        validate: (value) => {
+          if (!value.trim()) {
+            return c.dim('This field is required.');
+          }
+          return;
+        },
+      });
+
+      await utils.checkCancellation(logoColor)
+
       const style = await select({
         message: c.cyan.bold('Choose the style of the badge:'),
         options: [
@@ -328,18 +340,6 @@ program
       });
 
       await utils.checkCancellation(style)
-
-      const logoColor = await text({
-        message: c.cyan.bold('Enter the color for the logo:'),
-        validate: (value) => {
-          if (!value.trim()) {
-            return c.dim('This field is required.');
-          }
-          return;
-        },
-      });
-
-      await utils.checkCancellation(logoColor)
 
       const link = await text({
         message: c.cyan.bold('[Optional] - Enter the URL to redirect to when the badge is clicked:'),

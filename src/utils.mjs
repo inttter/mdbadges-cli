@@ -1,3 +1,5 @@
+import { cancel, isCancel } from '@clack/prompts';
+
 function formatCategoryName(category) {
   return category
     .split("-")
@@ -10,12 +12,10 @@ function searchCategory(category) {
 }
 
 function formatBadgeName(badgeName) {
-  const formattedBadgeName = badgeName
+  return badgeName
     .split("-")
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
     .join(" ");
-  
-  return formattedBadgeName;
 }
 
 const escapeHtml = (unsafe) => {
@@ -48,4 +48,11 @@ const isValidURL = (url) => {
   }
 };
 
-export { formatCategoryName, searchCategory, formatBadgeName, escapeHtml, isValidURL };
+async function checkCancellation(input, cancelMessage = 'Exiting because `CTRL+C` was pressed.') {
+  if (isCancel(input)) {
+    cancel(cancelMessage);
+    process.exit(0);
+  }
+}
+
+export { formatCategoryName, searchCategory, formatBadgeName, escapeHtml, isValidURL, checkCancellation }

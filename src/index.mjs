@@ -2,16 +2,16 @@
 
 // shebang: https://github.com/nodejs/node/issues/51347#issuecomment-1893074523
 
-import { badges } from './badges.mjs';
 import axios from 'axios';
+import badges from './badges.mjs';
 import c from 'chalk';
-import { cliSpinners } from 'cli-spinners';
+import cliSpinners from 'cli-spinners';
 import { consola } from 'consola';
 import { confirm, select, text } from '@clack/prompts';
 import clipboardy from 'clipboardy';
 import fs from 'fs';
 import open from 'open';
-import { ora } from 'ora';
+import ora from 'ora';
 import { program } from 'commander';
 import * as utils from './utils.mjs';
 
@@ -58,6 +58,9 @@ program
                 return;
             }
             });
+            
+            await utils.checkCancellation(linkResponse)
+
             link = linkResponse;
             links.push(link);
           }
@@ -82,6 +85,8 @@ program
                 { label: 'None of these', value: 'none' },
               ],
             });
+            
+            await utils.checkCancellation(selectedBadge)
 
             if (selectedBadge === 'none') {
               process.exit(0);
@@ -233,6 +238,8 @@ program
         })),
       });
 
+      await utils.checkCancellation(selectedCategory)
+
       const formattedCategory = utils.searchCategory(selectedCategory);
       const categoryData = badges[formattedCategory];
 
@@ -250,6 +257,8 @@ program
         message: 'Would you like to search another category?',
         initial: true
       });
+
+      await utils.checkCancellation(continueSearch)
     }
   });
 
@@ -264,6 +273,7 @@ program
         message: c.cyan.bold('Enter the alt text for the badge:')
       });
 
+      await utils.checkCancellation(alt)
 
       let name = await text({
         message: c.cyan.bold('Enter the text you would like to display on the badge:'),
@@ -274,6 +284,8 @@ program
           return;
         },
       });
+
+      await utils.checkCancellation(name);
 
       name = name.replace(/-/g, '--'); // escape dashes
       name = name.replace(/\s/g, '_'); // escape spaces
@@ -290,6 +302,8 @@ program
         },
       });
 
+      await utils.checkCancellation(color)
+
       const logo = await text({
         message: c.cyan.bold('Enter the logo to be displayed on the badge:'),
         validate: (value) => {
@@ -299,6 +313,8 @@ program
           return;
         },
       });
+
+      await utils.checkCancellation(logo)
 
       const style = await select({
         message: c.cyan.bold('Choose the style of the badge:'),
@@ -311,6 +327,8 @@ program
         ],
       });
 
+      await utils.checkCancellation(style)
+
       const logoColor = await text({
         message: c.cyan.bold('Enter the color for the logo:'),
         validate: (value) => {
@@ -321,9 +339,13 @@ program
         },
       });
 
+      await utils.checkCancellation(logoColor)
+
       const link = await text({
         message: c.cyan.bold('[Optional] - Enter the URL to redirect to when the badge is clicked:'),
       });
+
+      await utils.checkCancellation(link)
 
       let badgeLink = `https://img.shields.io/badge/${name}-${encodeURIComponent(color)}?logo=${encodeURIComponent(logo)}&style=${encodeURIComponent(style)}`;
 
@@ -481,6 +503,8 @@ program
           value: badge.value,
         })),
       });
+
+      await utils.checkCancellation(selectedBadge)
 
       console.log(c.green.bold('\nBadge found:'));
       console.log(c.hex('#FFBF00').bold(selectedBadge));

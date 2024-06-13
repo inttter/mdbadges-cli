@@ -170,10 +170,11 @@ You should provide details on **how you encountered the issue**, any **error mes
 By contributing, you agree that your contributions will be licensed under the [MIT License][].
 
 <!-- Link Definitions -->
+
+[badge validation test]: https://github.com/inttter/mdbadges-cli/blob/main/tests/validate.test.js
 [badges.js]: https://github.com/inttter/mdbadges-cli/blob/main/src/badges.js
 [Chalk Color Options]: https://github.com/chalk/chalk?tab=readme-ov-file#styles
 [Commander]: https://www.npmjs.com/package/commander
-[Convential Commits]: https://www.conventionalcommits.org/en/v1.0.0/
 [Git]: https://git-scm.com
 [Gitmoji]: https://gitmoji.dev
 [index.js]: https://github.com/inttter/mdbadges-cli/blob/main/src/index.js

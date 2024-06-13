@@ -2,17 +2,17 @@
 
 // shebang: https://github.com/nodejs/node/issues/51347#issuecomment-1893074523
 
-import { program } from 'commander';
+import { badges } from './badges.mjs';
 import axios from 'axios';
 import c from 'chalk';
-import clipboardy from 'clipboardy';
-import ora from 'ora';
-import { select, confirm, text } from '@clack/prompts';
-import open from 'open';
+import { cliSpinners } from 'cli-spinners';
 import { consola } from 'consola';
-import cliSpinners from 'cli-spinners';
+import { confirm, select, text } from '@clack/prompts';
+import clipboardy from 'clipboardy';
 import fs from 'fs';
-import badges from './badges.mjs';
+import open from 'open';
+import { ora } from 'ora';
+import { program } from 'commander';
 import * as utils from './utils.mjs';
 
 const packageName = 'mdbadges-cli'
@@ -21,9 +21,9 @@ const packageName = 'mdbadges-cli'
 program
   .name('mdb') // name = prefix
   .arguments('[category] [badgeNames...]')
-  .usage('[category] [badgeName] [--options]')
+  .usage('[category] [badgeName] [--option]')
   .option('--html', 'toggle HTML version of a badge')
-  .option('-s, --style <badgeStyle>', 'toggle style of a badge')
+  .option('-s, --style [badgeStyle]', 'toggle style of a badge')
   .option('--link', 'toggle links in a badge')
   .action(async (category, badgeNames = [], options) => {
     const formattedCategory = utils.formatCategoryName(category);
@@ -53,7 +53,7 @@ program
               message: badgeNames.length === 1 ? c.cyan('Enter your link here:') : index === 0 ? c.cyan(`Enter your first link here, then click ${c.magenta('Enter')} and type the rest below in correct order:`) : '',
               validate: input => {
                 if (!utils.isValidURL(input)) {
-                    return "Please enter a valid URL.";
+                    return c.dim('Enter a valid link.');
                 }
                 return;
             }
@@ -73,7 +73,7 @@ program
           // prompt for similar badges in the same category if it cant find the badge
           if (similarBadges.length > 0) {
             const selectedBadge = await select({
-              message: c.cyan('Did you mean one of these?'),
+              message: c.cyan('Did you mean one of these badges instead?'),
               options: [
                 ...similarBadges.map(similarBadge => ({
                   label: similarBadge,
@@ -140,6 +140,7 @@ program
                 // provided style must match one of these styles
                 const styles = ['flat', 'flat-square', 'plastic', 'social', 'for-the-badge'];
                 if (styles.includes(options.style)) {
+                    let badgeStyle = '';
                     badgeStyle = options.style;
                 } else {
                     consola.warn(c.yellow(`An invalid style was detected.`));
@@ -240,13 +241,13 @@ program
         Object.keys(categoryData).forEach((badge) => {
           console.log(`• ${badge}`);
         });
-        console.log(c.cyan(`\nTo get the ${c.underline('Markdown')} version of a badge, type ${c.magenta(`mdb ${formattedCategory} <badgeName>`)}.\n`));
+        console.log(c.dim(`\nRun ${c.magenta(`mdb ${formattedCategory} [badgeName]`)} and replace ${c.magenta('[badgeName]')} with one of these badges to get the Markdown code for it.\n`));
       } else {
         consola.error(c.red(`The specified category could not be found.`));
       }
 
       continueSearch = await confirm({
-        message: ('Would you like to search another category?'),
+        message: 'Would you like to search another category?',
         initial: true
       });
     }
@@ -260,14 +261,15 @@ program
   .action(async () => {
     try {
       const alt = await text({
-        message: c.cyan.bold('Enter the alt text for the badge:'),
+        message: c.cyan.bold('Enter the alt text for the badge:')
       });
 
+
       let name = await text({
-        message: c.cyan.bold('Enter the text you\'d like to display on the badge:'),
+        message: c.cyan.bold('Enter the text you would like to display on the badge:'),
         validate: (value) => {
           if (!value.trim()) {
-            return c.red('This field is required.');
+            return c.dim('This field is required.');
           }
           return;
         },
@@ -278,21 +280,21 @@ program
       name = name.replace(/_/g, '__'); // escape underscores
 
       const color = await text({
-        message: c.cyan.bold('Enter a hexadecimal value for the badge:'),
+        message: c.cyan.bold('Enter a hexadecimal value for the color of the badge:'),
         validate: (value) => {
           const hexColorRegex = /^#?(?:[0-9a-fA-F]{3}){1,2}$/;
           if (!hexColorRegex.test(value.trim())) {
-            return c.red('Enter a valid hexadecimal color [eg. #FDE13B].');
+            return c.dim('Enter a valid hexadecimal color. Valid ones include #d8e, #96f732');
           }
           return;
         },
       });
 
       const logo = await text({
-        message: c.cyan.bold('Enter the logo for the badge:'),
+        message: c.cyan.bold('Enter the logo to be displayed on the badge:'),
         validate: (value) => {
           if (!value.trim()) {
-            return c.red('This field is required.');
+            return c.dim('This field is required.');
           }
           return;
         },
@@ -310,17 +312,17 @@ program
       });
 
       const logoColor = await text({
-        message: c.cyan.bold('Enter the logo color for the badge:'),
+        message: c.cyan.bold('Enter the color for the logo:'),
         validate: (value) => {
           if (!value.trim()) {
-            return c.red('This field is required.');
+            return c.dim('This field is required.');
           }
           return;
         },
       });
 
       const link = await text({
-        message: c.cyan.bold('[Optional] - Enter the URL to redirect to:'),
+        message: c.cyan.bold('[Optional] - Enter the URL to redirect to when the badge is clicked:'),
       });
 
       let badgeLink = `https://img.shields.io/badge/${name}-${encodeURIComponent(color)}?logo=${encodeURIComponent(logo)}&style=${encodeURIComponent(style)}`;
@@ -496,7 +498,6 @@ program
       return;
     }
 
-    const formattedCategory = utils.formatCategoryName(category);
     const formattedBadgeName = badgeName.toLowerCase();
     const categoryData = badges[category.toLowerCase()];
 

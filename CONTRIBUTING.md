@@ -172,12 +172,14 @@ By contributing, you agree that your contributions will be licensed under the [M
 <!-- Link Definitions -->
 
 [badge validation test]: https://github.com/inttter/mdbadges-cli/blob/main/tests/validate.test.js
-[badges.js]: https://github.com/inttter/mdbadges-cli/blob/main/src/badges.js
+[badges.js]: https://github.com/inttter/mdbadges-cli/blob/main/src/badges.mjs
 [Chalk Color Options]: https://github.com/chalk/chalk?tab=readme-ov-file#styles
 [Commander]: https://www.npmjs.com/package/commander
+[Conventional Commits]: https://www.conventionalcommits.org/en/v1.0.0/
+[create an issue]: https://github.com/inttter/mdbadges-cli/issues
 [Git]: https://git-scm.com
 [Gitmoji]: https://gitmoji.dev
-[index.js]: https://github.com/inttter/mdbadges-cli/blob/main/src/index.js
+[index.js]: https://github.com/inttter/mdbadges-cli/blob/main/src/index.mjs
 [md-badges]: https://github.com/inttter/md-badges
 [md-badges Contributing Guidelines]: https://github.com/inttter/md-badges/blob/main/CONTRIBUTING.md
 [MIT License]: https://github.com/inttter/mdbadges-cli/blob/main/LICENSE

@@ -486,12 +486,20 @@ program
   .command('lookup [keyword]')
   .alias('l')
   .description('display badges containing a certain keyword')
-  .action(async (query) => {
+  .action(async (keyword) => {
+    if (!keyword) {
+      consola.error(c.red('Please provide a keyword to look up.'));
+      return;
+    }
+
     let badgeChoices = [];
+    let keywordFound = false;
+
     Object.keys(badges).forEach((category) => {
       const categoryData = badges[category];
       Object.keys(categoryData).forEach((badgeName) => {
-        if (badgeName.toLowerCase().includes(query.toLowerCase())) {
+        if (typeof badgeName === 'string' && badgeName.toLowerCase().includes(keyword.toLowerCase())) {
+          keywordFound = true;
           const formattedCategory = utils.formatCategoryName(category);
           const formattedBadge = utils.formatBadgeName(badgeName);
           badgeChoices.push({
@@ -502,25 +510,26 @@ program
       });
     });
 
-    if (!badgeChoices.length) {
-      consola.error(c.red('A badge containing that keyword could not be found.'));
-    } else {
-      const selectedBadge = await select({
-        message: c.cyan.bold('Select a badge:'),
-        options: badgeChoices.map(badge => ({
-          label: badge.name,
-          value: badge.value,
-        })),
-      });
-
-      await utils.checkCancellation(selectedBadge)
-
-      console.log(c.green.bold('\nBadge found:'));
-      console.log(c.hex('#FFBF00').bold(selectedBadge));
+    if (!keywordFound) {
+      consola.error(c.red(`A badge containing '${keyword}' could not be found.`));
+      return;
     }
+
+    const selectedBadge = await select({
+      message: c.cyan.bold('Select a badge:'),
+      options: badgeChoices.map(badge => ({
+        label: badge.name,
+        value: badge.value,
+      })),
+    });
+
+    await utils.checkCancellation(selectedBadge);
+
+    console.log(c.green.bold('\nBadge found:'));
+    console.log(c.hex('#FFBF00').bold(selectedBadge));
   });
 
-// Adding Badge To File Command
+// Add Command
 program
   .command('add [category] [badgeName] [filePath]')
   .description('add a badge to a Markdown file')

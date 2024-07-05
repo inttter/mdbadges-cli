@@ -54,8 +54,7 @@ For help information, such as what commands do and/or accept, run `mdb help` in 
 |   Command      |    Description    |     Aliases      | Additional Information |
 |----------|-----------|---------------------------|--------|
 `mdb [category] [badgeName]` | Displays badge from a specific category. | N/A | View all available options on the [documentation][].
-`mdb search` | Displays badges available in a [category](#categories). | `s`, `find` | Badges are listed in the format you need to fill the `[badgeName]` field out in.
-`mdb lookup [keyword]` | Displays badges containing a certain keyword. | `l` | Clicking <kbd>Enter</kbd> on a badge will give you the badge code.
+`mdb search` | Search for badges across any [category](#categories). | `s`, `find` | Get the badge code directly by selecting a badge that gets found.
 `mdb create` | Displays prompts to create your own badge. | `generate` | Both Markdown and HTML versions of your badge are given. For logo colors, only hexadecimal colors (eg. 000, #d8e, #FAF126) are supported.
 `mdb random` | Displays a random badge. | `r` | Supports both Markdown and HTML formats.
 `mdb copy [category] [badgeName]` | Copies a badges' code to the clipboard. | `c` | Only supports copying Markdown version.

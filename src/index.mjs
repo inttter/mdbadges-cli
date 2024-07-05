@@ -7,7 +7,7 @@ import badges from './badges.mjs';
 import c from 'chalk';
 import cliSpinners from 'cli-spinners';
 import { consola } from 'consola';
-import { confirm, select, text } from '@clack/prompts';
+import { confirm, select, text, outro } from '@clack/prompts';
 import clipboardy from 'clipboardy';
 import fs from 'fs';
 import open from 'open';
@@ -26,7 +26,6 @@ program
   .option('-s, --style [badgeStyle]', 'toggle style of a badge')
   .option('--link', 'toggle links in a badge')
   .action(async (category, badgeNames = [], options) => {
-    const formattedCategory = utils.formatCategoryName(category);
     const categoryData = badges[utils.searchCategory(category)];
 
     if (categoryData) {
@@ -76,7 +75,7 @@ program
         } else {
           // don't use new Error() here
           consola.error(c.red(`'${utils.formatBadgeName(badgeName)}' is not a valid badge.`));
-          console.log(c.cyan(`Try running ${c.magenta.bold('mdb search')} and selecting '${c.magenta.bold(utils.formatCategoryName(formattedCategory))}' for a list of badges in that category.\n`));
+          console.log(c.cyan(`Try running ${c.magenta.bold('mdb search')} to look for a badge.\n`));
           
           const similarBadges = Object.keys(categoryData).filter(key =>
             key.toLowerCase().includes(badgeName.toLowerCase())
@@ -197,7 +196,7 @@ program
         // if neither [category] or [badgeName] is valid
         consola.error(c.red(`The specified badge and category could not be found.`));
         console.log(c.cyan(`Visit ${c.magenta.bold('https://mdbcli.xyz/categories')} for a list of available categories.`));
-        console.log(c.cyan(`You can also run ${c.magenta.bold('mdb search')} for a list of available badges within any category.`));
+        console.log(c.cyan(`You can also run ${c.magenta.bold('mdb search')} to directly search for a badge.`));
       }
     }
   });
@@ -232,42 +231,57 @@ program
   .command('search')
   .alias('s')
   .alias('find')
-  .description('display badges available in a category')
+  .description('search for badges across any category')
   .action(async () => {
     let continueSearch = true;
 
     while (continueSearch) {
-      const categories = Object.keys(badges);
-
-      const selectedCategory = await select({
-        message: c.cyan.bold('Select a category:'),
-        options: categories.map(category => ({
-          label: utils.formatCategoryName(category),
-          value: category,
-        })),
+      const keyword = await text({
+        message: c.cyan.bold('Enter a keyword to search for:'),
       });
 
-      await utils.checkCancellation(selectedCategory)
+      await utils.checkCancellation(keyword);
 
-      const formattedCategory = utils.searchCategory(selectedCategory);
-      const categoryData = badges[formattedCategory];
+      const badgeChoices = [];
+      let badgesFound = false;
 
-      if (categoryData) {
-        console.log(c.green(`\nBadges available in ${c.green.underline(utils.formatCategoryName(selectedCategory))}:\n`));
-        Object.keys(categoryData).forEach((badge) => {
-          console.log(`• ${badge}`);
+      Object.keys(badges).forEach((category) => {
+        const categoryData = badges[category];
+        Object.keys(categoryData).forEach((badgeName) => {
+          if (badgeName.toLowerCase().includes(keyword.toLowerCase())) {
+            const formattedCategory = utils.formatCategoryName(category);
+            const formattedBadge = utils.formatBadgeName(badgeName);
+            badgeChoices.push({
+              name: `${c.hex('#FFBF00')(formattedBadge)} in ${c.dim(formattedCategory)}`,
+              value: categoryData[badgeName], // stores the badge code as the value
+            });
+            badgesFound = true;
+          }
         });
-        console.log(c.dim(`\nRun ${c.magenta(`mdb ${formattedCategory} [badgeName]`)} and replace ${c.magenta('[badgeName]')} with one of these badges to get the Markdown code for it.\n`));
+      });
+
+      if (!badgesFound) {
+        consola.error(c.red(`No badges containing '${keyword}' could be found.`));
       } else {
-        consola.error(c.red(`The specified category could not be found.`));
+        const selectedBadge = await select({
+          message: c.cyan.bold('Select a badge:'),
+          options: badgeChoices.map(badge => ({
+            label: badge.name,
+            value: badge.value,
+          })),
+        });
+
+        await utils.checkCancellation(selectedBadge);
+
+        outro(c.hex('#FFBF00').bold(selectedBadge));
       }
 
       continueSearch = await confirm({
-        message: 'Would you like to search another category?',
+        message: c.cyan('Would you like to search for another badge?'),
         initial: true
       });
 
-      await utils.checkCancellation(continueSearch)
+      await utils.checkCancellation(continueSearch);
     }
   });
 
@@ -372,7 +386,7 @@ program
       console.log(c.green.bold('HTML:'));
       console.log(c.hex('#FFBF00').bold(`${badgeHtml}\n`)); // HTML
     } catch (error) {
-      consola.error(new Error(c.red(`An error occurred when trying to make your badge: ${error.message}`)));
+      consola.error(new Error(c.red(`An error occurred when trying to make the badge: ${error.message}`)));
     }
   });
 
@@ -476,57 +490,9 @@ program
         console.log(c.cyan(`Run ${c.magenta.bold(`mdb copy ${validCategory} ${badgeName}`)} to copy the correct badge.\n`));
       } else {
         consola.error(c.red(`The specified badge and category could not be found.`));
-        console.log(c.cyan(`Try running ${c.magenta.bold(`mdb search`)} for a list of categories and badges within specific categories.\n`));
+        console.log(c.cyan(`Try running ${c.magenta.bold(`mdb search`)} to directly find a badge.\n`));
       }
     }
-  });
-
-// Lookup Command
-program
-  .command('lookup [keyword]')
-  .alias('l')
-  .description('display badges containing a certain keyword')
-  .action(async (keyword) => {
-    if (!keyword) {
-      consola.error(c.red('Please provide a keyword to look up.'));
-      return;
-    }
-
-    let badgeChoices = [];
-    let keywordFound = false;
-
-    Object.keys(badges).forEach((category) => {
-      const categoryData = badges[category];
-      Object.keys(categoryData).forEach((badgeName) => {
-        if (typeof badgeName === 'string' && badgeName.toLowerCase().includes(keyword.toLowerCase())) {
-          keywordFound = true;
-          const formattedCategory = utils.formatCategoryName(category);
-          const formattedBadge = utils.formatBadgeName(badgeName);
-          badgeChoices.push({
-            name: `${c.green(formattedBadge)} in ${c.yellow(formattedCategory)}`,
-            value: categoryData[badgeName], // stores the badge code as the value
-          });
-        }
-      });
-    });
-
-    if (!keywordFound) {
-      consola.error(c.red(`A badge containing '${keyword}' could not be found.`));
-      return;
-    }
-
-    const selectedBadge = await select({
-      message: c.cyan.bold('Select a badge:'),
-      options: badgeChoices.map(badge => ({
-        label: badge.name,
-        value: badge.value,
-      })),
-    });
-
-    await utils.checkCancellation(selectedBadge);
-
-    console.log(c.green.bold('\nBadge found:'));
-    console.log(c.hex('#FFBF00').bold(selectedBadge));
   });
 
 // Add Command
@@ -564,7 +530,7 @@ program
 
     if (!foundBadge) {
       consola.error(c.red(`The badge you specified could not be found.`));
-      console.log(c.cyan(`Try running ${c.magenta.bold(`mdb search`)} for a full list of badges in this category.\n`));
+      console.log(c.cyan(`Try running ${c.magenta.bold(`mdb search`)} to directly find a badge.\n`));
       return;
     }
 

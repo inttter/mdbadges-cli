@@ -7,7 +7,7 @@ Thank you for considering contributing to this project! Take a moment to read th
 
 # Installing locally
 
-You will need to have a local copy of the repository. 
+You will need to have a local copy of the repository.
 
 To do this, fork the project locally by clicking the '**Fork**' button at the top of the repository to create a fork of mdbadges-cli to your GitHub account.
 
@@ -45,7 +45,7 @@ mdbadges-cli uses [Commander][] for its commands. In order to add a new command,
 
 **1.** Navigate to the [main file][index.js] where all of the commands are stored in.
 
-**2.** Define the new command, specifying its name, aliases *(optional)*, a brief description of its purpose, and the command logic itself.
+**2.** Define the new command, specifying its name, aliases _(optional)_, a brief description of its purpose, and the command logic itself.
 
 ```javascript
 // An example command
@@ -59,13 +59,29 @@ program
   });
 ```
 
-Generally, you should stick to single-word command names without spaces. For example: instead of *'search-badges'*, do *'search'*. 
+Generally, you should stick to single-word command names without spaces. For example: instead of *'search-badges'*, do *'search'*.
 
 You should also aim to keep command names, descriptions, and aliases **concise and descriptive** to avoid any confusion.
 
 # Adding Badges
 
-When adding badges to mdbadges-cli, you have two options in terms of in what ways you can add them.
+### ⚠️ Disclaimer
+
+Badges added to mdbadges-cli **must** have a valid logo in the badge:
+
+| ❌ Incorrect - Logo is invalid   | ✅ Correct - Logo is [valid](https://simpleicons.org/?q=neovim) |
+| -------------------------------- | ----------- |
+| `[![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?logo=visual-studio-code&logoColor=white)](#)` | `[![Neovim](https://img.shields.io/badge/Neovim-57A143?logo=neovim&logoColor=fff)](#)` |
+
+| ❌ Incorrect - Result   | ✅ Correct - Result |
+| -------------------------------- | ----------- |
+| [![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?logo=visual-studio-code&logoColor=white)](#) | [![Neovim](https://img.shields.io/badge/Neovim-57A143?logo=neovim&logoColor=fff)](#) |
+
+Before you add a badge, make sure that it has a logo associated with it on [SimpleIcons][]. 
+
+If it does not, you can use [custom-icon-badges][], along with a custom image (preferably in an appropriate color) and switch the URL from `https://img.shields.io` to `https://custom-icon-badges.demolab.com`, as well as adjusting the `logo=` field to use your custom slug.
+
+Once that is done, you have two options in terms of in what ways you can add them.
 
 ### Adding directly to JavaScript
 
@@ -95,6 +111,7 @@ If you want to directly add a badge into this repository, follow the steps below
 > Make sure that your badge uses the correct format (as shown above) in order for it to pass the [badge validation test][].
 >
 > You can check if your badge passes the test by running:
+>
 > ```bash
 > npm run test
 > ```
@@ -129,7 +146,7 @@ In mdbadges-cli, `Chalk` is the main coloring package that is used. To use Chalk
     <type>[optional scope]: <description>
     ```
 
-* If you would like to also use emoji in your commit messages, you should try to adhere to the [Gitmoji][] emoji's, as they are most commonly used, as well as other miscellaneous emoji's, which you can decide on what they should be represneted by. For example:
+* If you would like to also use emoji in your commit messages, you should try to adhere to the [Gitmoji][] emoji's, as they are most commonly used, as well as other miscellaneous emoji's, which you can decide on what they should be represented by. For example:
 
     ```
     ✨ feat: add GitHub badge
@@ -161,7 +178,7 @@ Before you ask your question, you should consider whether it has already been an
 
 ## Bugs/Inconsistencies
 
-If you come across any bugs, [create an issue][] to report them. 
+If you come across any bugs, [create an issue][] to report them.
 
 You should provide details on **how you encountered the issue**, any **error messages** you may have received, **screenshots** (if applicable) and, if you find one, what you believe is **a plausible fix** for the issue.
 
@@ -177,9 +194,11 @@ By contributing, you agree that your contributions will be licensed under the [M
 [Commander]: https://www.npmjs.com/package/commander
 [Conventional Commits]: https://www.conventionalcommits.org/en/v1.0.0/
 [create an issue]: https://github.com/inttter/mdbadges-cli/issues
+[custom-icon-badges]: https://custom-icon-badges.demolab.com
 [Git]: https://git-scm.com
 [Gitmoji]: https://gitmoji.dev
 [index.js]: https://github.com/inttter/mdbadges-cli/blob/main/src/index.mjs
 [md-badges]: https://github.com/inttter/md-badges
 [md-badges Contributing Guidelines]: https://github.com/inttter/md-badges/blob/main/CONTRIBUTING.md
 [MIT License]: https://github.com/inttter/mdbadges-cli/blob/main/LICENSE
+[SimpleIcons]: https://simpleicons.org

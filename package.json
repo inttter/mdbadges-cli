@@ -1,6 +1,6 @@
 {
   "name": "mdbadges-cli",
-  "version": "6.3.0",
+  "version": "6.4.0",
   "author": "Inter",
   "license": "MIT",
   "description": "An extensive CLI tool to find over 400+ Shields.io badges for your projects.",
@@ -37,7 +37,7 @@
     "@clack/prompts": "^0.7.0",
     "axios": "^1.7.2",
     "chalk": "^5.3.0",
-    "cli-spinners": "^3.0.0",
+    "cli-spinners": "^3.1.0",
     "clipboardy": "^4.0.0",
     "commander": "^12.1.0",
     "consola": "^3.2.3",

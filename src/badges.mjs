@@ -342,7 +342,7 @@ const badges = {
         'bash': '[![Bash](https://img.shields.io/badge/Bash-4EAA25?logo=gnubash&logoColor=fff)](#) ',
         'c': '[![C](https://img.shields.io/badge/C-00599C?logo=c&logoColor=white)](#) ',
         'cpp': '[![C++](https://img.shields.io/badge/C++-%2300599C.svg?logo=c%2B%2B&logoColor=white)](#) ',
-        'c-sharp': '[![C#](https://img.shields.io/badge/C%23-%23239120.svg?logo=csharp&logoColor=white)](#) ',
+        'c-sharp': '[![C#](https://custom-icon-badges.demolab.com/badge/C%23-%23239120.svg?logo=cshrp&logoColor=white)](#) ',
         'css': '[![CSS](https://img.shields.io/badge/CSS-1572B6?logo=css3&logoColor=fff)](#) ',
         'dart': '[![Dart](https://img.shields.io/badge/Dart-%230175C2.svg?logo=dart&logoColor=white)](#) ',
         'elixir': '[![Elixir](https://img.shields.io/badge/Elixir-%234B275F.svg?&logo=elixir&logoColor=white)](#) ',

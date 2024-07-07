@@ -60,12 +60,6 @@ For help information, such as what commands do and/or accept, run `mdb help` in 
 `mdb copy [category] [badgeName]` | Copies a badges' code to the clipboard. | `c` | Only supports copying Markdown version.
 `mdb badges` | Opens a link to the badge list in your browser. | `list` | N/A
 `mdb add [category] [badgeName] [fileName]` | Allows you to add a badge to a Markdown file. | N/A | Only supports Markdown versions of badges. Works in subdirectories, as long as the file path is correct.
-
-# Miscellaneous Commands
-
-|   Command      |    Description    |     Aliases      | Additional Information |
-|----------|-----------|---------------------------|--------|
-`mdb about` | Displays general information about the package. | `abt` | Also shows links to various important places and information like the current amount of badges.
 `mdb documentation` | Opens a link to the documentation in your browser. | `docs` | N/A
 `mdb changelog` | Opens a link to the latest release with it's changelogs in your browser. | `release` | N/A
 
@@ -94,7 +88,6 @@ Framework | framework
 Game Engine | game-engine
 Gaming Storefront | game-stores
 Jobs | jobs
-Office | office
 Operating System | os
 Package Manager | package-manager
 Payment | payment

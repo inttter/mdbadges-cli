@@ -396,53 +396,6 @@ program
     }
   });
 
-// About/Info Command
-program
-  .command('about')
-  .alias('abt')
-  .description('display general information about the package')
-  .action(async () => {
-    async function displayAboutInfo() {
-      try {
-        const response = await axios.get(`https://registry.npmjs.org/${packageName}`);
-        const latestVersion = response.data['dist-tags'].latest;
-
-        // counts the number of badges and saves it in numOfBadges
-        let numOfBadges = 0;
-        Object.values(badges).forEach(category => {
-          numOfBadges += Object.keys(category).length;
-        });
-
-        console.log(c.green.bold('\n                    _  _                 _                                 _  _ '));
-        console.log(c.green.bold('                    | || |               | |                               | |(_) '));
-        console.log(c.green.bold('      _ __ ___    __| || |__    __ _   __| |  __ _   ___  ___  ______  ___ | | _ '));
-        console.log(c.green.bold('     | \'_ ` _ \\  / _` || \'_ \\  / _` | / _` | / _` | / _ \\/ __||______|/ __|| || |'));
-        console.log(c.green.bold('     | | | | | || (_| || |_) || (_| || (_| || (_| ||  __/\\__ \\       | (__ | || |'));
-        console.log(c.green.bold('     |_| |_| |_| \\__,_||_.__/  \\__,_| \\__,_| \\__, | \\___||___/        \\___||_||_|'));
-        console.log(c.green.bold('                                              __/ |                              '));
-        console.log(c.green.bold('                                             |___/                               \n'));
-        console.log(c.blue.bold('An extensive CLI tool to find Shields.io badges without needing to leaving the terminal.'));    
-        console.log(c.blue.bold('                               https://mdbcli.xyz                            \n'));
-        console.log(c.yellow(`${c.yellow.bold.underline('Latest:')} ${latestVersion}`));
-
-        console.log(c.yellow(`Badges Available: ${c.yellow.bold(numOfBadges)}\n`));
-
-        console.log(c.blue(`• ${c.cyan.bold('mdb help')} to view the available list of commands`));
-        console.log(c.blue(`• ${c.cyan.bold('mdb changelog')} to view the latest release`));
-        console.log(c.blue(`• ${c.cyan.bold('mdb docs')} to view the documentation\n`))
-
-        console.log(c.blue(`• Issues: ${c.blue.bold.underline(`https://github.com/inttter/${packageName}/issues`)}`));
-        console.log(c.blue(`• Contribute: ${c.blue.bold.underline(`https://github.com/inttter/${packageName}/blob/main/CONTRIBUTING.md`)}`));
-        console.log(c.blue(`• License: ${c.blue.underline.bold(`https://github.com/inttter/${packageName}/blob/main/LICENSE`)}`));
-      } catch (error) {
-        consola.error(new Error(c.red(`An error occurred when fetching the latest version: ${error.message}`)));
-      }
-    }
-
-    // Call the function
-    await displayAboutInfo();
-  });
-
 /// Random Badge Command
 program
   .command('random')

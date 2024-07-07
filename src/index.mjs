@@ -231,6 +231,7 @@ program
   .command('search')
   .alias('s')
   .alias('find')
+  .alias('lookup')
   .description('search for badges across any category')
   .action(async () => {
     let continueSearch = true;

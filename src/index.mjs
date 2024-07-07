@@ -18,7 +18,7 @@ const packageName = 'mdbadges-cli'
 
 // Main Command
 program
-  .name('mdb') // name = prefix
+  .name('mdb')
   .arguments('[category] [badgeNames...]')
   .usage('[category] [badgeName] [--option]')
   .option('--html', 'toggle HTML version of a badge')
@@ -26,6 +26,7 @@ program
   .option('--link', 'toggle links in a badge')
   .action(async (category, badgeNames = [], options) => {
     const categoryData = badges[utils.searchCategory(category)];
+    const styles = ['flat', 'flat-square', 'plastic', 'social', 'for-the-badge'];
 
     if (categoryData) {
       console.log();
@@ -134,6 +135,15 @@ program
               if (options.style) {
                 styleOption = `&style=${options.style}`;
               }
+
+              if (options.style) {
+                if (styles.includes(options.style)) {
+                  styleOption = `&style=${options.style}`;
+                } else {
+                  consola.warn(c.yellow(`An invalid style was detected.`));
+                  console.log(c.yellow(`       Available styles are ${c.magenta.bold(styles.join(', '))}\n`));
+                }
+              }
       
               // if --link is specified, ppend the <a> tags
               let htmlBadge;
@@ -150,7 +160,6 @@ program
             // --style
             if (options.style) {
                 // provided style must match one of these styles
-                const styles = ['flat', 'flat-square', 'plastic', 'social', 'for-the-badge'];
                 if (styles.includes(options.style)) {
                     let badgeStyle = '';
                     badgeStyle = options.style;

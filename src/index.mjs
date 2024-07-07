@@ -9,6 +9,7 @@ import { consola } from 'consola';
 import { confirm, select, text, outro } from '@clack/prompts';
 import clipboardy from 'clipboardy';
 import fs from 'fs';
+import Fuse from 'fuse.js';
 import open from 'open';
 import ora from 'ora';
 import { program } from 'commander';
@@ -77,34 +78,39 @@ program
           consola.error(c.red(`'${utils.formatBadgeName(badgeName)}' is not a valid badge.`));
           console.log(c.cyan(`Try running ${c.magenta.bold('mdb search')} to look for a badge.\n`));
           
-          const similarBadges = Object.keys(categoryData).filter(key =>
-            key.toLowerCase().includes(badgeName.toLowerCase())
-          );
+         const fuseOptions = {
+          keys: ['name'],
+          threshold: 0.3,
+        };
 
-          // prompt for similar badges in the same category if it cant find the badge
-          if (similarBadges.length > 0) {
-            const selectedBadge = await select({
-              message: c.cyan('Did you mean one of these badges instead?'),
-              options: [
-                ...similarBadges.map(similarBadge => ({
-                  label: similarBadge,
-                  value: (categoryData[similarBadge]),
-                })),
-                { label: 'None of these', value: 'none' },
-              ],
-            });
-            
-            await utils.checkCancellation(selectedBadge)
+        const fuse = new Fuse(Object.keys(categoryData).map(key => ({
+          name: key,
+          value: categoryData[key],
+        })), fuseOptions);
 
-            if (selectedBadge === 'none') {
-              process.exit(0);
-            } else {
-              console.log(c.green.bold('\nBadge found:'));
-              console.log(c.hex('#FFBF00').bold(`${selectedBadge}\n`));
-            }
+        const similarBadges = fuse.search(badgeName).map(result => ({
+          label: utils.formatBadgeName(result.item.name),
+          value: result.item.value,
+        }));
+
+        if (similarBadges.length > 0) {
+          const selectedBadge = await select({
+            message: c.cyan('Did you mean one of these badges instead?'),
+            options: [
+              ...similarBadges,
+              { label: 'None of these', value: 'none' },
+            ],
+          });
+
+          if (selectedBadge !== 'none') {
+            console.log(c.green.bold('\nBadge found:'));
+            console.log(c.hex('#FFBF00').bold(`${selectedBadge}\n`));
+          } else {
+            process.exit(0);
           }
         }
       }
+    }
 
       if (badgesFound) {
         console.log(c.green.bold('Badge found:'));

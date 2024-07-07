@@ -2,7 +2,6 @@
 
 // shebang: https://github.com/nodejs/node/issues/51347#issuecomment-1893074523
 
-import axios from 'axios';
 import badges from './badges.mjs';
 import c from 'chalk';
 import cliSpinners from 'cli-spinners';
@@ -234,6 +233,7 @@ program
   .alias('lookup')
   .description('search for badges across any category')
   .action(async () => {
+    const fuse = utils.getFuseInstance(badges);
     let continueSearch = true;
 
     while (continueSearch) {
@@ -249,27 +249,15 @@ program
 
       await utils.checkCancellation(keyword);
 
-      const badgeChoices = [];
-      let badgesFound = false;
-
-      Object.keys(badges).forEach((category) => {
-        const categoryData = badges[category];
-        Object.keys(categoryData).forEach((badgeName) => {
-          if (badgeName.toLowerCase().includes(keyword.toLowerCase())) {
-            const formattedCategory = utils.formatCategoryName(category);
-            const formattedBadge = utils.formatBadgeName(badgeName);
-            badgeChoices.push({
-              name: `${c.hex('#FFBF00')(formattedBadge)} in ${c.dim(formattedCategory)}`,
-              value: categoryData[badgeName], // stores the badge code as the value
-            });
-            badgesFound = true;
-          }
-        });
-      });
-
-      if (!badgesFound) {
+      const results = utils.searchBadges(fuse, keyword);
+      if (results.length === 0) {
         consola.error(c.red(`No badges containing '${keyword}' could be found.`));
       } else {
+        const badgeChoices = results.map(({ item }) => ({
+          name: `${c.hex('#FFBF00')(item.formattedBadge)} in ${c.dim(item.formattedCategory)}`,
+          value: item.badgeCode,
+        }));
+
         const selectedBadge = await select({
           message: c.cyan.bold('Select a badge:'),
           options: badgeChoices.map(badge => ({
@@ -285,7 +273,7 @@ program
 
       continueSearch = await confirm({
         message: c.cyan('Would you like to search for another badge?'),
-        initial: true
+        initial: true,
       });
 
       await utils.checkCancellation(continueSearch);

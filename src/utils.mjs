@@ -1,3 +1,4 @@
+import Fuse from 'fuse.js';
 import { cancel, isCancel } from '@clack/prompts';
 
 function formatCategoryName(category) {
@@ -55,4 +56,25 @@ async function checkCancellation(input, cancelMessage = 'Exiting because `CTRL+C
   }
 }
 
-export { formatCategoryName, searchCategory, formatBadgeName, escapeHtml, isValidURL, checkCancellation }
+function getFuseInstance(badges) {
+  const formattedBadges = Object.keys(badges).flatMap(category =>
+    Object.keys(badges[category]).map(badgeName => ({
+      category,
+      badgeName,
+      formattedCategory: formatCategoryName(category),
+      formattedBadge: formatBadgeName(badgeName),
+      badgeCode: badges[category][badgeName],
+    }))
+  );
+
+  return new Fuse(formattedBadges, {
+    keys: ['badgeName'],
+    threshold: 0.3,
+  });
+}
+
+function searchBadges(fuse, keyword) {
+  return fuse.search(keyword);
+}
+
+export { formatCategoryName, searchCategory, formatBadgeName, escapeHtml, isValidURL, checkCancellation, getFuseInstance, searchBadges };

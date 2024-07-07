@@ -102,6 +102,8 @@ program
             ],
           });
 
+          await utils.checkCancellation(selectedBadge)
+
           if (selectedBadge !== 'none') {
             console.log(c.green.bold('\nBadge found:'));
             console.log(c.hex('#FFBF00').bold(`${selectedBadge}\n`));

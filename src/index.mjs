@@ -238,6 +238,12 @@ program
     while (continueSearch) {
       const keyword = await text({
         message: c.cyan.bold('Enter a keyword to search for:'),
+        validate: (value) => {
+          if (!value.trim()) {
+            return c.dim('You must enter a keyword.');
+          }
+          return;
+        },
       });
 
       await utils.checkCancellation(keyword);

@@ -141,19 +141,15 @@ program
               // for when --style and --html are used together
               let styleOption = '';
               if (options.style) {
-                styleOption = `&style=${options.style}`;
-              }
-
-              if (options.style) {
                 if (styles.includes(options.style)) {
                   styleOption = `&style=${options.style}`;
                 } else {
-                  consola.warn(c.yellow(`An invalid style was detected.`));
+                  consola.warn(c.yellow(`An invalid style was detected. The badge will default to using ${c.magenta.bold('flat')}.`));
                   console.log(c.yellow(`       Available styles are ${c.magenta.bold(styles.join(', '))}\n`));
                 }
               }
       
-              // if --link is specified, ppend the <a> tags
+              // if --link is specified, append the <a> tags
               let htmlBadge;
               if (options.link && links[index]) {
                 htmlBadge = `<a href="${utils.escapeHtml(links[index])}">\n  <img src="${badgeLink}${styleOption}" alt="${utils.escapeHtml(htmlBadgeAlt)}">\n</a>`;

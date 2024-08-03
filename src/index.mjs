@@ -60,59 +60,62 @@ program
 
             const linkResponse = await text({
               message: linkMessage,
-              validate: input => {
-                if (!utils.isValidURL(input)) {
-                  return c.dim('Enter a valid link.');
-                }
-                return;
-              }
+              validate: input => utils.isValidURL(input) ? undefined : c.dim('Enter a valid link.'),
             });
 
-            await utils.checkCancellation(linkResponse)
+            // Slightly space out badge and prompt
+            console.log();
+
+            await utils.checkCancellation(linkResponse);
 
             link = linkResponse;
             links.push(link);
           }
         } else {
-          // don't use new Error() here
           consola.error(c.red(`'${utils.formatBadgeName(badgeName)}' is not a valid badge.`));
           console.log(c.cyan(`Try running ${c.magenta.bold('mdb search')} to look for a badge.\n`));
           
-         const fuseOptions = {
-          keys: ['name'],
-          threshold: 0.3,
-        };
+          const fuseOptions = {
+            keys: ['name'],
+            threshold: 0.3,
+          };
 
-        const fuse = new Fuse(Object.keys(categoryData).map(key => ({
-          name: key,
-          value: categoryData[key],
-        })), fuseOptions);
+          const fuse = new Fuse(Object.keys(categoryData).map(key => ({
+            name: key,
+            value: categoryData[key],
+          })), fuseOptions);
 
-        const similarBadges = fuse.search(badgeName).map(result => ({
-          label: utils.formatBadgeName(result.item.name),
-          value: result.item.value,
-        }));
+          const similarBadges = fuse.search(badgeName).map(result => ({
+            label: utils.formatBadgeName(result.item.name),
+            value: result.item.value,
+          }));
 
-        if (similarBadges.length > 0) {
-          const selectedBadge = await select({
-            message: c.cyan('Did you mean one of these badges instead?'),
-            options: [
-              ...similarBadges,
-              { label: 'None of these', value: 'none' },
-            ],
-          });
+          if (similarBadges.length > 0) {
+            const selectedBadge = await select({
+              message: c.cyan('Did you mean one of these badges instead?'),
+              options: [
+                ...similarBadges,
+                { label: 'None of these', value: 'none' },
+              ],
+            });
 
-          await utils.checkCancellation(selectedBadge)
+            await utils.checkCancellation(selectedBadge);
 
-          if (selectedBadge !== 'none') {
-            console.log(c.green.bold('\nBadge found:'));
-            console.log(c.hex('#FFBF00').bold(`${selectedBadge}\n`));
-          } else {
-            process.exit(0);
+            if (selectedBadge !== 'none') {
+              const styleOption = options.style && styles.includes(options.style) ? options.style : '';
+              const { badgeMarkdown, htmlBadge } = utils.formatBadge(selectedBadge, styleOption, options.link ? links[badgeNames.indexOf(selectedBadge)] : '');
+
+              if (options.html) {
+                console.log(c.hex('#FFBF00').bold(`${htmlBadge}\n`));
+              } else {
+                console.log(c.hex('#FFBF00').bold(`${badgeMarkdown}\n`));
+              }
+            } else {
+              process.exit(0);
+            }
           }
         }
       }
-    }
 
       if (badgesFound) {
         console.log(c.green.bold('Badge found:'));
@@ -127,64 +130,29 @@ program
         const badge = categoryData[foundBadge];
       
         if (badge) {
-          // --html
-          if (options.html) {
-            // extracts the badge link and its name
-            const badgeLinkMatch = badge.match(/\(([^)]+)\)/);
-            const badgeAltMatch = badge.match(/\[([^)]+)\]/);
-      
-            if (badgeLinkMatch && badgeAltMatch) {
-              const badgeLink = badgeLinkMatch[1];
-              const badgeAlt = badgeAltMatch[1];
-              const htmlBadgeAlt = badgeAlt.replace(/^!\[/, ''); // strips the '![' from the alt text
-              
-              // for when --style and --html are used together
-              let styleOption = '';
-              if (options.style) {
-                if (styles.includes(options.style)) {
-                  styleOption = `&style=${options.style}`;
-                } else {
-                  consola.warn(c.yellow(`An invalid style was detected. The badge will default to using ${c.magenta.bold('flat')}.`));
-                  console.log(c.yellow(`       Available styles are ${c.magenta.bold(styles.join(', '))}\n`));
-                }
-              }
-      
-              // if --link is specified, append the <a> tags
-              let htmlBadge;
-              if (options.link && links[index]) {
-                htmlBadge = `<a href="${utils.escapeHtml(links[index])}">\n  <img src="${badgeLink}${styleOption}" alt="${utils.escapeHtml(htmlBadgeAlt)}">\n</a>`;
-              } else {
-                htmlBadge = `<img src="${badgeLink}${styleOption}" alt="${utils.escapeHtml(htmlBadgeAlt)}">`;
-              }
-              console.log(c.hex('#FFBF00').bold(`${htmlBadge}\n`));
+          let styleOption = '';
+          if (options.style) {
+            if (styles.includes(options.style)) {
+              styleOption = options.style;
             } else {
-              consola.error(new Error(c.red('Could not extract the badge link or alt text.')));
+              consola.warn(c.yellow(`An invalid style was detected.`));
+              console.log(c.yellow(`       Available styles are ${c.magenta.bold(styles.join(', '))}\n`));
             }
+          }
+
+          const { badgeMarkdown, htmlBadge } = utils.formatBadge(badge, styleOption, options.link ? links[index] : '');
+
+          if (options.html) {
+            // HTML
+            console.log(c.hex('#FFBF00').bold(`${htmlBadge}\n`));
           } else {
-            // --style
-            if (options.style) {
-                // provided style must match one of these styles
-                if (styles.includes(options.style)) {
-                    let badgeStyle = '';
-                    badgeStyle = options.style;
-                } else {
-                    consola.warn(c.yellow(`An invalid style was detected.`));
-                    console.log(c.yellow(`       Available styles are ${c.magenta.bold(styles.join(', '))}\n`))
-                }
-            }
-            const styleOption = options.style ? `&style=${options.style}` : '';
-            const badgeLink = badge.match(/\(([^)]+)\)/)[1];
-            const badgeAlt = badge.match(/\[([^)]+)\]/)[1];
-            const link = links[index] ? utils.escapeHtml(links[index]) : '#'; // use '#' if link is not provided
-        
-            const badgeMarkdown = `[${badgeAlt}](${badgeLink}${styleOption})](${link})`;
-        
+            // Markdown
             console.log(c.hex('#FFBF00').bold(`${badgeMarkdown}\n`));
           }
         }
       }
     } else {
-      // LookS for the badge in all categories to suggest the correct category
+      // Looks for the badge in all categories to suggest the correct category
       let badgeFoundInOtherCategory = false;
       let correctCategory = '';
       let foundBadgeName = '';
@@ -200,12 +168,12 @@ program
         }
       }
 
-      // suggests the correct command to run if [badgeName] is valid but [category] is not
+      // Suggests the correct command to run if [badgeName] is valid but [category] is not
       if (badgeFoundInOtherCategory) {
         consola.error(c.red(`The specified category could not be found, but '${c.red.bold(utils.formatBadgeName(foundBadgeName))}' is a valid badge in the '${c.red.bold(utils.formatCategoryName(correctCategory))}' category.`));
         console.log(c.cyan(`Run ${c.magenta.bold(`mdb ${correctCategory} ${foundBadgeName}`)} to get the correct badge code.\n`));
       } else {
-        // if neither [category] or [badgeName] is valid
+        // If neither [category] nor [badgeName] is valid
         consola.error(c.red(`The specified badge and category could not be found.`));
         console.log(c.cyan(`Visit ${c.magenta.bold('https://mdbcli.xyz/categories')} for a list of available categories.`));
         console.log(c.cyan(`You can also run ${c.magenta.bold('mdb search')} to directly search for a badge.`));
@@ -304,7 +272,7 @@ program
         message: c.cyan.bold('Enter the alt text for the badge:')
       });
 
-      await utils.checkCancellation(alt)
+      await utils.checkCancellation(alt);
 
       let name = await text({
         message: c.cyan.bold('Enter the text you would like to display on the badge:'),
@@ -333,7 +301,7 @@ program
         },
       });
 
-      await utils.checkCancellation(color)
+      await utils.checkCancellation(color);
 
       const logo = await text({
         message: c.cyan.bold('Enter the logo to be displayed on the badge:'),
@@ -345,7 +313,7 @@ program
         },
       });
 
-      await utils.checkCancellation(logo)
+      await utils.checkCancellation(logo);
 
       const logoColor = await text({
         message: c.cyan.bold('Enter the color for the logo:'),
@@ -357,7 +325,7 @@ program
         },
       });
 
-      await utils.checkCancellation(logoColor)
+      await utils.checkCancellation(logoColor);
 
       const style = await select({
         message: c.cyan.bold('Choose the style of the badge:'),
@@ -370,13 +338,13 @@ program
         ],
       });
 
-      await utils.checkCancellation(style)
+      await utils.checkCancellation(style);
 
       const link = await text({
         message: c.cyan.bold('[Optional] - Enter the URL to redirect to when the badge is clicked:'),
       });
 
-      await utils.checkCancellation(link)
+      await utils.checkCancellation(link);
 
       let badgeLink = `https://img.shields.io/badge/${name}-${encodeURIComponent(color)}?logo=${encodeURIComponent(logo)}&style=${encodeURIComponent(style)}`;
 
@@ -398,7 +366,7 @@ program
     }
   });
 
-/// Random Badge Command
+// Random Badge Command
 program
   .command('random')
   .alias('r')

@@ -134,6 +134,11 @@ program
           if (options.style) {
             if (styles.includes(options.style)) {
               styleOption = options.style;
+
+              // Add warning if 'social' style is selected
+              if (styleOption === 'social') {
+                consola.warn(c.yellow(`The 'social' style may require slight adjustments to the logo color to display without issues. Make sure to check the appearance of your badge.`));
+              }
             } else {
               consola.warn(c.yellow(`An invalid style was detected.`));
               console.log(c.yellow(`       Available styles are ${c.magenta.bold(styles.join(', '))}\n`));

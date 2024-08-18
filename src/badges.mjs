@@ -8,7 +8,9 @@
 const badges = {
     'app-store': {
         'app-store': '[![App Store](https://img.shields.io/badge/App_Store-0D96F6?logo=app-store&logoColor=white)](#) ',
-        'play-store': '[![Google Play Store](https://img.shields.io/badge/Google_Play-414141?logo=google-play&logoColor=white)](#)'
+        'flathub': '[![Flathub](https://img.shields.io/badge/Flathub-000000?logo=flathub&logoColor=fff)](#) ',
+        'play-store': '[![Google Play Store](https://img.shields.io/badge/Google_Play-414141?logo=google-play&logoColor=white)](#)',
+        'snapcraft': '[![Snapcraft](https://img.shields.io/badge/Snapcraft-e95420?logo=snapcraft&logoColor=fff)](#) ',
     },
     'ai': {
         'amazon-alexa': '[![Amazon Alexa](https://img.shields.io/badge/Amazon%20Alexa-00CAFF?logo=amazonalexa&logoColor=fff)](#) ',
@@ -21,7 +23,6 @@ const badges = {
     'blog': {
         'blogger': '[![Blogger](https://img.shields.io/badge/Blogger-%23FF5722.svg?logo=blogger&logoColor=white)](#) ',
         'dev-to': '[![Dev.to](https://img.shields.io/badge/Dev.to-0A0A0A?logo=devdotto&logoColor=white)](#) ',
-        'geeks-for-geeks': '[![GeeksForGeeks](https://img.shields.io/badge/GeeksforGeeks-298D46?logo=geeksforgeeks&logoColor=white)](#) ',
         'ghost': '[![Ghost](https://img.shields.io/badge/Ghost-000?logo=ghost&logoColor=yellow)](#) ',
         'hashnode': '[![Hashnode](https://img.shields.io/badge/Hashnode-2962FF?logo=hashnode&logoColor=white)](#) ',
         'medium': '[![Medium](https://img.shields.io/badge/Medium-%23000000.svg?logo=medium&logoColor=white)](#) ',
@@ -48,6 +49,7 @@ const badges = {
         'bamboo': '[![Bamboo](https://img.shields.io/badge/Bamboo-0052CC?logo=bamboo&logoColor=fff)](#) ',
         'bitbucket-pipelines': '[![Bitbucket Pipelines](https://img.shields.io/badge/Bitbucket_Pipelines-0052CC?logo=bitbucket&logoColor=white)](#) ',
         'circleci': '[![CircleCI](https://img.shields.io/badge/CircleCI-343434?logo=circleci&logoColor=fff)](#) ',
+        'codemagic': '[![Codemagic](https://img.shields.io/badge/Codemagic-0051FF?logo=Codemagic&logoColor=fff)](#) ',
         'dependabot': '[![Dependabot](https://img.shields.io/badge/Dependabot-025E8C?logo=dependabot&logoColor=fff)](#) ',
         'github-actions': '[![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?logo=github-actions&logoColor=white)](#) ',
         'gitlab-ci': '[![GitLab CI](https://img.shields.io/badge/GitLab%20CI-FC6D26?logo=gitlab&logoColor=fff)](#) ',
@@ -76,7 +78,8 @@ const badges = {
         'codacy': '[![Codacy](https://img.shields.io/badge/Codacy-222F29?logo=codacy&logoColor=fff)](#) ',
         'coveralls': '[![Coveralls](https://img.shields.io/badge/Coveralls-3F5767?logo=coveralls&logoColor=fff)](#) ',
         'sonarcloud': '[![SonarCloud](https://img.shields.io/badge/SonarCloud-F3702A?logo=sonarcloud&logoColor=fff)](#) ',
-        'snyk': '[![Snyk](https://img.shields.io/badge/Snyk-4C4A73?logo=snyk&logoColor=fff)](#) '
+        'snyk': '[![Snyk](https://img.shields.io/badge/Snyk-4C4A73?logo=snyk&logoColor=fff)](#) ',
+        'stackhawk': '[![StackHawk](https://img.shields.io/badge/StackHawk-00CBC6?logo=StackHawk&logoColor=fff)](#) '
     },
     'code-editor': {
         'codepen': '[![CodePen](https://img.shields.io/badge/CodePen-white?&logo=codepen&logoColor=black)](#) ',
@@ -189,6 +192,7 @@ const badges = {
         'coursera': '[![Coursera](https://img.shields.io/badge/Coursera-0056D2?logo=coursera&logoColor=fff)](#) ',
         'edx': '[![edX](https://img.shields.io/badge/edX-02262B?logo=edx&logoColor=fff)](#) ',
         'freecodecamp': '[![freeCodeCamp](https://img.shields.io/badge/freeCodeCamp-0A0A23?logo=freecodecamp&logoColor=fff)](#) ',
+        'geeksforgeeks': '[![GeeksForGeeks](https://img.shields.io/badge/GeeksforGeeks-298D46?logo=geeksforgeeks&logoColor=white)](#) ',
         'khan-academy': '[![Khan Academy](https://img.shields.io/badge/Khan%20Academy-14BF96?logo=khanacademy&logoColor=fff)](#) ',
         'linkedin-learning': '[![LinkedIn Learning](https://img.shields.io/badge/LinkedIn%20Learning-0A66C2?logo=linkedin&logoColor=fff)](#) ',
         'mdn-web-docs': '[![MDN Web Docs](https://img.shields.io/badge/MDN%20Web%20Docs-000?logo=mdnwebdocs&logoColor=fff)](#) ',
@@ -275,6 +279,7 @@ const badges = {
         'cryengine': '[![CryEngine](https://img.shields.io/badge/CryEngine-000?logo=cryengine&logoColor=fff)](#) ',
         'gamemaker': '[![GameMaker](https://img.shields.io/badge/GameMaker-000?logo=gamemaker&logoColor=fff)](#) ',
         'godot-engine': '[![Godot Engine](https://img.shields.io/badge/Godot-%23FFFFFF.svg?logo=godot-engine)](#) ',
+        'renpy': `[![Ren'Py](https://img.shields.io/badge/Ren'Py-FF7F7F?logo=Renpy&logoColor=fff)](#) `,
         'unreal-engine': '[![Unreal Engine](https://img.shields.io/badge/Unreal%20Engine-%23313131.svg?logo=unrealengine&logoColor=white)](#) ',
         'unity': '[![Unity](https://img.shields.io/badge/Unity-%23000000.svg?logo=unity&logoColor=white)](#) '
     },

@@ -65,23 +65,31 @@ You should also aim to keep command names, descriptions, and aliases **concise a
 
 # Adding Badges
 
-### ⚠️ Disclaimer
+<details>
+  <summary><strong>
+  ⚠️ Disclaimer about logos in badges, click to read: ⚠️ 
+  </strong></summary>
+  
+  <br />
 
-Badges added to mdbadges-cli **must** have a valid logo in the badge:
+  Badges added to `mdbadges-cli` **must** have a valid logo associated with the badge:
 
-| ❌ Incorrect - Logo is invalid   | ✅ Correct - Logo is [valid](https://simpleicons.org/?q=neovim) |
-| -------------------------------- | ----------- |
-| `[![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?logo=visual-studio-code&logoColor=white)](#)` | `[![Neovim](https://img.shields.io/badge/Neovim-57A143?logo=neovim&logoColor=fff)](#)` |
+  | ❌ Invalid badge | ✅ [Valid](https://simpleicons.org/?q=neovim) badge |
+  | ------------------------------ | --------------------------------------------------------------- |
+  | `[![Edge](https://img.shields.io/badge/Edge-0078D7?logo=Microsoft-edge&logoColor=white)](#)` | `[![Neovim](https://img.shields.io/badge/Neovim-57A143?logo=neovim&logoColor=fff)](#)` |
+  | <div align="center">[![Edge](https://img.shields.io/badge/Edge-0078D7?logo=Microsoft-edge&logoColor=white)](#)</div> | <div align="center">[![Neovim](https://img.shields.io/badge/Neovim-57A143?logo=neovim&logoColor=fff)](#)</div> |
 
-| ❌ Incorrect - Result   | ✅ Correct - Result |
-| -------------------------------- | ----------- |
-| [![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?logo=visual-studio-code&logoColor=white)](#) | [![Neovim](https://img.shields.io/badge/Neovim-57A143?logo=neovim&logoColor=fff)](#) |
+  Before you add a badge, make sure that it has a logo associated with it on [SimpleIcons](https://simpleicons.org/).
 
-Before you add a badge, make sure that it has a logo associated with it on [SimpleIcons][]. 
+  If it does not, you can use [custom-icon-badges](https://custom-icon-badges.demolab.com/), along with a custom image (preferably in an appropriate color) and switch the URL from `https://img.shields.io` to `https://custom-icon-badges.demolab.com`, and adjust the `logo=` field to use your custom slug.
 
-If it does not, you can use [custom-icon-badges][], along with a custom image (preferably in an appropriate color) and switch the URL from `https://img.shields.io` to `https://custom-icon-badges.demolab.com`, as well as adjusting the `logo=` field to use your custom slug.
+  | Before | After |
+  | ------------------------------ | --------------------------------------------------------------- |
+  | `[![C#](https://img.shields.io/badge/C%23-%23239120.svg?logo=csharp&logoColor=white)](#)` | `[![C#](https://custom-icon-badges.demolab.com/badge/C%23-%23239120.svg?logo=cshrp&logoColor=white)](#)` |
+  | <div align="center">[![C#](https://img.shields.io/badge/C%23-%23239120.svg?logo=csharp&logoColor=white)](#)</div> | <div align="center">[![C#](https://custom-icon-badges.demolab.com/badge/C%23-%23239120.svg?logo=cshrp&logoColor=white)](#)</div> |
+</details>
 
-Once that is done, you have two options in terms of in what ways you can add them.
+You have two options in terms of in what ways you can add badges.
 
 ### Adding directly to JavaScript
 
@@ -168,11 +176,6 @@ For more specific instances, you can include a **scope** for the commit. A scope
 ## Questions
 
 For any questions you have, [create an issue][] and label it with the `question` label.
-
-<div align="center">
-  <img src="https://github.com/inttter/mdbadges-cli/assets/73017070/6175f030-109b-4931-aa25-7803360ce303" width="250" alt="Question Label">
-</div>
-<br>
 
 Before you ask your question, you should consider whether it has already been answered, and what haven't tried/thought about.
 

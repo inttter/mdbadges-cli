@@ -1,0 +1,28 @@
+name: Badge Request
+description: Request a badge that you would like to see be added to the current badge list.
+title: "[Badge Request]: "
+labels: ["badge request"]
+projects: ["inttter/mdbadges-cli"]
+assignees:
+  - inttter
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Before submitting this request, please make sure the badge has a logo associated with it on [SimpleIcons](https://simpleicons.org). Read [this disclaimer](https://github.com/inttter/mdbadges-cli/blob/main/CONTRIBUTING.md#adding-badges) for more. Also, make sure the badge does not **already exist** in this repository.
+  - type: input
+    id: name
+    attributes:
+      label: Badge Name
+      description: What is the name of the badge?
+      placeholder: eg. React
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: Give a short description about who/what the badge is for, such as a URL to a website.
+      placeholder: This badge is for [NAME], which/who...
+    validations:
+      required: true

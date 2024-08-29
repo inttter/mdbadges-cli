@@ -1,32 +1,36 @@
 import badges from '../src/badges.mjs';
 
-// Test to validate that all badges are in the right format of:
-// [![Badge Name](Badge Link)](#)]
+// NOTE: All badges are in the right format of:
+// [![Badge Name](Badge Link)](#)
+// Example: [![App Store](https://img.shields.io/badge/App_Store-0D96F6?logo=app-store&logoColor=white)](#)
 
 describe('All badges display correctly', () => {
   for (const [category, badgesInCategory] of Object.entries(badges)) {
     describe(`category: ${category}`, () => {
       for (const [badgeKey, badgeValue] of Object.entries(badgesInCategory)) {
         test(`${badgeKey} badge displays correctly`, () => {
-          // checks if badge is defined
+          // Checks if the badge is defined
           expect(badgeValue).toBeDefined();
 
-          // extracts badge name from badge value
+          // Extract the badge name from badge value
           const badgeNameMatch = badgeValue.match(/\[!\[([^\]]+)\]/);
           expect(badgeNameMatch).toBeDefined();
 
           const badgeName = badgeNameMatch[1];
 
-          // extracts badge URL from badge value
+          // Extract the badge URL from the badge's value
           const badgeUrlMatch = badgeValue.match(/\((https:\/\/[^\)]+)\)/);
           expect(badgeUrlMatch).toBeDefined();
 
           const badgeUrl = badgeUrlMatch[1];
 
-          // escape special characters in the badge name
+          // Check if the URL contains '/badge/'
+          expect(badgeUrl.includes('/badge/')).toBe(true);
+
+          // Escape special characters in the badge name
           const escapedBadgeName = badgeName.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, '\\$1');
           
-          // escape special characters in the badge URL
+          // Escape special characters in the badge URL
           const escapedBadgeUrl = badgeUrl.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, '\\$1');
 
           const expectedRegex = new RegExp(
@@ -35,7 +39,7 @@ describe('All badges display correctly', () => {
 
           const cleanedBadgeValue = badgeValue.replace(/\)\)$/, ')');
 
-          // verifies that the badge matches the correct format
+          // Verifies that a badge matches the correct format of the regex
           expect(cleanedBadgeValue).toMatch(expectedRegex);
         });
       }

@@ -18,7 +18,7 @@ npm install -g mdbadges-cli
 ```
 
 [![Release Workflow](https://img.shields.io/github/actions/workflow/status/inttter/mdbadges-cli/test.yml?branch=main&colorA=18181B&colorB=07B0D1&logo=github&logoColor=959DA5&label=Release)][Release Workflow]
-[![Tests](https://img.shields.io/github/actions/workflow/status/inttter/mdbadges-cli/test.yml?branch=main&colorA=18181B&colorB=07B0D1&logo=github&logoColor=959DA5&label=Tests)][Tests Workflow]
+[![CI](https://img.shields.io/github/actions/workflow/status/inttter/mdbadges-cli/test.yml?branch=main&colorA=18181B&colorB=07B0D1&logo=github&logoColor=959DA5&label=CI)][CI Workflow]
 
 # Getting Started
 
@@ -47,7 +47,7 @@ mdb social discord --style plastic
 > [!TIP]
 > If you are using Visual Studio Code, install the [Image Preview][] extension. You can hover over the badge link to see a preview of it. See an example [here](https://github.com/inttter/mdbadges-cli/assets/73017070/f39fc296-25c8-4a2a-846a-cf83eff00cc4).
 
-For help information, such as what commands do or what arguements they accept, run `mdb help`. Alternatively, you can read the [documentation][].
+For help information, such as what commands do or what arguments they accept, run `mdb help`. Alternatively, you can read the [documentation][].
 
 # Commands
 
@@ -73,11 +73,12 @@ This contains the categories that are currently available, with the names and sy
 | Artificial Intelligence | ai               |
 | Blog                    | blog             |
 | Browser                 | browser          |
+| CI                      | ci               |
+| Cloud                   | cloud            |
 | Code Coverage           | code-coverage    |
 | Code Editor             | code-editor      |
-| Cloud                   | cloud            |
 | Collaboration           | collaboration    |
-| Crypto                  | crypto           |
+| Cryptocurrency          | crypto           |
 | Database                | database         |
 | Design                  | design           |
 | Delivery                | delivery         |
@@ -86,20 +87,20 @@ This contains the categories that are currently available, with the names and sy
 | Funding                 | funding          |
 | Framework               | framework        |
 | Game Engine             | game-engine      |
-| Gaming Storefront       | game-stores      |
+| Gaming Storefront       | game-store       |
 | Jobs                    | jobs             |
 | Operating System        | os               |
 | Package Manager         | package-manager  |
 | Payment                 | payment          |
 | Programming Language    | programming      |
-| Restaurant              | restaurant       |
 | Review                  | review           |
 | Search Engine           | search-engine    |
 | Social Media            | social           |
 | Sound                   | sound            |
 | Static Site             | static-site      |
 | Storage                 | storage          |
-| Video Streaming         | video-streaming  |
+| Streaming               | streaming        |
+| Version Control         | version-control  |
 | Virtual Reality         | vr               |
 
 # Contributing
@@ -108,9 +109,11 @@ If you would like to contribute, please ensure to read the [contributing guideli
 
 # License 
 
-**©** 2024 · Licensed under the [MIT License][]
+**©** 2024 · Licensed under the [MIT License][].
 
 <!-- Link Definitions -->
+
+[CI Workflow]: https://github.com/inttter/mdbadges-cli/actions/workflows/publish.yml
 [contributing guidelines]: https://github.com/inttter/mdbadges-cli/blob/main/CONTRIBUTING.md
 [documentation]: https://docs.mdbcli.xyz/
 [Image Preview]: https://marketplace.visualstudio.com/items?itemName=kisstkondoros.vscode-gutter-preview
@@ -118,4 +121,3 @@ If you would like to contribute, please ensure to read the [contributing guideli
 [npm]: https://www.npmjs.com/package/mdbadges-cli/
 [Release Workflow]: https://github.com/inttter/mdbadges-cli/actions/workflows/publish.yml
 [Releases]: https://github.com/inttter/mdbadges-cli/releases/latest
-[Tests Workflow]: https://github.com/inttter/mdbadges-cli/actions/workflows/test.yml

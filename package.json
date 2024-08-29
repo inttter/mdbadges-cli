@@ -1,6 +1,6 @@
 {
   "name": "mdbadges-cli",
-  "version": "6.5.1",
+  "version": "6.5.2",
   "author": "Inter",
   "license": "MIT",
   "description": "An extensive CLI tool to find over 400+ Shields.io badges for your projects.",
@@ -11,7 +11,8 @@
     "shieldsio",
     "shields.io",
     "github",
-    "readme"
+    "readme",
+    "social"
   ],
   "engines": {
     "node": ">=18"
@@ -43,7 +44,7 @@
     "consola": "^3.2.3",
     "fuse.js": "^7.0.0",
     "open": "^10.1.0",
-    "ora": "^8.0.1"
+    "ora": "^8.1.0"
   },
   "devDependencies": {
     "jest": "^29.7.0"

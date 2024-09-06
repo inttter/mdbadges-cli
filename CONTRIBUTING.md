@@ -41,55 +41,41 @@ You can now create a pull request with your changes.
 
 # Commands
 
-mdbadges-cli uses [Commander][] for its commands. In order to add a new command, follow the steps outlined below:
+mdbadges-cli uses [Commander][] for commands. In order to add a new command, follow the steps outlined below:
 
 **1.** Navigate to the [main file][index.js] where all of the commands are stored in.
 
-**2.** Define the new command, specifying its name, aliases _(optional)_, a brief description of its purpose, and the command logic itself.
+**2.** Define the new command, specifying its **name**, **aliases** (optional), a brief **description** of its purpose, and the command logic itself.
 
-```javascript
-// An example command
+```js
 program
   .command('example')
   .alias('eg')
-  .description('an example command for the docs!')
+  .alias('ex')
+  .description('An example description for the docs.')
   .action(() => {
-    // ...do something
-    console.log(c.green("This is an example!"));
+    // ...put your command logic here...
+    console.log(c.cyan('Something happened here.'));
   });
 ```
 
-Generally, you should stick to single-word command names without spaces. For example: instead of *'search-badges'*, do *'search'*.
+Generally, you should stick to single-word command names without spaces. For example, instead of naming the command **'command-name'**, name it **'command'**.
 
-You should also aim to keep command names, descriptions, and aliases **concise and descriptive** to avoid any confusion.
+Aim to keep command names and descriptions **concise and descriptive** to avoid any confusion to users.
 
 # Adding Badges
 
-<details>
-  <summary><strong>
-  ⚠️ Disclaimer about logos in badges, click to read: ⚠️ 
-  </strong></summary>
-  
-  <br />
+Before you contribute a new badge, make sure that you have checked for the following:
 
-  Badges added to `mdbadges-cli` **must** have a valid logo associated with the badge:
+* Badge is not a **duplicate**
+* Badge is in the **correct category**
+* Badge is listed in the category in **alphabetical order**
+* Badge image appears **without any issues**
+* Badge code works **without any issues**
+* [Badge has a **logo**](https://github.com/inttter/md-badges/blob/main/CONTRIBUTING.md#user-content-fn-1-7455704da16e59664b2a5ce032cc704a)
+* Badge follows the **correct format**
 
-  | ❌ Invalid badge | ✅ [Valid](https://simpleicons.org/?q=neovim) badge |
-  | ------------------------------ | --------------------------------------------------------------- |
-  | `[![Edge](https://img.shields.io/badge/Edge-0078D7?logo=Microsoft-edge&logoColor=white)](#)` | `[![Neovim](https://img.shields.io/badge/Neovim-57A143?logo=neovim&logoColor=fff)](#)` |
-  | <div align="center">[![Edge](https://img.shields.io/badge/Edge-0078D7?logo=Microsoft-edge&logoColor=white)](#)</div> | <div align="center">[![Neovim](https://img.shields.io/badge/Neovim-57A143?logo=neovim&logoColor=fff)](#)</div> |
-
-  Before you add a badge, make sure that it has a logo associated with it on [SimpleIcons](https://simpleicons.org/).
-
-  If it does not, you can use [custom-icon-badges](https://custom-icon-badges.demolab.com/), along with a custom image (preferably in an appropriate color) and switch the URL from `https://img.shields.io` to `https://custom-icon-badges.demolab.com`, and adjust the `logo=` field to use your custom slug.
-
-  | Before | After |
-  | ------------------------------ | --------------------------------------------------------------- |
-  | `[![C#](https://img.shields.io/badge/C%23-%23239120.svg?logo=csharp&logoColor=white)](#)` | `[![C#](https://custom-icon-badges.demolab.com/badge/C%23-%23239120.svg?logo=cshrp&logoColor=white)](#)` |
-  | <div align="center">[![C#](https://img.shields.io/badge/C%23-%23239120.svg?logo=csharp&logoColor=white)](#)</div> | <div align="center">[![C#](https://custom-icon-badges.demolab.com/badge/C%23-%23239120.svg?logo=cshrp&logoColor=white)](#)</div> |
-</details>
-
-You have two options in terms of in what ways you can add badges.
+Once you have verified all of the above, you have two ways that you can add badges.
 
 ### Adding directly to JavaScript
 
@@ -111,7 +97,7 @@ If you want to directly add a badge into this repository, follow the steps below
 
 `[![Discord]` is the **alternate text** of the badge.
 
-`https://img.shields.io/badge/Discord-%235865F2.svg?&logo=discord&logoColor=white` is the **badge link**.
+`https://img.shields.io/badge/...` is the **badge link**.
 
 `(#)` is the URL where **users will be redirected to** when clicking on the badge. Make sure this stays as (#), and do not add your own links within this part.
 
@@ -124,17 +110,19 @@ If you want to directly add a badge into this repository, follow the steps below
 > npm run test
 > ```
 
+If you are adding a new category, ensure it the category is placed in **alphabetical order** as well, and update the [table in the README](README.md#categories) with the name and syntax of the category.
+
 ### Adding to Markdown file
 
-You can also add a badge to [md-badges][], which is a list of badges and the main source for every badge within mdbadges-cli. To add them, you can:
+You can also add a badge to [md-badges][], where every badge you can use within mdbadges-cli comes from. To add it, you can:
 
 * Navigate to the repository for md-badges via the link above.
 
 * Read the [contributing guidelines][md-badges Contributing Guidelines] before contributing.
 
-* Contribute a new badge to the md-badges repository.
+* Contribute a new badge to that repository.
 
-When badges are added to md-badges, they will be added accordingly to this package in future releases, usually within a few days of new additions.
+When badges are added to md-badges, they will be added accordingly to this package in future releases, usually within a few days or weeks of new additions.
 
 # Styling
 
@@ -145,6 +133,8 @@ In mdbadges-cli, `Chalk` is the main coloring package that is used. To use Chalk
   console.log(c.green.bold('\nBadge found:'));
   console.log(c.hex('#FFBF00').bold(`${selectedBadge}\n`));
   ```
+
+While there are no set colors you should or should not use, aim to keep consistency with the colors of other commands.
 
 # Committing
 
@@ -173,17 +163,19 @@ For more specific instances, you can include a **scope** for the commit. A scope
 🐛 fix(badges): fix incorrect GitHub badge code
 ```
 
+These commit messages will also be used in release changelogs.
+
 ## Questions
 
 For any questions you have, [create an issue][] and label it with the `question` label.
 
-Before you ask your question, you should consider whether it has already been answered, and what haven't tried/thought about.
+Before you ask your question, you should check to see whether it has already been answered, and what you haven't tried/thought about.
 
 ## Bugs/Inconsistencies
 
-If you come across any bugs, [create an issue][] to report them.
+If you come across any bugs, make an [issue report][] to report them.
 
-You should provide details on **how you encountered the issue**, any **error messages** you may have received, **screenshots** (if applicable) and, if you find one, what you believe is **a plausible fix** for the issue.
+You should provide details on **how you encountered the issue**, any **error messages** or **terminal outputs** you see, **screenshots** (if applicable) and, if you know one, what you believe is **a plausible fix** for the issue.
 
 ## License
 
@@ -197,11 +189,10 @@ By contributing, you agree that your contributions will be licensed under the [M
 [Commander]: https://www.npmjs.com/package/commander
 [Conventional Commits]: https://www.conventionalcommits.org/en/v1.0.0/
 [create an issue]: https://github.com/inttter/mdbadges-cli/issues
-[custom-icon-badges]: https://custom-icon-badges.demolab.com
 [Git]: https://git-scm.com
 [Gitmoji]: https://gitmoji.dev
 [index.js]: https://github.com/inttter/mdbadges-cli/blob/main/src/index.mjs
+[issue report]: https://github.com/inttter/mdbadges-cli/issues/new?assignees=&labels=bug&projects=inttter%2Fmdbadges-cli&template=02-issue-report.yml&title=%5BBug%5D%3A+
 [md-badges]: https://github.com/inttter/md-badges
 [md-badges Contributing Guidelines]: https://github.com/inttter/md-badges/blob/main/CONTRIBUTING.md
 [MIT License]: https://github.com/inttter/mdbadges-cli/blob/main/LICENSE
-[SimpleIcons]: https://simpleicons.org

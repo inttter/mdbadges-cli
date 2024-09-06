@@ -100,6 +100,7 @@ This contains the categories that are currently available, with the names and sy
 | Static Site             | static-site      |
 | Storage                 | storage          |
 | Streaming               | streaming        |
+| Terminal                | terminal         |
 | Version Control         | version-control  |
 | Virtual Reality         | vr               |
 

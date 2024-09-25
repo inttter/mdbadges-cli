@@ -180,10 +180,12 @@ const badges = {
         'xd': '[![Adobe XD](https://img.shields.io/badge/Adobe%20XD-470137?logo=Adobe%20XD&logoColor=#FF61F6)](#) ',
     },
     'documentation': {
+        'confluence': '[![Confluence](https://img.shields.io/badge/Confluence-172B4D?logo=confluence&logoColor=fff)](#) ',
         'docsify': '[![Docsify](https://img.shields.io/badge/Docsify-2ECE53?logo=docsify&logoColor=fff)](#) ',
         'docusaurus': '[![Docusaurus](https://img.shields.io/badge/Docusaurus-3ECC5F?logo=docusaurus&logoColor=fff)](#) ',
         'gitbook': '[![GitBook](https://img.shields.io/badge/GitBook-3884FF?logo=gitbook&logoColor=fff)](#) ',
         'mkdocs': '[![MkDocs](https://img.shields.io/badge/MkDocs-526CFE?logo=materialformkdocs&logoColor=fff)](#) ',
+        'notion': '[![Notion](https://img.shields.io/badge/Notion-000?logo=notion&logoColor=fff)](#) ',
         'readme': '[![ReadMe](https://img.shields.io/badge/ReadMe-018EF5?logo=readme&logoColor=fff)](#) ',
         'read-the-docs': '[![Read the Docs](https://img.shields.io/badge/Read%20the%20Docs-8CA1AF?logo=readthedocs&logoColor=fff)](#) ',
         'sphinx': '[![Sphinx](https://img.shields.io/badge/Sphinx-000?logo=sphinx&logoColor=fff)](#) ',

@@ -60,7 +60,7 @@ For help information, such as what commands do or what arguments they accept, ru
 `mdb copy [category] [badgeName]          ` | Copies a badges' code to the clipboard. | `c` | Supports copying Markdown version, and HTML version via `--html`.
 `mdb badges`                                | Opens a link to the badge list in your browser. | `list` |  Opens in your default browser.
 `mdb add [category] [badgeName] [fileName]` | Allows you to add a badge to a Markdown file. | None | Supports both Markdown versions of badges, and HTML versions using `--html`. Also works in subdirectories.
-`mdb documentation` | Opens a link to the documentation in your browser. | None | Opens in your default browser.
+`mdb docs` | Opens a link to the documentation in your browser. | None | Opens in your default browser.
 `mdb changelog` | Opens a link to the latest release with it's changelogs in your browser. | `release` |Opens in your default browser.
 
 # Categories

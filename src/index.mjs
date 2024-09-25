@@ -500,8 +500,7 @@ program
 
 // Documentation Command
 program
-  .command('documentation')
-  .alias('docs')
+  .command('docs')
   .description('open a link to the documentation in your browser')
   .action(async () => {
     console.log();

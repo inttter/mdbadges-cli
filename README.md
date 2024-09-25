@@ -51,17 +51,17 @@ For help information, such as what commands do or what arguments they accept, ru
 
 # Commands
 
-|   Command      |    Description    |     Aliases      | Additional Information |
-|----------------|-------------------|------------------|------------------------|
-`mdb [category] [badgeName]` | Displays badge from a specific category. | N/A | View all available options on the [documentation][].
-`mdb search` | Search for badges across any [category](#categories). | `s`, `find`, `lookup` | Select a badge to get the Markdown code for it.
-`mdb create` | Displays prompts to create your own badge. | `generate` | Both Markdown and HTML versions of your badge are given. For logo colors, only hexadecimal colors (eg. 000, #d8e, #FAF126) are supported.
-`mdb random` | Displays a random badge. | `r` | Supports both Markdown and HTML formats.
-`mdb copy [category] [badgeName]` | Copies a badges' code to the clipboard. | `c` | Only supports copying Markdown version.
-`mdb badges` | Opens a link to the badge list in your browser. | `list` | N/A
-`mdb add [category] [badgeName] [fileName]` | Allows you to add a badge to a Markdown file. | N/A | Only supports Markdown versions of badges. Works in subdirectories, as long as the file path is correct.
-`mdb documentation` | Opens a link to the documentation in your browser. | `docs` | N/A
-`mdb changelog` | Opens a link to the latest release with it's changelogs in your browser. | `release` | N/A
+|   Command                                 |    Description    |     Aliases      | Additional Information |
+|-------------------------------------------|-------------------|------------------|------------------------|
+`mdb [category] [badgeName]`                | Displays badge from a specific category. | N/A | View all available options on the [documentation][].
+`mdb search`                                | Search for badges across any [category](#categories). | `s`, `find`, `lookup` | Select a badge to get the Markdown code for it.
+`mdb create`                                | Displays prompts to create your own badge. | `generate` | Both Markdown and HTML versions of your badge are given. For logo colors, only hexadecimal colors are supported.
+`mdb random`                                | Displays a random badge. | `r` | Displays the badge in both Markdown and HTML formats.
+`mdb copy [category] [badgeName]          ` | Copies a badges' code to the clipboard. | `c` | Supports copying Markdown version, and HTML version via `--html`.
+`mdb badges`                                | Opens a link to the badge list in your browser. | `list` |  Opens in your default browser.
+`mdb add [category] [badgeName] [fileName]` | Allows you to add a badge to a Markdown file. | None | Supports both Markdown versions of badges, and HTML versions using `--html`. Also works in subdirectories.
+`mdb documentation` | Opens a link to the documentation in your browser. | None | Opens in your default browser.
+`mdb changelog` | Opens a link to the latest release with it's changelogs in your browser. | `release` |Opens in your default browser.
 
 # Categories
 

@@ -79,7 +79,6 @@ function searchBadges(fuse, keyword) {
   return fuse.search(keyword);
 }
 
-// For main command only
 function formatBadge(badge, style = '', link = '') {
   const badgeLinkMatch = badge.match(/\(([^)]+)\)/);
   const badgeAltMatch = badge.match(/\[([^\]]+)\]/);

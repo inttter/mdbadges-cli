@@ -1,9 +1,11 @@
 {
   "name": "mdbadges-cli",
-  "version": "6.7.0",
+  "version": "6.7.1",
+  "description": "An extensive CLI tool to find over 400+ Shields.io badges for your projects.",
   "author": "Inter",
   "license": "MIT",
-  "description": "An extensive CLI tool to find over 400+ Shields.io badges for your projects.",
+  "bugs": "https://github.com/inttter/mdbadges-cli/issues",
+  "homepage": "https://mdbcli.xyz",
   "keywords": [
     "markdown",
     "badges",
@@ -26,10 +28,6 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/inttter/mdbadges-cli.git"
-  },
-  "homepage": "https://mdbcli.xyz",
-  "bugs": {
-    "url": "https://github.com/inttter/mdbadges-cli/issues"
   },
   "funding": {
     "type": "github",

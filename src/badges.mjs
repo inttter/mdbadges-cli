@@ -237,7 +237,10 @@ const badges = {
         'ember': '[![Ember.js](https://img.shields.io/badge/Ember.js-E04E39?logo=emberdotjs&logoColor=fff)](#) ',
         'expo': '[![Expo](https://img.shields.io/badge/Expo-000020?logo=expo&logoColor=fff)](#) ',
         'express': '[![Express.js](https://img.shields.io/badge/Express.js-%23404d59.svg?logo=express&logoColor=%2361DAFB)](#) ',
+        'fastify': ' [![Fastify](https://img.shields.io/badge/-Fastify-000000?style=flat&logo=fastify&logoColor=white)](#) ',
+        'fastapi': '[![FastAPI](https://img.shields.io/badge/FastAPI-009485.svg?logo=fastapi&logoColor=white)](#)',
         'flask': '[![Flask](https://img.shields.io/badge/Flask-000?logo=flask&logoColor=fff)](#) ',
+        'foundry': '[![Foundry](https://custom-icon-badges.demolab.com/badge/Foundry-000?logo=foundry&logoColor=fff)](#) ',
         'flutter': '[![Flutter](https://img.shields.io/badge/Flutter-%2302569B.svg?logo=Flutter&logoColor=white)](#) ',
         'gatsby': '[![Gatsby](https://img.shields.io/badge/Gatsby-%23663399.svg?logo=gatsby&logoColor=white)](#) ',
         'helm': '[![Helm](https://img.shields.io/badge/Helm-0F1689?logo=helm&logoColor=fff)](#) ',
@@ -278,9 +281,11 @@ const badges = {
         'sveltekit': '[![SvelteKit](https://img.shields.io/badge/SvelteKit-%23f1413d.svg?logo=svelte&logoColor=white)](#) ',
         'tailwind': '[![TailwindCSS](https://img.shields.io/badge/Tailwind%20CSS-%2338B2AC.svg?logo=tailwind-css&logoColor=white)](#) ',
         'tauri': '[![Tauri](https://img.shields.io/badge/Tauri-24C8D8?logo=tauri&logoColor=fff)](#) ',
-        'three': '[![Three.js](https://img.shields.io/badge/Three.js-000?logo=threedotjs&logoColor=fff)](#) ',
+        'threejs': '[![Three.js](https://img.shields.io/badge/Three.js-000?logo=threedotjs&logoColor=fff)](#) ',
+        'viem': '[![Viem](https://custom-icon-badges.demolab.com/badge/Viem-FFC517?logo=viem-dark)](#) ',
         'vite': '[![Vite](https://img.shields.io/badge/Vite-646CFF?logo=vite&logoColor=fff)](#) ',
-        'vue': '[![Vue.js](https://img.shields.io/badge/Vue.js-4FC08D?logo=vuedotjs&logoColor=fff)](#) '
+        'vue': '[![Vue.js](https://img.shields.io/badge/Vue.js-4FC08D?logo=vuedotjs&logoColor=fff)](#) ',
+        'wagmi': '[![Wagmi](https://img.shields.io/badge/Wagmi-000?logo=wagmi&logoColor=fff)](#) '
     },
     'game-engine': {
         'amazon-lumberyard': '[![Amazon Lumberyard](https://img.shields.io/badge/Amazon%20Lumberyard-66459B?logo=amazonlumberyard&logoColor=fff)](#) ',

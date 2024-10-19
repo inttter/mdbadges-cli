@@ -15,7 +15,7 @@ import ora from 'ora';
 import { program } from 'commander';
 import * as utils from './utils.mjs';
 
-const packageName = 'mdbadges-cli'
+const packageName = 'mdbadges-cli';
 
 // Main Command
 program
@@ -180,7 +180,7 @@ program
       } else {
         // If neither [category] nor [badgeName] is valid
         consola.error(c.red(`The specified badge and category could not be found.`));
-        console.log(c.cyan(`Visit ${c.magenta.bold('https://mdbcli.xyz/categories')} for a list of available categories.`));
+        console.log(c.cyan(`Visit ${c.magenta.bold('https://github.com/inttter/mdbadges-cli?tab=readme-ov-file#categories')} for a list of available categories.`));
         console.log(c.cyan(`You can also run ${c.magenta.bold('mdb search')} to directly search for a badge.`));
       }
     }
@@ -199,15 +199,15 @@ program
       color: 'magenta',
     }).start();
 
-    const listLink = 'https://github.com/inttter/md-badges?tab=readme-ov-file#-table-of-contents'
+    const listLink = 'https://inttter.github.io/md-badges/';
 
     try {
       await open(listLink);
       spinner.succeed(c.green('Opened in your browser!'));
     } catch (error) {
       consola.error(new Error(c.red(`An error occurred when trying to open the link in your browser: ${error.message}`)));
-      console.log(c.cyan(`\n  You can visit the page by clicking on the following link instead: ${c.magenta.bold(listLink)}`))
-      spinner.stop()
+      console.log(c.cyan(`  You can visit the page by clicking on the following link instead: ${c.magenta.bold(listLink)}`));
+      spinner.stop();
     }
   });
 
@@ -467,7 +467,7 @@ program
         console.log(c.cyan(`Run ${c.magenta.bold(`mdb add ${validCategory} ${badgeName} ${filePath}`)} to add the badge to your file.\n`));
       } else {
         consola.error(c.red(`The category '${c.red.bold(category)}' could not be found.`));
-        console.log(c.cyan(`You can try visiting the syntax list for the categories here: ${c.magenta.bold('https://mdbcli.xyz/categories')}\n`));
+        console.log(c.cyan(`You can try visiting the syntax list for the categories here: ${c.magenta.bold('https://github.com/inttter/mdbadges-cli?tab=readme-ov-file#categories')}\n`));
       }
       return;
     }
@@ -517,8 +517,8 @@ program
       spinner.succeed(c.green('Opened in your browser!'));
     } catch (error) {
       consola.error(new Error(c.red(`An error occurred when trying to open the link in your browser: ${error.message}`)));
-      console.log(c.cyan(`\n  You can visit the page by clicking on the following link instead: ${c.magenta.bold(docsLink)}`))
-      spinner.stop()
+      console.log(c.cyan(`\n  You can visit the page by clicking on the following link instead: ${c.magenta.bold(docsLink)}`));
+      spinner.stop();
     }
   });
 
@@ -550,8 +550,8 @@ program
       spinner.succeed(c.green('Opened in your browser!'));
     } catch (error) {
       consola.error(new Error(c.red(`Could not open the link in your browser: ${error.message}`)));
-      console.log(c.cyan(`\n  You can visit the page by clicking on the following link instead: ${c.magenta.bold(changelogLink)}`))
-      spinner.stop()
+      console.log(c.cyan(`\n  You can visit the page by clicking on the following link instead: ${c.magenta.bold(changelogLink)}`));
+      spinner.stop();
     }
   });
 

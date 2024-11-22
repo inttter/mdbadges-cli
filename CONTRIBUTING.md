@@ -34,7 +34,7 @@ git commit -m "✨ feat: [commit message here]"
 git push
 ```
 
-> While not explicitly required, but **strongly recommended**, make sure to follow the [Conventional Commits](https://conventionalcommits.org) specification. If you would like, you can also use [Gitmoji](https://gitmoji.dev) for commit emojis.
+> While not explicitly required, it's recommended to follow the [Conventional Commits](https://conventionalcommits.org) specification for commit message. If you would like, you can also use [Gitmoji](https://gitmoji.dev) or any other emoji spec for commit emojis.
 
 You can now create a [pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request) with your changes.
 
@@ -71,7 +71,7 @@ Before you contribute a new badge, make sure that you have checked for the follo
 * Badge is listed in the category in **alphabetical order**
 * Badge image appears **without any issues**
 * Badge code works **without any issues**
-* [Badge has a **logo**](https://github.com/inttter/md-badges/blob/main/CONTRIBUTING.md#user-content-fn-1-80ec516abc1c616509a19f2183501852)
+* [Badge has a **logo**](https://github.com/inttter/md-badges/blob/main/CONTRIBUTING.md#license)
 * Badge follows the **correct format**
 
 Once you have verified all of the above, you have two ways that you can add badges.
@@ -109,7 +109,7 @@ If you want to directly add a badge into this repository, follow the steps below
 > npm run test
 > ```
 
-If you are adding a new category, ensure it the category is placed in **alphabetical order** as well, and update the [table in the README](README.md#categories) with the name and syntax of the category.
+If you are adding a new category, ensure it the category is placed in **alphabetical order** as well, and update the [category table](README.md#categories) in the README with the name and syntax of the category.
 
 ### Adding to Markdown file (md-badges)
 
@@ -133,48 +133,15 @@ In mdbadges-cli, `Chalk` is the main coloring package that is used. To use Chalk
 
 While there are no set colors you should or should not use, aim to keep consistency with colors of other commands.
 
-# Committing
-
-* mdbadges-cli uses [Conventional Commits](https://conventionalcommits.org) for commit messages, so commit messages should be in this format:
-
-    ```
-    <type>[optional scope]: <description>
-    ```
-
-* **[OPTIONAL]** For using commit emojis, add the emoji before the `<type>` in the commit message. For example:
-
-    ```
-    ✨ feat: add GitHub badge
-    ```
-    
-    You can use [Gitmoji](https://gitmoji.dev) for commit emojis, or any other emoji which you think would fit the commit message.
-
-For more specific instances, you can include a **scope** for the commit. A scope is what is in the parenthesis of a commit message. This is helpful in instances where you are making changes to a certain section of the package. See these examples below:
-
-```bash
-    # Related to releasing a new version
-🔖 chore(release): bump version to 6.0.0
-
-    # Related to a new feature in the changelog command
-✨ feat(changelog): show changelog within output
-
-    # A bug within the badge definitions which is being fixed
-🐛 fix(badges): fix incorrect GitHub badge code
-```
-
-These commit messages will also be used in release changelogs.
-
 ## Questions
 
-For any questions you have, [create an issue](https://github.com/inttter/mdbadges-cli/issues) and label it with the `question` label.
+For any questions you have, [create an issue](https://github.com/inttter/mdbadges-cli/issues/new) and label it with the `question` label.
 
 Before you ask your question, you should check to see whether it has already been answered, and what you haven't tried or thought about.
 
 ## Bugs/Inconsistencies
 
-If you come across any bugs, make an [issue report](https://github.com/inttter/mdbadges-cli/issues/new?assignees=&labels=bug&projects=inttter%2Fmdbadges-cli&template=02-issue-report.yml&title=%5BBug%5D%3A+) to report them.
-
-You should provide details on **how you encountered the issue**, any **error messages** or **terminal outputs** you see, **screenshots** (if applicable) and, if you know one, what you believe is **a plausible fix** for the issue.
+If you come across any bugs, make an issue using the [issue report](https://github.com/inttter/mdbadges-cli/issues/new?assignees=&labels=bug&projects=inttter%2Fmdbadges-cli&template=02-issue-report.yml&title=%5BBug%5D%3A+) template to report them. Make sure to fill out all **applicable** details within the issue.
 
 ## License
 

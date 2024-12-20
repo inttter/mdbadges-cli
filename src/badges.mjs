@@ -155,6 +155,13 @@ const badges = {
         'supabase': '[![Supabase](https://img.shields.io/badge/Supabase-3FCF8E?logo=supabase&logoColor=fff)](#) ',
         'teradata': '[![Teradata](https://img.shields.io/badge/Teradata-F37440?logo=teradata&logoColor=fff)](#) '
     },
+    'data-science': {
+        'chart.js': '[![Chart.js](https://img.shields.io/badge/Chart.js-FF6384?logo=chartdotjs&logoColor=fff)](#) ',
+        'etl': '[![ETL](https://custom-icon-badges.demolab.com/badge/ETL-9370DB?logo=etl-logo&logoColor=fff)](#) ',
+        'matplotlib': '[![Matplotlib](https://custom-icon-badges.demolab.com/badge/Matplotlib-71D291?logo=matplotlib&logoColor=fff)](#) ',
+        'numpy': '[![NumPy](https://img.shields.io/badge/NumPy-4DABCF?logo=numpy&logoColor=fff)](#) ',
+        'pandas': '[![Pandas](https://img.shields.io/badge/Pandas-150458?logo=pandas&logoColor=fff)](#) '
+    },
     'delivery': {
         'deliveroo': '[![Deliveroo](https://img.shields.io/badge/Deliveroo-00CCBC?logo=Deliveroo&logoColor=white)](#) ',
         'doordash': '[![Doordash](https://img.shields.io/badge/DoorDash-FF3008?logo=DoorDash&logoColor=white)](#) ',
@@ -349,6 +356,13 @@ const badges = {
         'ubuntu': '[![Ubuntu](https://img.shields.io/badge/Ubuntu-E95420?logo=ubuntu&logoColor=white)](#) ',
         'void-linux': '[![Void Linux](https://img.shields.io/badge/Void%20Linux-478061?logo=voidlinux&logoColor=fff)](#) ',
         'windows': '[![Windows](https://custom-icon-badges.demolab.com/badge/Windows-0078D6?logo=windows11&logoColor=white)](#) '
+    },
+    'orm': {
+        'drizzle': '[![Drizzle](https://img.shields.io/badge/Drizzle-C5F74F?logo=drizzle&logoColor=000)](#) ',
+        'hibernate': '[![Hibernate](https://img.shields.io/badge/Hibernate-59666C?logo=hibernate&logoColor=fff)](#) ',
+        'prisma': '[![Prisma](https://img.shields.io/badge/Prisma-2D3748?logo=prisma&logoColor=white)](#) ',
+        'sequelize': '[![Sequelize](https://img.shields.io/badge/Sequelize-52B0E7?logo=sequelize&logoColor=fff)](#) ',
+        'typeorm': '[![TypeORM](https://img.shields.io/badge/TypeORM-FE0803?logo=typeorm&logoColor=fff)](#) '
     },
     'package-manager': {
         'bun': '[![Bun](https://img.shields.io/badge/Bun-000?logo=bun&logoColor=fff)](#) ',

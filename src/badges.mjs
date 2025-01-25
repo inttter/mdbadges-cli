@@ -19,6 +19,7 @@ const badges = {
         'google-assistant': '[![Google Assistant](https://img.shields.io/badge/Google%20Assistant-4285F4?logo=googleassistant&logoColor=fff)](#) ',
         'hugging-face': '[![Hugging Face](https://img.shields.io/badge/Hugging%20Face-FFD21E?logo=huggingface&logoColor=000)](#) ',
         'google-gemini': '[![Google Gemini](https://img.shields.io/badge/Google%20Gemini-886FBF?logo=googlegemini&logoColor=fff)](#) ',
+        'v0': '[![v0](https://img.shields.io/badge/v0-000?logo=v0&logoColor=fff)](#) '
     },
     'blog': {
         'blogger': '[![Blogger](https://img.shields.io/badge/Blogger-%23FF5722.svg?logo=blogger&logoColor=white)](#) ',
@@ -70,6 +71,7 @@ const badges = {
         'heroku': '[![Heroku](https://img.shields.io/badge/Heroku-430098?logo=heroku&logoColor=fffe)](#) ',
         'hostinger': '[![Hostinger](https://img.shields.io/badge/Hostinger-673DE6?logo=hostinger&logoColor=fff)](#) ',
         'netlify': '[![Netlify](https://img.shields.io/badge/Netlify-%23000000.svg?logo=netlify&logoColor=#00C7B7)](#) ',
+        'odoo': '[![Odoo](https://img.shields.io/badge/Odoo-714B67?logo=Odoo&logoColor=fff)](#) ',
         'oracle-cloud': '[![Oracle Cloud](https://custom-icon-badges.demolab.com/badge/Oracle%20Cloud-F80000?logo=oracle&logoColor=white)](#) ',
         'sap': '[![SAP](https://img.shields.io/badge/SAP-0FAAFF?logo=sap&logoColor=fff)](#) ',
         'vercel': '[![Vercel](https://img.shields.io/badge/Vercel-%23000000.svg?logo=vercel&logoColor=white)](#) '

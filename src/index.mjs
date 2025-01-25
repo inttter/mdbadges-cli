@@ -115,10 +115,6 @@ program
         }
       }
 
-      if (badgesFound) {
-        console.log(c.green.bold('Badge found:'));
-      }
-
       for (let index = 0; index < badgeNames.length; index++) {
         const badgeName = badgeNames[index];
         const formattedBadgeName = badgeName.toLowerCase();
@@ -135,12 +131,15 @@ program
 
               // Add warning if 'social' style is selected
               if (styleOption === 'social') {
-                consola.warn(c.yellow(`The 'social' style may require slight adjustments to the logo color to display without issues. Make sure to check the appearance of your badge.`));
+                consola.warn(c.yellow(`The '${c.magenta('social')}' style may require adjustments to the logo color to display without issues.\n       Make sure to check the appearance of your badge.`));
               }
             } else {
-              consola.warn(c.yellow(`An invalid style was detected.`));
-              console.log(c.yellow(`       Available styles are ${c.magenta.bold(styles.join(', '))}\n`));
+              consola.warn(c.yellow(`An invalid style was detected. It will not be added to the badge.\n       Available styles are: ${c.magenta.bold(styles.join(', '))}`));
             }
+          }
+
+          if (badgesFound) {
+            console.log(c.green.bold('Badge found:'));
           }
 
           const { badgeMarkdown, htmlBadge } = utils.formatBadge(badge, styleOption, options.link ? links[index] : '');

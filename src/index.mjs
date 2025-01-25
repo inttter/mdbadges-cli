@@ -1,7 +1,5 @@
 #!/usr/bin/env -S node --no-warnings=ExperimentalWarning
 
-// shebang: https://github.com/nodejs/node/issues/51347#issuecomment-1893074523
-
 import badges from './badges.mjs';
 import c from 'chalk';
 import cliSpinners from 'cli-spinners';
@@ -510,7 +508,7 @@ program
       color: 'yellow',
     }).start();
 
-    const docsLink = 'https://docs.mdbcli.xyz/'
+    const docsLink = 'https://inttter.gitbook.io/mdbcli'
 
     try {
       await open(docsLink);

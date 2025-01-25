@@ -2,13 +2,13 @@
 
 # mdbadges-cli
 
-[![Release](https://img.shields.io/npm/v/mdbadges-cli.svg?style=flat&colorA=18181B&colorB=6134EB&logo=npm)](https://github.com/inttter/mdbadges-cli/releases/latest)
-[![NPM Downloads](https://img.shields.io/npm/dw/mdbadges-cli.svg?style=flat&colorA=18181B&colorB=6134EB&logo=github)](https://www.npmjs.com/package/mdbadges-cli/)
+[![GitHub Release](https://img.shields.io/github/v/release/inttter/mdbadges-cli?style=flat&colorA=18181B&colorB=6134EB&logo=github)](https://github.com/inttter/mdbadges-cli/releases/latest)
+[![NPM Downloads](https://img.shields.io/npm/dw/mdbadges-cli.svg?style=flat&colorA=18181B&colorB=6134EB&logo=npm)](https://www.npmjs.com/package/mdbadges-cli/)
 [![License](https://custom-icon-badges.herokuapp.com/github/license/inttter/mdbadges-cli?logo=law&color=6134EB&labelColor=191724)](LICENSE)
 
 **mdbadges-cli** is an extensive command-line tool that lets you search for over **400+** Shields.io badges for your projects without needing to leave the terminal, also including multiple commands with different purposes.
 
-# Installation
+## Installation
 
 To globally install mdbadges-cli, run the following:
 
@@ -19,7 +19,7 @@ npm install -g mdbadges-cli
 [![Release](https://github.com/inttter/mdbadges-cli/actions/workflows/publish.yml/badge.svg)](https://github.com/inttter/mdbadges-cli/actions/workflows/publish.yml)
 [![CI](https://github.com/inttter/mdbadges-cli/actions/workflows/test.yml/badge.svg)](https://github.com/inttter/mdbadges-cli/actions/workflows/test.yml)
 
-# Getting Started
+## Getting Started
 
 To start using a command, add the `mdb` prefix, followed by the correct [command name and syntax](#commands). For example:
 
@@ -41,23 +41,23 @@ mdb social discord --style plastic
 
 For information on things like command syntax or accepted arguments, run `mdb help`.
 
-# Commands
+## Commands
 
 This section contains the commands that are currently available, with their corresponding syntax, arguments, and aliases.
 
 |   Command                                 |    Description    |     Aliases      | Additional Information |
 |-------------------------------------------|-------------------|------------------|------------------------|
-`mdb [category] [badgeName]`                | Displays badge from a specific category. | None | View all available options in detail on the [documentation](https://docs.mdbcli.xyz/commands/finding-a-badge).
+`mdb [category] [badgeName]`                | Displays badge from a specific category. | None | Supports changing style using [`--style`](https://inttter.gitbook.io/mdbcli/commands/finding-a-badge#style-s) and adding a link to the badge using [`--link`](https://inttter.gitbook.io/mdbcli/commands/finding-a-badge#style-s). Also supports HTML using the `--html` option.
 `mdb search`                                | Searches for badges across every [category](#categories). | `s`, `find`, `lookup` | Select a badge to get the Markdown code for it.
 `mdb create`                                | Displays prompts to create your own badge. | `generate` | Both Markdown and HTML versions of your badge are given. For logo colors, only hexadecimal colors are supported.
 `mdb random`                                | Displays a random badge. | `r` | Displays the badge in both Markdown and HTML formats.
-`mdb copy [category] [badgeName]`           | Copies a badges' code to the clipboard. | `c` | Supports copying Markdown version, and HTML version via `--html`.
+`mdb copy [category] [badgeName]`           | Copies a badges' code to the clipboard. | `c` | Also supports HTML versions using the `--html` option.
 `mdb badges`                                | Opens a link to the badge list in your browser. | `list` | Opens in your default browser.
-`mdb add [category] [badgeName] [fileName]` | Allows you to add a badge to a Markdown file. | None | Supports both Markdown versions of badges, and HTML versions using `--html`. Also works in subdirectories.
+`mdb add [category] [badgeName] [fileName]` | Allows you to add a badge to a Markdown file. | None | This works with subdirectories too. Also supports HTML versions using the `--html` option.
 `mdb docs` | Opens a link to the documentation in your browser. | None | Opens in your default browser.
 `mdb changelog` | Opens a link to the latest release with it's changelogs in your browser. | `release` | Opens in your default browser.
 
-# Categories
+## Categories
 
 This section contains the categories that are currently available, with their corresponding names and syntax. The syntax is needed for the `[category]` field of certain commands.
 
@@ -100,14 +100,14 @@ This section contains the categories that are currently available, with their co
 | Version Control         | `version-control`      |
 | Virtual Reality         | `vr`                   |
 
-# Documentation
+## Documentation
 
-To learn more about mdbadges-cli and how to use certain commands/options, visit the [documentation](https://docs.mdbcli.xyz), which hosts more detailed information and various examples.
+To learn more about mdbadges-cli and how to use certain commands/options, visit the [documentation](https://inttter.gitbook.io/mdbcli), which hosts more detailed information and various examples.
 
-# Contributing
+## Contributing
 
 If you would like to contribute, please ensure to read the [contributing guidelines](CONTRIBUTING.md) first before you submit a pull request. 
 
-# License 
+## License 
 
-**©** 2024 · mdbadges-cli is licensed under the [MIT License](LICENSE).
+© **2025** - mdbadges-cli is licensed under the [MIT License](LICENSE).

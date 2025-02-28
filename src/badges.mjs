@@ -253,7 +253,6 @@ const badges = {
         'hugo': '[![Hugo](https://img.shields.io/badge/Hugo-FF4088?logo=hugo&logoColor=fff)](#) ',
         'jasmine': '[![Jasmine](https://img.shields.io/badge/Jasmine-8A4182?logo=jasmine&logoColor=fff)](#) ',
         'jest': '[![Jest](https://img.shields.io/badge/Jest-C21325?logo=jest&logoColor=fff)](#) ',
-        'kubernetes': '[![Kubernetes](https://img.shields.io/badge/Kubernetes-326CE5?logo=kubernetes&logoColor=fff)](#) ',
         'jquery': '[![jQuery](https://img.shields.io/badge/jQuery-0769AD?logo=jquery&logoColor=fff)](#) ',
         'kubernetes': '[![Kubernetes](https://img.shields.io/badge/Kubernetes-326CE5?logo=kubernetes&logoColor=fff)](#) ',
         'laravel': '[![Laravel](https://img.shields.io/badge/Laravel-%23FF2D20.svg?logo=laravel&logoColor=white)](#) ',

@@ -91,6 +91,7 @@ const badges = {
         'eclipse': '[![Eclipse](https://img.shields.io/badge/Eclipse-FE7A16.svg?logo=Eclipse&logoColor=white)](#) ',
         'emacs': '[![Emacs](https://img.shields.io/badge/Emacs-%237F5AB6.svg?&logo=gnu-emacs&logoColor=white)](#) ',
         'gitpod': '[![Gitpod](https://img.shields.io/badge/Gitpod-FFAE33?logo=gitpod&logoColor=fff)](#) ',
+        'helix': '[![Helix](https://img.shields.io/badge/Helix-706bc8?logo=helix&logoColor=fff)](#) ',
         'intellij-idea': '[![IntelliJ IDEA](https://img.shields.io/badge/IntelliJIDEA-000000.svg?logo=intellij-idea&logoColor=white)](#) ',
         'netbeans-ide': '[![NetBeans IDE](https://img.shields.io/badge/NetBeans%20IDE-1B6AC6.svg?logo=apache-netbeans-ide&logoColor=white)](#) ',
         'neovim': '[![Neovim](https://img.shields.io/badge/Neovim-57A143?logo=neovim&logoColor=fff)](#) ',
@@ -120,6 +121,7 @@ const badges = {
         'zoom': '[![Zoom](https://img.shields.io/badge/Zoom-2D8CFF?logo=zoom&logoColor=white)](#) '
     },
     'crypto': {
+        'amp': '[![AMP](https://img.shields.io/badge/AMP-005AF0?logo=amp&logoColor=fff)](#) ',
         'bitcoin': '[![Bitcoin](https://img.shields.io/badge/Bitcoin-FF9900?logo=bitcoin&logoColor=white)](#) ',
         'bitcoin-cash': '[![Bitcoin Cash](https://img.shields.io/badge/Bitcoin%20Cash-0AC18E?logo=bitcoincash&logoColor=fff)](#) ',
         'bitcoin-sv': '[![Bitcoin SV](https://img.shields.io/badge/Bitcoin%20SV-EAB300?logo=bitcoinsv&logoColor=fff)](#) ',
@@ -197,6 +199,7 @@ const badges = {
     },
     'education': {
         'codecademy': '[![Codecademy](https://img.shields.io/badge/Codecademy-%2321759B.svg?logo=codecademy&logoColor=white)](#) ',
+        'codewars': '[![Codewars](https://img.shields.io/badge/Codewars-B1361E?logo=codewars&logoColor=fff)](#) ',
         'coursera': '[![Coursera](https://img.shields.io/badge/Coursera-0056D2?logo=coursera&logoColor=fff)](#) ',
         'edx': '[![edX](https://img.shields.io/badge/edX-02262B?logo=edx&logoColor=fff)](#) ',
         'freecodecamp': '[![freeCodeCamp](https://img.shields.io/badge/freeCodeCamp-0A0A23?logo=freecodecamp&logoColor=fff)](#) ',
@@ -205,6 +208,7 @@ const badges = {
         'linkedin-learning': '[![LinkedIn Learning](https://custom-icon-badges.demolab.com/badge/LinkedIn%20Learning-0A66C2?logo=linkedin-white&logoColor=fff)](#) ',
         'mdn-web-docs': '[![MDN Web Docs](https://img.shields.io/badge/MDN%20Web%20Docs-000?logo=mdnwebdocs&logoColor=fff)](#) ',
         'pluralsight': '[![Pluralsight](https://img.shields.io/badge/Pluralsight-F15B2A?logo=pluralsight&logoColor=fff)](#) ',
+        'skillshare': '[![Skillshare](https://img.shields.io/badge/Skillshare-04BD64?logo=skillshare&logoColor=000)](#) ',
         'the-odin-project': '[![The Odin Project](https://img.shields.io/badge/The%20Odin%20Project-A9792B?logo=theodinproject&logoColor=fff)](#) ',
         'treehouse': '[![Treehouse](https://img.shields.io/badge/Treehouse-5FCF80?logo=treehouse&logoColor=fff)](#) ',
         'udacity': '[![Udacity](https://img.shields.io/badge/Udacity-02B3E4?logo=udacity&logoColor=fff)](#) ',
@@ -333,7 +337,9 @@ const badges = {
         'asahi-linux': '[![Asahi Linux](https://img.shields.io/badge/Asahi%20Linux-A61200?logo=asahilinux&logoColor=fff)](#) ',
         'debian': '[![Debian](https://img.shields.io/badge/Debian-A81D33?logo=debian&logoColor=fff)](#) ',
         'fedora': '[![Fedora](https://img.shields.io/badge/Fedora-51A2DA?logo=fedora&logoColor=fff)](#) ',
+        'freebsd': '[![FreeBSD](https://img.shields.io/badge/FreeBSD-AB2B28?logo=freebsd&logoColor=fff)](#) ',
         'gentoo': '[![Gentoo](https://img.shields.io/badge/Gentoo-54487A?logo=gentoo&logoColor=fff)](#) ',
+        'gnu': '[![GNU](https://img.shields.io/badge/GNU-000000?logo=gnu&logoColor=white)](#) ',
         'ios': '[![iOS](https://img.shields.io/badge/iOS-000000?&logo=apple&logoColor=white)](#) ',
         'kali-linux': '[![Kali Linux](https://img.shields.io/badge/Kali%20Linux-557C94?logo=kalilinux&logoColor=fff)](#) ',
         'kde-plasma': ' [![Zed](https://img.shields.io/badge/Zed-white?logo=zedindustries&logoColor=084CCF)](#) ',
@@ -461,10 +467,12 @@ const badges = {
         'gitea': '[![Gitea](https://img.shields.io/badge/Gitea-6eaa5b?logo=gitea&logoColor=fff)](#) ',
         'gitlab': '[![GitLab](https://img.shields.io/badge/GitLab-FC6D26?logo=gitlab&logoColor=fff)](#) ',
         'gmail': '[![Gmail](https://img.shields.io/badge/Gmail-D14836?logo=gmail&logoColor=white)](#) ',
+        'goodreads': '[![Goodreads](https://img.shields.io/badge/Goodreads-372213?logo=goodreads&logoColor=fff)](#) ',
         'guilded': '[![Guilded](https://img.shields.io/badge/Guilded-F5C400?logo=guilded&logoColor=000)](#) ',
         'instagram': '[![Instagram](https://img.shields.io/badge/Instagram-%23E4405F.svg?logo=Instagram&logoColor=white)](#) ',
         'kick': '[![Kick](https://img.shields.io/badge/Kick-53FC19?logo=kick&logoColor=000)](#) ',
         'leetcode': '[![LeetCode](https://img.shields.io/badge/LeetCode-000000?logo=LeetCode&logoColor=#d16c06)](#) ',
+        'line': '[![LINE](https://img.shields.io/badge/LINE-00C300?logo=line&logoColor=fff)](#) ',
         'linktree': '[![LinkTree](https://img.shields.io/badge/LinkTree-1de9b6?logo=linktree&logoColor=white)](#) ',
         'linkedin': '[![LinkedIn](https://img.shields.io/badge/Linkedin-%230077B5.svg?logo=linkedin&logoColor=white)](#) ',
         'matrix': '[![Matrix](https://img.shields.io/badge/Matrix-000?logo=matrix&logoColor=fff)](#) ',
@@ -477,6 +485,7 @@ const badges = {
         'quora': '[![Quora](https://img.shields.io/badge/Quora-B92B27?logo=quora&logoColor=fff)](#) ',
         'proton-mail': '[![Proton Mail](https://img.shields.io/badge/Proton%20Mail-6D4AFF?logo=protonmail&logoColor=fff)](#) ',
         'reddit': '[![Reddit](https://img.shields.io/badge/Reddit-FF4500?logo=reddit&logoColor=white)](#) ',
+        'session': '[![Session](https://img.shields.io/badge/Session-000?logo=session&logoColor=fff)](#) ',
         'signal': '[![Signal](https://img.shields.io/badge/Signal-3A76F0?logo=signal&logoColor=fff)](#) ',
         'slack': '[![Slack](https://img.shields.io/badge/Slack-purple?logo=slack&logoColor=white)](#) ',
         'snapchat': '[![Snapchat](https://img.shields.io/badge/Snapchat-%23FFFC00.svg?logo=Snapchat&logoColor=white)](#) ',
@@ -534,7 +543,8 @@ const badges = {
         'crunchyroll': '[![Crunchyroll](https://img.shields.io/badge/Crunchyroll-F47521?logo=crunchyroll&logoColor=white)](#) ',
         'max': '[![Max](https://img.shields.io/badge/Max-000ce0?logo=hbo&logoColor=fff)](#) ',
         'netflix': '[![Netflix](https://img.shields.io/badge/Netflix-E50914?logo=netflix&logoColor=white)](#) ',
-        'roku': '[![Roku](https://img.shields.io/badge/Roku-6f1ab1?logo=roku&logoColor=white)](#) '
+        'roku': '[![Roku](https://img.shields.io/badge/Roku-6f1ab1?logo=roku&logoColor=white)](#) ',
+        'tubi': '[![Tubi](https://img.shields.io/badge/Tubi-7408FF?logo=tubi&logoColor=fff)](#) '
     },
     'terminal': {
         'alacritty': '[![Alacritty](https://img.shields.io/badge/Alacritty-F46D01?logo=alacritty&logoColor=fff)](#) ',

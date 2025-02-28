@@ -7,15 +7,17 @@ body:
   - type: markdown
     attributes:
       value: |
-        Before you create this issue, check the [existing issues](https://github.com/inttter/mdbadges-cli/issues) to make sure your issue is not a duplicate.
+        Search for your issue in the [issue listing](https://github.com/inttter/mdbadges-cli/issues) to make sure your issue is not a duplicate.
   - type: input
     attributes:
       label: Version
-      description: "The version this bug was encountered on. To find this, run: npm list -g mdbadges-cli --depth=0."
+      description: The version this bug was encountered on.
+    validations:
+      required: true
   - type: textarea
     attributes:
-      label: Description
-      description: Describe the bug and provide any additional details, such as console outputs or error messages.
+      label: Description of issue
+      description: Describe the issue and provide any additional details, such as console outputs or error messages.
     validations:
       required: true
   - type: textarea

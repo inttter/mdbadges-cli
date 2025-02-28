@@ -11,6 +11,8 @@ on:
     paths:
       - 'src/**'
       - 'test/**'
+      - 'package.json'
+      - 'package-lock.json'
 
 jobs:
   test:

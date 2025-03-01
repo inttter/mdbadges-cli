@@ -115,6 +115,14 @@ program
         }
       }
 
+      // Show warning if user gives an invalid style
+      if (options.style && !styles.includes(options.style)) {
+        consola.warn(c.yellow(`An invalid style was detected. It will not be added to the badge(s).\n       Available styles are: ${c.magenta.bold(styles.join(', '))}`));
+
+        // Remove invalid style
+        delete options.style;
+      }
+
       for (let index = 0; index < badgeNames.length; index++) {
         const badgeName = badgeNames[index];
         const formattedBadgeName = badgeName.toLowerCase();
@@ -124,19 +132,7 @@ program
         const badge = categoryData[foundBadge];
       
         if (badge) {
-          let styleOption = '';
-          if (options.style) {
-            if (styles.includes(options.style)) {
-              styleOption = options.style;
-
-              // Add warning if 'social' style is selected
-              if (styleOption === 'social') {
-                consola.warn(c.yellow(`The '${c.magenta('social')}' style may require adjustments to the logo color to display without issues.\n       Make sure to check the appearance of your badge.`));
-              }
-            } else {
-              consola.warn(c.yellow(`An invalid style was detected. It will not be added to the badge.\n       Available styles are: ${c.magenta.bold(styles.join(', '))}`));
-            }
-          }
+          let styleOption = options.style || '';
 
           if (badgesFound) {
             console.log(c.green.bold('Badge found:'));

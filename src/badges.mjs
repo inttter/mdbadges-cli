@@ -19,6 +19,7 @@ const badges = {
         'google-assistant': '[![Google Assistant](https://img.shields.io/badge/Google%20Assistant-4285F4?logo=googleassistant&logoColor=fff)](#) ',
         'hugging-face': '[![Hugging Face](https://img.shields.io/badge/Hugging%20Face-FFD21E?logo=huggingface&logoColor=000)](#) ',
         'google-gemini': '[![Google Gemini](https://img.shields.io/badge/Google%20Gemini-886FBF?logo=googlegemini&logoColor=fff)](#) ',
+        'perplexity': '[![Perplexity](https://img.shields.io/badge/Perplexity-1FB8CD?logo=perplexity&logoColor=fff)](#) ',
         'v0': '[![v0](https://img.shields.io/badge/v0-000?logo=v0&logoColor=fff)](#) '
     },
     'blog': {
@@ -182,6 +183,7 @@ const badges = {
         'gimp': '[![Gimp](https://img.shields.io/badge/Gimp-5C5543?logo=gimp&logoColor=white)](#) ',
         'inkscape': '[![Inkscape](https://img.shields.io/badge/Inkscape-000000?logo=Inkscape&logoColor=white)](#) ',
         'krita': '[![Krita](https://img.shields.io/badge/Krita-203759?logo=krita&logoColor=EEF37B)](#) ',
+        'sketchup': '[![SketchUp](https://img.shields.io/badge/SketchUp-005F9E?logo=sketchup&logoColor=fff)](#) ',
         'storybook': '[![Storybook](https://img.shields.io/badge/Storybook-FF4785?logo=storybook)](#) ',
         'unsplash': '[![Unsplash](https://img.shields.io/badge/Unsplash-000000?logo=Unsplash&logoColor=white)](#) ',
     },
@@ -392,6 +394,7 @@ const badges = {
         'woocommerce': '[![WooCommerce](https://img.shields.io/badge/WooCommerce-96588A?logo=woocommerce&logoColor=fff)](#) '
     },
     'programming': {
+        'assemblyscript': '[![AssemblyScript](https://img.shields.io/badge/AssemblyScript-007AAC?logo=assemblyscript&logoColor=fff)](#) ',
         'bash': '[![Bash](https://img.shields.io/badge/Bash-4EAA25?logo=gnubash&logoColor=fff)](#) ',
         'c': '[![C](https://img.shields.io/badge/C-00599C?logo=c&logoColor=white)](#) ',
         'cpp': '[![C++](https://img.shields.io/badge/C++-%2300599C.svg?logo=c%2B%2B&logoColor=white)](#) ',

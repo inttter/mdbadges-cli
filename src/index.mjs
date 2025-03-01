@@ -104,9 +104,9 @@ program
               const { badgeMarkdown, htmlBadge } = utils.formatBadge(selectedBadge, styleOption, options.link ? links[badgeNames.indexOf(selectedBadge)] : '');
 
               if (options.html) {
-                console.log(c.hex('#FFBF00').bold(`${htmlBadge}\n`));
+                outro(c.hex('#FFBF00').bold(`${htmlBadge}`));
               } else {
-                console.log(c.hex('#FFBF00').bold(`${badgeMarkdown}\n`));
+                outro(c.hex('#FFBF00').bold(`${badgeMarkdown}`));
               }
             } else {
               process.exit(0);

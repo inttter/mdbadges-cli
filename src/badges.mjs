@@ -16,6 +16,8 @@ const badges = {
         'amazon-alexa': '[![Amazon Alexa](https://img.shields.io/badge/Amazon%20Alexa-00CAFF?logo=amazonalexa&logoColor=fff)](#) ',
         'chatgpt': '[![ChatGPT](https://img.shields.io/badge/ChatGPT-74aa9c?logo=openai&logoColor=white)](#) ',
         'github-copilot': '[![GitHub Copilot](https://img.shields.io/badge/GitHub%20Copilot-000?logo=githubcopilot&logoColor=fff)](#) ',
+        'claude': '[![Claude](https://img.shields.io/badge/Claude-D97757?logo=claude&logoColor=fff)](#) ',
+        'deepseek': '[![Deepseek](https://custom-icon-badges.demolab.com/badge/Deepseek-4D6BFF?logo=deepseek&logoColor=fff)](#) ',
         'google-assistant': '[![Google Assistant](https://img.shields.io/badge/Google%20Assistant-4285F4?logo=googleassistant&logoColor=fff)](#) ',
         'hugging-face': '[![Hugging Face](https://img.shields.io/badge/Hugging%20Face-FFD21E?logo=huggingface&logoColor=000)](#) ',
         'google-gemini': '[![Google Gemini](https://img.shields.io/badge/Google%20Gemini-886FBF?logo=googlegemini&logoColor=fff)](#) ',
@@ -149,6 +151,7 @@ const badges = {
         'firebase': '[![Firebase](https://img.shields.io/badge/Firebase-039BE5?logo=Firebase&logoColor=white)](#) ',
         'influxdb': '[![InfluxDB](https://img.shields.io/badge/InfluxDB-22ADF6?logo=influxdb&logoColor=fff)](#) ',
         'mariadb': '[![MariaDB](https://img.shields.io/badge/MariaDB-003545?logo=mariadb&logoColor=white)](#) ',
+        'mssqlserver': '[![Microsoft SQL Server](https://custom-icon-badges.demolab.com/badge/Microsoft%20SQL%20Server-CC2927?logo=mssqlserver-white&logoColor=white)](#) ',
         'mongodb': '[![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?logo=mongodb&logoColor=white)](#) ',
         'mysql': '[![MySQL](https://img.shields.io/badge/MySQL-4479A1?logo=mysql&logoColor=fff&)](#) ',
         'neo4j': '[![Neo4J](https://img.shields.io/badge/Neo4j-008CC1?logo=neo4j&logoColor=white)](#) ',
@@ -162,9 +165,13 @@ const badges = {
     'data-science': {
         'chart.js': '[![Chart.js](https://img.shields.io/badge/Chart.js-FF6384?logo=chartdotjs&logoColor=fff)](#) ',
         'etl': '[![ETL](https://custom-icon-badges.demolab.com/badge/ETL-9370DB?logo=etl-logo&logoColor=fff)](#) ',
+        'google-colab': '[![Google Colab](https://img.shields.io/badge/Google%20Colab-F9AB00?logo=googlecolab&logoColor=fff)](#) ',
         'matplotlib': '[![Matplotlib](https://custom-icon-badges.demolab.com/badge/Matplotlib-71D291?logo=matplotlib&logoColor=fff)](#) ',
         'numpy': '[![NumPy](https://img.shields.io/badge/NumPy-4DABCF?logo=numpy&logoColor=fff)](#) ',
-        'pandas': '[![Pandas](https://img.shields.io/badge/Pandas-150458?logo=pandas&logoColor=fff)](#) '
+        'pandas': '[![Pandas](https://img.shields.io/badge/Pandas-150458?logo=pandas&logoColor=fff)](#) ',
+        'powerbi': '[![Power BI](https://custom-icon-badges.demolab.com/badge/Power%20BI-F1C912?logo=power-bi&logoColor=fff)](#) ',
+        'snowflake': '[![Snowflake](https://img.shields.io/badge/Snowflake-29B5E8?logo=snowflake&logoColor=fff)](#) ',
+        'tableau': '[![Tableau](https://custom-icon-badges.demolab.com/badge/Tableau-0176D3?logo=tableau&logoColor=fff)](#) '
     },
     'delivery': {
         'deliveroo': '[![Deliveroo](https://img.shields.io/badge/Deliveroo-00CCBC?logo=Deliveroo&logoColor=white)](#) ',
@@ -200,6 +207,7 @@ const badges = {
         'vuepress': '[![VuePress](https://img.shields.io/badge/VuePress-4FC08D?logo=vuedotjs&logoColor=fff)](#) ',
     },
     'education': {
+        'alura': '[![Alura](https://custom-icon-badges.demolab.com/badge/Alura-001332?logo=alura-white&logoColor=fff)](#) ',
         'codecademy': '[![Codecademy](https://img.shields.io/badge/Codecademy-%2321759B.svg?logo=codecademy&logoColor=white)](#) ',
         'codewars': '[![Codewars](https://img.shields.io/badge/Codewars-B1361E?logo=codewars&logoColor=fff)](#) ',
         'coursera': '[![Coursera](https://img.shields.io/badge/Coursera-0056D2?logo=coursera&logoColor=fff)](#) ',
@@ -254,7 +262,6 @@ const badges = {
         'foundry': '[![Foundry](https://custom-icon-badges.demolab.com/badge/Foundry-000?logo=foundry&logoColor=fff)](#) ',
         'flutter': '[![Flutter](https://img.shields.io/badge/Flutter-%2302569B.svg?logo=Flutter&logoColor=white)](#) ',
         'gatsby': '[![Gatsby](https://img.shields.io/badge/Gatsby-%23663399.svg?logo=gatsby&logoColor=white)](#) ',
-        'helm': '[![Helm](https://img.shields.io/badge/Helm-0F1689?logo=helm&logoColor=fff)](#) ',
         'hono': '[![Hono](https://img.shields.io/badge/Hono-E36002?logo=hono&logoColor=fff)](#) ',
         'hugo': '[![Hugo](https://img.shields.io/badge/Hugo-FF4088?logo=hugo&logoColor=fff)](#) ',
         'jasmine': '[![Jasmine](https://img.shields.io/badge/Jasmine-8A4182?logo=jasmine&logoColor=fff)](#) ',
@@ -269,6 +276,7 @@ const badges = {
         'next': '[![Next.js](https://img.shields.io/badge/Next.js-black?logo=next.js&logoColor=white)](#) ',
         'nodejs': '[![NodeJS](https://img.shields.io/badge/Node.js-6DA55F?logo=node.js&logoColor=white)](#) ',
         'nuxt': '[![Nuxt](https://img.shields.io/badge/Nuxt-002E3B?logo=nuxt&logoColor=#00DC82)](#) ',
+        'playwright': '[![Playwright](https://custom-icon-badges.demolab.com/badge/Playwright-2EAD33?logo=playwright&logoColor=fff)](#) ',
         'preact': '[![Preact](https://img.shields.io/badge/Preact-673AB8?logo=preact&logoColor=fff)](#) ',
         'rails': '[![Rails](https://img.shields.io/badge/Rails-%23CC0000.svg?logo=ruby-on-rails&logoColor=white)](#) ',
         'react': '[![React](https://img.shields.io/badge/React-%2320232a.svg?logo=react&logoColor=%2361DAFB)](#) ',
@@ -296,6 +304,7 @@ const badges = {
         'vite': '[![Vite](https://img.shields.io/badge/Vite-646CFF?logo=vite&logoColor=fff)](#) ',
         'vitest': ' [![Vitest](https://img.shields.io/badge/Vitest-6E9F18?logo=vitest&logoColor=fff)](#) ',
         'vue': '[![Vue.js](https://img.shields.io/badge/Vue.js-4FC08D?logo=vuedotjs&logoColor=fff)](#) ',
+        'vuetify': '[![Vuetify](https://img.shields.io/badge/Vuetify-1867C0?logo=vuetify&logoColor=fff)](#) ',
         'wagmi': '[![Wagmi](https://img.shields.io/badge/Wagmi-000?logo=wagmi&logoColor=fff)](#) '
     },
     'game-engine': {
@@ -406,6 +415,7 @@ const badges = {
         'dart': '[![Dart](https://img.shields.io/badge/Dart-%230175C2.svg?logo=dart&logoColor=white)](#) ',
         'elixir': '[![Elixir](https://img.shields.io/badge/Elixir-%234B275F.svg?&logo=elixir&logoColor=white)](#) ',
         'elm': '[![Elm](https://img.shields.io/badge/Elm-1293D8?logo=elm&logoColor=fff)](#) ',
+        'ejs': '[![EJS](https://img.shields.io/badge/EJS-B4CA65?logo=ejs&logoColor=fff)](#) ',
         'erlang': '[![Erlang](https://img.shields.io/badge/Erlang-A90533?logo=erlang&logoColor=fff)](#) ',
         'f-sharp': '[![F#](https://img.shields.io/badge/F%23-378BBA?logo=fsharp&logoColor=fff)](#) ',
         'fortran': '[![Fortran](https://img.shields.io/badge/Fortran-734F96?logo=fortran&logoColor=fff)](#) ',

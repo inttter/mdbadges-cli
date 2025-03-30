@@ -6,7 +6,7 @@
 [![NPM Downloads](https://img.shields.io/npm/dw/mdbadges-cli.svg?style=flat&colorA=18181B&colorB=6134EB&logo=npm)](https://www.npmjs.com/package/mdbadges-cli/)
 [![License](https://custom-icon-badges.herokuapp.com/github/license/inttter/mdbadges-cli?logo=law&color=6134EB&labelColor=191724)](LICENSE)
 
-**mdbadges-cli** is an extensive command-line tool that lets you search for over **400+** Shields.io badges for your projects without needing to leave the terminal, also including multiple commands with different purposes.
+**mdbadges-cli** is an extensive command-line tool that lets you search for over **500+** Shields.io badges for your projects without needing to leave the terminal, also including multiple commands with different purposes.
 
 ## Installation
 
@@ -75,8 +75,8 @@ This section contains the categories that are currently available, with their co
 | Cryptocurrency          | `crypto`               |
 | Database                | `database`             |
 | Data Science            | `data-science`         |
-| Design                  | `design`               |
 | Delivery                | `delivery`             |
+| Design                  | `design`               |
 | Documentation           | `documentation`        |
 | Education               | `education`            |
 | Funding                 | `funding`              |
@@ -102,11 +102,11 @@ This section contains the categories that are currently available, with their co
 
 ## Documentation
 
-To learn more about mdbadges-cli and how to use certain commands/options, visit the [documentation](https://inttter.gitbook.io/mdbcli), which hosts more detailed information and various examples.
+To learn more about mdbadges-cli and how to use certain commands, along with their options, visit the [documentation](https://inttter.gitbook.io/mdbcli), which hosts more detailed information and various examples.
 
 ## Contributing
 
-If you would like to contribute, please ensure to read the [contributing guidelines](CONTRIBUTING.md) first before you submit a pull request. 
+If you would like to contribute in any way, such as adding a badge, please make sure to read the [contributing guidelines](CONTRIBUTING.md) first before making a contribution.
 
 ## License 
 

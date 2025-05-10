@@ -150,32 +150,11 @@ program
         }
       }
     } else {
-      // Looks for the badge in all categories to suggest the correct category
-      let badgeFoundInOtherCategory = false;
-      let correctCategory = '';
-      let foundBadgeName = '';
-
-      for (const cat of Object.keys(badges)) {
-        const badgeKeys = Object.keys(badges[cat]);
-        const foundBadge = badgeKeys.find(key => badgeNames.includes(key.toLowerCase()));
-        if (foundBadge) {
-          badgeFoundInOtherCategory = true;
-          correctCategory = cat;
-          foundBadgeName = foundBadge;
-          break;
-        }
-      }
-
-      // Suggests the correct command to run if [badgeName] is valid but [category] is not
-      if (badgeFoundInOtherCategory) {
-        consola.error(c.red(`The specified category could not be found, but '${c.red.bold(utils.formatBadgeName(foundBadgeName))}' is a valid badge in the '${c.red.bold(utils.formatCategoryName(correctCategory))}' category.`));
-        console.log(c.cyan(`Run ${c.magenta.bold(`mdb ${correctCategory} ${foundBadgeName}`)} to get the correct badge code.\n`));
-      } else {
-        // If neither [category] nor [badgeName] is valid
-        consola.error(c.red(`The specified badge and category could not be found.`));
-        console.log(c.cyan(`Visit ${c.magenta.bold('https://github.com/inttter/mdbadges-cli?tab=readme-ov-file#categories')} for a list of available categories.`));
-        console.log(c.cyan(`You can also run ${c.magenta.bold('mdb search')} to directly search for a badge.`));
-      }
+      consola.error(c.red('The specified badge or category could not be found. '));
+      console.log(
+        `Check the available categories: ${c.magenta('https://github.com/inttter/mdbadges-cli#categories')}\n` +
+        `Or directly search badges with: ${c.magenta('mdb search')}`
+      );
     }
   });
 
@@ -185,7 +164,7 @@ program
   .alias('list')
   .description('open a link to the badge list in your browser')
   .action(async () => {
-    console.log()
+    console.log();
     const spinner = ora({
       text: c.blue('Opening in browser...'),
       spinner: cliSpinners.arc,
@@ -199,7 +178,7 @@ program
       spinner.succeed(c.green('Opened in your browser!'));
     } catch (error) {
       consola.error(new Error(c.red(`An error occurred when trying to open the link in your browser: ${error.message}`)));
-      console.log(c.cyan(`  You can visit the page by clicking on the following link instead: ${c.magenta.bold(listLink)}`));
+      console.log(`    Follow the link here instead: ${c.magenta.bold(listLink)}`);
       spinner.stop();
     }
   });
@@ -230,7 +209,7 @@ program
 
       const results = utils.searchBadges(fuse, keyword);
       if (results.length === 0) {
-        consola.error(c.red(`No badges containing '${keyword}' could be found.`));
+        log.error(c.red(`No badges containing '${keyword}' could be found.`));
       } else {
         const badgeChoices = results.map(({ item }) => ({
           name: `${c.hex('#FFBF00')(item.formattedBadge)} in ${c.dim(item.formattedCategory)}`,
@@ -327,7 +306,7 @@ program
         },
         {
           onCancel: () => {
-            log.error(c.yellow('Badge creation cancelled.\n'));
+            log.error(c.yellow('Exiting because `CTRL+C` was pressed.\n'));
             process.exit(0);
           },
         }
@@ -407,30 +386,20 @@ program
     const formattedBadgeName = badgeName.toLowerCase();
 
     // Check if the badge exists in the specified category
-    if (badges[formattedCategory]?.[formattedBadgeName]) {
-      const selectedBadge = badges[formattedCategory][formattedBadgeName];
+    const selectedBadge = badges[formattedCategory]?.[formattedBadgeName];
+
+    if (selectedBadge) {
       const { badgeMarkdown, htmlBadge } = utils.formatBadge(selectedBadge);
 
-      if (options.html) {
-        clipboardy.writeSync(htmlBadge);
-        console.log(c.green.bold(`\nHTML version of badge was copied to the clipboard successfully.\n`));
-      } else {
-        clipboardy.writeSync(badgeMarkdown);
-        console.log(c.green.bold(`\nMarkdown version of badge was copied to the clipboard successfully.\n`));
-      }
+      clipboardy.writeSync(options.html ? htmlBadge : badgeMarkdown);
+      console.log(c.green.bold(`\n${options.html ? 'HTML' : 'Markdown'} version of badge was copied to the clipboard successfully.\n`));
     } else {
-      // Handle instances in where the badge does not exist
-      const validCategory = Object.keys(badges).find(cat =>
-        Object.keys(badges[cat]).some(badge => badge.toLowerCase() === formattedBadgeName)
-      );
+      consola.error(c.red(`The specified badge or category could not be found.`));
 
-      if (validCategory) {
-        consola.error(c.red(`The specified category could not be found, but '${c.red.bold(utils.formatBadgeName(badgeName))}' is a valid badge in the '${c.red.bold(utils.formatCategoryName(validCategory))}' category.`));
-        console.log(c.cyan(`Run ${c.magenta.bold(`mdb copy ${validCategory} ${badgeName}`)} to copy the correct badge.\n`));
-      } else {
-        consola.error(c.red(`The specified badge could not be found.`));
-        console.log(c.cyan(`Try running ${c.magenta.bold(`mdb search`)} to directly find a badge.\n`));
-      }
+      console.log(
+        `Check the available categories: ${c.magenta('https://github.com/inttter/mdbadges-cli#categories')}\n` +
+        `Or directly search badges with: ${c.magenta('mdb search')}`
+      );
     }
   });
 
@@ -449,36 +418,21 @@ program
     const options = program.opts(); 
 
     const formattedBadgeName = badgeName?.toLowerCase() || '';
-    const categoryData = badges[category?.toLowerCase() || ''];
+    const formattedCategory = category?.toLowerCase() || '';
+    const categoryData = badges[formattedCategory];
 
-    if (!categoryData) {
-      const validCategory = Object.keys(badges).find(cat =>
-        Object.keys(badges[cat]).some(badge => badge.toLowerCase() === formattedBadgeName)
-      );
-
-      if (validCategory) {
-        consola.error(c.red(`The specified category could not be found, but '${c.red.bold(utils.formatBadgeName(badgeName))}' is a valid badge in the '${c.red.bold(utils.formatCategoryName(validCategory))}' category.`));
-        console.log(c.cyan(`Run ${c.magenta.bold(`mdb add ${validCategory} ${badgeName} ${filePath}`)} to add the badge to your file.\n`));
-      } else {
-        consola.error(c.red(`The category '${c.red.bold(category)}' could not be found.`));
-        console.log(c.cyan(`You can try visiting the syntax list for the categories here: ${c.magenta.bold('https://github.com/inttter/mdbadges-cli?tab=readme-ov-file#categories')}\n`));
-      }
-      return;
-    }
-
-    const foundBadge = Object.keys(categoryData).find(
-      key => key.toLowerCase() === formattedBadgeName,
-    );
+    const foundBadge = categoryData?.[formattedBadgeName];
 
     if (!foundBadge) {
-      consola.error(c.red(`The specified badge could not be found.`));
-      console.log(c.cyan(`Try running ${c.magenta.bold(`mdb search`)} to directly find a badge.\n`));
+      consola.error(c.red('The specified badge or category could not be found. '));
+      console.log(
+        `Check the available categories: ${c.magenta('https://github.com/inttter/mdbadges-cli#categories')}\n` +
+        `Or directly search badges with: ${c.magenta('mdb search')}`
+      );
       return;
     }
 
-    const badge = categoryData[foundBadge];
-    const { badgeMarkdown, htmlBadge } = utils.formatBadge(badge);
-
+    const { badgeMarkdown, htmlBadge } = utils.formatBadge(foundBadge);
     const badgeToAdd = options.html ? htmlBadge : badgeMarkdown;
 
     try {
@@ -488,7 +442,7 @@ program
       fs.appendFileSync(filePath, `\n${badgeToAdd}`, 'utf8');
       consola.success(c.green(`Badge has been added to the file successfully.`));
     } catch (error) {
-      consola.error(new Error(c.red(`Could not  write to the file: ${error.message}`)));
+      consola.error(new Error(c.red(`Could not write to the file: ${error.message}`)));
     }
   });
 
@@ -511,7 +465,7 @@ program
       spinner.succeed(c.green('Opened in your browser!'));
     } catch (error) {
       consola.error(new Error(c.red(`An error occurred when trying to open the link in your browser: ${error.message}`)));
-      console.log(c.cyan(`\n  You can visit the page by clicking on the following link instead: ${c.magenta.bold(docsLink)}`));
+      console.log(`\n    Follow the link here instead: ${c.magenta.bold(docsLink)}`);
       spinner.stop();
     }
   });
@@ -544,7 +498,7 @@ program
       spinner.succeed(c.green('Opened in your browser!'));
     } catch (error) {
       consola.error(new Error(c.red(`Could not open the link in your browser: ${error.message}`)));
-      console.log(c.cyan(`\n  You can visit the page by clicking on the following link instead: ${c.magenta.bold(changelogLink)}`));
+      console.log(`\n    Follow the link here instead: ${c.magenta.bold(changelogLink)}`);
       spinner.stop();
     }
   });

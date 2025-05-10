@@ -10,6 +10,7 @@ import fs from 'fs';
 import Fuse from 'fuse.js';
 import open from 'open';
 import ora from 'ora';
+import path from 'path';
 import { program } from 'commander';
 import * as utils from './utils.mjs';
 
@@ -414,6 +415,14 @@ program
       return;
     }
 
+    const resolvedPath = path.resolve(filePath);
+
+    // Validate that the file (path) exists and is a regular file
+    if (!fs.existsSync(resolvedPath) || !fs.lstatSync(resolvedPath).isFile()) {
+      consola.error(c.red(`The path '${filePath}' is invalid or does not point to a valid file.`));
+      return;
+    }
+
     // * This makes options work, do not remove.
     const options = program.opts(); 
 
@@ -440,7 +449,7 @@ program
 
       // Append the badge to the specified file
       fs.appendFileSync(filePath, `\n${badgeToAdd}`, 'utf8');
-      consola.success(c.green(`Badge has been added to the file successfully.`));
+      console.log(c.green.bold(`\nBadge has been added to ${filePath} successfully.\n`));
     } catch (error) {
       consola.error(new Error(c.red(`Could not write to the file: ${error.message}`)));
     }

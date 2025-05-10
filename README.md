@@ -47,15 +47,15 @@ This section contains the commands that are currently available, with their corr
 
 |   Command                                 |    Description    |     Aliases      | Additional Information |
 |-------------------------------------------|-------------------|------------------|------------------------|
-`mdb [category] [badgeName]`                | Displays badge from a specific category. | None | Supports changing style using [`--style`](https://inttter.gitbook.io/mdbcli/commands/finding-a-badge#style-s) and adding a link to the badge using [`--link`](https://inttter.gitbook.io/mdbcli/commands/finding-a-badge#style-s). Also supports HTML using the `--html` option.
-`mdb search`                                | Searches for badges across every [category](#categories). | `s`, `find`, `lookup` | Select a badge to get the Markdown code for it.
+`mdb [category] [badgeName]`                | Displays badge from a specific category. | None | Supports changing style using [`--style`](https://inttter.gitbook.io/mdbcli/commands/finding-a-badge#style-s), adding a link to the badge using [`--link`](https://inttter.gitbook.io/mdbcli/commands/finding-a-badge#style-s), and HTML using the `--html` option. Also supports finding [multiple badges](https://inttter.gitbook.io/mdbcli/commands/finding-a-badge#auto-update) at once.
+`mdb search`                                | Searches for badges across any [category](#categories). | `s`, `find`, `lookup` | Select a badge to get the Markdown code for it. Loops until `No` is selected.
 `mdb create`                                | Displays prompts to create your own badge. | `generate` | Both Markdown and HTML versions of your badge are given. For logo colors, only hexadecimal colors are supported.
 `mdb random`                                | Displays a random badge. | `r` | Displays the badge in both Markdown and HTML formats.
-`mdb copy [category] [badgeName]`           | Copies a badges' code to the clipboard. | `c` | Also supports HTML versions using the `--html` option.
+`mdb copy [category] [badgeName]`           | Copies a badges' code to the clipboard. | `c` | Also supports copying HTML versions using the `--html` option.
 `mdb badges`                                | Opens a link to the badge list in your browser. | `list` | Opens in your default browser.
-`mdb add [category] [badgeName] [fileName]` | Allows you to add a badge to a Markdown file. | None | This works with subdirectories too. Also supports HTML versions using the `--html` option.
+`mdb add [category] [badgeName] [filePath]` | Allows you to add a badge to a file. | None | This works with [subdirectories](https://inttter.gitbook.io/mdbcli/commands/add#adding-badges-to-subdirectories) too. Also supports adding HTML versions using the `--html` option.
 `mdb docs` | Opens a link to the documentation in your browser. | None | Opens in your default browser.
-`mdb changelog` | Opens a link to the latest release with it's changelogs in your browser. | `release` | Opens in your default browser.
+`mdb changelog` | Opens a link to the latest release and it's changelog in your browser. | `release` | Opens in your default browser.
 
 ## Categories
 

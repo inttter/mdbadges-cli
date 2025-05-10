@@ -4,7 +4,7 @@ import badges from './badges.mjs';
 import c from 'chalk';
 import cliSpinners from 'cli-spinners';
 import { consola } from 'consola';
-import { confirm, select, text, outro } from '@clack/prompts';
+import { confirm, select, group, text, log, outro } from '@clack/prompts';
 import clipboardy from 'clipboardy';
 import fs from 'fs';
 import Fuse from 'fuse.js';
@@ -259,106 +259,107 @@ program
     }
   });
 
-// Badge Creator Command
+// Badge Creation Command 
 program
   .command('create')
   .alias('generate')
   .description('display prompts to create your own badge')
   .action(async () => {
     try {
-      const alt = await text({
-        message: c.cyan.bold('Enter the alt text for the badge:')
-      });
+      const responses = await group(
+        {
+          alt: () =>
+            text({
+              message: c.cyan.bold('Enter the alt text for the badge:'),
+            }),
 
-      await utils.checkCancellation(alt);
+          name: () =>
+            text({
+              message: c.cyan.bold('Enter the text you would like to display on the badge:'),
+              validate: (value) => {
+                if (!value.trim()) return c.dim('This field is required.');
+              },
+            }),
 
-      let name = await text({
-        message: c.cyan.bold('Enter the text you would like to display on the badge:'),
-        validate: (value) => {
-          if (!value.trim()) {
-            return c.dim('This field is required.');
-          }
-          return;
+          color: () =>
+            text({
+              message: c.cyan.bold('Enter a hexadecimal value for the color of the badge:'),
+              validate: (value) => {
+                const hexColorRegex = /^#?(?:[0-9a-fA-F]{3}){1,2}$/;
+                if (!hexColorRegex.test(value.trim())) {
+                  return c.dim('Enter a valid hexadecimal color. Valid ones include #d8e, #96f732');
+                }
+              },
+            }),
+
+          logo: () =>
+            text({
+              message: c.cyan.bold('Enter the logo to be displayed on the badge:'),
+              validate: (value) => {
+                if (!value.trim()) return c.dim('This field is required.');
+              },
+            }),
+
+          logoColor: () =>
+            text({
+              message: c.cyan.bold('Enter the color for the logo:'),
+              validate: (value) => {
+                if (!value.trim()) return c.dim('This field is required.');
+              },
+            }),
+
+          style: () =>
+            select({
+              message: c.cyan.bold('Choose the style of the badge:'),
+              options: [
+                { value: 'flat', label: 'Flat', hint: 'Popular' },
+                { value: 'flat-square', label: 'Flat Square' },
+                { value: 'plastic', label: 'Plastic' },
+                { value: 'social', label: 'Social' },
+                { value: 'for-the-badge', label: 'For The Badge', hint: 'Popular' },
+              ],
+            }),
+
+          link: () =>
+            text({
+              message: c.cyan.bold('[Optional] Enter the URL to redirect to when clicked:'),
+            }),
         },
-      });
+        {
+          onCancel: () => {
+            log.error(c.yellow('Badge creation cancelled.\n'));
+            process.exit(0);
+          },
+        }
+      );
 
-      await utils.checkCancellation(name);
+      // Escape spaces, dashes, and underscores
+      let name = responses.name
+        .replace(/-/g, '--')
+        .replace(/\s/g, '_')
+        .replace(/_/g, '__');
 
-      name = name.replace(/-/g, '--'); // escape dashes
-      name = name.replace(/\s/g, '_'); // escape spaces
-      name = name.replace(/_/g, '__'); // escape underscores
+      const badgeLink =
+        `https://img.shields.io/badge/${name}-${encodeURIComponent(responses.color)}?logo=${encodeURIComponent(responses.logo)}&style=${encodeURIComponent(responses.style)}` +
+        (responses.logoColor ? `&logoColor=${encodeURIComponent(responses.logoColor)}` : '');
 
-      const color = await text({
-        message: c.cyan.bold('Enter a hexadecimal value for the color of the badge:'),
-        validate: (value) => {
-          const hexColorRegex = /^#?(?:[0-9a-fA-F]{3}){1,2}$/;
-          if (!hexColorRegex.test(value.trim())) {
-            return c.dim('Enter a valid hexadecimal color. Valid ones include #d8e, #96f732');
-          }
-          return;
-        },
-      });
+      const badgeMarkdown = responses.link
+        ? `[![${responses.alt}](${badgeLink})](${responses.link})`
+        : `[![${responses.alt}](${badgeLink})](#)`;
 
-      await utils.checkCancellation(color);
+      const badgeHtml = responses.link
+        ? `<a href="${utils.escapeHtml(responses.link)}">\n  <img src="${badgeLink}" alt="${utils.escapeHtml(responses.alt)}" />\n</a>`
+        : `<img src="${badgeLink}" alt="${utils.escapeHtml(responses.alt)}" />`;
 
-      const logo = await text({
-        message: c.cyan.bold('Enter the logo to be displayed on the badge:'),
-        validate: (value) => {
-          if (!value.trim()) {
-            return c.dim('This field is required.');
-          }
-          return;
-        },
-      });
+      log.success(c.green('Custom badge created successfully!\n'));
 
-      await utils.checkCancellation(logo);
+      // Markdown
+      log.info(c.green.bold('Markdown:'));
+      log.message(c.hex('#FFBF00').bold(`${badgeMarkdown}`));
 
-      const logoColor = await text({
-        message: c.cyan.bold('Enter the color for the logo:'),
-        validate: (value) => {
-          if (!value.trim()) {
-            return c.dim('This field is required.');
-          }
-          return;
-        },
-      });
-
-      await utils.checkCancellation(logoColor);
-
-      const style = await select({
-        message: c.cyan.bold('Choose the style of the badge:'),
-        options: [
-          { value: 'flat', label: 'Flat', hint: 'Popular' },
-          { value: 'flat-square', label: 'Flat Square' },
-          { value: 'plastic', label: 'Plastic' },
-          { value: 'social', label: 'Social' },
-          { value: 'for-the-badge', label: 'For The Badge', hint: 'Popular' },
-        ],
-      });
-
-      await utils.checkCancellation(style);
-
-      const link = await text({
-        message: c.cyan.bold('[Optional] - Enter the URL to redirect to when the badge is clicked:'),
-      });
-
-      await utils.checkCancellation(link);
-
-      let badgeLink = `https://img.shields.io/badge/${name}-${encodeURIComponent(color)}?logo=${encodeURIComponent(logo)}&style=${encodeURIComponent(style)}`;
-
-      if (logoColor) {
-        badgeLink += `&logoColor=${encodeURIComponent(logoColor)}`;
-      }
-
-      const badgeMarkdown = link ? `[![${alt}](${badgeLink})](${link})` : `[![${alt}](${badgeLink})](#)`;
-
-      const badgeHtml = link ? `<a href="${utils.escapeHtml(link)}">\n  <img src="${badgeLink}" alt="${utils.escapeHtml(alt)}" />\n</a>` : `<img src="${badgeLink}" alt="${utils.escapeHtml(alt)}" />`;
-
-      console.log(c.green.bold('\n✅ Custom badge created successfully!\n'));
-      console.log(c.green.bold('Markdown:'));
-      console.log(c.hex('#FFBF00').bold(`${badgeMarkdown}\n`)); // Markdown
-      console.log(c.green.bold('HTML:'));
-      console.log(c.hex('#FFBF00').bold(`${badgeHtml}\n`)); // HTML
+      // HTML
+      log.info(c.green.bold('HTML:'));
+      log.message(c.hex('#FFBF00').bold(`${badgeHtml}\n`));
     } catch (error) {
       consola.error(new Error(c.red(`An error occurred when trying to make the badge: ${error.message}`)));
     }
@@ -481,7 +482,7 @@ program
     const badgeToAdd = options.html ? htmlBadge : badgeMarkdown;
 
     try {
-      let fileContent = ""
+      let fileContent = '';
 
       // Append the badge to the specified file
       fs.appendFileSync(filePath, `\n${badgeToAdd}`, 'utf8');

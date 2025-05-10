@@ -301,7 +301,7 @@ const badges = {
         'sveltekit': '[![SvelteKit](https://img.shields.io/badge/SvelteKit-%23f1413d.svg?logo=svelte&logoColor=white)](#) ',
         'tailwind': '[![TailwindCSS](https://img.shields.io/badge/Tailwind%20CSS-%2338B2AC.svg?logo=tailwind-css&logoColor=white)](#) ',
         'tauri': '[![Tauri](https://img.shields.io/badge/Tauri-24C8D8?logo=tauri&logoColor=fff)](#) ',
-        'tensorflow': '![TensorFlow](https://img.shields.io/badge/TensorFlow-ff8f00?logo=tensorflow&logoColor=white)](#) ',
+        'tensorflow': '[![TensorFlow](https://img.shields.io/badge/TensorFlow-ff8f00?logo=tensorflow&logoColor=white)](#) ',
         'threejs': '[![Three.js](https://img.shields.io/badge/Three.js-000?logo=threedotjs&logoColor=fff)](#) ',
         'viem': '[![Viem](https://custom-icon-badges.demolab.com/badge/Viem-FFC517?logo=viem-dark)](#) ',
         'vite': '[![Vite](https://img.shields.io/badge/Vite-646CFF?logo=vite&logoColor=fff)](#) ',

@@ -159,31 +159,6 @@ program
     }
   });
 
-// Badge List Command
-program
-  .command('badges')
-  .alias('list')
-  .description('open a link to the badge list in your browser')
-  .action(async () => {
-    console.log();
-    const spinner = ora({
-      text: c.blue('Opening in browser...'),
-      spinner: cliSpinners.arc,
-      color: 'magenta',
-    }).start();
-
-    const listLink = 'https://inttter.github.io/md-badges/';
-
-    try {
-      await open(listLink);
-      spinner.succeed(c.green('Opened in your browser!'));
-    } catch (error) {
-      consola.error(new Error(c.red(`An error occurred when trying to open the link in your browser: ${error.message}`)));
-      console.log(`    Follow the link here instead: ${c.magenta.bold(listLink)}`);
-      spinner.stop();
-    }
-  });
-
 // Search Command
 program
   .command('search')
@@ -345,65 +320,6 @@ program
     }
   });
 
-// Random Badge Command
-program
-  .command('random')
-  .alias('r')
-  .description('display a random badge')
-  .action(async () => {
-    const categories = Object.keys(badges);
-    const randomCategory = categories[Math.floor(Math.random() * categories.length)];
-    const badgesInCategory = Object.keys(badges[randomCategory]);
-    const randomBadgeName = badgesInCategory[Math.floor(Math.random() * badgesInCategory.length)];
-    const badge = badges[randomCategory][randomBadgeName];
-
-    const badgeLink = badge.match(/\(([^)]+)\)/)[1];
-    const badgeAlt = badge.match(/\[([^)]+)\]/)[1];
-
-    const markdownBadge = `[${badgeAlt}](${badgeLink})`;
-    const htmlBadgeAlt = badgeAlt.replace(/^!\[/, ''); // strips the '![' from the alt text
-    const htmlBadge = `<img src="${badgeLink}" alt="${htmlBadgeAlt}" />`;
-
-    // outputs both versions, Markdown and HTML
-    console.log(c.green.underline.bold('\nMarkdown:'));
-    console.log(c.hex('#FFBF00').bold(`${markdownBadge}\n`));
-
-    console.log(c.green.underline.bold('HTML:'));
-    console.log(c.hex('#FFBF00').bold(htmlBadge));
-  });
-
-// Copy Command
-program
-  .command('copy [category] [badgeName]')
-  .alias('c')
-  .option('--html', 'copy HTML version of a badge')
-  .description('copy a badge\'s code to the clipboard')
-  .action((category, badgeName) => {
-
-    // * This makes options work, do not remove.
-    const options = program.opts();
-
-    const formattedCategory = category.toLowerCase();
-    const formattedBadgeName = badgeName.toLowerCase();
-
-    // Check if the badge exists in the specified category
-    const selectedBadge = badges[formattedCategory]?.[formattedBadgeName];
-
-    if (selectedBadge) {
-      const { badgeMarkdown, htmlBadge } = utils.formatBadge(selectedBadge);
-
-      clipboardy.writeSync(options.html ? htmlBadge : badgeMarkdown);
-      console.log(c.green.bold(`\n${options.html ? 'HTML' : 'Markdown'} version of badge was copied to the clipboard successfully.\n`));
-    } else {
-      consola.error(c.red(`The specified badge or category could not be found.`));
-
-      console.log(
-        `Check the available categories: ${c.magenta('https://github.com/inttter/mdbadges-cli#categories')}\n` +
-        `Or directly search badges with: ${c.magenta('mdb search')}`
-      );
-    }
-  });
-
 // Add Command
 program
   .command('add [category] [badgeName] [filePath]')
@@ -455,6 +371,90 @@ program
     }
   });
 
+// Copy Command
+program
+  .command('copy [category] [badgeName]')
+  .alias('c')
+  .option('--html', 'copy HTML version of a badge')
+  .description('copy a badge\'s code to the clipboard')
+  .action((category, badgeName) => {
+
+    // * This makes options work, do not remove.
+    const options = program.opts();
+
+    const formattedCategory = category.toLowerCase();
+    const formattedBadgeName = badgeName.toLowerCase();
+
+    // Check if the badge exists in the specified category
+    const selectedBadge = badges[formattedCategory]?.[formattedBadgeName];
+
+    if (selectedBadge) {
+      const { badgeMarkdown, htmlBadge } = utils.formatBadge(selectedBadge);
+
+      clipboardy.writeSync(options.html ? htmlBadge : badgeMarkdown);
+      console.log(c.green.bold(`\n${options.html ? 'HTML' : 'Markdown'} version of badge was copied to the clipboard successfully.\n`));
+    } else {
+      consola.error(c.red(`The specified badge or category could not be found.`));
+
+      console.log(
+        `Check the available categories: ${c.magenta('https://github.com/inttter/mdbadges-cli#categories')}\n` +
+        `Or directly search badges with: ${c.magenta('mdb search')}`
+      );
+    }
+  });
+
+// Random Badge Command
+program
+  .command('random')
+  .alias('r')
+  .description('display a random badge')
+  .action(async () => {
+    const categories = Object.keys(badges);
+    const randomCategory = categories[Math.floor(Math.random() * categories.length)];
+    const badgesInCategory = Object.keys(badges[randomCategory]);
+    const randomBadgeName = badgesInCategory[Math.floor(Math.random() * badgesInCategory.length)];
+    const badge = badges[randomCategory][randomBadgeName];
+
+    const badgeLink = badge.match(/\(([^)]+)\)/)[1];
+    const badgeAlt = badge.match(/\[([^)]+)\]/)[1];
+
+    const markdownBadge = `[${badgeAlt}](${badgeLink})`;
+    const htmlBadgeAlt = badgeAlt.replace(/^!\[/, ''); // strips the '![' from the alt text
+    const htmlBadge = `<img src="${badgeLink}" alt="${htmlBadgeAlt}" />`;
+
+    // outputs both versions, Markdown and HTML
+    console.log(c.green.underline.bold('\nMarkdown:'));
+    console.log(c.hex('#FFBF00').bold(`${markdownBadge}\n`));
+
+    console.log(c.green.underline.bold('HTML:'));
+    console.log(c.hex('#FFBF00').bold(htmlBadge));
+  });
+
+// Badge List Command
+program
+  .command('badges')
+  .alias('list')
+  .description('open a link to the badge list in your browser')
+  .action(async () => {
+    console.log();
+    const spinner = ora({
+      text: c.blue('Opening in browser...'),
+      spinner: cliSpinners.arc,
+      color: 'magenta',
+    }).start();
+
+    const listLink = 'https://inttter.github.io/md-badges/';
+
+    try {
+      await open(listLink);
+      spinner.succeed(c.green('Opened in your browser!'));
+    } catch (error) {
+      consola.error(new Error(c.red(`An error occurred when trying to open the link in your browser: ${error.message}`)));
+      console.log(`    Follow the link here instead: ${c.magenta.bold(listLink)}`);
+      spinner.stop();
+    }
+  });
+
 // Documentation Command
 program
   .command('docs')
@@ -477,14 +477,6 @@ program
       console.log(`\n    Follow the link here instead: ${c.magenta.bold(docsLink)}`);
       spinner.stop();
     }
-  });
-
-// Help Command
-program
-  .command('help')
-  .description('display help information')
-  .action(() => {
-    program.outputHelp();
   });
 
 // Changelog/Releases Command
@@ -510,6 +502,14 @@ program
       console.log(`\n    Follow the link here instead: ${c.magenta.bold(changelogLink)}`);
       spinner.stop();
     }
+  });
+
+// Help Command
+program
+  .command('help')
+  .description('display help information')
+  .action(() => {
+    program.outputHelp();
   });
 
 program.parse(process.argv);

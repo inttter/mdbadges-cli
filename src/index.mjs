@@ -50,11 +50,11 @@ program
           if (options.link) {
             let linkMessage = '';
             if (badgeNames.length === 1) {
-              linkMessage = c.cyan('Enter your link here:');
+              linkMessage = c.cyan.bold('Enter your link here:');
             } else if (index === 0) {
-              linkMessage = c.cyan(`Enter the link for ${c.magenta(utils.formatBadgeName(badgeName))} here:`);
+              linkMessage = c.cyan.bold(`Enter the link for ${c.magenta(utils.formatBadgeName(badgeName))} here:`);
             } else {
-              linkMessage = c.cyan(`Enter the link for ${c.magenta(utils.formatBadgeName(badgeName))} (Badge ${index + 1}) here:`);
+              linkMessage = c.cyan.bold(`Enter the link for ${c.magenta(utils.formatBadgeName(badgeName))} (Badge ${index + 1}) here:`);
             }
 
             const linkResponse = await text({
@@ -72,7 +72,7 @@ program
           }
         } else {
           consola.error(c.red(`'${utils.formatBadgeName(badgeName)}' is not a valid badge.`));
-          console.log(c.cyan(`Try running ${c.magenta.bold('mdb search')} to look for a badge.\n`));
+          console.log(`Try running ${c.magenta.bold('mdb search')} to look for a badge.\n`);
           
           const fuseOptions = {
             keys: ['name'],
@@ -91,7 +91,7 @@ program
 
           if (similarBadges.length > 0) {
             const selectedBadge = await select({
-              message: c.cyan('Did you mean one of these badges instead?'),
+              message: c.cyan.bold('Did you mean one of these badges instead?'),
               options: [
                 ...similarBadges,
                 { label: 'None of these', value: 'none' },
@@ -105,9 +105,9 @@ program
               const { badgeMarkdown, htmlBadge } = utils.formatBadge(selectedBadge, styleOption, options.link ? links[badgeNames.indexOf(selectedBadge)] : '');
 
               if (options.html) {
-                outro(c.hex('#FFBF00').bold(`${htmlBadge}`));
+                outro(`${htmlBadge}`);
               } else {
-                outro(c.hex('#FFBF00').bold(`${badgeMarkdown}`));
+                outro(`${badgeMarkdown}`);
               }
             } else {
               process.exit(0);
@@ -143,10 +143,10 @@ program
 
           if (options.html) {
             // HTML
-            console.log(c.hex('#FFBF00').bold(`${htmlBadge}\n`));
+            console.log(`${htmlBadge}\n`);
           } else {
             // Markdown
-            console.log(c.hex('#FFBF00').bold(`${badgeMarkdown}\n`));
+            console.log(`${badgeMarkdown}\n`);
           }
         }
       }
@@ -154,7 +154,8 @@ program
       consola.error(c.red('The specified badge or category could not be found. '));
       console.log(
         `Check the available categories: ${c.magenta('https://github.com/inttter/mdbadges-cli#categories')}\n` +
-        `Or directly search badges with: ${c.magenta('mdb search')}`
+        `Or directly search badges with: ${c.magenta('mdb search')}\n\n` +
+        `Looking for commands? See here: ${c.magenta('https://github.com/inttter/mdbadges-cli#commands')}`
       );
     }
   });
@@ -202,11 +203,11 @@ program
 
         await utils.checkCancellation(selectedBadge);
 
-        outro(c.hex('#FFBF00').bold(selectedBadge));
+        outro(selectedBadge);
       }
 
       continueSearch = await confirm({
-        message: c.cyan('Would you like to search for another badge?'),
+        message: c.cyan.bold('Would you like to search for another badge?'),
         initial: true,
       });
 
@@ -306,15 +307,15 @@ program
         ? `<a href="${utils.escapeHtml(responses.link)}">\n  <img src="${badgeLink}" alt="${utils.escapeHtml(responses.alt)}" />\n</a>`
         : `<img src="${badgeLink}" alt="${utils.escapeHtml(responses.alt)}" />`;
 
-      log.success(c.green('Custom badge created successfully!\n'));
+      log.success(c.green.bold('Custom badge created successfully!'));
 
       // Markdown
       log.info(c.green.bold('Markdown:'));
-      log.message(c.hex('#FFBF00').bold(`${badgeMarkdown}`));
+      log.message(badgeMarkdown);
 
       // HTML
       log.info(c.green.bold('HTML:'));
-      log.message(c.hex('#FFBF00').bold(`${badgeHtml}\n`));
+      log.message(badgeHtml + '\n');
     } catch (error) {
       consola.error(new Error(c.red(`An error occurred when trying to make the badge: ${error.message}`)));
     }
@@ -361,8 +362,6 @@ program
     const badgeToAdd = options.html ? htmlBadge : badgeMarkdown;
 
     try {
-      let fileContent = '';
-
       // Append the badge to the specified file
       fs.appendFileSync(filePath, `\n${badgeToAdd}`, 'utf8');
       console.log(c.green.bold(`\nBadge has been added to ${filePath} successfully.\n`));
@@ -395,7 +394,6 @@ program
       console.log(c.green.bold(`\n${options.html ? 'HTML' : 'Markdown'} version of badge was copied to the clipboard successfully.\n`));
     } else {
       consola.error(c.red(`The specified badge or category could not be found.`));
-
       console.log(
         `Check the available categories: ${c.magenta('https://github.com/inttter/mdbadges-cli#categories')}\n` +
         `Or directly search badges with: ${c.magenta('mdb search')}`
@@ -423,11 +421,11 @@ program
     const htmlBadge = `<img src="${badgeLink}" alt="${htmlBadgeAlt}" />`;
 
     // outputs both versions, Markdown and HTML
-    console.log(c.green.underline.bold('\nMarkdown:'));
-    console.log(c.hex('#FFBF00').bold(`${markdownBadge}\n`));
+    console.log(c.green.bold('\nMarkdown:'));
+    console.log(markdownBadge + '\n');
 
-    console.log(c.green.underline.bold('HTML:'));
-    console.log(c.hex('#FFBF00').bold(htmlBadge));
+    console.log(c.green.bold('HTML:'));
+    console.log(htmlBadge + '\n');
   });
 
 // Badge List Command
@@ -447,7 +445,7 @@ program
 
     try {
       await open(listLink);
-      spinner.succeed(c.green('Opened in your browser!'));
+      spinner.succeed(c.green.bold('Opened in your browser!'));
     } catch (error) {
       consola.error(new Error(c.red(`An error occurred when trying to open the link in your browser: ${error.message}`)));
       console.log(`    Follow the link here instead: ${c.magenta.bold(listLink)}`);
@@ -471,7 +469,7 @@ program
 
     try {
       await open(docsLink);
-      spinner.succeed(c.green('Opened in your browser!'));
+      spinner.succeed(c.green.bold('Opened in your browser!'));
     } catch (error) {
       consola.error(new Error(c.red(`An error occurred when trying to open the link in your browser: ${error.message}`)));
       console.log(`\n    Follow the link here instead: ${c.magenta.bold(docsLink)}`);
@@ -496,7 +494,7 @@ program
 
     try {
       await open(changelogLink);
-      spinner.succeed(c.green('Opened in your browser!'));
+      spinner.succeed(c.green.bold('Opened in your browser!'));
     } catch (error) {
       consola.error(new Error(c.red(`Could not open the link in your browser: ${error.message}`)));
       console.log(`\n    Follow the link here instead: ${c.magenta.bold(changelogLink)}`);

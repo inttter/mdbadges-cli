@@ -189,7 +189,7 @@ program
         log.error(c.red(`No badges containing '${keyword}' could be found.`));
       } else {
         const badgeChoices = results.map(({ item }) => ({
-          name: `${c.hex('#FFBF00')(item.formattedBadge)} in ${c.dim(item.formattedCategory)}`,
+          name: `${(item.formattedBadge)} ${(`(${item.formattedCategory})`)}`,
           value: item.badgeCode,
         }));
 
@@ -203,7 +203,10 @@ program
 
         await utils.checkCancellation(selectedBadge);
 
-        outro(selectedBadge);
+        // Fixes extra space in front of the selected badge output
+        const { badgeMarkdown } = utils.formatBadge(selectedBadge);
+
+        outro(badgeMarkdown);
       }
 
       continueSearch = await confirm({

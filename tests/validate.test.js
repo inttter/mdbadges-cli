@@ -1,46 +1,21 @@
 import badges from '../src/badges.mjs';
 
-// NOTE: All badges are in the right format of:
-// [![Badge Name](Badge Link)](#)
-// Example: [![App Store](https://img.shields.io/badge/App_Store-0D96F6?logo=app-store&logoColor=white)](#)
+// NOTE: All badges must follow this format (with a trailing space):
+// [![Badge Name](https://img.shields.io/badge/...)](#)
+// or [![Badge Name](https://custom-icon-badges.demolab.com/badge/...)](#)
 
 describe('All badges display correctly', () => {
   for (const [category, badgesInCategory] of Object.entries(badges)) {
-    describe(`category: ${category}`, () => {
+    describe(`Category: ${category}`, () => {
       for (const [badgeKey, badgeValue] of Object.entries(badgesInCategory)) {
-        test(`${badgeKey} badge displays correctly`, () => {
-          // Checks if the badge is defined
+        test(`${badgeKey} badge matches expected format`, () => {
           expect(badgeValue).toBeDefined();
 
-          // Extract the badge name from badge value
-          const badgeNameMatch = badgeValue.match(/\[!\[([^\]]+)\]/);
-          expect(badgeNameMatch).toBeDefined();
+          // Full regex for a typical badge
+          const badgeFormatRegex = /^\[!\[[^\]]+\]\((https:\/\/(img\.shields\.io|custom-icon-badges\.demolab\.com)\/badge\/[^\)]+)\)\]\(#\)\s?$/;
 
-          const badgeName = badgeNameMatch[1];
-
-          // Extract the badge URL from the badge's value
-          const badgeUrlMatch = badgeValue.match(/\((https:\/\/[^\)]+)\)/);
-          expect(badgeUrlMatch).toBeDefined();
-
-          const badgeUrl = badgeUrlMatch[1];
-
-          // Check if the URL contains '/badge/'
-          expect(badgeUrl.includes('/badge/')).toBe(true);
-
-          // Escape special characters in the badge name
-          const escapedBadgeName = badgeName.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, '\\$1');
-          
-          // Escape special characters in the badge URL
-          const escapedBadgeUrl = badgeUrl.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, '\\$1');
-
-          const expectedRegex = new RegExp(
-            `\\[\\!\\[${escapedBadgeName}\\]\\(${escapedBadgeUrl}\\)\\]\\(#\\)`
-          );
-
-          const cleanedBadgeValue = badgeValue.replace(/\)\)$/, ')');
-
-          // Verifies that a badge matches the correct format of the regex
-          expect(cleanedBadgeValue).toMatch(expectedRegex);
+          // Verifies that the badge matches the regex
+          expect(badgeValue).toMatch(badgeFormatRegex);
         });
       }
     });

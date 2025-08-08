@@ -63,6 +63,7 @@ This section contains the categories that are currently available, with their co
 
 | Name                    | Syntax                 |
 |-------------------------|------------------------|
+| API Development         | `api-dev`              |
 | App Store               | `app-store`            |
 | Artificial Intelligence | `ai`                   |
 | Blog                    | `blog`                 |

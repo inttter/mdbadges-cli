@@ -2,9 +2,6 @@
 
 Thank you for considering making a contribution to this project! Take a moment to read through the guidelines below before making your contribution.
 
-> [!IMPORTANT]
-> You must have Node.js 18 or higher installed before contributing.
-
 # Installing locally
 
 Firstly, you will need to have a local copy of the repository.
@@ -34,7 +31,7 @@ git commit -m "✨ feat: [commit message here]"
 git push
 ```
 
-> While not explicitly required, it's recommended to follow the [Conventional Commits](https://conventionalcommits.org) specification for commit message. If you would like, you can also use [Gitmoji](https://gitmoji.dev) or any other emoji spec for commit emojis.
+> While not explicitly required, it's recommended to follow the [Conventional Commits](https://conventionalcommits.org) specification for commit messages. If you would like, you can also use [Gitmoji](https://gitmoji.dev) or any other emoji spec for commit emojis.
 
 You can now create a [pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request) with your changes.
 

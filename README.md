@@ -85,6 +85,7 @@ This section contains the categories that are currently available, with their co
 | Game Engine             | `game-engine`          |
 | Gaming Storefront       | `game-store`           |
 | Jobs                    | `jobs`                 |
+| Monitoring              | `monitoring`           |
 | Operating System        | `os`                   |
 | ORM                     | `orm`                  |
 | Package Manager         | `package-manager`      |

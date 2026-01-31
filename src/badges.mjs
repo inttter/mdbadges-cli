@@ -12,6 +12,7 @@ const badges = {
         'insomnia': '[![Insomnia](https://img.shields.io/badge/Insomnia-4000BF?logo=insomnia&logoColor=white)](#) ',
         'kong': '[![Kong](https://img.shields.io/badge/Kong-003459?logo=kong&logoColor=white)](#) ',
         'openapi': '[![OpenAPI](https://img.shields.io/badge/OpenAPI-6BA539?logo=openapiinitiative&logoColor=white)](#) ',
+        'openrouter': '[![OpenRouter](https://img.shields.io/badge/OpenRouter-94A3B8?logo=openrouter&logoColor=fff)](#) ',
         'postman': '[![Postman](https://img.shields.io/badge/Postman-FF6C37?logo=postman&logoColor=white)](#)',
         'swagger': '[![Swagger](https://img.shields.io/badge/Swagger-85EA2D?logo=swagger&logoColor=173647)](#) '
     },
@@ -25,7 +26,7 @@ const badges = {
         'snapcraft': '[![Snapcraft](https://img.shields.io/badge/Snapcraft-e95420?logo=snapcraft&logoColor=fff)](#) ',
     },
     'ai': {
-        'chatgpt': '[![ChatGPT](https://img.shields.io/badge/ChatGPT-74aa9c?logo=openai&logoColor=white)](#) ',
+        'chatgpt': '[![ChatGPT](https://custom-icon-badges.demolab.com/badge/ChatGPT-74aa9c?logo=openai&logoColor=white)](#) ',
         'github-copilot': '[![GitHub Copilot](https://img.shields.io/badge/GitHub%20Copilot-000?logo=githubcopilot&logoColor=fff)](#) ',
         'claude': '[![Claude](https://img.shields.io/badge/Claude-D97757?logo=claude&logoColor=fff)](#) ',
         'deepseek': '[![Deepseek](https://custom-icon-badges.demolab.com/badge/Deepseek-4D6BFF?logo=deepseek&logoColor=fff)](#) ',
@@ -36,6 +37,7 @@ const badges = {
         'mistral-ai': '[![Mistral AI](https://img.shields.io/badge/Mistral%20AI-FA520F?logo=mistral-ai&logoColor=fff)](#) ',
         'ollama': '[![Ollama](https://img.shields.io/badge/Ollama-fff?logo=ollama&logoColor=000)](#) ',
         'perplexity': '[![Perplexity](https://img.shields.io/badge/Perplexity-1FB8CD?logo=perplexity&logoColor=fff)](#) ',
+        'qwen': '[![Qwen](https://custom-icon-badges.demolab.com/badge/Qwen-605CEC?logo=qwen&logoColor=fff)](#) ',
         'v0': '[![v0](https://img.shields.io/badge/v0-000?logo=v0&logoColor=fff)](#) '
     },
     'blog': {
@@ -87,15 +89,19 @@ const badges = {
         'aws-lambda': '[![AWS Lambda](https://custom-icon-badges.demolab.com/badge/AWS%20Lambda-%23FF9900.svg?logo=aws-lambda&logoColor=white)](#) ',
         'azure': '[![Microsoft Azure](https://custom-icon-badges.demolab.com/badge/Microsoft%20Azure-0089D6?logo=msazure&logoColor=white)](#) ',
         'cloudflare': '[![Cloudflare](https://img.shields.io/badge/Cloudflare-F38020?logo=Cloudflare&logoColor=white)](#) ',
+        'cloudflare-workers': '[![Cloudflare Workers](https://img.shields.io/badge/Cloudflare%20Workers-FF4A03?logo=Cloudflare-Workers&logoColor=white)](#) ',
+        'coolify': '[![Coolify](https://img.shields.io/badge/Coolify-6B16ED?logo=coolify&logoColor=white)](#) ',
         'digitalocean': '[![DigitalOcean](https://img.shields.io/badge/DigitalOcean-%230167ff.svg?logo=digitalOcean&logoColor=white)](#) ',
         'firebase': '[![Firebase](https://img.shields.io/badge/Firebase-039BE5?logo=Firebase&logoColor=white)](#) ',
+        'fly.io': '[![Fly.io](https://img.shields.io/badge/Fly.io-8636EA?logo=flydotio&logoColor=white)](#) ',
         'google-cloud': '[![Google Cloud](https://img.shields.io/badge/Google%20Cloud-%234285F4.svg?logo=google-cloud&logoColor=white)](#) ',
-        'heroku': '[![Heroku](https://img.shields.io/badge/Heroku-430098?logo=heroku&logoColor=fffe)](#) ',
+        'hetzner': '[![Hetzner](https://img.shields.io/badge/Hetzner-D30428?logo=Hetzner&logoColor=white)](#) ',
         'hostinger': '[![Hostinger](https://img.shields.io/badge/Hostinger-673DE6?logo=hostinger&logoColor=fff)](#) ',
         'netlify': '[![Netlify](https://img.shields.io/badge/Netlify-%23000000.svg?logo=netlify&logoColor=#00C7B7)](#) ',
         'odoo': '[![Odoo](https://img.shields.io/badge/Odoo-714B67?logo=Odoo&logoColor=fff)](#) ',
         'oracle-cloud': '[![Oracle Cloud](https://custom-icon-badges.demolab.com/badge/Oracle%20Cloud-F80000?logo=oracle&logoColor=white)](#) ',
         'sap': '[![SAP](https://img.shields.io/badge/SAP-0FAAFF?logo=sap&logoColor=fff)](#) ',
+        'scaleway': '[![Scaleway](https://img.shields.io/badge/Scaleway-8D40EE?logo=Scaleway&logoColor=white)](#) ',
         'terraform': '[![Terraform](https://img.shields.io/badge/Terraform-844FBA?logo=terraform&logoColor=fff)](#) ',
         'vercel': '[![Vercel](https://img.shields.io/badge/Vercel-%23000000.svg?logo=vercel&logoColor=white)](#) '
     },
@@ -109,9 +115,9 @@ const badges = {
         'stackhawk': '[![StackHawk](https://img.shields.io/badge/StackHawk-00CBC6?logo=StackHawk&logoColor=fff)](#) '
     },
     'code-editor': {
-        'codepen': '[![CodePen](https://img.shields.io/badge/CodePen-white?&logo=codepen&logoColor=black)](#) ',
+        'codepen': '[![CodePen](https://custom-icon-badges.demolab.com/badge/CodePen-white?&logo=codepen-black&logoColor=black)](#) ',
         'codesandbox': '[![CodeSandbox](https://img.shields.io/badge/CodeSandbox-151515?logo=codesandbox&logoColor=fff)](#) ',
-        'cursor': '[![Cursor](https://custom-icon-badges.demolab.com/badge/Cursor-000000?logo=cursor-ai-white)](#) ',
+        'cursor': '[![Cursor](https://img.shields.io/badge/Cursor-000000?logo=cursor)](#) ',
         'eclipse': '[![Eclipse](https://img.shields.io/badge/Eclipse-FE7A16.svg?logo=Eclipse&logoColor=white)](#) ',
         'emacs': '[![Emacs](https://img.shields.io/badge/Emacs-%237F5AB6.svg?&logo=gnu-emacs&logoColor=white)](#) ',
         'gitpod': '[![Gitpod](https://img.shields.io/badge/Gitpod-FFAE33?logo=gitpod&logoColor=fff)](#) ',
@@ -143,7 +149,7 @@ const badges = {
         'jira': '[![Jira](https://img.shields.io/badge/Jira-0052CC?logo=jira&logoColor=fff)](#) ',
         'linear': '[![Linear](https://img.shields.io/badge/Linear-5E6AD2?logo=linear&logoColor=fff)](#) ',
         'miro': '[![Miro](https://img.shields.io/badge/Miro-050038?logo=miro&logoColor=fff)](#) ',
-        'slack': '[![Slack](https://img.shields.io/badge/Slack-4A154B?logo=slack&logoColor=fff)](#) ',
+        'slack': '[![Slack](https://custom-icon-badges.demolab.com/badge/Slack-4A154B?logo=slack&logoColor=fff)](#) ',
         'transifex': '[![Transifex](https://img.shields.io/badge/Transifex-0064AB?logo=transifex&logoColor=fff)](#) ',
         'trello': '[![Trello](https://img.shields.io/badge/Trello-0052CC?logo=trello&logoColor=fff)](#) ',
         'zoom': '[![Zoom](https://img.shields.io/badge/Zoom-2D8CFF?logo=zoom&logoColor=white)](#) '
@@ -172,6 +178,7 @@ const badges = {
         'cassandra': '[![Cassandra](https://img.shields.io/badge/Cassandra-%231287B1.svg?logo=apache-cassandra&logoColor=white)](#) ',
         'couchbase': '[![Couchbase](https://img.shields.io/badge/Couchbase-EA2328?logo=couchbase&logoColor=white)](#) ',
         'couchdb': '[![CouchDB](https://img.shields.io/badge/CouchDB-E42528?logo=apachecouchdb&logoColor=fff)](#) ',
+        'faunadb': '[![FaunaDB](https://img.shields.io/badge/FaunaDB-3A1AB6?logo=fauna&logoColor=white)](#) ',
         'firebase': '[![Firebase](https://img.shields.io/badge/Firebase-039BE5?logo=Firebase&logoColor=white)](#) ',
         'influxdb': '[![InfluxDB](https://img.shields.io/badge/InfluxDB-22ADF6?logo=influxdb&logoColor=fff)](#) ',
         'mariadb': '[![MariaDB](https://img.shields.io/badge/MariaDB-003545?logo=mariadb&logoColor=white)](#) ',
@@ -180,6 +187,7 @@ const badges = {
         'mysql': '[![MySQL](https://img.shields.io/badge/MySQL-4479A1?logo=mysql&logoColor=fff&)](#) ',
         'neo4j': '[![Neo4J](https://img.shields.io/badge/Neo4j-008CC1?logo=neo4j&logoColor=white)](#) ',
         'oracle': '[![Oracle](https://custom-icon-badges.demolab.com/badge/Oracle-F80000?logo=oracle&logoColor=fff)](#) ',
+        'planetscale': '[![PlanetScale](https://img.shields.io/badge/PlanetScale-111111?logo=planetscale&logoColor=white)](#) ',
         'postgres': '[![Postgres](https://img.shields.io/badge/Postgres-%23316192.svg?logo=postgresql&logoColor=white)](#) ',
         'redis': '[![Redis](https://img.shields.io/badge/Redis-%23DD0031.svg?logo=redis&logoColor=white)](#) ',
         'sqlite': '[![SQLite](https://img.shields.io/badge/SQLite-%2307405e.svg?logo=sqlite&logoColor=white)](#) ',
@@ -193,6 +201,7 @@ const badges = {
         'databricks': '[![Databricks](https://img.shields.io/badge/Databricks-FF3621?logo=databricks&logoColor=fff)](#) ',
         'etl': '[![ETL](https://custom-icon-badges.demolab.com/badge/ETL-9370DB?logo=etl-logo&logoColor=fff)](#) ',
         'google-colab': '[![Google Colab](https://img.shields.io/badge/Google%20Colab-F9AB00?logo=googlecolab&logoColor=fff)](#) ',
+        'jax': '[![JAX](https://custom-icon-badges.demolab.com/badge/JAX-222827?logo=jax&logoColor=ffffff)](#) ',
         'matplotlib': '[![Matplotlib](https://custom-icon-badges.demolab.com/badge/Matplotlib-71D291?logo=matplotlib&logoColor=fff)](#) ',
         'mlflow': '[![MLflow](https://img.shields.io/badge/MLflow-F4AA41?logo=MLflow&logoColor=black)](#) ',
         'numpy': '[![NumPy](https://img.shields.io/badge/NumPy-4DABCF?logo=numpy&logoColor=fff)](#) ',
@@ -213,7 +222,7 @@ const badges = {
         'affinity-studio': '[![Affinity Studio](https://custom-icon-badges.demolab.com/badge/Affinity-A7F175?logo=affinitystudio&logoColor=black)](#) ',
         'behance': '[![Behance](https://img.shields.io/badge/Behance-0054F7?logo=behance&logoColor=white)](#) ',
         'blender': '[![Blender](https://img.shields.io/badge/Blender-%23F5792A.svg?logo=blender&logoColor=white)](#) ',
-        'canva': '[![Canva](https://img.shields.io/badge/Canva-%2300C4CC.svg?&logo=Canva&logoColor=white)](#) ',
+        'canva': '[![Canva](https://custom-icon-badges.demolab.com/badge/Canva-%2300C4CC.svg?&logo=canva&logoColor=white)](#) ',
         'dribbble': '[![Dribbble](https://img.shields.io/badge/Dribbble-EA4C89?logo=dribbble&logoColor=white)](#) ',
         'figma': '[![Figma](https://img.shields.io/badge/Figma-F24E1E?logo=figma&logoColor=white)](#) ',
         'framer': '[![Framer](https://img.shields.io/badge/Framer-05F?logo=framer&logoColor=fff)](#) ',
@@ -280,6 +289,7 @@ const badges = {
         'backbone.js': '[![Backbone.js](https://img.shields.io/badge/Backbone.js-0071B5?logo=backbonedotjs&logoColor=fff)](#) ',
         'blazor': '[![Blazor](https://img.shields.io/badge/Blazor-512BD4?logo=blazor&logoColor=fff)](#) ',
         'bootstrap': '[![Bootstrap](https://img.shields.io/badge/Bootstrap-7952B3?logo=bootstrap&logoColor=fff)](#) ',
+        'caprover': '[![CapRover](https://img.shields.io/badge/CapRover-EF5C26?logo=CapRover&logoColor=white)](#) ',
         'chart.js': '[![Chart.js](https://img.shields.io/badge/Chart.js-FF6384?logo=chartdotjs&logoColor=fff)](#) ',
         'contentful': '[![Contentful](https://img.shields.io/badge/Contentful-2478CC?logo=contentful&logoColor=fff)](#) ',
         'cuda': '[![CUDA](https://img.shields.io/badge/CUDA-76B900?logo=nvidia&logoColor=fff)](#) ',
@@ -305,6 +315,7 @@ const badges = {
         'hugo': '[![Hugo](https://img.shields.io/badge/Hugo-FF4088?logo=hugo&logoColor=fff)](#) ',
         'ionic': '[![Ionic](https://img.shields.io/badge/Ionic-3880FF?logo=ionic&logoColor=white)](#) ',
         'iced': '[![Iced](https://img.shields.io/badge/Iced-1A50FF?logo=Iced&logoColor=fff)](#) ',
+        'inertia.js': '[![Inertia.js](https://img.shields.io/badge/Inertia.js-155dfc?logo=inertia&logoColor=fff)](#) ',
         'jasmine': '[![Jasmine](https://img.shields.io/badge/Jasmine-8A4182?logo=jasmine&logoColor=fff)](#) ',
         'jest': '[![Jest](https://img.shields.io/badge/Jest-C21325?logo=jest&logoColor=fff)](#) ',
         'jquery': '[![jQuery](https://img.shields.io/badge/jQuery-0769AD?logo=jquery&logoColor=fff)](#) ',
@@ -315,6 +326,8 @@ const badges = {
         'langchain': '[![LangChain](https://img.shields.io/badge/LangChain-1c3c3c.svg?logo=langchain&logoColor=white)](#) ',
         'laravel': '[![Laravel](https://img.shields.io/badge/Laravel-%23FF2D20.svg?logo=laravel&logoColor=white)](#) ',
         'less': '[![Less](https://img.shields.io/badge/Less-1D365D?logo=less&logoColor=fff)](#) ',
+        'lit': '[![Lit](https://img.shields.io/badge/Lit-4C64FF?logo=Lit&logoColor=white)](#) ',
+        'marko': '[![Marko](https://img.shields.io/badge/Marko-202124?logo=Marko&logoColor=FF5467)](#) ',
         'meteor': '[![Meteor.js](https://img.shields.io/badge/Meteor.js-%23d74c4c.svg?logo=meteor&logoColor=white)](#) ',
         'mocha': '[![Mocha](https://img.shields.io/badge/Mocha-8D6748?logo=mocha&logoColor=fff)](#) ',
         'nest': '[![Nest.js](https://img.shields.io/badge/Nest.js-%23E0234E.svg?logo=nestjs&logoColor=white)](#) ',
@@ -324,12 +337,14 @@ const badges = {
         'nuxt': '[![Nuxt](https://img.shields.io/badge/Nuxt-002E3B?logo=nuxt&logoColor=#00DC82)](#) ',
         'onnx': '[![ONNX](https://img.shields.io/badge/ONNX-005CED?logo=ONNX&logoColor=white)](#) ',
         'opengl': '[![OpenGL](https://img.shields.io/badge/OpenGl-5487A6?logo=OpenGl&logoColor=fff)](#) ',
+        'portainer': '[![Portainer](https://img.shields.io/badge/Portainer-C080FF?logo=Portainer&logoColor=fff)](#) ',
         'playwright': '[![Playwright](https://custom-icon-badges.demolab.com/badge/Playwright-2EAD33?logo=playwright&logoColor=fff)](#) ',
         'pydantic': '[![Pydantic](https://img.shields.io/badge/Pydantic-E92063?logo=Pydantic&logoColor=white)](#) ',
         'pytorch': '[![Pytest](https://img.shields.io/badge/Pytest-fff?logo=pytest&logoColor=000)](#) ',
         'preact': '[![Preact](https://img.shields.io/badge/Preact-673AB8?logo=preact&logoColor=fff)](#) ',
         'pytorch': '[![PyTorch](https://img.shields.io/badge/PyTorch-ee4c2c?logo=pytorch&logoColor=white)](#) ',
         'qt': '[![Qt](https://img.shields.io/badge/Qt-2CDE85?logo=Qt&logoColor=fff)](#) ',
+        'qwik': '[![Qwik](https://img.shields.io/badge/Qwik-AC7EF4?logo=Qwik&logoColor=white)](#) ',
         'rails': '[![Rails](https://img.shields.io/badge/Rails-%23CC0000.svg?logo=ruby-on-rails&logoColor=white)](#) ',
         'react': '[![React](https://img.shields.io/badge/React-%2320232a.svg?logo=react&logoColor=%2361DAFB)](#) ',
         'react-hook-form': '[![React Hook Form](https://img.shields.io/badge/React%20Hook%20Form-EC5990?logo=reacthookform&logoColor=fff)](#) ',
@@ -399,6 +414,8 @@ const badges = {
     },
     'monitoring': {
         'grafana': '[![Grafana](https://img.shields.io/badge/Grafana-F46800?logo=grafana&logoColor=white)](#) ',
+        'kibana': '[![Kibana](https://img.shields.io/badge/Kibana-005571?logo=kibana&logoColor=fff)](#) ',
+        'opentelemetry': '[![OpenTelemetry](https://img.shields.io/badge/OpenTelemetry-000?logo=opentelemetry&logoColor=fff)](#) ',
         'prometheus': '[![Prometheus](https://img.shields.io/badge/Prometheus-E6522C?logo=prometheus&logoColor=white)](#) ',
     },
     'os': {
@@ -432,6 +449,7 @@ const badges = {
         'rocky-linux': '[![Rocky Linux](https://img.shields.io/badge/Rocky%20Linux-10B981?logo=rockylinux&logoColor=fff)](#) ',
         'tailos': '[![TailsOS](https://img.shields.io/badge/TailsOS-55317D?logo=tails&logoColor=white)](#) ',
         'ubuntu': '[![Ubuntu](https://img.shields.io/badge/Ubuntu-E95420?logo=ubuntu&logoColor=white)](#) ',
+        'unraid': '[![Unraid](https://img.shields.io/badge/Unraid-F15A2C?logo=unraid&logoColor=white)](#) ',
         'void-linux': '[![Void Linux](https://img.shields.io/badge/Void%20Linux-478061?logo=voidlinux&logoColor=fff)](#) ',
         'windows': '[![Windows](https://custom-icon-badges.demolab.com/badge/Windows-0078D6?logo=windows11&logoColor=white)](#) '
     },
@@ -471,6 +489,10 @@ const badges = {
         'stripe': '[![Stripe](https://img.shields.io/badge/Stripe-5851DD?logo=stripe&logoColor=fff)](#) ',
         'visa': '[![Visa](https://img.shields.io/badge/Visa-1A1F71?logo=visa&logoColor=fff)](#) ',
         'woocommerce': '[![WooCommerce](https://img.shields.io/badge/WooCommerce-96588A?logo=woocommerce&logoColor=fff)](#) '
+    },
+    'process-manager': {
+        'nodemon': '[![Nodemon](https://img.shields.io/badge/Nodemon-76D04B?logo=nodemon&logoColor=fff)](#) ',
+        'pm2': '[![PM2](https://img.shields.io/badge/PM2-2B037A?logo=pm2&logoColor=white)](#) '
     },
     'programming': {
         'assemblyscript': '[![AssemblyScript](https://img.shields.io/badge/AssemblyScript-007AAC?logo=assemblyscript&logoColor=fff)](#) ',
@@ -613,7 +635,6 @@ const badges = {
         'soundcloud': '[![Soundcloud](https://img.shields.io/badge/Soundcloud-FF3300?logo=Soundcloud&logoColor=white)](#) ',
         'spotify': '[![Spotify](https://img.shields.io/badge/Spotify-1ED760?logo=spotify&logoColor=white)](#) ',
         'tidal': '[![Tidal](https://img.shields.io/badge/Tidal-000000?logo=Tidal&logoColor=white)](#) ',
-        'tunein': '[![TuneIn](https://img.shields.io/badge/TuneIn-14D8CC?logo=TuneIn&logoColor=white)](#) ',
         'youtube-music': '[![YouTube Music](https://img.shields.io/badge/YouTube_Music-FF0000?logo=youtube-music&logoColor=white)](#) '
     },
     'static-site': {
@@ -656,6 +677,10 @@ const badges = {
         'warp': '[![Warp](https://img.shields.io/badge/Warp-01A4FF?logo=warp&logoColor=fff)](#) ',
         'wezterm': '[![Wezterm](https://img.shields.io/badge/Wezterm-4E49EE?logo=wezterm&logoColor=fff)](#) ',
         'zsh': '[![Zsh](https://img.shields.io/badge/Zsh-F15A24?logo=zsh&logoColor=fff)](#) '
+    },
+    'url-shortener': {
+        'bitly': '[![Bitly](https://img.shields.io/badge/Bitly-EE6123?logo=bitly&logoColor=fff)](#) ',
+        'tinyurl': '[![TinyURL](https://custom-icon-badges.demolab.com/badge/TinyURL-0D7693?logo=tinyurl&logoColor=fff)](#) '
     },
     'version-control': {
         'git': '[![Git](https://img.shields.io/badge/Git-F05032?logo=git&logoColor=fff)](#) ',

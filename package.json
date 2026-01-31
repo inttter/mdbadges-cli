@@ -1,6 +1,6 @@
 {
   "name": "mdbadges-cli",
-  "version": "6.8.6",
+  "version": "6.8.7",
   "description": "An extensive CLI tool to find over 400+ Shields.io badges for your projects.",
   "author": "Inter",
   "license": "MIT",

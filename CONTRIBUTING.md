@@ -2,7 +2,7 @@
 
 Thank you for considering making a contribution to this project! Take a moment to read through the guidelines below before making your contribution.
 
-# Installing locally
+## Installing locally
 
 Firstly, you will need to have a local copy of the repository.
 
@@ -35,7 +35,7 @@ git push
 
 You can now create a [pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request) with your changes.
 
-# Commands
+## Commands
 
 mdbadges-cli uses [Commander](https://www.npmjs.com/package/commander) for commands. In order to add a new command, follow the steps outlined below:
 
@@ -59,7 +59,7 @@ Generally, you should stick to single-word command names. For example, instead o
 
 You should also try to keep command names and descriptions **concise and descriptive** to avoid any confusion to users.
 
-# Adding Badges
+## Adding Badges
 
 Before you contribute a new badge, make sure that you have checked for the following:
 
@@ -116,9 +116,9 @@ You can also add a badge to [md-badges](https://github.com/inttter/md-badges), w
 * Read the [contributing guidelines](https://github.com/inttter/md-badges/blob/main/CONTRIBUTING.md) before contributing.
 * Contribute a new badge to that repository.
 
-When badges are added to md-badges, they will be added accordingly to this package in future releases, usually within a few days or weeks.
+When badges are added to md-badges, they will be ported to this package in future releases.
 
-# Styling
+## Styling
 
 In mdbadges-cli, `Chalk` is the main coloring package that is used. To use Chalk, use the `c` prefix, followed by the [color option(s) of choice](https://github.com/chalk/chalk?tab=readme-ov-file#styles).
 

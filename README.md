@@ -6,7 +6,7 @@
 [![NPM Downloads](https://img.shields.io/npm/dw/mdbadges-cli.svg?style=flat&colorA=18181B&colorB=6134EB&logo=npm)](https://www.npmjs.com/package/mdbadges-cli/)
 [![License](https://custom-icon-badges.herokuapp.com/github/license/inttter/mdbadges-cli?logo=law&color=6134EB&labelColor=191724)](LICENSE)
 
-**mdbadges-cli** is an extensive command-line tool that lets you search for over **500+** Shields.io badges for your projects without needing to leave the terminal, also including multiple commands with different purposes.
+**mdbadges-cli** is an extensive command-line tool that lets you search for over **600+** Shields.io badges for your projects without needing to leave the terminal, also including multiple commands with different purposes.
 
 ## Installation
 
@@ -90,6 +90,7 @@ This section contains the categories that are currently available, with their co
 | ORM                     | `orm`                  |
 | Package Manager         | `package-manager`      |
 | Payment                 | `payment`              |
+| Process Manager         | `process-manager`      |
 | Programming Language    | `programming`          |
 | Review                  | `review`               |
 | Search Engine           | `search-engine`        |
@@ -99,6 +100,7 @@ This section contains the categories that are currently available, with their co
 | Storage                 | `storage`              |
 | Streaming               | `streaming`            |
 | Terminal                | `terminal`             |
+| URL Shortener           | `url-shortener`        |
 | Version Control         | `version-control`      |
 | Virtual Reality         | `vr`                   |
 
@@ -112,4 +114,4 @@ If you would like to contribute in any way, such as adding a badge, please make 
 
 ## License 
 
-© **2025** - mdbadges-cli is licensed under the [MIT License](LICENSE).
+© **2026** - mdbadges-cli is licensed under the [MIT License](LICENSE).

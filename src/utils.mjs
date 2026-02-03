@@ -11,7 +11,7 @@ function formatCategoryName(category) {
 }
 
 function searchCategory(category) {
-  return category.toLowerCase().replace(/\s+/g, '-');
+  return category?.toLowerCase().replace(/\s+/g, '-');
 }
 
 function formatBadgeName(badgeName) {

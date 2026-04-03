@@ -72,6 +72,8 @@ This section contains the categories that are currently available, with their co
 | Cloud                   | `cloud`                |
 | Code Coverage           | `code-coverage`        |
 | Code Editor             | `code-editor`          |
+| Code Linter             | `code-linter`          |
+| Code Type Checker       | `code-type checker`    |
 | Collaboration           | `collaboration`        |
 | Cryptocurrency          | `crypto`               |
 | Database                | `database`             |

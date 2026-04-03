@@ -4,7 +4,7 @@ import badges from './badges.mjs';
 import c from 'chalk';
 import cliSpinners from 'cli-spinners';
 import { consola } from 'consola';
-import { confirm, select, group, text, log, outro } from '@clack/prompts';
+import { confirm, select, group, text, log, outro, cancel } from '@clack/prompts';
 import clipboardy from 'clipboardy';
 import fs from 'fs';
 import Fuse from 'fuse.js';
@@ -286,7 +286,7 @@ program
         },
         {
           onCancel: () => {
-            log.error(c.yellow('Exiting because `CTRL+C` was pressed.\n'));
+            cancel('Exiting...');
             process.exit(0);
           },
         }

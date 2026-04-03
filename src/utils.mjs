@@ -51,7 +51,7 @@ const isValidURL = (url) => {
   }
 };
 
-async function checkCancellation(input, cancelMessage = 'Exiting because `CTRL+C` was pressed.') {
+async function checkCancellation(input, cancelMessage = 'Exiting...') {
   if (isCancel(input)) {
     cancel(cancelMessage);
     process.exit(0);

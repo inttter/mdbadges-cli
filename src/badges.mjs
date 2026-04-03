@@ -24,6 +24,7 @@ const badges = {
         'flathub': '[![Flathub](https://img.shields.io/badge/Flathub-000000?logo=flathub&logoColor=fff)](#) ',
         'google-play': '[![Google Play Store](https://img.shields.io/badge/Google_Play-414141?logo=google-play&logoColor=white)](#)',
         'snapcraft': '[![Snapcraft](https://img.shields.io/badge/Snapcraft-e95420?logo=snapcraft&logoColor=fff)](#) ',
+        'uptodown': '[![Uptodown](https://custom-icon-badges.demolab.com/badge/Uptodown-FFFFFF?logo=uptodown)](#) '
     },
     'ai': {
         'chatgpt': '[![ChatGPT](https://custom-icon-badges.demolab.com/badge/ChatGPT-74aa9c?logo=openai&logoColor=white)](#) ',
@@ -34,11 +35,14 @@ const badges = {
         'google-assistant': '[![Google Assistant](https://img.shields.io/badge/Google%20Assistant-4285F4?logo=googleassistant&logoColor=fff)](#) ',
         'hugging-face': '[![Hugging Face](https://img.shields.io/badge/Hugging%20Face-FFD21E?logo=huggingface&logoColor=000)](#) ',
         'google-gemini': '[![Google Gemini](https://img.shields.io/badge/Google%20Gemini-886FBF?logo=googlegemini&logoColor=fff)](#) ',
+        'microsoft-foundry': '[![Microsoft Foundry](https://custom-icon-badges.demolab.com/badge/Microsoft%20Foundry-2822AD?logo=microsoft-foundry&logoColor=fff)](#) ',
         'mistral-ai': '[![Mistral AI](https://img.shields.io/badge/Mistral%20AI-FA520F?logo=mistral-ai&logoColor=fff)](#) ',
+        'no-ai': '[![No AI](https://custom-icon-badges.demolab.com/badge/No%20AI-2f2f2f?logo=non-ai&logoColor=white)](#) ',
         'ollama': '[![Ollama](https://img.shields.io/badge/Ollama-fff?logo=ollama&logoColor=000)](#) ',
         'perplexity': '[![Perplexity](https://img.shields.io/badge/Perplexity-1FB8CD?logo=perplexity&logoColor=fff)](#) ',
         'qwen': '[![Qwen](https://custom-icon-badges.demolab.com/badge/Qwen-605CEC?logo=qwen&logoColor=fff)](#) ',
-        'v0': '[![v0](https://img.shields.io/badge/v0-000?logo=v0&logoColor=fff)](#) '
+        'v0': '[![v0](https://img.shields.io/badge/v0-000?logo=v0&logoColor=fff)](#) ',
+        'yolo': '[![YOLO](https://img.shields.io/badge/YOLO-111F68?logo=yolo&logoColor=fff)](#) ',
     },
     'blog': {
         'blogger': '[![Blogger](https://img.shields.io/badge/Blogger-%23FF5722.svg?logo=blogger&logoColor=white)](#) ',
@@ -92,6 +96,7 @@ const badges = {
         'cloudflare-workers': '[![Cloudflare Workers](https://img.shields.io/badge/Cloudflare%20Workers-FF4A03?logo=Cloudflare-Workers&logoColor=white)](#) ',
         'coolify': '[![Coolify](https://img.shields.io/badge/Coolify-6B16ED?logo=coolify&logoColor=white)](#) ',
         'digitalocean': '[![DigitalOcean](https://img.shields.io/badge/DigitalOcean-%230167ff.svg?logo=digitalOcean&logoColor=white)](#) ',
+        'evennode': '[![EvenNode](https://custom-icon-badges.demolab.com/badge/EvenNode-000000?logo=evennode&logoColor=white)](#) ',
         'firebase': '[![Firebase](https://img.shields.io/badge/Firebase-039BE5?logo=Firebase&logoColor=white)](#) ',
         'fly.io': '[![Fly.io](https://img.shields.io/badge/Fly.io-8636EA?logo=flydotio&logoColor=white)](#) ',
         'google-cloud': '[![Google Cloud](https://img.shields.io/badge/Google%20Cloud-%234285F4.svg?logo=google-cloud&logoColor=white)](#) ',
@@ -100,6 +105,8 @@ const badges = {
         'netlify': '[![Netlify](https://img.shields.io/badge/Netlify-%23000000.svg?logo=netlify&logoColor=#00C7B7)](#) ',
         'odoo': '[![Odoo](https://img.shields.io/badge/Odoo-714B67?logo=Odoo&logoColor=fff)](#) ',
         'oracle-cloud': '[![Oracle Cloud](https://custom-icon-badges.demolab.com/badge/Oracle%20Cloud-F80000?logo=oracle&logoColor=white)](#) ',
+        'railway': '[![Railway](https://img.shields.io/badge/Railway-0B0D0E?logo=railway&logoColor=white)](#) ',
+        'render': '[![Render](https://img.shields.io/badge/Render-46E3B7?logo=render&logoColor=000)](#) ',
         'sap': '[![SAP](https://img.shields.io/badge/SAP-0FAAFF?logo=sap&logoColor=fff)](#) ',
         'scaleway': '[![Scaleway](https://img.shields.io/badge/Scaleway-8D40EE?logo=Scaleway&logoColor=white)](#) ',
         'terraform': '[![Terraform](https://img.shields.io/badge/Terraform-844FBA?logo=terraform&logoColor=fff)](#) ',
@@ -115,6 +122,7 @@ const badges = {
         'stackhawk': '[![StackHawk](https://img.shields.io/badge/StackHawk-00CBC6?logo=StackHawk&logoColor=fff)](#) '
     },
     'code-editor': {
+        'android-studio': '[![Android Studio](https://img.shields.io/badge/Android%20Studio-1976D2?logo=androidstudio&logoColor=fff)](#) ',
         'codepen': '[![CodePen](https://custom-icon-badges.demolab.com/badge/CodePen-white?&logo=codepen-black&logoColor=black)](#) ',
         'codesandbox': '[![CodeSandbox](https://img.shields.io/badge/CodeSandbox-151515?logo=codesandbox&logoColor=fff)](#) ',
         'cursor': '[![Cursor](https://img.shields.io/badge/Cursor-000000?logo=cursor)](#) ',
@@ -135,12 +143,18 @@ const badges = {
         'sublime-text': '[![Sublime Text](https://img.shields.io/badge/Sublime%20Text-%23575757.svg?logo=sublime-text&logoColor=important)](#) ',
         'vim': '[![Vim](https://img.shields.io/badge/Vim-%2311AB00.svg?logo=vim&logoColor=white)](#) ',
         'visual-studio': '[![Visual Studio](https://custom-icon-badges.demolab.com/badge/Visual%20Studio-5C2D91.svg?&logo=visualstudio&logoColor=white)](#) ', 
-        'vscode': '[![Visual Studio Code](https://custom-icon-badges.demolab.com/badge/Visual%20Studio%20Code-0078d7.svg?logo=vsc&logoColor=white)](#) ',
+        'vscode': '[![Visual Studio Code](https://custom-icon-badges.demolab.com/badge/Visual%20Studio%20Code-0078d7.svg?logo=visualstudiocode&logoColor=white)](#) ',
         'vscodium': '[![VSCodium](https://img.shields.io/badge/VSCodium-2F80ED?logo=vscodium&logoColor=fff)](#) ',
         'webstorm': '[![WebStorm](https://img.shields.io/badge/WebStorm-000?logo=webstorm&logoColor=fff)](#) ',
         'windsurf': '[![Windsurf](https://img.shields.io/badge/Windsurf-0B100F?logo=windsurf&logoColor=fff)](#) ',
         'xcode': '[![Xcode](https://img.shields.io/badge/Xcode-007ACC?logo=Xcode&logoColor=white)](#) ',
         'zed': '[![Zed](https://img.shields.io/badge/Zed-white?logo=zedindustries&logoColor=084CCF)](#) '
+    },
+    'code-linter': {
+        'ruff': '[![Ruff](https://custom-icon-badges.demolab.com/badge/Ruff-261230.svg?logo=ruff-logo)](#) '
+    },
+    'code-type-checker': {
+        'ty': '[![ty](https://custom-icon-badges.demolab.com/badge/ty-261230.svg?logo=ty-astral-logo)](#) '
     },
     'collaboration': {
         'asana': '[![Asana](https://img.shields.io/badge/Asana-F06A6A?logo=asana&logoColor=fff)](#) ',
@@ -205,12 +219,14 @@ const badges = {
         'matplotlib': '[![Matplotlib](https://custom-icon-badges.demolab.com/badge/Matplotlib-71D291?logo=matplotlib&logoColor=fff)](#) ',
         'mlflow': '[![MLflow](https://img.shields.io/badge/MLflow-F4AA41?logo=MLflow&logoColor=black)](#) ',
         'numpy': '[![NumPy](https://img.shields.io/badge/NumPy-4DABCF?logo=numpy&logoColor=fff)](#) ',
+        'optuna': '[![Optuna](https://img.shields.io/badge/Optuna-002C76?logo=optuna&logoColor=ffffff)](#) ',
         'pandas': '[![Pandas](https://img.shields.io/badge/Pandas-150458?logo=pandas&logoColor=fff)](#) ',
         'power-bi': '[![Power BI](https://custom-icon-badges.demolab.com/badge/Power%20BI-F1C912?logo=power-bi&logoColor=fff)](#) ',
         'roboflow': '[![Roboflow](https://img.shields.io/badge/Roboflow-6706CE?logo=Roboflow&logoColor=fff)](#) ',
         'scikit-learn': '[![Scikit-learn](https://img.shields.io/badge/scikit--learn-%23F7931E?logo=scikit-learn&logoColor=white)](#) ',
         'snowflake': '[![Snowflake](https://img.shields.io/badge/Snowflake-29B5E8?logo=snowflake&logoColor=fff)](#) ',
-        'tableau': '[![Tableau](https://custom-icon-badges.demolab.com/badge/Tableau-0176D3?logo=tableau&logoColor=fff)](#) '
+        'tableau': '[![Tableau](https://custom-icon-badges.demolab.com/badge/Tableau-0176D3?logo=tableau&logoColor=fff)](#) ',
+        'seaborn': '[![Seaborn](https://img.shields.io/badge/Seaborn-4EAEAA?logo=python&logoColor=fff)](#) '
     },
     'delivery': {
         'deliveroo': '[![Deliveroo](https://img.shields.io/badge/Deliveroo-00CCBC?logo=Deliveroo&logoColor=white)](#) ',
@@ -328,6 +344,7 @@ const badges = {
         'less': '[![Less](https://img.shields.io/badge/Less-1D365D?logo=less&logoColor=fff)](#) ',
         'lit': '[![Lit](https://img.shields.io/badge/Lit-4C64FF?logo=Lit&logoColor=white)](#) ',
         'marko': '[![Marko](https://img.shields.io/badge/Marko-202124?logo=Marko&logoColor=FF5467)](#) ',
+        'mlx': '[![MLX](https://custom-icon-badges.demolab.com/badge/MLX-151E29?logo=mlx&logoColor=fff)](#) ',
         'meteor': '[![Meteor.js](https://img.shields.io/badge/Meteor.js-%23d74c4c.svg?logo=meteor&logoColor=white)](#) ',
         'mocha': '[![Mocha](https://img.shields.io/badge/Mocha-8D6748?logo=mocha&logoColor=fff)](#) ',
         'nest': '[![Nest.js](https://img.shields.io/badge/Nest.js-%23E0234E.svg?logo=nestjs&logoColor=white)](#) ',
@@ -336,6 +353,7 @@ const badges = {
         'nodejs': '[![Node.js](https://img.shields.io/badge/Node.js-6DA55F?logo=node.js&logoColor=white)](#) ',
         'nuxt': '[![Nuxt](https://img.shields.io/badge/Nuxt-002E3B?logo=nuxt&logoColor=#00DC82)](#) ',
         'onnx': '[![ONNX](https://img.shields.io/badge/ONNX-005CED?logo=ONNX&logoColor=white)](#) ',
+        'opencv': '[![OpenCV](https://img.shields.io/badge/OpenCV-5C3EE8?logo=opencv&logoColor=fff)](#) ',
         'opengl': '[![OpenGL](https://img.shields.io/badge/OpenGl-5487A6?logo=OpenGl&logoColor=fff)](#) ',
         'portainer': '[![Portainer](https://img.shields.io/badge/Portainer-C080FF?logo=Portainer&logoColor=fff)](#) ',
         'playwright': '[![Playwright](https://custom-icon-badges.demolab.com/badge/Playwright-2EAD33?logo=playwright&logoColor=fff)](#) ',
@@ -413,10 +431,12 @@ const badges = {
         'upwork': '[![Upwork](https://img.shields.io/badge/Upwork-6FDA44?logo=upwork&logoColor=fff)](#) '
     },
     'monitoring': {
+        'datadog': '[![Datadog](https://img.shields.io/badge/Datadog-632CA6?logo=datadog&logoColor=fff)](#) ',
         'grafana': '[![Grafana](https://img.shields.io/badge/Grafana-F46800?logo=grafana&logoColor=white)](#) ',
         'kibana': '[![Kibana](https://img.shields.io/badge/Kibana-005571?logo=kibana&logoColor=fff)](#) ',
         'opentelemetry': '[![OpenTelemetry](https://img.shields.io/badge/OpenTelemetry-000?logo=opentelemetry&logoColor=fff)](#) ',
         'prometheus': '[![Prometheus](https://img.shields.io/badge/Prometheus-E6522C?logo=prometheus&logoColor=white)](#) ',
+        'sentry': '[![Sentry](https://img.shields.io/badge/Sentry-362D59?logo=sentry&logoColor=fff)](#) '
     },
     'os': {
         'almalinux': '[![AlmaLinux](https://img.shields.io/badge/AlmaLinux-000?logo=almalinux&logoColor=fff)](#) ',
@@ -473,6 +493,7 @@ const badges = {
         'pnpm': '[![pnpm](https://img.shields.io/badge/pnpm-F69220?logo=pnpm&logoColor=fff)](#) ',
         'pypi': '[![PyPI](https://img.shields.io/badge/PyPI-3775A9?logo=pypi&logoColor=fff)](#) ',
         'rubygems': '[![RubyGems](https://img.shields.io/badge/RubyGems-E9573F?logo=rubygems&logoColor=fff)](#) ',
+        'uv': '[![uv](https://img.shields.io/badge/uv-261230.svg?logo=uv&logoColor=#de5fe9)](#) ',
         'yarn': '[![Yarn](https://img.shields.io/badge/Yarn-2C8EBB?logo=yarn&logoColor=fff)](#) '
     },
     'payment': {
@@ -520,6 +541,7 @@ const badges = {
         'java': '[![Java](https://img.shields.io/badge/Java-%23ED8B00.svg?logo=openjdk&logoColor=white)](#) ',
         'javascript': '[![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=000)](#) ',
         'json': '[![JSON](https://img.shields.io/badge/JSON-000?logo=json&logoColor=fff)](#) ',
+        'julia': '[![Julia](https://img.shields.io/badge/Julia-9558B2?logo=julia&logoColor=fff)](#) ',
         'jupyter': '[![Jupyter](https://img.shields.io/badge/Jupyter-ffffff?logo=Jupyter)](#) ',
         'kotlin': '[![Kotlin](https://img.shields.io/badge/Kotlin-%237F52FF.svg?logo=kotlin&logoColor=white)](#) ',
         'latex': '[![LaTeX](https://img.shields.io/badge/LaTeX-00A0A0?logo=latex&logoColor=fff)](#) ',
@@ -535,6 +557,7 @@ const badges = {
         'php': '[![PHP](https://img.shields.io/badge/php-%23777BB4.svg?&logo=php&logoColor=white)](#) ',
         'powershell': '[![PowerShell](https://custom-icon-badges.demolab.com/badge/PowerShell-5391FE?logo=powershell-white&logoColor=fff)](#) ',
         'python': '[![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=fff)](#) ',
+        'qml': '[![QML](https://img.shields.io/badge/QML-41CD52?logo=qt&logoColor=fff)](#) ',
         'r': '[![R](https://img.shields.io/badge/R-%23276DC3.svg?logo=r&logoColor=white)](#) ',
         'ruby': '[![Ruby](https://img.shields.io/badge/Ruby-%23CC342D.svg?&logo=ruby&logoColor=white)](#) ',
         'rust': '[![Rust](https://img.shields.io/badge/Rust-%23000000.svg?e&logo=rust&logoColor=white)](#) ',
@@ -542,7 +565,9 @@ const badges = {
         'scratch': '[![Scratch](https://img.shields.io/badge/Scratch-4D97FF?logo=scratch&logoColor=fff)](#) ',
         'scala': '[![Scala](https://img.shields.io/badge/Scala-%23DC322F.svg?logo=scala&logoColor=white)](#) ',
         'solidity': '[![Solidity](https://img.shields.io/badge/Solidity-363636?logo=solidity&logoColor=fff)](#) ',
+        'stylus': '[![Stylus](https://img.shields.io/badge/Stylus-333333?logo=stylus&logoColor=fff)](#) ',
         'swift': '[![Swift](https://img.shields.io/badge/Swift-F54A2A?logo=swift&logoColor=white)](#) ',
+        'sui-move': '[![Sui Move](https://img.shields.io/badge/Sui%20Move-6FBCF0?&logo=sui&logoColor=white)](#) ',
         'toml': '[![TOML](https://img.shields.io/badge/TOML-9C4121?logo=toml&logoColor=fff)](#) ',
         'typescript': '[![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=fff)](#) ',
         'v': '[![V](https://img.shields.io/badge/V-5D87BF?logo=v&logoColor=fff)](#) ',
@@ -654,6 +679,7 @@ const badges = {
         'dropbox': '[![Dropbox](https://img.shields.io/badge/Dropbox-0061FF?logo=dropbox&logoColor=fff)](#) ',
         'google-drive': '[![Google Drive](https://img.shields.io/badge/Google%20Drive-4285F4?logo=googledrive&logoColor=fff)](#) ',
         'icloud': '[![iCloud](https://img.shields.io/badge/iCloud-3693F3?logo=icloud&logoColor=fff)](#) ',
+        'mediafire': '[![MediaFire](https://img.shields.io/badge/MediaFire-1299FF?logo=mediafire&logoColor=white)](#) ',
         'mega': '[![Mega](https://img.shields.io/badge/Mega-%23D90007.svg?logo=mega&logoColor=white)](#) ',
         'minio': '[![MinIO](https://img.shields.io/badge/MinIO-C72E49?logo=minio&logoColor=fff)](#) ',
         'proton-drive': '[![Proton Drive](https://img.shields.io/badge/Proton%20Drive-6d4aff?logo=proton%20drive&logoColor=white)](#) '

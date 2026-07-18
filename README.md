@@ -85,6 +85,7 @@ This section contains the categories that are currently available, with their co
 | Funding                 | `funding`              |
 | Framework               | `framework`            |
 | Game Engine             | `game-engine`          |
+| Gaming Platform         | `game-platform`        |
 | Gaming Storefront       | `game-store`           |
 | Jobs                    | `jobs`                 |
 | Monitoring              | `monitoring`           |
